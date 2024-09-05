@@ -1,4 +1,4 @@
-package logger
+package utils
 
 import (
 	"log"
@@ -6,34 +6,41 @@ import (
 )
 
 const (
-	InfoLogFile  = "../../log-files/info.log"
-	ErrorLogFile = "../../log-files/error.log"
+	LogFile = "../../log-files/logs.log"
 )
 
-var (
-	InfoLogger  *log.Logger
-	ErrorLogger *log.Logger
-)
-
-func InitInfoLogger(file *os.File) {
-	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
+type LoggerType struct {
+	info  *log.Logger
+	warn  *log.Logger
+	error *log.Logger
 }
 
-func InitErrorLogger(file *os.File) {
-	ErrorLogger = log.New(file, "Error: ", log.Ldate|log.Ltime|log.Lshortfile)
+var Logger *LoggerType
+
+func NewLogger(file *os.File) *LoggerType {
+	return &LoggerType{
+		info:  log.New(file, "INFO: ", log.LstdFlags),
+		warn:  log.New(file, "WARN: ", log.LstdFlags),
+		error: log.New(file, "ERROR: ", log.LstdFlags),
+	}
 }
 
-func init() {
-	infoFile, err := os.OpenFile(InfoLogFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+func (l *LoggerType) Info(v ...any) {
+	l.info.Println(v...)
+}
+
+func (l *LoggerType) Warn(v ...any) {
+	l.warn.Println(v...)
+}
+
+func (l *LoggerType) Error(v ...any) {
+	l.error.Println(v...)
+}
+
+func SetupLogger(path string) {
+	file, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		panic(err)
 	}
-	defer infoFile.Close()
-
-	errorFile, err := os.OpenFile(ErrorLogFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		panic(err)
-	}
-	defer errorFile.Close()
-
+	Logger = NewLogger(file)
 }
