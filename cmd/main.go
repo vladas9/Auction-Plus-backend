@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	utils.SetupLogger("log-files/logs.log")
+	utils.SetupLogger()
 	utils.Logger.Info("Hello")
 }
