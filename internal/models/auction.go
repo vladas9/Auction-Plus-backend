@@ -5,10 +5,6 @@ import (
 	"time"
 )
 
-type Dollars struct {
-	Exact, Cents uint32
-}
-
 type AuctionModel struct {
 	AuctionId          uuid.UUID     `json:"auction_id"`
 	SellerId           uuid.UUID     `json:"seller_id"`
