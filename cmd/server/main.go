@@ -11,8 +11,8 @@ import (
 )
 
 func WriteJSON(w http.ResponseWriter, status int, v any) error {
+	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
-	w.Header().Set("Content-Type", "application/json")
 	return json.NewEncoder(w).Encode(v)
 }
 
@@ -32,7 +32,7 @@ func makeHandlerFunc(f apiFunc) http.HandlerFunc {
 	}
 }
 
-type UnitWorker interface{}
+type UnitWorker interface{} // dummy temp type, delete later
 type Server struct {
 	ListenAddr string
 	Router     *http.ServeMux
@@ -49,10 +49,9 @@ func NewServer(addr string) *Server {
 }
 
 func (s *Server) Run() {
-	s.Router.HandleFunc("/api/getalllots", makeHandlerFunc(s.handleGetAllLots))
-	s.Router.HandleFunc("/api/getlotbyid", makeHandlerFunc(s.handleGetLotById))
-	s.Router.HandleFunc("/api/deletelot", makeHandlerFunc(s.handleDeleteLot))
-	s.Router.HandleFunc("/api/createlot", makeHandlerFunc(s.handleCreateLot))
+	s.Router.HandleFunc("GET /api/lots", makeHandlerFunc(s.handleGetLotsList))
+	s.Router.HandleFunc("/api/lot/{id}", makeHandlerFunc(s.handleLot))
+	s.Router.HandleFunc("POST /api/auth", makeHandlerFunc(s.handleAuth))
 	u.Logger.Info("Registered Routes")
 
 	u.Logger.Info("Started server on", s.ListenAddr)
@@ -66,20 +65,34 @@ func main() {
 }
 
 // Handlers
-func (s *Server) handleGetAllLots(w http.ResponseWriter, r *http.Request) error {
+
+// Returns a list for the main page
+func (s *Server) handleGetLotsList(w http.ResponseWriter, r *http.Request) error { //return WriteJSON(w http.ResponseWriter, status int, v any)
+
 	return fmt.Errorf("There are no lots to show")
 }
-func (s *Server) handleGetLotById(w http.ResponseWriter, r *http.Request) error {
-	_ = w
-	return fmt.Errorf("No lot with id '%s'", r.URL.Query().Get("id"))
+
+// handles different operations on lots
+func (s *Server) handleLot(w http.ResponseWriter, r *http.Request) error { //return WriteJSON(w http.ResponseWriter, status int, v any)
+	idStr := r.PathValue("id")
+	_ = idStr // do something with the id
+	switch r.Method {
+	case http.MethodGet:
+		// GetLot controller
+	case http.MethodPost:
+		// ModifyLot controller
+	case http.MethodPut:
+		// AddLot controller
+	case http.MethodDelete:
+		// DeleteLot controller
+	default:
+		return fmt.Errorf("Method %v not supported", r.Method)
+	}
+	return nil
 }
-func (s *Server) handleCreateLot(w http.ResponseWriter, r *http.Request) error {
-	_ = w
-	_ = r
-	return fmt.Errorf("This is not implemented yet")
-}
-func (s *Server) handleDeleteLot(w http.ResponseWriter, r *http.Request) error {
-	_ = w
-	_ = r
-	return fmt.Errorf("This is not implemented yet")
+
+// handles authentication via POST
+func (s *Server) handleAuth(w http.ResponseWriter, r *http.Request) error {
+	// TODO: extract values from form data, error checking, etc...
+	return fmt.Errorf("Auth not implemented") // use auth controller
 }
