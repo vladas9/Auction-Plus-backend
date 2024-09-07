@@ -1,0 +1,16 @@
+INFO: 2024/09/07 13:19:28 Created handler from  main.apiFunc
+INFO: 2024/09/07 13:19:28 Created handler from  main.apiFunc
+INFO: 2024/09/07 13:19:28 Created handler from  main.apiFunc
+INFO: 2024/09/07 13:19:28 Registered Routes
+INFO: 2024/09/07 13:19:28 Started server on localhost:1169
+INFO: 2024/09/07 13:25:36 Created handler from  server.apiFunc
+INFO: 2024/09/07 13:25:36 Created handler from  server.apiFunc
+INFO: 2024/09/07 13:25:36 Created handler from  server.apiFunc
+INFO: 2024/09/07 13:25:36 Registered Routes
+INFO: 2024/09/07 13:25:36 Started server on localhost:1169
+INFO: 2024/09/07 13:47:50 Created handler from  server.apiFunc
+INFO: 2024/09/07 13:47:50 Created handler from  server.apiFunc
+INFO: 2024/09/07 13:47:50 Created handler from  server.apiFunc
+INFO: 2024/09/07 13:47:50 Created handler from  server.apiFunc
+INFO: 2024/09/07 13:47:50 Registered Routes
+INFO: 2024/09/07 13:47:50 Started server on localhost:1169

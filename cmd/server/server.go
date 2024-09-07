@@ -1,13 +1,11 @@
-package main
+package server
 
 import (
 	"encoding/json"
 	"fmt"
+	u "github.com/vladas9/backend-practice/internal/utils"
 	"net/http"
 	"reflect"
-
-	//repo "github.com/vladas9/backend-practice/internal/repository"
-	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 func WriteJSON(w http.ResponseWriter, status int, v any) error {
@@ -49,27 +47,22 @@ func NewServer(addr string) *Server {
 }
 
 func (s *Server) Run() {
-	s.Router.HandleFunc("GET /api/lots", makeHandlerFunc(s.handleGetLotsList))
+	s.Router.HandleFunc("GET /api/lots", makeHandlerFunc(s.handleGetLotList))
 	s.Router.HandleFunc("/api/lot/{id}", makeHandlerFunc(s.handleLot))
 	s.Router.HandleFunc("POST /api/auth", makeHandlerFunc(s.handleAuth))
+	s.Router.HandleFunc("GET /api/user/{id}", makeHandlerFunc(s.handleUser))
 	u.Logger.Info("Registered Routes")
 
 	u.Logger.Info("Started server on", s.ListenAddr)
 	u.Logger.Error(http.ListenAndServe(s.ListenAddr, s.Router))
 }
 
-func main() {
-	u.SetupLogger("log-files/logs.log")
-	server := NewServer("localhost:1169")
-	server.Run()
-}
-
 // Handlers
 
 // Returns a list for the main page
-func (s *Server) handleGetLotsList(w http.ResponseWriter, r *http.Request) error { //return WriteJSON(w http.ResponseWriter, status int, v any)
+func (s *Server) handleGetLotList(w http.ResponseWriter, r *http.Request) error { //return WriteJSON(w http.ResponseWriter, status int, v any)
 
-	return fmt.Errorf("There are no lots to show")
+	return WriteJSON(w, http.StatusOK, generateDummyAuctions())
 }
 
 // handles different operations on lots
@@ -79,6 +72,7 @@ func (s *Server) handleLot(w http.ResponseWriter, r *http.Request) error { //ret
 	switch r.Method {
 	case http.MethodGet:
 		// GetLot controller
+		return WriteJSON(w, http.StatusOK, generateDummyAuctions()[0])
 	case http.MethodPost:
 		// ModifyLot controller
 	case http.MethodPut:
@@ -95,4 +89,10 @@ func (s *Server) handleLot(w http.ResponseWriter, r *http.Request) error { //ret
 func (s *Server) handleAuth(w http.ResponseWriter, r *http.Request) error {
 	// TODO: extract values from form data, error checking, etc...
 	return fmt.Errorf("Auth not implemented") // use auth controller
+}
+
+func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) error {
+	idStr := r.PathValue("id")
+	_ = idStr
+	return WriteJSON(w, http.StatusOK, generateDummyUser())
 }
