@@ -32,7 +32,7 @@ CREATE TABLE auction(
   extra_time_enabled BOOLEAN DEFAULT TRUE,
   extra_time_duration INTERVAL,
   extra_time_threshold INTERVAL,
-  status VARCHAR(50)
+  status BOOLEAN NOT NULL
 );
 
 CREATE TABLE bid(
