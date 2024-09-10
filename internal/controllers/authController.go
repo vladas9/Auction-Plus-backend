@@ -15,11 +15,10 @@ func SignIn(w http.ResponseWriter, r *http.Request) *ApiError {
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&userInfo); err != nil {
-		return &ApiError{fmt.Sprintf("Failed SignIn: %s", err), http.StatusNotImplemented}
+		return &ApiError{fmt.Sprintf("Failed SignIn: %s", err), http.StatusBadRequest}
 	}
 
 	//TODO: call service for this using userInfo and w
-
 	return writeJSON(w, http.StatusOK, data)
 }
 
@@ -35,7 +34,7 @@ func SignUp(w http.ResponseWriter, r *http.Request) *ApiError {
 	}
 
 	if err := json.NewDecoder(r.Body).Decode(&userInfo); err != nil {
-		return &ApiError{fmt.Sprintf("Failed SignUp: %s", err), http.StatusNotImplemented}
+		return &ApiError{fmt.Sprintf("Failed SignUp: %s", err), http.StatusBadRequest}
 	}
 
 	return writeJSON(w, http.StatusOK, data)
