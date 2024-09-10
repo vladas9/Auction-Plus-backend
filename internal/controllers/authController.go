@@ -7,6 +7,11 @@ import (
 	"time"
 )
 
+//DOCS
+//Sign In Controller that reads body data from front and Decode it in userInfo
+//Than it send userInfo to service and wait for responce
+//Based on responce it will send a status ok or error
+
 func SignIn(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	var userInfo struct {
@@ -18,9 +23,14 @@ func SignIn(w http.ResponseWriter, r *http.Request) *ApiError {
 		return &ApiError{fmt.Sprintf("Failed SignIn: %s", err), http.StatusBadRequest}
 	}
 
-	//TODO: call service for this using userInfo and w
+	//TODO: call service for this using userInfo
 	return writeJSON(w, http.StatusOK, data)
 }
+
+//DOCS
+//Sign Up Controller that reads body data from front and Decode it in userInfo
+//Than it send userInfo to service and wait for responce
+//Based on responce it will send a status ok or error
 
 func SignUp(w http.ResponseWriter, r *http.Request) *ApiError {
 
@@ -36,6 +46,8 @@ func SignUp(w http.ResponseWriter, r *http.Request) *ApiError {
 	if err := json.NewDecoder(r.Body).Decode(&userInfo); err != nil {
 		return &ApiError{fmt.Sprintf("Failed SignUp: %s", err), http.StatusBadRequest}
 	}
+
+	//TODO: call service for this using userInfo
 
 	return writeJSON(w, http.StatusOK, data)
 }
