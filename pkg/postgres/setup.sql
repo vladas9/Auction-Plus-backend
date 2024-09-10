@@ -18,7 +18,7 @@ CREATE TABLE item(
   description TEXT,
   category VARCHAR(100),
   condition VARCHAR(50),
-  image TEXT[]
+  image UUID[] 
 );
 
 CREATE TABLE auction(
