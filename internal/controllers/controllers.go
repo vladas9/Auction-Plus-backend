@@ -1,3 +1,7 @@
+// Package controllers provides HTTP handlers for user authentication operations.
+// It includes handlers for user sign-in and sign-up processes.
+// Each handler reads the request body, decodes it into a Model, and interacts with a service to process the request.
+// Based on the service's response, the handlers return appropriate HTTP responses.
 package controllers
 
 import (
