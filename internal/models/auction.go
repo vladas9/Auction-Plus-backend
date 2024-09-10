@@ -8,8 +8,8 @@ import (
 type AuctionModel struct {
 	BaseModel
 	SellerId           uuid.UUID     `json:"seller_id"`
-	StartingBid        Dollars       `json:"starting_bid"`
-	ClosingBid         Dollars       `json:"closing_bid"`
+	StartingBid        Decimal       `json:"starting_bid"`
+	ClosingBid         Decimal       `json:"closing_bid"`
 	StartTime          time.Time     `json:"start_time"`
 	EndTime            time.Time     `json:"end_time"`
 	ExtraTimeDuration  time.Duration `json:"extra_time_duration"`

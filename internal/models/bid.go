@@ -5,10 +5,10 @@ import (
 	"time"
 )
 
-type Bid struct {
-	BidId     uuid.UUID `json:"bid_is"`
+type BidModel struct {
+	BaseModel
 	AuctionId uuid.UUID `json:"auction_id"`
 	UserId    uuid.UUID `json:"user_id"`
-	Amount    Dollars   `json:"amount"`
+	Amount    Decimal   `json:"amount"`
 	Timestamp time.Time `json:"timestamp"`
 }
