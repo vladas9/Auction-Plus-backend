@@ -7,7 +7,7 @@ import (
 )
 
 type AuctionRepo struct {
-	*sql.Tx
+	tx *sql.Tx
 }
 
 func NewAuctionRepo(tx *sql.Tx) *AuctionRepo {
@@ -32,7 +32,7 @@ func (r *AuctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 			auctions
 		WHERE
 			id = $1`
-	row := r.Tx.QueryRow(query, id)
+	row := r.tx.QueryRow(query, id)
 	if err := row.Scan(
 		&item.ID,
 		&item.StartingBid,
@@ -66,7 +66,7 @@ func (r *AuctionRepo) GetAll() ([]*m.AuctionModel, error) {
 		FROM
 			auctions
 	`
-	rows, err := r.Tx.Query(query)
+	rows, err := r.tx.Query(query)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func (r *AuctionRepo) Update(item *m.AuctionModel) error {
 		WHERE
 			id = $10
 	`
-	_, err := r.Tx.Exec(query,
+	_, err := r.tx.Exec(query,
 		item.SellerId,
 		item.StartingBid,
 		item.ClosingBid,
@@ -137,7 +137,7 @@ func (r *AuctionRepo) Remove(id uuid.UUID) error {
 		WHERE 
 			id = $1
 	`
-	_, err := r.Tx.Exec(query, id)
+	_, err := r.tx.Exec(query, id)
 
 	return err
 }
@@ -159,7 +159,7 @@ func (r *AuctionRepo) Insert(item *m.AuctionModel) error {
 			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10
 		)
 	`
-	_, err := r.Tx.Exec(query,
+	_, err := r.tx.Exec(query,
 		item.ID,
 		item.SellerId,
 		item.StartingBid,
