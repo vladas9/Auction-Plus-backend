@@ -21,12 +21,13 @@ func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 			id,
 			username,
 			email,
+			password,
 			address,
 			phone_number,
 			user_type,
 			registered_date
 		FROM
-			Users
+			users
 		WHERE
 			id = $1
 	`
@@ -35,6 +36,7 @@ func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 		&item.ID,
 		&item.Username,
 		&item.Email,
+		&item.Password,
 		&item.Address,
 		&item.PhoneNumber,
 		&item.UserType,
@@ -46,18 +48,19 @@ func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 }
 
 func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
-	var Users []*m.UserModel
+	var users []*m.UserModel
 	query := `
 		SELECT 
 			id,
 			username,
 			email,
+			password,
 			address,
 			phone_number,
 			user_type,
 			registered_date
 		FROM
-			Users
+			users
 	`
 	rows, err := r.tx.Query(query)
 	if err != nil {
@@ -71,6 +74,7 @@ func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
 			&item.ID,
 			&item.Username,
 			&item.Email,
+			&item.Password,
 			&item.Address,
 			&item.PhoneNumber,
 			&item.UserType,
@@ -78,34 +82,36 @@ func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
 		); err != nil {
 			return nil, err
 		}
-		Users = append(Users, item)
+		users = append(users, item)
 	}
 
 	if err := rows.Err(); err != nil {
 		return nil, err
 	}
-	return Users, nil
+	return users, nil
 }
 
 func (r *UserRepo) Update(item *m.UserModel) error {
 	query := `
 		UPDATE 
-			Users
+			users
 		SET
 			username = $1,
 			email = $2,
 			address = $3,
-			phone_number = $4,
-			user_type = $5,
-			registered_date = $6
+			password = $4
+			phone_number = $5,
+			user_type = $6,
+			registered_date = $7
 		WHERE
-			id = $7
+			id = $8
 	`
 	_, err := r.tx.Exec(query,
 		&item.ID,
 		&item.Username,
 		&item.Email,
 		&item.Address,
+		&item.Password,
 		&item.PhoneNumber,
 		&item.UserType,
 		&item.RegisteredDate,
@@ -117,7 +123,7 @@ func (r *UserRepo) Update(item *m.UserModel) error {
 func (r *UserRepo) Remove(id uuid.UUID) error {
 	query := `
 		DELETE FROM 
-			Users
+			users
 		WHERE 
 			id = $1
 	`
@@ -128,11 +134,12 @@ func (r *UserRepo) Remove(id uuid.UUID) error {
 
 func (r *UserRepo) Insert(item *m.UserModel) error {
 	query := `
-		INSERT INTO Users (
+		INSERT INTO users (
 			id,
 			username,
 			email,
 			address,
+			password
 			phone_number,
 			user_type,
 			registered_date
@@ -144,6 +151,7 @@ func (r *UserRepo) Insert(item *m.UserModel) error {
 		&item.ID,
 		&item.Username,
 		&item.Email,
+		&item.Password,
 		&item.Address,
 		&item.PhoneNumber,
 		&item.UserType,
