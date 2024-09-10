@@ -3,15 +3,14 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/vladas9/backend-practice/internal/models"
 	"net/http"
+
+	"github.com/vladas9/backend-practice/internal/models"
 )
 
-//DOCS
-//Sign In Controller that reads body data from front and Decode it in userInfo
-//Than it send userInfo to service and wait for responce
-//Based on responce it will send a status ok or error
-
+// Sign In Controller that reads body data from front and Decode it in userInfo
+// Than it send userInfo to service and wait for responce
+// Based on responce it will send a status ok or error
 func SignIn(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	var user models.UserModel
@@ -24,11 +23,9 @@ func SignIn(w http.ResponseWriter, r *http.Request) *ApiError {
 	return writeJSON(w, http.StatusOK, "Sign in successfully")
 }
 
-//DOCS
-//Sign Up Controller that reads body data from front and Decode it in userInfo
-//Than it send userInfo to service and wait for responce
-//Based on responce it will send a status ok or error  with a message
-
+// Sign Up Controller that reads body data from front and Decode it in userInfo.
+// Than it send userInfo to service and wait for responce.
+// Based on responce it will send a status ok or error  with a message.
 func SignUp(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	var user models.UserModel
