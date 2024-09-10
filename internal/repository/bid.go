@@ -10,6 +10,10 @@ type BidRepo struct {
 	tx *sql.Tx
 }
 
+func NewBidRepo(tx *sql.Tx) *BidRepo {
+	return &BidRepo{tx}
+}
+
 func (r *BidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	item := &m.BidModel{}
 	query := `

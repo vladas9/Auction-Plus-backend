@@ -11,6 +11,10 @@ type ItemRepo struct {
 	tx *sql.Tx
 }
 
+func NewItemRepo(tx *sql.Tx) *ItemRepo {
+	return &ItemRepo{tx}
+}
+
 func (r *ItemRepo) GetById(id uuid.UUID) (*m.ItemModel, error) {
 	item := &m.ItemModel{}
 	query := `
