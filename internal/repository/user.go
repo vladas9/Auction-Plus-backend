@@ -1,0 +1,154 @@
+package repository
+
+import (
+	"database/sql"
+	"github.com/google/uuid"
+	m "github.com/vladas9/backend-practice/internal/models"
+)
+
+type UserRepo struct {
+	tx *sql.Tx
+}
+
+func NewUserRepo(tx *sql.Tx) *UserRepo {
+	return &UserRepo{tx}
+}
+
+func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
+	item := &m.UserModel{}
+	query := `
+		SELECT 
+			id,
+			username,
+			email,
+			address,
+			phone_number,
+			user_type,
+			registered_date
+		FROM
+			Users
+		WHERE
+			id = $1
+	`
+	row := r.tx.QueryRow(query, id)
+	if err := row.Scan(
+		&item.ID,
+		&item.Username,
+		&item.Email,
+		&item.Address,
+		&item.PhoneNumber,
+		&item.UserType,
+		&item.RegisteredDate,
+	); err != nil {
+		return nil, err
+	}
+	return item, nil
+}
+
+func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
+	var Users []*m.UserModel
+	query := `
+		SELECT 
+			id,
+			username,
+			email,
+			address,
+			phone_number,
+			user_type,
+			registered_date
+		FROM
+			Users
+	`
+	rows, err := r.tx.Query(query)
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+	for rows.Next() {
+		item := &m.UserModel{}
+		if err := rows.Scan(
+			&item.ID,
+			&item.Username,
+			&item.Email,
+			&item.Address,
+			&item.PhoneNumber,
+			&item.UserType,
+			&item.RegisteredDate,
+		); err != nil {
+			return nil, err
+		}
+		Users = append(Users, item)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return Users, nil
+}
+
+func (r *UserRepo) Update(item *m.UserModel) error {
+	query := `
+		UPDATE 
+			Users
+		SET
+			username = $1,
+			email = $2,
+			address = $3,
+			phone_number = $4,
+			user_type = $5,
+			registered_date = $6
+		WHERE
+			id = $7
+	`
+	_, err := r.tx.Exec(query,
+		&item.ID,
+		&item.Username,
+		&item.Email,
+		&item.Address,
+		&item.PhoneNumber,
+		&item.UserType,
+		&item.RegisteredDate,
+	)
+
+	return err
+}
+
+func (r *UserRepo) Remove(id uuid.UUID) error {
+	query := `
+		DELETE FROM 
+			Users
+		WHERE 
+			id = $1
+	`
+	_, err := r.tx.Exec(query, id)
+
+	return err
+}
+
+func (r *UserRepo) Insert(item *m.UserModel) error {
+	query := `
+		INSERT INTO Users (
+			id,
+			username,
+			email,
+			address,
+			phone_number,
+			user_type,
+			registered_date
+		) VALUES (
+			$1, $2, $3, $4, $5, $6, $7
+		)
+	`
+	_, err := r.tx.Exec(query,
+		&item.ID,
+		&item.Username,
+		&item.Email,
+		&item.Address,
+		&item.PhoneNumber,
+		&item.UserType,
+		&item.RegisteredDate,
+	)
+
+	return err
+}
