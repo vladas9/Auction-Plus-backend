@@ -6,7 +6,7 @@ import (
 )
 
 type AuctionModel struct {
-	AuctionId          uuid.UUID     `json:"auction_id"`
+	BaseModel
 	SellerId           uuid.UUID     `json:"seller_id"`
 	StartingBid        Dollars       `json:"starting_bid"`
 	ClosingBid         Dollars       `json:"closing_bid"`
