@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	LogFile = "log-files/logs.log"
+	LogFile = "../../log-files/logs.log"
 )
 
 type LoggerType struct {
@@ -37,8 +37,8 @@ func (l *LoggerType) Error(v ...any) {
 	l.error.Println(v...)
 }
 
-func SetupLogger() {
-	file, err := os.OpenFile(LogFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+func SetupLogger(path string) {
+	file, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		panic(err)
 	}
