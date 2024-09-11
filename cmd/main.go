@@ -1,10 +1,12 @@
 package main
 
 import (
-	"github.com/vladas9/backend-practice/internal/utils"
+	s "github.com/vladas9/backend-practice/cmd/server"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 func main() {
-	utils.SetupLogger()
-	utils.Logger.Info("Hello")
+	u.SetupLogger("log-files/logs.log")
+	server := s.NewServer("localhost:1169")
+	server.Run()
 }
