@@ -2,7 +2,6 @@ package server
 
 import (
 	u "github.com/vladas9/backend-practice/internal/utils"
-	"github.com/vladas9/controllers"
 	"net/http"
 	"reflect"
 )

@@ -5,6 +5,7 @@ import (
 	//_ "github.com/lib/pq"
 	//m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 type UnitOfWork struct {
@@ -20,26 +21,49 @@ type UnitOfWork struct {
 	UserRepo *r.UserRepo
 }
 
-func NewUnitOfWork(db *sql.DB) (*UnitOfWork, error) {
-	tx, err := db.Begin()
-	if err != nil {
-		return nil, err
-	}
+func NewUnitOfWork(db *sql.DB) *UnitOfWork {
 	return &UnitOfWork{
-		db:          db,
-		tx:          tx,
-		AuctionRepo: r.NewAuctionRepo(tx),
-		BidRepo:     r.NewBidRepo(tx),
-		ItemRepo:    r.NewItemRepo(tx),
-		// NotificationRepo: r.NewNotificationRepo(tx),
-		// ShippingRepo:     r.NewShippingRepo(tx),
-		// TransactionRepo:  r.NewTransactionRepo(tx),
-		UserRepo: r.NewUserRepo(tx),
-	}, nil
+		db: db,
+	}
+}
+
+// TODO handle edgecases: uncommitted tx
+func (uow *UnitOfWork) BeginTransaction() error {
+	if uow.tx != nil {
+		if err := uow.tx.Rollback(); err != nil && err != sql.ErrTxDone {
+			return err
+		}
+	}
+
+	tx, err := uow.db.Begin()
+	if err != nil {
+		return err
+	}
+
+	uow.tx = tx
+	uow.AuctionRepo = r.NewAuctionRepo(tx)
+	uow.BidRepo = r.NewBidRepo(tx)
+	uow.ItemRepo = r.NewItemRepo(tx)
+	//NotificationRepo: r.NewNotificationRepo(tx),
+	//ShippingRepo:     r.NewShippingRepo(tx),
+	//TransactionRepo:  r.NewTransactionRepo(tx),
+	uow.UserRepo = r.NewUserRepo(tx)
+	return nil
 }
 
 func (uow *UnitOfWork) Commit() error {
-	return uow.tx.Commit()
+	if uow.tx == nil {
+		return nil
+	}
+
+	if err := uow.tx.Commit(); err != nil {
+		u.Logger.Error("Failed to commit: ", err.Error())
+		//uow.Rollback() ????
+		return err
+	}
+
+	uow.tx = nil
+	return nil
 }
 
 func (uow *UnitOfWork) Rollback() error {
