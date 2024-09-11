@@ -15,7 +15,7 @@ func (fn apiFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if apiErr := fn(w, r); apiErr != nil {
 		u.Logger.Error(reflect.ValueOf(apiErr))
 		//WriteJSON(w, apiErr.Status, apiErr.Error())
-		http.Error(w, apiErr.Error(), apiErr.Status)
+		http.Error(w, apiErr.Error(), apiErr.Status) //WARN: To remove error message for user
 	}
 }
 

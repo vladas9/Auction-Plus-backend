@@ -18,17 +18,8 @@ type Controller struct {
 	userService *s.UserService
 }
 
-func NewController(db *sql.DB) (*Controller, error) {
-
-	controller := &Controller{}
-
-	if service, err := s.NewUserService(db); err != nil {
-		return nil, err
-	} else {
-		controller.userService = service
-	}
-
-	return controller, nil
+func NewController(db *sql.DB) *Controller {
+	return &Controller{s.NewUserService(db)}
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) *ApiError {
@@ -47,6 +38,7 @@ type ApiError struct {
 	Status   int
 }
 
+// WARN: To remove this function
 func (e ApiError) Error() string {
 	return e.ErrorMsg
 }
