@@ -5,19 +5,38 @@
 package controllers
 
 import (
+	"database/sql"
 	"encoding/json"
 	"fmt"
-	"github.com/vladas9/backend-practice/internal/utils"
+	s "github.com/vladas9/backend-practice/internal/services"
+	u "github.com/vladas9/backend-practice/internal/utils"
 	"net/http"
 	"reflect"
 )
+
+type Controller struct {
+	userService *s.UserService
+}
+
+func newController(db *sql.DB) (*Controller, error) {
+
+	controller := &Controller{}
+
+	if service, err := s.NewUserService(db); err != nil {
+		return nil, err
+	} else {
+		controller.userService = service
+	}
+
+	return controller, nil
+}
 
 func writeJSON(w http.ResponseWriter, status int, v any) *ApiError {
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
 	if err := json.NewEncoder(w).Encode(v); err != nil {
 		aErr := &ApiError{fmt.Sprintf("Encoding of object of type %v failed", reflect.TypeOf(v)), 500}
-		utils.Logger.Error(aErr)
+		u.Logger.Error(aErr)
 		return aErr
 	}
 	return nil
