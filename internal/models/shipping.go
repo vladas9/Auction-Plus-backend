@@ -7,7 +7,7 @@ import (
 )
 
 type ShippingModel struct {
-	ShippingId        uuid.UUID `json:"shipping_id"`
+	BaseModel
 	TransactionId     uuid.UUID `json:"transaction_id"`
 	ShippingAddress   string    `json:"shipping_address"`
 	TrackingNumber    string    `json:"tracking_number"`

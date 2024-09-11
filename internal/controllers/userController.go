@@ -13,7 +13,7 @@ import (
 // It then calls a service with the user information and returns an appropriate response based on the service result.
 // If decoding fails, it returns a 400 Bad Request status with an error message.
 // If successful, it returns a 200 OK status with a success message.
-func Login(w http.ResponseWriter, r *http.Request) *ApiError {
+func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	var user models.UserModel
 
@@ -31,7 +31,7 @@ func Login(w http.ResponseWriter, r *http.Request) *ApiError {
 // It then calls a service with the user information and returns an appropriate response based on the service result.
 // If decoding fails, it returns a 400 Bad Request status with an error message.
 // If successful, it returns a 200 OK status with a success message.
-func Register(w http.ResponseWriter, r *http.Request) *ApiError {
+func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	var user models.UserModel
 
