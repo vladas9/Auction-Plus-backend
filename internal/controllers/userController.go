@@ -8,12 +8,12 @@ import (
 	"github.com/vladas9/backend-practice/internal/models"
 )
 
-// SignIn handles the HTTP request for user sign-in.
+// Login handles the HTTP request for user sign-in.
 // It reads and decodes the request body into a UserModel instance.
 // It then calls a service with the user information and returns an appropriate response based on the service result.
 // If decoding fails, it returns a 400 Bad Request status with an error message.
 // If successful, it returns a 200 OK status with a success message.
-func SignIn(w http.ResponseWriter, r *http.Request) *ApiError {
+func Login(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	var user models.UserModel
 
@@ -26,12 +26,12 @@ func SignIn(w http.ResponseWriter, r *http.Request) *ApiError {
 	return writeJSON(w, http.StatusOK, "Sign-in successful")
 }
 
-// SignUp handles the HTTP request for user sign-up.
+// Register	handles the HTTP request for user sign-up.
 // It reads and decodes the request body into a UserModel instance.
 // It then calls a service with the user information and returns an appropriate response based on the service result.
 // If decoding fails, it returns a 400 Bad Request status with an error message.
 // If successful, it returns a 200 OK status with a success message.
-func SignUp(w http.ResponseWriter, r *http.Request) *ApiError {
+func Register(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	var user models.UserModel
 
