@@ -18,7 +18,7 @@ type Controller struct {
 	userService *s.UserService
 }
 
-func newController(db *sql.DB) (*Controller, error) {
+func NewController(db *sql.DB) (*Controller, error) {
 
 	controller := &Controller{}
 
