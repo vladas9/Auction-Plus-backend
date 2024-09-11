@@ -5,11 +5,11 @@ import (
 )
 
 type ItemModel struct {
-	ItemId        uuid.UUID `json:"item_id"`
-	Name          string    `json:"name"`
-	Description   string    `json:"description"`
-	StartingPrice Dollars   `json:"starting_price"`
-	Category      Category  `json:"category"`
-	Condition     Condition `json:"condition"`
-	Images        []string  `json:"images"`
+	ItemId        uuid.UUID   `json:"item_id"`
+	Name          string      `json:"name"`
+	Description   string      `json:"description"`
+	StartingPrice Decimal     `json:"starting_price"`
+	Category      Category    `json:"category"`
+	Condition     Condition   `json:"condition"`
+	Images        []uuid.UUID `json:"images"`
 }

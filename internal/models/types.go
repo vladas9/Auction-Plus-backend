@@ -1,8 +1,10 @@
 package models
 
-type Dollars struct {
-	Exact, Cents uint32
-}
+import (
+	"github.com/shopspring/decimal"
+)
+
+type Decimal decimal.Decimal // usage: decimal.NewFromString()
 
 type Category string
 
