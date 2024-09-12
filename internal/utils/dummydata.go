@@ -13,8 +13,8 @@ func GenerateDummyAuctions() []m.AuctionModel {
 		{
 			BaseModel:          m.BaseModel{uuid.New()},
 			SellerId:           uuid.New(),
-			StartingBid:        m.Decimal(decimal.NewFromInt(100)),
-			ClosingBid:         m.Decimal(decimal.NewFromInt(200)),
+			StartingBid:        decimal.NewFromInt(100),
+			ClosingBid:         decimal.NewFromInt(200),
 			StartTime:          time.Now().Add(-24 * time.Hour),
 			EndTime:            time.Now().Add(24 * time.Hour),
 			ExtraTimeDuration:  5 * time.Minute,
@@ -25,8 +25,8 @@ func GenerateDummyAuctions() []m.AuctionModel {
 		{
 			BaseModel:          m.BaseModel{uuid.New()},
 			SellerId:           uuid.New(),
-			StartingBid:        m.Decimal(decimal.NewFromInt(50)),
-			ClosingBid:         m.Decimal(decimal.NewFromInt(150)),
+			StartingBid:        decimal.NewFromInt(50),
+			ClosingBid:         decimal.NewFromInt(150),
 			StartTime:          time.Now().Add(-48 * time.Hour),
 			EndTime:            time.Now().Add(48 * time.Hour),
 			ExtraTimeDuration:  10 * time.Minute,
@@ -37,8 +37,8 @@ func GenerateDummyAuctions() []m.AuctionModel {
 		{
 			BaseModel:          m.BaseModel{uuid.New()},
 			SellerId:           uuid.New(),
-			StartingBid:        m.Decimal(decimal.NewFromInt(300)),
-			ClosingBid:         m.Decimal(decimal.NewFromInt(350)),
+			StartingBid:        decimal.NewFromInt(300),
+			ClosingBid:         decimal.NewFromInt(350),
 			StartTime:          time.Now().Add(-72 * time.Hour),
 			EndTime:            time.Now().Add(72 * time.Hour),
 			ExtraTimeDuration:  3 * time.Minute,
