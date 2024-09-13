@@ -9,7 +9,7 @@ type UserModel struct {
 	BaseModel
 	Username       string    `json:"username"`
 	Email          string    `json:"email"`
-	Password       string    `json:"-"`
+	Password       string    `json:"password"`
 	Address        string    `json:"address"`
 	PhoneNumber    string    `json:"phone_number"`
 	UserType       string    `json:"user_type"`

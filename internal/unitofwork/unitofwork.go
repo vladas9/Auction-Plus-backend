@@ -12,13 +12,13 @@ type UnitOfWork struct {
 	db *sql.DB
 	tx *sql.Tx
 
-	AuctionRepo      *r.AuctionRepo
-	BidRepo          *r.BidRepo
-	ItemRepo         *r.ItemRepo
-	NotificationRepo *r.NotificationRepo
-	ShippingRepo     *r.ShippingRepo
-	TransactionRepo  *r.TransactionRepo
-	UserRepo         *r.UserRepo
+	AuctionRepo *r.AuctionRepo
+	BidRepo     *r.BidRepo
+	ItemRepo    *r.ItemRepo
+	// NotificationRepo *r.NotificationRepo
+	// ShippingRepo     *r.ShippingRepo
+	// TransactionRepo  *r.TransactionRepo
+	UserRepo *r.UserRepo
 }
 
 func NewUnitOfWork(db *sql.DB) *UnitOfWork {
