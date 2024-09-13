@@ -63,3 +63,32 @@ func GenerateDummyUser() *m.UserModel {
 		RegisteredDate: time.Now().AddDate(0, -6, 0), // registered 6 months ago
 	}
 }
+
+func GenerateDummyBids() []m.BidModel {
+	return []m.BidModel{
+		m.BidModel{
+			BaseModel: m.BaseModel{uuid.New()},
+			UserId:    uuid.New(),
+			Amount:    decimal.NewFromInt(150),
+			Timestamp: time.Now(),
+		},
+		m.BidModel{
+			BaseModel: m.BaseModel{uuid.New()},
+			UserId:    uuid.New(),
+			Amount:    decimal.NewFromInt(250),
+			Timestamp: time.Now(),
+		},
+		m.BidModel{
+			BaseModel: m.BaseModel{uuid.New()},
+			UserId:    uuid.New(),
+			Amount:    decimal.NewFromInt(300),
+			Timestamp: time.Now(),
+		},
+		m.BidModel{
+			BaseModel: m.BaseModel{uuid.New()},
+			UserId:    uuid.New(),
+			Amount:    decimal.NewFromInt(400),
+			Timestamp: time.Now(),
+		},
+	}
+}
