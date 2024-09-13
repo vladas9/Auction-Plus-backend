@@ -1,10 +1,9 @@
 package models
 
-import (
-	"github.com/shopspring/decimal"
-)
+import "github.com/shopspring/decimal"
 
-type Decimal decimal.Decimal // usage: decimal.NewFromString()
+// TODO use this alias
+type Decimal = decimal.Decimal // usage: decimal.NewFromString()
 
 type Category string
 

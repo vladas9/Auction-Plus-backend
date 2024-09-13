@@ -35,6 +35,7 @@ func (r *AuctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 	row := r.tx.QueryRow(query, id)
 	if err := row.Scan(
 		&item.ID,
+		&item.SellerId,
 		&item.StartingBid,
 		&item.ClosingBid,
 		&item.StartTime,

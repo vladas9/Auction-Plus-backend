@@ -107,7 +107,6 @@ func (r *UserRepo) Update(item *m.UserModel) error {
 			id = $8
 	`
 	_, err := r.tx.Exec(query,
-		&item.ID,
 		&item.Username,
 		&item.Email,
 		&item.Address,
@@ -115,6 +114,7 @@ func (r *UserRepo) Update(item *m.UserModel) error {
 		&item.PhoneNumber,
 		&item.UserType,
 		&item.RegisteredDate,
+		&item.ID,
 	)
 
 	return err
