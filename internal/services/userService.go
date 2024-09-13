@@ -10,6 +10,7 @@ import (
 func (s *UserService) CreateUser(user *m.UserModel) error {
 
 	u.Logger.Info("Creating user: ", user.Username)
+
 	if err := s.uow.BeginTransaction(); err != nil {
 		return fmt.Errorf("Faled to create user: %v", err.Error())
 	}

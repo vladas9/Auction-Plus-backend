@@ -4,8 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 
+	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
+	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 // Login handles the HTTP request for user sign-in.
@@ -36,11 +39,15 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
 // If successful, it returns a 200 OK status with a success message.
 func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError {
 
-	var user *m.UserModel
+	user := &m.UserModel{}
 
 	if err := json.NewDecoder(r.Body).Decode(user); err != nil {
 		return &ApiError{fmt.Sprintf("Registration failed: %s", err.Error()), http.StatusBadRequest}
 	}
+
+	user.ID = uuid.New()
+	user.RegisteredDate = time.Now()
+	utils.Logger.Info(user.RegisteredDate)
 
 	if err := c.userService.CreateUser(user); err != nil {
 		return &ApiError{fmt.Sprintf("Registration failed: %s", err.Error()), http.StatusNotAcceptable}

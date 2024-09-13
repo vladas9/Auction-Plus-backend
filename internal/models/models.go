@@ -12,7 +12,7 @@ type Model interface {
 }
 
 type BaseModel struct {
-	ID uuid.UUID `json:"uuid"`
+	ID uuid.UUID `json:"uuid,omitempty"`
 }
 
 func (m BaseModel) Id() uuid.UUID {

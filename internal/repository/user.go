@@ -134,29 +134,32 @@ func (r *UserRepo) Remove(id uuid.UUID) error {
 
 func (r *UserRepo) Insert(item *m.UserModel) error {
 	query := `
-		INSERT INTO users (
-			id,
-			username,
-			email,
-			address,
-			password
-			phone_number,
-			user_type,
-			registered_date
-		) VALUES (
-			$1, $2, $3, $4, $5, $6, $7
-		)
-	`
+        INSERT INTO users (
+            id,
+            username,
+            email,
+            address,
+            password,
+            phone_number,
+            user_type,
+            registered_date
+        ) VALUES (
+            $1, $2, $3, $4, $5, $6, $7, $8
+        )
+    `
 	_, err := r.tx.Exec(query,
-		&item.ID,
-		&item.Username,
-		&item.Email,
-		&item.Password,
-		&item.Address,
-		&item.PhoneNumber,
-		&item.UserType,
-		&item.RegisteredDate,
+		item.ID,
+		item.Username,
+		item.Email,
+		item.Address,
+		item.Password,
+		item.PhoneNumber,
+		item.UserType,
+		item.RegisteredDate,
 	)
+	if err != nil {
+		return err
+	}
 
-	return err
+	return nil
 }

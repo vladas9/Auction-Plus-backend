@@ -28,7 +28,7 @@ type Server struct {
 func NewServer(addr string) *Server {
 	db, err := p.ConnectDB()
 	if err != nil {
-		//TODO: Add error message if db dont open
+		u.Logger.Error("connecting db: ", err.Error())
 	}
 	mux := http.NewServeMux()
 
