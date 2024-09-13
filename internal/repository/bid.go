@@ -80,18 +80,17 @@ func (r *BidRepo) Update(item *m.BidModel) error {
 		UPDATE 
 			bids
 		SET
-			id = $1,
-			user_id = $2,
-			amount = $3
-			timestamp = $4
+			user_id = $1,
+			amount = $2,
+			timestamp = $3
 		WHERE
-			id = $5
+			id = $4
 	`
 	_, err := r.tx.Exec(query,
-		&item.ID,
 		&item.UserId,
 		&item.Amount,
 		&item.Timestamp,
+		&item.ID,
 	)
 
 	return err
