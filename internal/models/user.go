@@ -1,15 +1,15 @@
 package models
 
 import (
-	"github.com/google/uuid"
+	//"github.com/google/uuid"
 	"time"
 )
 
 type UserModel struct {
-	UserId         uuid.UUID `json:"id"`
+	BaseModel
 	Username       string    `json:"username"`
 	Email          string    `json:"email"`
-	Password       string    `json:"-"`
+	Password       string    `json:"password"`
 	Address        string    `json:"address"`
 	PhoneNumber    string    `json:"phone_number"`
 	UserType       string    `json:"user_type"`

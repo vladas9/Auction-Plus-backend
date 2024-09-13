@@ -1,18 +1,20 @@
-package server
+package utils
 
 import (
-	"github.com/google/uuid"
-	m "github.com/vladas9/backend-practice/internal/models"
 	"time"
+
+	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
+	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-func generateDummyAuctions() []m.AuctionModel {
+func GenerateDummyAuctions() []m.AuctionModel {
 	auctions := []m.AuctionModel{
 		{
-			AuctionId:          uuid.New(),
+			BaseModel:          m.BaseModel{uuid.New()},
 			SellerId:           uuid.New(),
-			StartingBid:        m.Dollars{Exact: 100, Cents: 0},
-			ClosingBid:         m.Dollars{Exact: 200, Cents: 0},
+			StartingBid:        decimal.NewFromInt(100),
+			ClosingBid:         decimal.NewFromInt(200),
 			StartTime:          time.Now().Add(-24 * time.Hour),
 			EndTime:            time.Now().Add(24 * time.Hour),
 			ExtraTimeDuration:  5 * time.Minute,
@@ -21,10 +23,10 @@ func generateDummyAuctions() []m.AuctionModel {
 			IsActive:           true,
 		},
 		{
-			AuctionId:          uuid.New(),
+			BaseModel:          m.BaseModel{uuid.New()},
 			SellerId:           uuid.New(),
-			StartingBid:        m.Dollars{Exact: 50, Cents: 0},
-			ClosingBid:         m.Dollars{Exact: 150, Cents: 0},
+			StartingBid:        decimal.NewFromInt(50),
+			ClosingBid:         decimal.NewFromInt(150),
 			StartTime:          time.Now().Add(-48 * time.Hour),
 			EndTime:            time.Now().Add(48 * time.Hour),
 			ExtraTimeDuration:  10 * time.Minute,
@@ -33,10 +35,10 @@ func generateDummyAuctions() []m.AuctionModel {
 			IsActive:           false,
 		},
 		{
-			AuctionId:          uuid.New(),
+			BaseModel:          m.BaseModel{uuid.New()},
 			SellerId:           uuid.New(),
-			StartingBid:        m.Dollars{Exact: 300, Cents: 0},
-			ClosingBid:         m.Dollars{Exact: 350, Cents: 0},
+			StartingBid:        decimal.NewFromInt(300),
+			ClosingBid:         decimal.NewFromInt(350),
 			StartTime:          time.Now().Add(-72 * time.Hour),
 			EndTime:            time.Now().Add(72 * time.Hour),
 			ExtraTimeDuration:  3 * time.Minute,
@@ -49,9 +51,9 @@ func generateDummyAuctions() []m.AuctionModel {
 	return auctions
 }
 
-func generateDummyUser() m.UserModel {
-	return m.UserModel{
-		UserId:         uuid.New(),
+func GenerateDummyUser() *m.UserModel {
+	return &m.UserModel{
+		BaseModel:      m.BaseModel{uuid.New()},
 		Username:       "john_doe",
 		Email:          "john.doe@example.com",
 		Password:       "hashed_password", // In real case, this would be hashed.

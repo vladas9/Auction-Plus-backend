@@ -9,7 +9,7 @@ CREATE TABLE users(
   address TEXT,
   phone_number VARCHAR(20),
   user_type VARCHAR(20) CHECK (user_type IN ('admin', 'client')),
-  registred_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  registered_date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE items(

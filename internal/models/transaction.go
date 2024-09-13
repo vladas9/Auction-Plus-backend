@@ -1,15 +1,17 @@
 package models
 
 import (
-	"github.com/google/uuid"
 	"time"
+
+	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
 )
 
 type TransactionModel struct {
-	TransactionId   uuid.UUID `json:"transaction_id"`
-	AuctionId       uuid.UUID `json:"auction_id"`
-	BuyerId         uuid.UUID `json:"buyer_id"`
-	SellerId        uuid.UUID `json:"seller_id"`
-	Amount          int64     `json:"amount"`
-	TransactionDate time.Time `json:"transaction_date"`
+	BaseModel
+	AuctionId       uuid.UUID       `json:"auction_id"`
+	BuyerId         uuid.UUID       `json:"buyer_id"`
+	SellerId        uuid.UUID       `json:"seller_id"`
+	Amount          decimal.Decimal `json:"amount"`
+	TransactionDate time.Time       `json:"transaction_date"`
 }

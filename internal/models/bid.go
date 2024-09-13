@@ -2,13 +2,14 @@ package models
 
 import (
 	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
 	"time"
 )
 
-type Bid struct {
-	BidId     uuid.UUID `json:"bid_is"`
-	AuctionId uuid.UUID `json:"auction_id"`
-	UserId    uuid.UUID `json:"user_id"`
-	Amount    Dollars   `json:"amount"`
-	Timestamp time.Time `json:"timestamp"`
+type BidModel struct {
+	BaseModel
+	AuctionId uuid.UUID       `json:"auction_id"`
+	UserId    uuid.UUID       `json:"user_id"`
+	Amount    decimal.Decimal `json:"amount"`
+	Timestamp time.Time       `json:"timestamp"`
 }
