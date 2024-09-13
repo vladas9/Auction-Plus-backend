@@ -14,10 +14,9 @@ import (
 // If decoding fails, it returns a 400 Bad Request status with an error message.
 // If successful, it returns a 200 OK status with a success message.
 func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
-
 	var user *m.UserModel
 
-	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(user); err != nil {
 		return &ApiError{fmt.Sprintf("SignIn failed: %s", err), http.StatusBadRequest}
 	}
 
@@ -39,11 +38,13 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError 
 
 	var user *m.UserModel
 
-	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
-		return &ApiError{fmt.Sprintf("SignUp failed: %s", err), http.StatusBadRequest}
+	if err := json.NewDecoder(r.Body).Decode(user); err != nil {
+		return &ApiError{fmt.Sprintf("Registration failed: %s", err.Error()), http.StatusBadRequest}
 	}
 
-	// TODO: Call the service to handle sign-up with the user data
+	if err := c.userService.CreateUser(user); err != nil {
+		return &ApiError{fmt.Sprintf("Registration failed: %s", err.Error()), http.StatusNotAcceptable}
+	}
 
 	return writeJSON(w, http.StatusOK, "Sign-up successful")
 }

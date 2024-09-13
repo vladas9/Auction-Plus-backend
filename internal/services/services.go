@@ -6,13 +6,9 @@ import (
 )
 
 type UserService struct {
-	unitW *uw.UnitOfWork
+	uow *uw.UnitOfWork
 }
 
-func NewUserService(db *sql.DB) (*UserService, error) {
-	unit, err := uw.NewUnitOfWork(db)
-	if err != nil {
-		return nil, err
-	}
-	return &UserService{unit}, nil
+func NewUserService(db *sql.DB) *UserService {
+	return &UserService{uw.NewUnitOfWork(db)}
 }

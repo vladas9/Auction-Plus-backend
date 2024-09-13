@@ -1,30 +1,30 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 
-CREATE TABLE user(
+CREATE TABLE users(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
   address TEXT,
   phone_number VARCHAR(20),
-  user_type VARCHAR(20) CHECK (user_type IN ("admin", "client")),
+  user_type VARCHAR(20) CHECK (user_type IN ('admin', 'client')),
   registred_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE item(
+CREATE TABLE items(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name VARCHAR(255) NOT NULL,
   description TEXT,
   category VARCHAR(100),
   condition VARCHAR(50),
-  image UUID[] 
+  images UUID[] 
 );
 
-CREATE TABLE auction(
+CREATE TABLE auctions(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  seller_id UUID REFERENCES user(id),
-  item_id UUID REFERENCES item(id),
+  seller_id UUID REFERENCES users(id),
+  item_id UUID REFERENCES items(id),
   starting_bid DECIMAL(10,2) NOT NULL,
   current_bid DECIMAL(10,2),
   start_time TIMESTAMP NOT NULL,
@@ -35,36 +35,36 @@ CREATE TABLE auction(
   status BOOLEAN NOT NULL
 );
 
-CREATE TABLE bid(
+CREATE TABLE bids(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  auction_id UUID REFERENCES auction(id),
-  bidder_id  UUID REFERENCES user(id),
+  auction_id UUID REFERENCES auctions(id),
+  bidder_id  UUID REFERENCES users(id),
   amount DECIMAL(10,2) NOT NULL,
-  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE transaction(
+CREATE TABLE transactions(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  auction_id UUID REFERENCES auction(id),
-  buyer_id UUID REFERENCES user(id),
-  seller_id UUID REFERENCES user(id),
+  auction_id UUID REFERENCES auctions(id),
+  buyer_id UUID REFERENCES users(id),
+  seller_id UUID REFERENCES users(id),
   transaction_amount DECIMAL(10, 2) NOT NULL,
   transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE shipping(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  transaction_id UUID REFERENCES transaction(id),
+  transaction_id UUID REFERENCES transactions(id),
   shipping_address TEXT NOT NULL,
   tracking_number VARCHAR(255),
   status VARCHAR(50),
-  estimated_delivary DATE,
+  estimated_delivery DATE
 );
 
-CREATE TABLE notification(
+CREATE TABLE notifications(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id UUID REFERENCES user(id),
+  user_id UUID REFERENCES users(id),
   message TEXT NOT NULL,
   timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  is_readed BOOLEAN NOT NULL,
+  is_read BOOLEAN NOT NULL
 );
