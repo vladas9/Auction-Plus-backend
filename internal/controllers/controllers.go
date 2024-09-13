@@ -38,6 +38,8 @@ type ApiError struct {
 	Status   int
 }
 
+type Response map[string]interface{}
+
 // WARN: To remove this function
 func (e ApiError) Error() string {
 	return e.ErrorMsg

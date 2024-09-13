@@ -23,12 +23,6 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
 		return &ApiError{fmt.Sprintf("SignIn failed: %s", err), http.StatusBadRequest}
 	}
 
-	err := c.userService.CreateUser(user)
-
-	if err != nil {
-		//TODO: error
-	}
-
 	return writeJSON(w, http.StatusOK, "Sign-in successful")
 }
 
@@ -49,9 +43,12 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError 
 	user.RegisteredDate = time.Now()
 	utils.Logger.Info(user.RegisteredDate)
 
-	if err := c.userService.CreateUser(user); err != nil {
+	id, err := c.userService.CreateUser(user)
+	if err != nil {
 		return &ApiError{fmt.Sprintf("Registration failed: %s", err.Error()), http.StatusNotAcceptable}
 	}
 
-	return writeJSON(w, http.StatusOK, "Sign-up successful")
+	return writeJSON(w, http.StatusOK, Response{
+		"id": id,
+	})
 }

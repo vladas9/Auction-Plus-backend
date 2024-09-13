@@ -166,3 +166,35 @@ INFO: 2024/09/13 13:05:43 Creating user:  test
 INFO: 2024/09/13 13:06:23 2024-09-13 13:06:23.449668431 +0300 EEST m=+44.100036951
 INFO: 2024/09/13 13:06:23 Creating user:  test
 ERROR: 2024/09/13 13:06:23 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
+INFO: 2024/09/13 14:40:46 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/13 14:40:46 Successfully connected to the database
+INFO: 2024/09/13 14:40:46 Started server on localhost:1169
+INFO: 2024/09/13 14:40:50 2024-09-13 14:40:50.561548298 +0300 EEST m=+4.194473777
+INFO: 2024/09/13 14:40:50 Creating user:  test
+ERROR: 2024/09/13 14:40:50 Registration failed: Faled to create user: pq: syntax error at or near ")"
+INFO: 2024/09/13 14:41:06 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/13 14:41:06 Successfully connected to the database
+INFO: 2024/09/13 14:41:06 Started server on localhost:1169
+INFO: 2024/09/13 14:41:09 2024-09-13 14:41:09.305829813 +0300 EEST m=+2.334582245
+INFO: 2024/09/13 14:41:09 Creating user:  test
+ERROR: 2024/09/13 14:41:09 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
+INFO: 2024/09/13 14:41:15 2024-09-13 14:41:15.896816364 +0300 EEST m=+8.925569285
+INFO: 2024/09/13 14:41:15 Creating user:  test
+INFO: 2024/09/13 14:46:24 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/13 14:46:24 Successfully connected to the database
+INFO: 2024/09/13 14:46:24 Started server on localhost:1169
+INFO: 2024/09/13 14:46:27 2024-09-13 14:46:27.859792076 +0300 EEST m=+3.735663563
+INFO: 2024/09/13 15:02:03 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/13 15:02:03 Successfully connected to the database
+INFO: 2024/09/13 15:02:03 Started server on localhost:1169
+INFO: 2024/09/13 15:02:07 2024-09-13 15:02:07.592685324 +0300 EEST m=+3.901490454
+ERROR: 2024/09/13 15:02:07 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
+INFO: 2024/09/13 15:02:13 2024-09-13 15:02:13.934893611 +0300 EEST m=+10.243698323
+INFO: 2024/09/13 15:04:12 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/13 15:04:12 Successfully connected to the database
+INFO: 2024/09/13 15:04:12 Started server on localhost:1169
+INFO: 2024/09/13 15:04:18 2024-09-13 15:04:18.069530146 +0300 EEST m=+5.215108847
+INFO: 2024/09/13 15:06:18 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/13 15:06:18 Successfully connected to the database
+INFO: 2024/09/13 15:06:18 Started server on localhost:1169
+INFO: 2024/09/13 15:06:24 2024-09-13 15:06:24.094872873 +0300 EEST m=+5.355097736
