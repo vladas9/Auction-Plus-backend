@@ -9,11 +9,6 @@ import (
 	"strings"
 )
 
-// Login handles the HTTP request for user sign-in.
-// It reads and decodes the request body into a UserModel instance.
-// It then calls a service with the user information and returns an appropriate response based on the service result.
-// If decoding fails, it returns a 400 Bad Request status with an error message.
-// If successful, it returns a 200 OK status with a success message.
 func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
 	user := &m.UserModel{}
 
@@ -21,19 +16,18 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
 		return &ApiError{fmt.Sprintf("Decoding failed(login): %s", err), http.StatusBadRequest}
 	}
 
-	id, err := c.userService.CheckUser(user)
+	storedUser, err := c.userService.CheckUser(user)
 	if err != nil {
 		return &ApiError{fmt.Sprintf("Login failed: %s", err.Error()), http.StatusNotFound}
 	}
 
-	return writeJSON(w, http.StatusOK, Response{"id": id})
+	return writeJSON(w, http.StatusOK, Response{
+		"auth_token": storedUser.ID,
+		"img_src":    "/api/img/" + storedUser.Image,
+		"user_type":  storedUser.UserType,
+	})
 }
 
-// Register	handles the HTTP request for user sign-up.
-// It reads and decodes the request body into a UserModel instance.
-// It then calls a service with the user information and returns an appropriate response based on the service result.
-// If decoding fails, it returns a 400 Bad Request status with an error message.
-// If successful, it returns a 200 OK status with a success message.
 func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	user := &m.UserModel{}
@@ -42,13 +36,15 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError 
 		return &ApiError{fmt.Sprintf("Decoding failed(Register): %s", err), http.StatusBadRequest}
 	}
 
-	id, err := c.userService.CreateUser(user)
+	storedUser, err := c.userService.CreateUser(user)
 	if err != nil {
 		return &ApiError{fmt.Sprintf("Registration failed: %s", err.Error()), http.StatusNotAcceptable}
 	}
 
 	return writeJSON(w, http.StatusOK, Response{
-		"id": id,
+		"auth_token": storedUser.ID,
+		"img_src":    "/api/img/" + storedUser.Image,
+		"user_type":  storedUser.UserType,
 	})
 }
 
