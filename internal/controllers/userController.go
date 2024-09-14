@@ -4,11 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"time"
 
-	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
-	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 // Login handles the HTTP request for user sign-in.
@@ -17,13 +14,18 @@ import (
 // If decoding fails, it returns a 400 Bad Request status with an error message.
 // If successful, it returns a 200 OK status with a success message.
 func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
-	var user *m.UserModel
+	user := &m.UserModel{}
 
 	if err := json.NewDecoder(r.Body).Decode(user); err != nil {
-		return &ApiError{fmt.Sprintf("SignIn failed: %s", err), http.StatusBadRequest}
+		return &ApiError{fmt.Sprintf("Decoding failed(login): %s", err), http.StatusBadRequest}
 	}
 
-	return writeJSON(w, http.StatusOK, "Sign-in successful")
+	id, err := c.userService.CheckUser(user)
+	if err != nil {
+		return &ApiError{fmt.Sprintf("Login failed: %s", err.Error()), http.StatusNotFound}
+	}
+
+	return writeJSON(w, http.StatusOK, Response{"id": id})
 }
 
 // Register	handles the HTTP request for user sign-up.
@@ -36,12 +38,8 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError 
 	user := &m.UserModel{}
 
 	if err := json.NewDecoder(r.Body).Decode(user); err != nil {
-		return &ApiError{fmt.Sprintf("Registration failed: %s", err.Error()), http.StatusBadRequest}
+		return &ApiError{fmt.Sprintf("Decoding failed(Register): %s", err), http.StatusBadRequest}
 	}
-
-	user.ID = uuid.New()
-	user.RegisteredDate = time.Now()
-	utils.Logger.Info(user.RegisteredDate)
 
 	id, err := c.userService.CreateUser(user)
 	if err != nil {

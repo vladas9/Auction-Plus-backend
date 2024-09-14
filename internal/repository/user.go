@@ -47,6 +47,38 @@ func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 	return item, nil
 }
 
+func (r *UserRepo) GetByEmail(email string) (*m.UserModel, error) {
+	item := &m.UserModel{}
+	query := `
+		SELECT 
+			id,
+			username,
+			password,
+			address,
+			phone_number,
+			user_type,
+			registered_date
+		FROM
+			users
+		WHERE
+			email = $1
+	`
+
+	row := r.tx.QueryRow(query, email)
+	if err := row.Scan(
+		&item.ID,
+		&item.Username,
+		&item.Password,
+		&item.Address,
+		&item.PhoneNumber,
+		&item.UserType,
+		&item.RegisteredDate,
+	); err != nil {
+		return nil, err
+	}
+	return item, nil
+}
+
 func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
 	var users []*m.UserModel
 	query := `
