@@ -21,6 +21,7 @@ func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 			id,
 			username,
 			email,
+			image,
 			password,
 			address,
 			phone_number,
@@ -37,6 +38,7 @@ func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 		&item.Username,
 		&item.Email,
 		&item.Password,
+		&item.Image,
 		&item.Address,
 		&item.PhoneNumber,
 		&item.UserType,
@@ -54,6 +56,7 @@ func (r *UserRepo) GetByEmail(email string) (*m.UserModel, error) {
 			id,
 			username,
 			password,
+			image,
 			address,
 			phone_number,
 			user_type,
@@ -69,6 +72,7 @@ func (r *UserRepo) GetByEmail(email string) (*m.UserModel, error) {
 		&item.ID,
 		&item.Username,
 		&item.Password,
+		&item.Image,
 		&item.Address,
 		&item.PhoneNumber,
 		&item.UserType,
@@ -87,6 +91,7 @@ func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
 			username,
 			email,
 			password,
+			image,
 			address,
 			phone_number,
 			user_type,
@@ -107,6 +112,7 @@ func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
 			&item.Username,
 			&item.Email,
 			&item.Password,
+			&item.Image,
 			&item.Address,
 			&item.PhoneNumber,
 			&item.UserType,
@@ -169,12 +175,13 @@ func (r *UserRepo) Insert(item *m.UserModel) (uuid.UUID, error) {
         INSERT INTO users (
             username,
             email,
+  					image,
             address,
             password,
             phone_number,
             user_type
         ) VALUES (
-            $1, $2, $3, $4, $5, $6
+            $1, $2, $3, $4, $5, $6, $7
         ) RETURNING id
     `
 	var userId uuid.UUID
@@ -182,6 +189,7 @@ func (r *UserRepo) Insert(item *m.UserModel) (uuid.UUID, error) {
 	err := r.tx.QueryRow(query,
 		item.Username,
 		item.Email,
+		item.Image,
 		item.Address,
 		item.Password,
 		item.PhoneNumber,

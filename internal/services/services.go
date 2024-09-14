@@ -12,3 +12,5 @@ type UserService struct {
 func NewUserService(db *sql.DB) *UserService {
 	return &UserService{uw.NewUnitOfWork(db)}
 }
+
+var ImageDir = "./public/img/"

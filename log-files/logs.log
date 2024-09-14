@@ -209,3 +209,13 @@ ERROR: 2024/09/14 18:17:55 Login failed: Failed to find user: sql: expected 7 de
 INFO: 2024/09/14 18:18:39 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
 INFO: 2024/09/14 18:18:39 Successfully connected to the database
 INFO: 2024/09/14 18:18:39 Started server on localhost:1169
+INFO: 2024/09/14 21:37:52 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/14 21:37:52 Successfully connected to the database
+INFO: 2024/09/14 21:37:52 Started server on localhost:1169
+INFO: 2024/09/14 21:40:46 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/14 21:40:46 Successfully connected to the database
+INFO: 2024/09/14 21:40:46 Started server on localhost:1169
+ERROR: 2024/09/14 21:41:48 Image not found: stat ./public/img//api/img/0f0f9d6d-d013-4c99-8391-dfcb7045d169.png: no such file or directory
+INFO: 2024/09/14 21:42:32 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/14 21:42:32 Successfully connected to the database
+INFO: 2024/09/14 21:42:32 Started server on localhost:1169
