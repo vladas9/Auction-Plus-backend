@@ -23,7 +23,7 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
 
 	return writeJSON(w, http.StatusOK, Response{
 		"auth_token": storedUser.ID,
-		"img_src":    "/api/img/" + storedUser.Image,
+		"img_src":    fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, storedUser.Image),
 		"user_type":  storedUser.UserType,
 	})
 }
@@ -43,7 +43,7 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError 
 
 	return writeJSON(w, http.StatusOK, Response{
 		"auth_token": storedUser.ID,
-		"img_src":    "/api/img/" + storedUser.Image,
+		"img_src":    fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, storedUser.Image),
 		"user_type":  storedUser.UserType,
 	})
 }

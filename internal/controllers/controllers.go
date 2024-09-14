@@ -8,9 +8,12 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/joho/godotenv"
 	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
+	"log"
 	"net/http"
+	"os"
 	"reflect"
 )
 
@@ -18,7 +21,16 @@ type Controller struct {
 	userService *s.UserService
 }
 
+var Host string
+var Port string
+
 func NewController(db *sql.DB) *Controller {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Can load env variables")
+	}
+	Host = os.Getenv("HOST")
+	Port = os.Getenv("PORT")
 	return &Controller{s.NewUserService(db)}
 }
 
