@@ -2,13 +2,11 @@ package services
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
-	"golang.org/x/crypto/bcrypt"
 )
 
 func (s *Service) CreateUser(user *m.UserModel) (*m.UserModel, error) {
@@ -51,8 +49,8 @@ func (s *Service) CheckUser(user *m.UserModel) (storedUser *m.UserModel, err err
 		return nil, fmt.Errorf("Failed to find user: %v", err.Error())
 	}
 
-	if err := bcrypt.CompareHashAndPassword([]byte(storedUser.Password), []byte(user.Password)); err != nil {
-		return nil, fmt.Errorf("Invalid password: %v", err.Error())
+	if err = u.CompareHashPassword(user.Password, storedUser.Password); err != nil {
+		return nil, err
 	}
 
 	return storedUser, nil
