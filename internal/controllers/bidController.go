@@ -19,4 +19,8 @@ func (c *Controller) BidHandler(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("Header parsing failed: %s", err)
 	}
 
+	if err = c.service.NewBid(bid); err != nil {
+		return err
+	}
+	return nil
 }

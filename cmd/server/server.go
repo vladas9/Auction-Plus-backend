@@ -2,20 +2,25 @@ package server
 
 import (
 	"net/http"
-	"reflect"
 
 	c "github.com/vladas9/backend-practice/internal/controllers"
 	u "github.com/vladas9/backend-practice/internal/utils"
 	p "github.com/vladas9/backend-practice/pkg/postgres"
 )
 
-type apiFunc func(w http.ResponseWriter, r *http.Request) *c.ApiError
+type apiFunc func(w http.ResponseWriter, r *http.Request) error
 
 func (fn apiFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if apiErr := fn(w, r); apiErr != nil {
-		u.Logger.Error(reflect.ValueOf(apiErr))
-		//WriteJSON(w, apiErr.Status, apiErr.Error())
-		http.Error(w, apiErr.Error(), apiErr.Status) //WARN: To remove error message for user
+	if err := fn(w, r); err != nil {
+		u.Logger.Error(err)
+		if apiErr, ok := err.(*c.ApiError); ok {
+			c.WriteJSON(w, apiErr.Status, *apiErr)
+		} else {
+			c.WriteJSON(w, http.StatusInternalServerError, c.ApiError{
+				Status:   http.StatusInternalServerError,
+				ErrorMsg: "Internal server error",
+			})
+		}
 	}
 }
 

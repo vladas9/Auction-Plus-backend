@@ -6,15 +6,15 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-type TransactionRepo struct {
+type transactionRepo struct {
 	tx *sql.Tx
 }
 
-func NewTransactionRepo(tx *sql.Tx) *TransactionRepo {
-	return &TransactionRepo{tx}
+func TransactionRepo(tx *sql.Tx) *transactionRepo {
+	return &transactionRepo{tx}
 }
 
-func (r *TransactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
+func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 	item := &m.TransactionModel{}
 	query := `
 		SELECT 
@@ -43,7 +43,7 @@ func (r *TransactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 	return item, nil
 }
 
-func (r *TransactionRepo) GetAll() ([]*m.TransactionModel, error) {
+func (r *transactionRepo) GetAll() ([]*m.TransactionModel, error) {
 	var transactions []*m.TransactionModel
 	query := `
 		SELECT 
@@ -83,7 +83,7 @@ func (r *TransactionRepo) GetAll() ([]*m.TransactionModel, error) {
 	return transactions, nil
 }
 
-func (r *TransactionRepo) Update(item *m.TransactionModel) error {
+func (r *transactionRepo) Update(item *m.TransactionModel) error {
 	query := `
 		UPDATE 
 			transactions
@@ -108,7 +108,7 @@ func (r *TransactionRepo) Update(item *m.TransactionModel) error {
 	return err
 }
 
-func (r *TransactionRepo) Remove(id uuid.UUID) error {
+func (r *transactionRepo) Remove(id uuid.UUID) error {
 	query := `
 		DELETE FROM 
 			transactions
@@ -120,7 +120,7 @@ func (r *TransactionRepo) Remove(id uuid.UUID) error {
 	return err
 }
 
-func (r *TransactionRepo) Insert(item *m.TransactionModel) error {
+func (r *transactionRepo) Insert(item *m.TransactionModel) error {
 	query := `
 		INSERT INTO transactions (
 			id,
