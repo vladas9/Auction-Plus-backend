@@ -10,7 +10,7 @@ type userRepo struct {
 	tx *sql.Tx
 }
 
-func (s StoreTx) UserRepo() *userRepo {
+func (s *StoreTx) UserRepo() *userRepo {
 	return &userRepo{s.Tx}
 }
 
@@ -21,6 +21,7 @@ func (r *userRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 			id,
 			username,
 			email,
+			image,
 			password,
 			address,
 			phone_number,
@@ -37,6 +38,41 @@ func (r *userRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 		&item.Username,
 		&item.Email,
 		&item.Password,
+		&item.Image,
+		&item.Address,
+		&item.PhoneNumber,
+		&item.UserType,
+		&item.RegisteredDate,
+	); err != nil {
+		return nil, err
+	}
+	return item, nil
+}
+
+func (r *userRepo) GetByEmail(email string) (*m.UserModel, error) {
+	item := &m.UserModel{}
+	query := `
+		SELECT 
+			id,
+			username,
+			password,
+			image,
+			address,
+			phone_number,
+			user_type,
+			registered_date
+		FROM
+			users
+		WHERE
+			email = $1
+	`
+
+	row := r.tx.QueryRow(query, email)
+	if err := row.Scan(
+		&item.ID,
+		&item.Username,
+		&item.Password,
+		&item.Image,
 		&item.Address,
 		&item.PhoneNumber,
 		&item.UserType,
@@ -55,6 +91,7 @@ func (r *userRepo) GetAll() ([]*m.UserModel, error) {
 			username,
 			email,
 			password,
+			image,
 			address,
 			phone_number,
 			user_type,
@@ -75,6 +112,7 @@ func (r *userRepo) GetAll() ([]*m.UserModel, error) {
 			&item.Username,
 			&item.Email,
 			&item.Password,
+			&item.Image,
 			&item.Address,
 			&item.PhoneNumber,
 			&item.UserType,
@@ -132,30 +170,34 @@ func (r *userRepo) Remove(id uuid.UUID) error {
 	return err
 }
 
-func (r *userRepo) Insert(item *m.UserModel) error {
+func (r *userRepo) Insert(item *m.UserModel) (uuid.UUID, error) {
 	query := `
         INSERT INTO users (
             username,
             email,
+  					image,
             address,
             password,
             phone_number,
             user_type
         ) VALUES (
-            $1, $2, $3, $4, $5, $6
-        )
+            $1, $2, $3, $4, $5, $6, $7
+        ) RETURNING id
     `
-	_, err := r.tx.Exec(query,
+	var userId uuid.UUID
+
+	err := r.tx.QueryRow(query,
 		item.Username,
 		item.Email,
+		item.Image,
 		item.Address,
 		item.Password,
 		item.PhoneNumber,
 		item.UserType,
-	)
+	).Scan(&userId)
 	if err != nil {
-		return err
+		return uuid.Nil, err
 	}
 
-	return nil
+	return userId, nil
 }

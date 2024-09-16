@@ -8,18 +8,30 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/joho/godotenv"
 	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
+	"log"
 	"net/http"
+	"os"
 	"reflect"
 )
 
 type Controller struct {
-	userService *s.UserService
+	service *s.Service
 }
 
+var Host string
+var Port string
+
 func NewController(db *sql.DB) *Controller {
-	return &Controller{s.NewUserService(db)}
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Can load env variables")
+	}
+	Host = os.Getenv("HOST")
+	Port = os.Getenv("PORT")
+	return &Controller{s.NewService(db)}
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) *ApiError {
@@ -37,6 +49,8 @@ type ApiError struct {
 	ErrorMsg string `json:"error"`
 	Status   int
 }
+
+type Response map[string]interface{}
 
 // WARN: To remove this function
 func (e ApiError) Error() string {

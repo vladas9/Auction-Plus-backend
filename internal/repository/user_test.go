@@ -91,7 +91,7 @@ func TestUserRepo_Insert(t *testing.T) {
 			newUser.RegisteredDate).
 		WillReturnResult(sqlmock.NewResult(1, 1))
 
-	err = userRepo.Insert(newUser)
+	_, err = userRepo.Insert(newUser)
 	assert.NoError(t, err)
 
 	mock.ExpectCommit()
