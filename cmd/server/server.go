@@ -45,7 +45,8 @@ func (s *Server) Run() {
 	//TODO: Add controllers links
 
 	s.Router.Handle("POST /api/users/register", apiFunc(s.Controllers.Register))
-	// s.Router.Handle("POST /api/users/login", apiFunc(controllers.SignIn))
+	s.Router.Handle("POST /api/users/login", apiFunc(s.Controllers.Login))
+	s.Router.Handle("GET /api/img/", apiFunc(s.Controllers.ImageHandler))
 	// s.Router.Handle("GET /api/users/{id}", apiFunc(controllers.))
 	// s.Router.Handle("PUT /api/users/{id}", apiFunc(controllers.))
 	// s.Router.Handle("GET /api/items", apiFunc(controllers.))
