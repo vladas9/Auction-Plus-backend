@@ -17,4 +17,5 @@ func CompareHashPassword(password string, storedPassword string) error {
 	if err := bcrypt.CompareHashAndPassword([]byte(storedPassword), []byte(password)); err != nil {
 		return fmt.Errorf("Invalid password: %v", err.Error())
 	}
+	return nil
 }
