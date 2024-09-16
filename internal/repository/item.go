@@ -7,15 +7,15 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-type ItemRepo struct {
+type itemRepo struct {
 	tx *sql.Tx
 }
 
-func NewItemRepo(tx *sql.Tx) *ItemRepo {
-	return &ItemRepo{tx}
+func ItemRepo(tx *sql.Tx) *itemRepo {
+	return &itemRepo{tx}
 }
 
-func (r *ItemRepo) GetById(id uuid.UUID) (*m.ItemModel, error) {
+func (r *itemRepo) GetById(id uuid.UUID) (*m.ItemModel, error) {
 	item := &m.ItemModel{}
 	query := `
 		SELECT 
@@ -47,7 +47,7 @@ func (r *ItemRepo) GetById(id uuid.UUID) (*m.ItemModel, error) {
 }
 
 // GetAll retrieves all items
-func (r *ItemRepo) GetAll() ([]*m.ItemModel, error) {
+func (r *itemRepo) GetAll() ([]*m.ItemModel, error) {
 	var items []*m.ItemModel
 	query := `
 		SELECT 
@@ -90,7 +90,7 @@ func (r *ItemRepo) GetAll() ([]*m.ItemModel, error) {
 }
 
 // Update modifies an existing item in the database
-func (r *ItemRepo) Update(item *m.ItemModel) error {
+func (r *itemRepo) Update(item *m.ItemModel) error {
 	query := `
 		UPDATE 
 			Items
@@ -118,7 +118,7 @@ func (r *ItemRepo) Update(item *m.ItemModel) error {
 }
 
 // Remove deletes an item by its ID
-func (r *ItemRepo) Remove(id uuid.UUID) error {
+func (r *itemRepo) Remove(id uuid.UUID) error {
 	query := `
 		DELETE FROM 
 			Items
@@ -131,7 +131,7 @@ func (r *ItemRepo) Remove(id uuid.UUID) error {
 }
 
 // Insert adds a new item to the database
-func (r *ItemRepo) Insert(item *m.ItemModel) error {
+func (r *itemRepo) Insert(item *m.ItemModel) error {
 	query := `
 		INSERT INTO Items (
 			item_id,

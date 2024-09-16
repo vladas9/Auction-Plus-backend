@@ -6,15 +6,15 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-type AuctionRepo struct {
+type auctionRepo struct {
 	tx *sql.Tx
 }
 
-func NewAuctionRepo(tx *sql.Tx) *AuctionRepo {
-	return &AuctionRepo{tx}
+func (s *StoreTx) AuctionRepo() *auctionRepo {
+	return &auctionRepo{tx: s.Tx}
 }
 
-func (r *AuctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
+func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 	item := &m.AuctionModel{}
 	query := `
 		SELECT 
@@ -50,7 +50,7 @@ func (r *AuctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 	return item, nil
 }
 
-func (r *AuctionRepo) GetAll() ([]*m.AuctionModel, error) {
+func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
 	var auctions []*m.AuctionModel
 	query := `
 		SELECT 
@@ -66,8 +66,14 @@ func (r *AuctionRepo) GetAll() ([]*m.AuctionModel, error) {
 			is_active
 		FROM
 			auctions
+		ORDER BY
+			start_time
+		LIMIT
+			$1
+		OFFSET
+			$2
 	`
-	rows, err := r.tx.Query(query)
+	rows, err := r.tx.Query(query, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +104,7 @@ func (r *AuctionRepo) GetAll() ([]*m.AuctionModel, error) {
 	return auctions, nil
 }
 
-func (r *AuctionRepo) Update(item *m.AuctionModel) error {
+func (r *auctionRepo) Update(item *m.AuctionModel) error {
 	query := `
 		UPDATE 
 			auctions
@@ -131,7 +137,7 @@ func (r *AuctionRepo) Update(item *m.AuctionModel) error {
 	return err
 }
 
-func (r *AuctionRepo) Remove(id uuid.UUID) error {
+func (r *auctionRepo) Remove(id uuid.UUID) error {
 	query := `
 		DELETE FROM 
 			auctions
@@ -143,7 +149,7 @@ func (r *AuctionRepo) Remove(id uuid.UUID) error {
 	return err
 }
 
-func (r *AuctionRepo) Insert(item *m.AuctionModel) error {
+func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 	query := `
 		INSERT INTO auctions (
 			id,

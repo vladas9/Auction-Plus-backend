@@ -8,8 +8,8 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-func GenerateDummyAuctions() []m.AuctionModel {
-	auctions := []m.AuctionModel{
+func GenerateDummyAuctions() []*m.AuctionModel {
+	auctions := []*m.AuctionModel{
 		{
 			BaseModel:          m.BaseModel{uuid.New()},
 			SellerId:           uuid.New(),

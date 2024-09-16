@@ -6,15 +6,15 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-type BidRepo struct {
+type bidRepo struct {
 	tx *sql.Tx
 }
 
-func NewBidRepo(tx *sql.Tx) *BidRepo {
-	return &BidRepo{tx}
+func BidRepo(tx *sql.Tx) *bidRepo {
+	return &bidRepo{tx}
 }
 
-func (r *BidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
+func (r *bidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	item := &m.BidModel{}
 	query := `
 		SELECT 
@@ -39,7 +39,7 @@ func (r *BidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	return item, nil
 }
 
-func (r *BidRepo) GetAll() ([]*m.BidModel, error) {
+func (r *bidRepo) GetAll() ([]*m.BidModel, error) {
 	var bids []*m.BidModel
 	query := `
 		SELECT 
@@ -75,7 +75,28 @@ func (r *BidRepo) GetAll() ([]*m.BidModel, error) {
 	return bids, nil
 }
 
-func (r *BidRepo) Update(item *m.BidModel) error {
+func (r *bidRepo) Insert(item *m.BidModel) error {
+	query := `
+		INSERT INTO bids (
+			id,
+			user_id,
+			amount,
+			timestamp
+		) VALUES (
+			$1, $2, $3, $4
+		)
+	`
+	_, err := r.tx.Exec(query,
+		&item.ID,
+		&item.UserId,
+		&item.Amount,
+		&item.Timestamp,
+	)
+
+	return err
+}
+
+func (r *bidRepo) Update(item *m.BidModel) error {
 	query := `
 		UPDATE 
 			bids
@@ -96,7 +117,7 @@ func (r *BidRepo) Update(item *m.BidModel) error {
 	return err
 }
 
-func (r *BidRepo) Remove(id uuid.UUID) error {
+func (r *bidRepo) Remove(id uuid.UUID) error {
 	query := `
 		DELETE FROM 
 			bids
@@ -104,27 +125,6 @@ func (r *BidRepo) Remove(id uuid.UUID) error {
 			id = $1
 	`
 	_, err := r.tx.Exec(query, id)
-
-	return err
-}
-
-func (r *BidRepo) Insert(item *m.BidModel) error {
-	query := `
-		INSERT INTO bids (
-			id,
-			user_id,
-			amount,
-			timestamp
-		) VALUES (
-			$1, $2, $3, $4
-		)
-	`
-	_, err := r.tx.Exec(query,
-		&item.ID,
-		&item.UserId,
-		&item.Amount,
-		&item.Timestamp,
-	)
 
 	return err
 }

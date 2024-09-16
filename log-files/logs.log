@@ -166,3 +166,29 @@ INFO: 2024/09/13 13:05:43 Creating user:  test
 INFO: 2024/09/13 13:06:23 2024-09-13 13:06:23.449668431 +0300 EEST m=+44.100036951
 INFO: 2024/09/13 13:06:23 Creating user:  test
 ERROR: 2024/09/13 13:06:23 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
+INFO: 2024/09/14 13:26:09 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/14 13:26:09 Successfully connected to the database
+INFO: 2024/09/14 13:26:09 Started server on localhost:1169
+INFO: 2024/09/14 19:40:39 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/14 19:40:39 Successfully connected to the database
+INFO: 2024/09/14 19:40:39 Started server on localhost:1169
+INFO: 2024/09/14 23:59:15 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/14 23:59:15 Successfully connected to the database
+INFO: 2024/09/14 23:59:15 Started server on localhost:1169
+INFO: 2024/09/15 19:37:40 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/15 19:37:40 Successfully connected to the database
+INFO: 2024/09/15 19:37:40 Started server on localhost:1169
+INFO: 2024/09/15 20:03:47 Creating user:  example_username
+ERROR: 2024/09/15 20:03:47 Registration failed: Faled to create user: pq: column "registered_date" of relation "users" does not exist
+INFO: 2024/09/15 20:05:47 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/15 20:05:47 Successfully connected to the database
+INFO: 2024/09/15 20:05:47 Started server on localhost:1169
+INFO: 2024/09/15 20:05:53 Creating user:  example_username
+ERROR: 2024/09/15 20:05:53 Registration failed: Faled to create user: pq: INSERT has more expressions than target columns
+INFO: 2024/09/15 20:07:42 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/15 20:07:42 Successfully connected to the database
+INFO: 2024/09/15 20:07:42 Started server on localhost:1169
+INFO: 2024/09/15 20:07:45 Creating user:  example_username
+INFO: 2024/09/15 20:09:38 Creating user:  example_username
+INFO: 2024/09/15 20:22:32 Creating user:  example_username
+ERROR: 2024/09/15 20:22:32 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
