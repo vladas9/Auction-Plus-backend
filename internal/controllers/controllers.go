@@ -34,7 +34,7 @@ func NewController(db *sql.DB) *Controller {
 	return &Controller{s.NewService(db)}
 }
 
-func writeJSON(w http.ResponseWriter, status int, v any) *ApiError {
+func WriteJSON(w http.ResponseWriter, status int, v any) *ApiError {
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
 	if err := json.NewEncoder(w).Encode(v); err != nil {
