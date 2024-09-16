@@ -8,7 +8,7 @@ import (
 	s "github.com/vladas9/backend-practice/internal/services"
 )
 
-func (c *Controllers) GetAuctions(w http.ResponseWriter, r *http.Request) error {
+func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	if err := r.ParseForm(); err != nil {
 		return &ApiError{Status: http.StatusBadRequest, ErrorMsg: "Couldn't parse parameters"}
 	}

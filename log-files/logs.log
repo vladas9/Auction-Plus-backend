@@ -192,3 +192,6 @@ INFO: 2024/09/15 20:07:45 Creating user:  example_username
 INFO: 2024/09/15 20:09:38 Creating user:  example_username
 INFO: 2024/09/15 20:22:32 Creating user:  example_username
 ERROR: 2024/09/15 20:22:32 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
+INFO: 2024/09/16 13:39:39 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 13:39:39 Successfully connected to the database
+INFO: 2024/09/16 13:39:39 Started server on localhost:1169
