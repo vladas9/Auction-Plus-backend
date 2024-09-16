@@ -16,7 +16,7 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) *ApiError {
 		return &ApiError{fmt.Sprintf("Decoding failed(login): %s", err), http.StatusBadRequest}
 	}
 
-	storedUser, err := c.userService.CheckUser(user)
+	storedUser, err := c.service.CheckUser(user)
 	if err != nil {
 		return &ApiError{fmt.Sprintf("Login failed: %s", err.Error()), http.StatusNotFound}
 	}
@@ -36,7 +36,7 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) *ApiError 
 		return &ApiError{fmt.Sprintf("Decoding failed(Register): %s", err), http.StatusBadRequest}
 	}
 
-	storedUser, err := c.userService.CreateUser(user)
+	storedUser, err := c.service.CreateUser(user)
 	if err != nil {
 		return &ApiError{fmt.Sprintf("Registration failed: %s", err.Error()), http.StatusNotAcceptable}
 	}

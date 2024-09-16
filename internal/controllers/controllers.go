@@ -18,7 +18,7 @@ import (
 )
 
 type Controller struct {
-	userService *s.UserService
+	service *s.Service
 }
 
 var Host string
@@ -31,7 +31,7 @@ func NewController(db *sql.DB) *Controller {
 	}
 	Host = os.Getenv("HOST")
 	Port = os.Getenv("PORT")
-	return &Controller{s.NewUserService(db)}
+	return &Controller{s.NewService(db)}
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) *ApiError {

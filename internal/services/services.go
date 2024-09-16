@@ -2,15 +2,16 @@ package services
 
 import (
 	"database/sql"
-	uw "github.com/vladas9/backend-practice/internal/unitofwork"
+
+	r "github.com/vladas9/backend-practice/internal/repository"
 )
 
-type UserService struct {
-	uow *uw.UnitOfWork
+type Service struct {
+	store *r.Store
 }
 
-func NewUserService(db *sql.DB) *UserService {
-	return &UserService{uw.NewUnitOfWork(db)}
+func NewService(db *sql.DB) *Service {
+	return &Service{r.NewStore(db)}
 }
 
 var ImageDir = "./public/img/"

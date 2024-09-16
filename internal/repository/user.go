@@ -6,15 +6,15 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-type UserRepo struct {
+type userRepo struct {
 	tx *sql.Tx
 }
 
-func NewUserRepo(tx *sql.Tx) *UserRepo {
-	return &UserRepo{tx}
+func (s *StoreTx) UserRepo() *userRepo {
+	return &userRepo{s.Tx}
 }
 
-func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
+func (r *userRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 	item := &m.UserModel{}
 	query := `
 		SELECT 
@@ -49,7 +49,7 @@ func (r *UserRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 	return item, nil
 }
 
-func (r *UserRepo) GetByEmail(email string) (*m.UserModel, error) {
+func (r *userRepo) GetByEmail(email string) (*m.UserModel, error) {
 	item := &m.UserModel{}
 	query := `
 		SELECT 
@@ -83,7 +83,7 @@ func (r *UserRepo) GetByEmail(email string) (*m.UserModel, error) {
 	return item, nil
 }
 
-func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
+func (r *userRepo) GetAll() ([]*m.UserModel, error) {
 	var users []*m.UserModel
 	query := `
 		SELECT 
@@ -129,7 +129,7 @@ func (r *UserRepo) GetAll() ([]*m.UserModel, error) {
 	return users, nil
 }
 
-func (r *UserRepo) Update(item *m.UserModel) error {
+func (r *userRepo) Update(item *m.UserModel) error {
 	query := `
 		UPDATE 
 			users
@@ -158,7 +158,7 @@ func (r *UserRepo) Update(item *m.UserModel) error {
 	return err
 }
 
-func (r *UserRepo) Remove(id uuid.UUID) error {
+func (r *userRepo) Remove(id uuid.UUID) error {
 	query := `
 		DELETE FROM 
 			users
@@ -170,7 +170,7 @@ func (r *UserRepo) Remove(id uuid.UUID) error {
 	return err
 }
 
-func (r *UserRepo) Insert(item *m.UserModel) (uuid.UUID, error) {
+func (r *userRepo) Insert(item *m.UserModel) (uuid.UUID, error) {
 	query := `
         INSERT INTO users (
             username,
