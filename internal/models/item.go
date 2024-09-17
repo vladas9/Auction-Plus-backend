@@ -7,6 +7,7 @@ import (
 
 type ItemModel struct {
 	ItemId        uuid.UUID       `json:"item_id"`
+	AuctionId     uuid.UUID       `json:"auction_id"`
 	Name          string          `json:"name"`
 	Description   string          `json:"description"`
 	StartingPrice decimal.Decimal `json:"starting_price"`

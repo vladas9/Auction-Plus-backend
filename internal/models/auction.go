@@ -10,7 +10,6 @@ import (
 type AuctionModel struct {
 	BaseModel
 	SellerId           uuid.UUID       `json:"seller_id"`
-	StartPrice         decimal.Decimal `json:"start_price"`
 	CurrentBid         decimal.Decimal `json:"current_bid"`
 	StartTime          time.Time       `json:"start_time"`
 	EndTime            time.Time       `json:"end_time"`

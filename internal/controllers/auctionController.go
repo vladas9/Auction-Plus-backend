@@ -2,47 +2,40 @@ package controllers
 
 import (
 	"fmt"
+	s "github.com/vladas9/backend-practice/internal/services"
 	"net/http"
 	"strconv"
-
-	m "github.com/vladas9/backend-practice/internal/models"
-	s "github.com/vladas9/backend-practice/internal/services"
 )
 
 func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
+	fail := func(err error) error {
+		return fmt.Errorf("GetAuctions controller: %w", err)
+	}
 	if err := r.ParseForm(); err != nil {
-		return &ApiError{Status: http.StatusBadRequest, ErrorMsg: "Couldn't parse parameters"}
+		return fail(err)
 	}
 
 	offsetStr := r.FormValue("offset")
 	leangthStr := r.FormValue("limit")
 
-	println(offsetStr)
-	println(leangthStr)
-
 	offset, err := strconv.Atoi(offsetStr)
 	if err != nil {
-		return &ApiError{Status: http.StatusBadRequest, ErrorMsg: "Invalid offset"}
+		return fail(err)
 	}
 
 	leangth, err := strconv.Atoi(leangthStr)
 	if err != nil {
-		return &ApiError{Status: http.StatusBadRequest, ErrorMsg: "Invalid leangth"}
+		return fail(err)
 	}
 
-	var auctionList []*m.AuctionModel
-
-	auctionList, err = c.service.GetAuctions(s.AuctionParams{
+	params := s.AuctionParams{
 		Offset: offset,
-		Len:    leangth,
-	})
-	if err != nil {
-		return err
-	}
-	fmt.Println(auctionList)
-	for it := range auctionList {
-		fmt.Println(it)
+		Len:    leangth}
+	problems := params.Validate()
+	if problems != nil {
+		return &ApiError{Status: 400, ErrorMsg: problems}
 	}
 
+	auctionList, err := c.service.GetAuctions(params)
 	return WriteJSON(w, http.StatusOK, auctionList)
 }
