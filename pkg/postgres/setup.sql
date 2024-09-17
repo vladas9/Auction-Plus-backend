@@ -26,13 +26,13 @@ CREATE TABLE auctions(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   seller_id UUID REFERENCES users(id),
   item_id UUID REFERENCES items(id),
-  starting_bid DECIMAL(10,2) NOT NULL,
+  start_price DECIMAL(10,2) NOT NULL,
   current_bid DECIMAL(10,2),
-  start_time TIMESTAMP NOT NULL,
-  end_time TIMESTAMP NOT NULL,
+  start_time TIMESTAMPTZ NOT NULL,
+  end_time TIMESTAMPTZ NOT NULL,
   extra_time_enabled BOOLEAN DEFAULT TRUE,
-  extra_time_duration INTERVAL,
-  extra_time_threshold INTERVAL,
+  extra_time_duration BIGINT DEFAULT 0,
+  extra_time_threshold BIGINT DEFAULT 0,
   status BOOLEAN NOT NULL
 );
 
@@ -41,7 +41,7 @@ CREATE TABLE bids(
   auction_id UUID REFERENCES auctions(id),
   bidder_id  UUID REFERENCES users(id),
   amount DECIMAL(10,2) NOT NULL,
-  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  timestamp TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE transactions(
@@ -50,7 +50,7 @@ CREATE TABLE transactions(
   buyer_id UUID REFERENCES users(id),
   seller_id UUID REFERENCES users(id),
   transaction_amount DECIMAL(10, 2) NOT NULL,
-  transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  transaction_date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE shipping(
@@ -66,6 +66,6 @@ CREATE TABLE notifications(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID REFERENCES users(id),
   message TEXT NOT NULL,
-  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  timestamp TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
   is_read BOOLEAN NOT NULL
 );

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/vladas9/backend-practice/internal/controllers"
-	s "github.com/vladas9/backend-practice/internal/services"
+	"github.com/google/uuid"
+	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 
 	db "github.com/vladas9/backend-practice/pkg/postgres"
@@ -14,10 +14,22 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	ctrls := controllers.ControllersWith(db)
-	err = ctrls.WithTx(func(service *s.Service) error {
-		auctions := u.GenerateDummyAuctions()
-		return service.CreateAuctions(auctions)
+	err = r.NewStore(db).WithTx(func(stx *r.StoreTx) error {
+		//userId, err := stx.UserRepo().Insert(u.GenerateDummyUser())
+		//if err != nil {
+		//	return err
+		//}
+		userId, _ := uuid.Parse("da0db08a-0ab1-483c-a228-f592a8d43b8b")
+
+		auctions := u.GenerateDummyAuctions(userId)
+		for _, auct := range auctions {
+			err := stx.AuctionRepo().Insert(auct)
+			if err != nil {
+				return err
+			}
+		}
+		return nil
+
 	})
 	if err != nil {
 		println(err.Error())
