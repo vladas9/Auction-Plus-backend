@@ -15,3 +15,12 @@ func NewService(db *sql.DB) *Service {
 }
 
 var ImageDir = "./public/img/"
+
+type apiError struct {
+	ErrorMsg string `json:"error"`
+	Status   int
+}
+
+func (e *apiError) Error() string {
+	return e.ErrorMsg
+}

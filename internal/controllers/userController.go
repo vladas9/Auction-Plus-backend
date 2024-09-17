@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	m "github.com/vladas9/backend-practice/internal/models"
+	u "github.com/vladas9/backend-practice/internal/utils"
 	"net/http"
 	"os"
 	"strings"
@@ -20,6 +21,8 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		return fmt.Errorf("Login failed: %w", err)
 	}
+
+	u.Logger.Info(fmt.Sprintf("User %s loged in", storedUser.Username))
 
 	return WriteJSON(w, http.StatusOK, Response{
 		"auth_token": storedUser.ID,
@@ -41,6 +44,8 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		return fmt.Errorf("Registration failed: %w", err)
 	}
+
+	u.Logger.Info(fmt.Sprintf("User %s created", storedUser.Username))
 
 	return WriteJSON(w, http.StatusOK, Response{
 		"auth_token": storedUser.ID,

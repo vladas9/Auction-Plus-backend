@@ -8,13 +8,14 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"github.com/joho/godotenv"
-	s "github.com/vladas9/backend-practice/internal/services"
-	u "github.com/vladas9/backend-practice/internal/utils"
 	"log"
 	"net/http"
 	"os"
 	"reflect"
+
+	"github.com/joho/godotenv"
+	s "github.com/vladas9/backend-practice/internal/services"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 type Controller struct {
@@ -34,7 +35,7 @@ func NewController(db *sql.DB) *Controller {
 	return &Controller{s.NewService(db)}
 }
 
-func WriteJSON(w http.ResponseWriter, status int, v any) *ApiError {
+func WriteJSON(w http.ResponseWriter, status int, v any) error {
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
 	if err := json.NewEncoder(w).Encode(v); err != nil {
@@ -45,14 +46,13 @@ func WriteJSON(w http.ResponseWriter, status int, v any) *ApiError {
 	return nil
 }
 
+type Response map[string]interface{}
+
 type ApiError struct {
 	ErrorMsg string `json:"error"`
 	Status   int
 }
 
-type Response map[string]interface{}
-
-// WARN: To remove this function
-func (e ApiError) Error() string {
+func (e *ApiError) Error() string {
 	return e.ErrorMsg
 }

@@ -78,13 +78,15 @@ func (r *bidRepo) GetAll() ([]*m.BidModel, error) {
 func (r *bidRepo) Insert(item *m.BidModel) error {
 	query := `
 		INSERT INTO bids (
-			user_id,
-			amount,
+			auction_id,
+			bidder_id,
+			amount
 		) VALUES (
-			$1, $2
+			$1, $2, $3
 		)
 	`
 	_, err := r.tx.Exec(query,
+		&item.AuctionId,
 		&item.UserId,
 		&item.Amount,
 	)

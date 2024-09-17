@@ -21,13 +21,14 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 			id,
 			seller_id,
 			starting_bid,
-			closing_bid,
+			current_bid,
+			bid_count,
 			start_time,
 			end_time,
 			extra_time_enabled,
 			extra_time_duration,
 			extra_time_threshold,
-			is_active
+			status
 		FROM
 			auctions
 		WHERE
@@ -37,7 +38,8 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 		&item.ID,
 		&item.SellerId,
 		&item.StartingBid,
-		&item.ClosingBid,
+		&item.CurrentBid,
+		&item.BidCount,
 		&item.StartTime,
 		&item.EndTime,
 		&item.ExtraTimeEnabled,
@@ -85,7 +87,7 @@ func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
 			&item.ID,
 			&item.SellerId,
 			&item.StartingBid,
-			&item.ClosingBid,
+			&item.CurrentBid,
 			&item.StartTime,
 			&item.EndTime,
 			&item.ExtraTimeEnabled,
@@ -124,7 +126,7 @@ func (r *auctionRepo) Update(item *m.AuctionModel) error {
 	_, err := r.tx.Exec(query,
 		item.SellerId,
 		item.StartingBid,
-		item.ClosingBid,
+		item.CurrentBid,
 		item.StartTime,
 		item.EndTime,
 		item.ExtraTimeEnabled,
@@ -170,7 +172,7 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 		item.ID,
 		item.SellerId,
 		item.StartingBid,
-		item.ClosingBid,
+		item.CurrentBid,
 		item.StartTime,
 		item.EndTime,
 		item.ExtraTimeEnabled,
