@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -14,14 +15,17 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	offsetStr := r.FormValue("offset")
-	leangthStr := r.FormValue("leangth")
+	leangthStr := r.FormValue("limit")
 
-	offset, err := atoi(offsetStr)
+	println(offsetStr)
+	println(leangthStr)
+
+	offset, err := strconv.Atoi(offsetStr)
 	if err != nil {
 		return &ApiError{Status: http.StatusBadRequest, ErrorMsg: "Invalid offset"}
 	}
 
-	leangth, err := atoi(leangthStr)
+	leangth, err := strconv.Atoi(leangthStr)
 	if err != nil {
 		return &ApiError{Status: http.StatusBadRequest, ErrorMsg: "Invalid leangth"}
 	}
@@ -35,13 +39,10 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		return err
 	}
+	fmt.Println(auctionList)
+	for it := range auctionList {
+		fmt.Println(it)
+	}
 
 	return WriteJSON(w, http.StatusOK, auctionList)
-}
-
-func atoi(str string) (int, error) {
-	if len(str) == 0 {
-		return 0, nil
-	}
-	return strconv.Atoi(str)
 }

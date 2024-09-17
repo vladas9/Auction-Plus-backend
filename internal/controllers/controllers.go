@@ -34,11 +34,11 @@ func NewController(db *sql.DB) *Controller {
 	return &Controller{s.NewService(db)}
 }
 
-func WriteJSON(w http.ResponseWriter, status int, v any) *ApiError {
+func WriteJSON(w http.ResponseWriter, status int, v any) error {
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
 	if err := json.NewEncoder(w).Encode(v); err != nil {
-		aErr := &ApiError{fmt.Sprintf("Encoding of object of type %v failed", reflect.TypeOf(v)), 500}
+		aErr := fmt.Errorf("Encoding of object of type %v failed", reflect.TypeOf(v))
 		u.Logger.Error(aErr)
 		return aErr
 	}
@@ -52,7 +52,6 @@ type ApiError struct {
 
 type Response map[string]interface{}
 
-// WARN: To remove this function
-func (e ApiError) Error() string {
+func (e *ApiError) Error() string {
 	return e.ErrorMsg
 }

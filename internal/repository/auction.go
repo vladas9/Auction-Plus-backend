@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 )
@@ -20,14 +21,14 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 		SELECT 
 			id,
 			seller_id,
-			starting_bid,
-			closing_bid,
+			start_price,
+			current_bid,
 			start_time,
 			end_time,
 			extra_time_enabled,
 			extra_time_duration,
 			extra_time_threshold,
-			is_active
+			status
 		FROM
 			auctions
 		WHERE
@@ -36,14 +37,14 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 	if err := row.Scan(
 		&item.ID,
 		&item.SellerId,
-		&item.StartingBid,
-		&item.ClosingBid,
+		&item.StartPrice,
+		&item.CurrentBid,
 		&item.StartTime,
 		&item.EndTime,
 		&item.ExtraTimeEnabled,
 		&item.ExtraTimeDuration,
 		&item.ExtraTimeThreshold,
-		&item.IsActive,
+		&item.Status,
 	); err != nil {
 		return nil, err
 	}
@@ -56,14 +57,14 @@ func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
 		SELECT 
 			id,
 			seller_id,
-			starting_bid,
-			closing_bid,
+			start_price,
+			current_bid,
 			start_time,
 			end_time,
 			extra_time_enabled,
 			extra_time_duration,
 			extra_time_threshold,
-			is_active
+			status
 		FROM
 			auctions
 		ORDER BY
@@ -73,25 +74,26 @@ func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
 		OFFSET
 			$2
 	`
-	rows, err := r.tx.Query(query, limit, offset)
+	rows, err := r.tx.Query(query, offset, limit)
 	if err != nil {
 		return nil, err
 	}
 
 	defer rows.Close()
+
 	for rows.Next() {
 		item := &m.AuctionModel{}
 		if err := rows.Scan(
 			&item.ID,
 			&item.SellerId,
-			&item.StartingBid,
-			&item.ClosingBid,
+			&item.StartPrice,
+			&item.CurrentBid,
 			&item.StartTime,
 			&item.EndTime,
 			&item.ExtraTimeEnabled,
 			&item.ExtraTimeDuration,
 			&item.ExtraTimeThreshold,
-			&item.IsActive,
+			&item.Status,
 		); err != nil {
 			return nil, err
 		}
@@ -110,27 +112,27 @@ func (r *auctionRepo) Update(item *m.AuctionModel) error {
 			auctions
 		SET
 			seller_id = $1,
-			starting_bid = $2,
-			closing_bid = $3,
+			start_price = $2,
+			current_bid = $3,
 			start_time = $4,
 			end_time = $5,
 			extra_time_enabled = $6,
 			extra_time_duration = $7,
 			extra_time_threshold = $8,
-			is_active = $9
+			status = $9
 		WHERE
 			id = $10
 	`
 	_, err := r.tx.Exec(query,
 		item.SellerId,
-		item.StartingBid,
-		item.ClosingBid,
+		item.StartPrice,
+		item.CurrentBid,
 		item.StartTime,
 		item.EndTime,
 		item.ExtraTimeEnabled,
 		item.ExtraTimeDuration,
 		item.ExtraTimeThreshold,
-		item.IsActive,
+		item.Status,
 		item.ID,
 	)
 
@@ -152,31 +154,29 @@ func (r *auctionRepo) Remove(id uuid.UUID) error {
 func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 	query := `
 		INSERT INTO auctions (
-			id,
 			seller_id,
-			starting_bid,
-			closing_bid,
+			start_price,
+			current_bid,
 			start_time,
 			end_time,
 			extra_time_enabled,
 			extra_time_duration,
 			extra_time_threshold,
-			is_active
+			status
 		) VALUES (
-			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10
+			$1, $2, $3, $4, $5, $6, $7, $8, $9
 		)
 	`
 	_, err := r.tx.Exec(query,
-		item.ID,
 		item.SellerId,
-		item.StartingBid,
-		item.ClosingBid,
+		item.StartPrice,
+		item.CurrentBid,
 		item.StartTime,
 		item.EndTime,
 		item.ExtraTimeEnabled,
 		item.ExtraTimeDuration,
 		item.ExtraTimeThreshold,
-		item.IsActive,
+		item.Status,
 	)
 
 	return err

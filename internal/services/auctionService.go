@@ -11,7 +11,7 @@ type AuctionParams struct {
 
 func (s *Service) GetAuctions(params AuctionParams) (list []*m.AuctionModel, err error) {
 	err = s.store.WithTx(func(stx *r.StoreTx) error {
-		list, err = stx.AuctionRepo().GetAll(params.Offset, params.Offset*params.Len)
+		list, err = stx.AuctionRepo().GetAll(params.Offset, params.Len)
 		return err
 	})
 	return list, err
