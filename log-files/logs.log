@@ -195,3 +195,89 @@ ERROR: 2024/09/15 20:22:32 Registration failed: Faled to create user: pq: duplic
 INFO: 2024/09/16 13:39:39 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
 INFO: 2024/09/16 13:39:39 Successfully connected to the database
 INFO: 2024/09/16 13:39:39 Started server on localhost:1169
+INFO: 2024/09/16 16:06:40 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:06:41 Successfully connected to the database
+INFO: 2024/09/16 16:06:41 Started server on localhost:1169
+ERROR: 2024/09/16 16:06:43 Registration failed: Faled to find user: pq: column "image" of relation "users" does not exist
+INFO: 2024/09/16 16:10:27 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:10:27 Successfully connected to the database
+INFO: 2024/09/16 16:10:27 Started server on localhost:1169
+ERROR: 2024/09/16 16:10:31 <nil>
+INFO: 2024/09/16 16:12:36 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:12:36 Successfully connected to the database
+INFO: 2024/09/16 16:12:36 Started server on localhost:1169
+ERROR: 2024/09/16 16:12:40 Registration failed: Faled to find user: pq: duplicate key value violates unique constraint "users_email_key"
+ERROR: 2024/09/16 16:13:50 <nil>
+INFO: 2024/09/16 16:16:53 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:16:53 Successfully connected to the database
+INFO: 2024/09/16 16:16:53 Started server on localhost:1169
+ERROR: 2024/09/16 16:16:57 Registration failed: Faled to find user: pq: duplicate key value violates unique constraint "users_email_key"
+ERROR: 2024/09/16 16:17:26 <nil>
+INFO: 2024/09/16 16:20:24 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:20:24 Successfully connected to the database
+INFO: 2024/09/16 16:20:24 Started server on localhost:1169
+INFO: 2024/09/16 16:28:27 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:28:27 Successfully connected to the database
+INFO: 2024/09/16 16:28:27 Started server on localhost:1169
+INFO: 2024/09/16 16:52:05 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:52:05 Successfully connected to the database
+INFO: 2024/09/16 16:52:05 Started server on localhost:1169
+INFO: 2024/09/16 16:53:10 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:53:10 Successfully connected to the database
+INFO: 2024/09/16 16:53:10 Started server on localhost:1169
+ERROR: 2024/09/16 16:53:30 Invalid offset
+INFO: 2024/09/16 16:58:45 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:58:45 Successfully connected to the database
+INFO: 2024/09/16 16:58:45 Started server on localhost:1169
+ERROR: 2024/09/16 16:58:49 Invalid offset
+INFO: 2024/09/16 16:59:18 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 16:59:18 Successfully connected to the database
+INFO: 2024/09/16 16:59:18 Started server on localhost:1169
+ERROR: 2024/09/16 16:59:21 sql: Scan error on column index 7, name "extra_time_duration": converting driver.Value type []uint8 ("50000000:00:00") to a int64: invalid syntax
+INFO: 2024/09/16 17:12:09 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 17:12:09 Successfully connected to the database
+INFO: 2024/09/16 17:12:09 Started server on localhost:1169
+ERROR: 2024/09/16 17:12:12 sql: Scan error on column index 7, name "extra_time_duration": converting driver.Value type []uint8 ("50000000:00:00") to a int64: invalid syntax
+INFO: 2024/09/16 17:12:36 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 17:12:36 Successfully connected to the database
+INFO: 2024/09/16 17:12:36 Started server on localhost:1169
+INFO: 2024/09/16 17:16:04 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 17:16:04 Successfully connected to the database
+INFO: 2024/09/16 17:16:04 Started server on localhost:1169
+INFO: 2024/09/16 17:16:52 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 17:16:52 Successfully connected to the database
+INFO: 2024/09/16 17:16:52 Started server on localhost:1169
+INFO: 2024/09/16 17:17:43 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/16 17:17:43 Successfully connected to the database
+INFO: 2024/09/16 17:17:43 Started server on localhost:1169
+INFO: 2024/09/17 10:58:50 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 10:58:50 Successfully connected to the database
+INFO: 2024/09/17 10:58:50 Started server on localhost:1169
+INFO: 2024/09/17 11:01:55 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:01:55 Successfully connected to the database
+INFO: 2024/09/17 11:01:55 Started server on localhost:1169
+INFO: 2024/09/17 11:09:35 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:09:35 Successfully connected to the database
+INFO: 2024/09/17 11:09:35 Started server on localhost:1169
+INFO: 2024/09/17 11:11:51 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:11:51 Successfully connected to the database
+INFO: 2024/09/17 11:11:51 Started server on localhost:1169
+INFO: 2024/09/17 11:12:36 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:12:36 Successfully connected to the database
+INFO: 2024/09/17 11:12:36 Started server on localhost:1169
+INFO: 2024/09/17 11:17:43 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:17:43 Successfully connected to the database
+INFO: 2024/09/17 11:17:43 Started server on localhost:1169
+INFO: 2024/09/17 11:23:42 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:23:42 Successfully connected to the database
+INFO: 2024/09/17 11:23:42 Started server on localhost:1169
+INFO: 2024/09/17 11:25:49 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:25:49 Successfully connected to the database
+INFO: 2024/09/17 11:25:49 Started server on localhost:1169
+INFO: 2024/09/17 11:27:14 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:27:14 Successfully connected to the database
+INFO: 2024/09/17 11:27:14 Started server on localhost:1169
+ERROR: 2024/09/17 11:27:16 sql: Scan error on column index 7, name "extra_time_duration": converting driver.Value type []uint8 ("50000000:00:00") to a int64: invalid syntax
+INFO: 2024/09/17 11:44:52 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
+INFO: 2024/09/17 11:44:52 Successfully connected to the database
+INFO: 2024/09/17 11:44:52 Started server on localhost:1169
