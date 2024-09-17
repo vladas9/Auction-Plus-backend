@@ -49,10 +49,10 @@ func WriteJSON(w http.ResponseWriter, status int, v any) error {
 type Response map[string]interface{}
 
 type ApiError struct {
-	ErrorMsg string `json:"error"`
-	Status   int
+	ErrorMsg any `json:"error"`
+	Status   int `json:"status"`
 }
 
 func (e *ApiError) Error() string {
-	return e.ErrorMsg
+	return fmt.Sprint(e.ErrorMsg)
 }
