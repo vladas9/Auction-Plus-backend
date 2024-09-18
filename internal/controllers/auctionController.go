@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/shopspring/decimal"
 	"github.com/vladas9/backend-practice/internal/dtos"
 	s "github.com/vladas9/backend-practice/internal/services"
 	"github.com/vladas9/backend-practice/internal/utils"
@@ -20,6 +21,8 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 
 	offsetStr := r.FormValue("offset")
 	leangthStr := r.FormValue("limit")
+	minPriceStr := r.FormValue("min_price")
+	maxPriceStr := r.FormValue("max_price")
 
 	offset, err := strconv.Atoi(offsetStr)
 	if err != nil {
@@ -31,9 +34,21 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		return fail(err)
 	}
 
+	maxPrice, err := decimal.NewFromString(maxPriceStr)
+	if err != nil {
+		return fail(err)
+	}
+	minPrice, err := decimal.NewFromString(minPriceStr)
+	if err != nil {
+		return fail(err)
+	}
+
 	params := s.AuctionParams{
-		Offset: offset,
-		Len:    leangth}
+		Offset:   offset,
+		Len:      leangth,
+		MaxPrice: maxPrice,
+		MinPrice: minPrice,
+	}
 	problems := params.Validate()
 	if problems != nil {
 		return &ApiError{Status: 400, ErrorMsg: problems}

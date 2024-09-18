@@ -5,6 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
+	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 type auctionRepo struct {
@@ -79,7 +80,7 @@ func (r *auctionRepo) GetAllFiltered(offset, limit int, minPrice, maxPrice m.Dec
 		OFFSET
 			$4
 	`
-	rows, err := r.tx.Query(query, offset, limit, minPrice, maxPrice)
+	rows, err := r.tx.Query(query, minPrice, maxPrice, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -87,6 +88,7 @@ func (r *auctionRepo) GetAllFiltered(offset, limit int, minPrice, maxPrice m.Dec
 	defer rows.Close()
 
 	for rows.Next() {
+		utils.Logger.Info("rows next")
 		item := &m.AuctionModel{}
 		if err := rows.Scan(
 			&item.ID,
@@ -110,6 +112,7 @@ func (r *auctionRepo) GetAllFiltered(offset, limit int, minPrice, maxPrice m.Dec
 	if err := rows.Err(); err != nil {
 		return nil, err
 	}
+	utils.Logger.Info("AuctionRepo GetAllFiltered:", auctions)
 	return auctions, nil
 }
 

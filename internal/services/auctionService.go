@@ -57,11 +57,11 @@ func getAuctionsTx(stx *r.StoreTx, params AuctionParams) (auctions []*m.AuctionM
 	auctionRepo := stx.AuctionRepo()
 	if params.MaxPrice.IsZero() {
 		auctions, err = auctionRepo.GetAll(params.Offset, params.Len)
-		utils.Logger.Info("getAuctionsTx in:", auctions)
 	} else {
 		auctions, err = auctionRepo.GetAllFiltered(
 			params.Offset, params.Len,
 			params.MinPrice, params.MaxPrice)
+		utils.Logger.Info("getAuctionsTx in:", auctions)
 	}
 	if err != nil {
 		auctions = nil
