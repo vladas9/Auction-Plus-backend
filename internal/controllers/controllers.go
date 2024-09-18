@@ -32,7 +32,7 @@ func NewController(db *sql.DB) *Controller {
 	}
 	Host = os.Getenv("HOST")
 	Port = os.Getenv("PORT")
-	return &Controller{s.NewService(db)}
+	return &Controller{s.NewService(db, Host, Port)}
 }
 
 func WriteJSON(w http.ResponseWriter, status int, v any) error {

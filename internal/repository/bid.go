@@ -39,6 +39,48 @@ func (r *bidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	return item, nil
 }
 
+func (r *bidRepo) GetAllByUserId(id uuid.UUID, limit, offset int) ([]*m.BidModel, error) {
+	var bids []*m.BidModel
+	query := `
+		SELECT 
+			id,
+			auction_id,
+			amount,
+			timestamp
+		FROM
+			bids
+		WHERE
+			bidder_id = $1
+		LIMIT
+			$2
+		OFFSET
+			$3
+	`
+	rows, err := r.tx.Query(query, id, limit, offset)
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+	for rows.Next() {
+		item := &m.BidModel{}
+		if err := rows.Scan(
+			&item.ID,
+			&item.AuctionId,
+			&item.Amount,
+			&item.Timestamp,
+		); err != nil {
+			return nil, err
+		}
+		bids = append(bids, item)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return bids, nil
+}
+
 func (r *bidRepo) GetAll() ([]*m.BidModel, error) {
 	var bids []*m.BidModel
 	query := `

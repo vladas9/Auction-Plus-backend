@@ -20,6 +20,7 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 		SELECT 
 			id,
 			seller_id,
+			item_id,
 			starting_bid,
 			current_bid,
 			bid_count,
@@ -37,6 +38,7 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 	if err := row.Scan(
 		&item.ID,
 		&item.SellerId,
+		&item.ItemId,
 		&item.StartingBid,
 		&item.CurrentBid,
 		&item.BidCount,
@@ -58,6 +60,7 @@ func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
 		SELECT 
 			id,
 			seller_id,
+			item_id,
 			starting_bid,
 			closing_bid,
 			start_time,
@@ -86,6 +89,7 @@ func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
 		if err := rows.Scan(
 			&item.ID,
 			&item.SellerId,
+			&item.ItemId,
 			&item.StartingBid,
 			&item.CurrentBid,
 			&item.StartTime,

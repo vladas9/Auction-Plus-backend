@@ -11,47 +11,44 @@ type itemRepo struct {
 	tx *sql.Tx
 }
 
-func ItemRepo(tx *sql.Tx) *itemRepo {
-	return &itemRepo{tx}
+func (s *StoreTx) ItemRepo() *itemRepo {
+	return &itemRepo{s.Tx}
 }
 
 func (r *itemRepo) GetById(id uuid.UUID) (*m.ItemModel, error) {
 	item := &m.ItemModel{}
 	query := `
 		SELECT 
-			item_id,
+			id,
 			name,
 			description,
-			starting_price,
 			category,
 			condition,
 			images
 		FROM
 			Items
 		WHERE
-			item_id = $1
+			id = $1
 	`
 	row := r.tx.QueryRow(query, id)
 	if err := row.Scan(
-		&item.ItemId,
+		&item.ID,
 		&item.Name,
 		&item.Description,
-		&item.StartingPrice,
 		&item.Category,
 		&item.Condition,
-		pq.Array(&item.Images), // pq.Array for handling array in PostgreSQL
+		pq.Array(&item.Images),
 	); err != nil {
 		return nil, err
 	}
 	return item, nil
 }
 
-// GetAll retrieves all items
 func (r *itemRepo) GetAll() ([]*m.ItemModel, error) {
 	var items []*m.ItemModel
 	query := `
 		SELECT 
-			item_id,
+			id,
 			name,
 			description,
 			starting_price,
@@ -70,7 +67,7 @@ func (r *itemRepo) GetAll() ([]*m.ItemModel, error) {
 	for rows.Next() {
 		item := &m.ItemModel{}
 		if err := rows.Scan(
-			&item.ItemId,
+			&item.ID,
 			&item.Name,
 			&item.Description,
 			&item.StartingPrice,
@@ -111,7 +108,7 @@ func (r *itemRepo) Update(item *m.ItemModel) error {
 		item.Category,
 		item.Condition,
 		pq.Array(item.Images),
-		item.ItemId,
+		item.ID,
 	)
 
 	return err
@@ -146,7 +143,7 @@ func (r *itemRepo) Insert(item *m.ItemModel) error {
 		)
 	`
 	_, err := r.tx.Exec(query,
-		item.ItemId,
+		item.ID,
 		item.Name,
 		item.Description,
 		item.StartingPrice,
