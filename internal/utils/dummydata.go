@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"math/rand"
 	"time"
 
 	"github.com/google/uuid"
@@ -8,83 +9,92 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-func GenerateDummyAuctions(sellerId uuid.UUID) []*m.AuctionModel {
-	auctions := []*m.AuctionModel{
-		{
-			BaseModel:          m.BaseModel{uuid.New()},
-			SellerId:           sellerId,
-			StartPrice:         decimal.NewFromInt(100),
-			CurrentBid:         decimal.NewFromInt(200),
-			StartTime:          time.Now().Add(-24 * time.Hour),
-			EndTime:            time.Now().Add(24 * time.Hour),
-			ExtraTimeDuration:  5 * time.Minute,
-			ExtraTimeThreshold: 10 * time.Minute,
-			ExtraTimeEnabled:   true,
-			Status:             true,
-		},
-		{
-			BaseModel:          m.BaseModel{uuid.New()},
-			SellerId:           sellerId,
-			StartPrice:         decimal.NewFromInt(50),
-			CurrentBid:         decimal.NewFromInt(150),
-			StartTime:          time.Now().Add(-48 * time.Hour),
-			EndTime:            time.Now().Add(48 * time.Hour),
-			ExtraTimeDuration:  10 * time.Minute,
-			ExtraTimeThreshold: 15 * time.Minute,
-			ExtraTimeEnabled:   false,
-			Status:             false,
-		},
-		{
-			BaseModel:          m.BaseModel{uuid.New()},
-			SellerId:           sellerId,
-			StartPrice:         decimal.NewFromInt(300),
-			CurrentBid:         decimal.NewFromInt(350),
-			StartTime:          time.Now().Add(-72 * time.Hour),
-			EndTime:            time.Now().Add(72 * time.Hour),
-			ExtraTimeDuration:  3 * time.Minute,
-			ExtraTimeThreshold: 5 * time.Minute,
-			ExtraTimeEnabled:   true,
-			Status:             true,
-		},
+func rantBool() bool {
+	if rand.Float32() < 0.5 {
+		return false
 	}
+	return true
+}
 
-	return auctions
+func randCond() m.Condition {
+	if rantBool() {
+		return m.New
+	}
+	return m.Used
+}
+
+func randCateg() m.Category {
+	categories := []m.Category{m.Electronics, m.Furniture, m.ArtWork, m.Cars}
+	return categories[rand.Intn(4)]
+}
+
+func CreateDummyItem() *m.ItemModel {
+	itemUUID := uuid.New()
+
+	dummyItem := &m.ItemModel{
+		BaseModel:   m.BaseModel{ID: itemUUID},
+		Name:        "Dummy Item",
+		Description: "This is a dummy item.",
+		Category:    m.Electronics,
+		Condition:   randCond(),
+		Images:      []uuid.UUID{uuid.New()},
+	}
+	return dummyItem
+}
+
+func CreateDummyAuction(itemId, userId uuid.UUID) *m.AuctionModel {
+	startPrice := 10 + int64(rand.Intn(1000))
+	return &m.AuctionModel{
+		BaseModel:          m.BaseModel{uuid.New()},
+		SellerId:           userId,
+		ItemId:             itemId,
+		StartPrice:         decimal.NewFromInt(startPrice),
+		CurrentBid:         decimal.NewFromInt(startPrice + int64(rand.Intn(3000))),
+		BidCount:           0,
+		StartTime:          time.Now().Add(-72 * time.Hour),
+		EndTime:            time.Now().Add(72 * time.Hour),
+		ExtraTimeDuration:  3 * time.Minute,
+		ExtraTimeThreshold: 5 * time.Minute,
+		ExtraTimeEnabled:   true,
+		Status:             true,
+	}
 }
 
 func GenerateDummyUser() *m.UserModel {
 	return &m.UserModel{
+		BaseModel:      m.BaseModel{},
 		Username:       "john_doe",
 		Email:          "john.doe@example.com",
-		Image:          "",
+		Image:          uuid.NewString(),
 		Password:       "hashed_password", // In real case, this would be hashed.
 		Address:        "1234 Elm St, Springfield, USA",
 		PhoneNumber:    "+1-555-1234",
-		UserType:       "seller",                     // can be 'buyer', 'seller', or 'admin'
+		UserType:       "admin",                      // admin or client
 		RegisteredDate: time.Now().AddDate(0, -6, 0), // registered 6 months ago
 	}
 }
 
 func GenerateDummyBids() []m.BidModel {
 	return []m.BidModel{
-		m.BidModel{
+		{
 			BaseModel: m.BaseModel{uuid.New()},
 			UserId:    uuid.New(),
 			Amount:    decimal.NewFromInt(150),
 			Timestamp: time.Now(),
 		},
-		m.BidModel{
+		{
 			BaseModel: m.BaseModel{uuid.New()},
 			UserId:    uuid.New(),
 			Amount:    decimal.NewFromInt(250),
 			Timestamp: time.Now(),
 		},
-		m.BidModel{
+		{
 			BaseModel: m.BaseModel{uuid.New()},
 			UserId:    uuid.New(),
 			Amount:    decimal.NewFromInt(300),
 			Timestamp: time.Now(),
 		},
-		m.BidModel{
+		{
 			BaseModel: m.BaseModel{uuid.New()},
 			UserId:    uuid.New(),
 			Amount:    decimal.NewFromInt(400),

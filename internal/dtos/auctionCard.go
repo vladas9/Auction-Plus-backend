@@ -18,17 +18,16 @@ type AuctionCard struct {
 	Category  m.Category `json:"category_name"`
 }
 
-func AuctionCardMapper(
+func MapAuctionCard(
 	id int,
 	auction m.AuctionModel,
-	item m.ItemModel,
-	bids []m.BidModel) AuctionCard {
+	item m.ItemModel) AuctionCard {
 
 	card := AuctionCard{
 		Id:        id,
 		ImgSrc:    fmt.Sprintf("http://%s:%s/api/img/%s", os.Getenv("HOST"), os.Getenv("PORT"), item.Images[0]),
 		Title:     item.Name,
-		NumOfBids: auction.BidCount,
+		NumOfBids: int(auction.BidCount),
 		MaxBid:    auction.CurrentBid,
 		EndDate:   auction.EndTime,
 		Category:  item.Category,

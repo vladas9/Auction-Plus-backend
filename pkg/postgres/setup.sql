@@ -28,6 +28,7 @@ CREATE TABLE auctions(
   item_id UUID REFERENCES items(id),
   start_price DECIMAL(10,2) NOT NULL,
   current_bid DECIMAL(10,2),
+  bid_count INT DEFAULT 0,
   start_time TIMESTAMPTZ NOT NULL,
   end_time TIMESTAMPTZ NOT NULL,
   extra_time_enabled BOOLEAN DEFAULT TRUE,
@@ -69,3 +70,23 @@ CREATE TABLE notifications(
   timestamp TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
   is_read BOOLEAN NOT NULL
 );
+
+
+
+CREATE OR REPLACE FUNCTION increment_counter()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE auctions
+    SET bid_count = bid_count + 1,
+      current_bid = NEW.amount
+    WHERE id = NEW.auction_id;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER after_insert_on_bids
+AFTER INSERT ON bids
+FOR EACH ROW
+EXECUTE FUNCTION increment_counter();

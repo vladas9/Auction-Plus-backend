@@ -21,8 +21,10 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 		SELECT 
 			id,
 			seller_id,
+			item_id,
 			start_price,
 			current_bid,
+			bid_count,
 			start_time,
 			end_time,
 			extra_time_enabled,
@@ -37,8 +39,10 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 	if err := row.Scan(
 		&item.ID,
 		&item.SellerId,
+		&item.ItemId,
 		&item.StartPrice,
 		&item.CurrentBid,
+		&item.BidCount,
 		&item.StartTime,
 		&item.EndTime,
 		&item.ExtraTimeEnabled,
@@ -50,15 +54,75 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 	}
 	return item, nil
 }
-
-func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
+func (r *auctionRepo) GetAllFiltered(offset, limit int, minPrice, maxPrice m.Decimal) ([]*m.AuctionModel, error) {
 	var auctions []*m.AuctionModel
 	query := `
 		SELECT 
 			id,
 			seller_id,
+			item_id,
 			start_price,
 			current_bid,
+			bid_count,
+			start_time,
+			end_time,
+			extra_time_enabled,
+			extra_time_duration,
+			extra_time_threshold,
+			status
+		FROM
+			auctions
+		WHERE
+			(current_bid >= $1) AND (current_bid <= $2)
+		LIMIT
+			$3
+		OFFSET
+			$4
+	`
+	rows, err := r.tx.Query(query, offset, limit, minPrice, maxPrice)
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		item := &m.AuctionModel{}
+		if err := rows.Scan(
+			&item.ID,
+			&item.SellerId,
+			&item.ItemId,
+			&item.StartPrice,
+			&item.CurrentBid,
+			&item.BidCount,
+			&item.StartTime,
+			&item.EndTime,
+			&item.ExtraTimeEnabled,
+			&item.ExtraTimeDuration,
+			&item.ExtraTimeThreshold,
+			&item.Status,
+		); err != nil {
+			return nil, err
+		}
+		auctions = append(auctions, item)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return auctions, nil
+}
+
+func (r *auctionRepo) GetAll(offset, limit int) ([]*m.AuctionModel, error) {
+	var auctions []*m.AuctionModel
+	query := `
+		SELECT 
+			id,
+			seller_id,
+			item_id,
+			start_price,
+			current_bid,
+			bid_count,
 			start_time,
 			end_time,
 			extra_time_enabled,
@@ -74,7 +138,7 @@ func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
 		OFFSET
 			$2
 	`
-	rows, err := r.tx.Query(query, offset, limit)
+	rows, err := r.tx.Query(query, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -86,8 +150,10 @@ func (r *auctionRepo) GetAll(limit, offset int) ([]*m.AuctionModel, error) {
 		if err := rows.Scan(
 			&item.ID,
 			&item.SellerId,
+			&item.ItemId,
 			&item.StartPrice,
 			&item.CurrentBid,
+			&item.BidCount,
 			&item.StartTime,
 			&item.EndTime,
 			&item.ExtraTimeEnabled,
@@ -112,21 +178,24 @@ func (r *auctionRepo) Update(item *m.AuctionModel) error {
 			auctions
 		SET
 			seller_id = $1,
+			item_id = 
 			start_price = $2,
 			current_bid = $3,
-			start_time = $4,
-			end_time = $5,
-			extra_time_enabled = $6,
-			extra_time_duration = $7,
-			extra_time_threshold = $8,
-			status = $9
+			bid_count = $4,
+			start_time = $5,
+			end_time = $6,
+			extra_time_enabled = $7,
+			extra_time_duration = $8,
+			extra_time_threshold = $9,
+			status = $10
 		WHERE
-			id = $10
+			id = $11
 	`
 	_, err := r.tx.Exec(query,
 		item.SellerId,
 		item.StartPrice,
 		item.CurrentBid,
+		item.BidCount,
 		item.StartTime,
 		item.EndTime,
 		item.ExtraTimeEnabled,
@@ -155,8 +224,10 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 	query := `
 		INSERT INTO auctions (
 			seller_id,
+			item_id,
 			start_price,
 			current_bid,
+			bid_count,
 			start_time,
 			end_time,
 			extra_time_enabled,
@@ -164,13 +235,15 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 			extra_time_threshold,
 			status
 		) VALUES (
-			$1, $2, $3, $4, $5, $6, $7, $8, $9
+			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11
 		)
 	`
 	_, err := r.tx.Exec(query,
 		item.SellerId,
+		item.ItemId,
 		item.StartPrice,
 		item.CurrentBid,
+		item.BidCount,
 		item.StartTime,
 		item.EndTime,
 		item.ExtraTimeEnabled,

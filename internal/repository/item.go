@@ -11,32 +11,30 @@ type itemRepo struct {
 	tx *sql.Tx
 }
 
-func ItemRepo(tx *sql.Tx) *itemRepo {
-	return &itemRepo{tx}
+func (stx *StoreTx) ItemRepo() *itemRepo {
+	return &itemRepo{tx: stx.Tx}
 }
 
 func (r *itemRepo) GetById(id uuid.UUID) (*m.ItemModel, error) {
 	item := &m.ItemModel{}
 	query := `
 		SELECT 
-			item_id,
+			id,
 			name,
 			description,
-			starting_price,
 			category,
 			condition,
 			images
 		FROM
 			Items
 		WHERE
-			item_id = $1
+			id = $1
 	`
 	row := r.tx.QueryRow(query, id)
 	if err := row.Scan(
-		&item.ItemId,
+		&item.ID,
 		&item.Name,
 		&item.Description,
-		&item.StartingPrice,
 		&item.Category,
 		&item.Condition,
 		pq.Array(&item.Images), // pq.Array for handling array in PostgreSQL
@@ -51,10 +49,9 @@ func (r *itemRepo) GetAll() ([]*m.ItemModel, error) {
 	var items []*m.ItemModel
 	query := `
 		SELECT 
-			item_id,
+			id,
 			name,
 			description,
-			starting_price,
 			category,
 			condition,
 			images
@@ -70,10 +67,9 @@ func (r *itemRepo) GetAll() ([]*m.ItemModel, error) {
 	for rows.Next() {
 		item := &m.ItemModel{}
 		if err := rows.Scan(
-			&item.ItemId,
+			&item.ID,
 			&item.Name,
 			&item.Description,
-			&item.StartingPrice,
 			&item.Category,
 			&item.Condition,
 			pq.Array(&item.Images),
@@ -97,21 +93,19 @@ func (r *itemRepo) Update(item *m.ItemModel) error {
 		SET
 			name = $1,
 			description = $2,
-			starting_price = $3,
-			category = $4,
-			condition = $5,
-			images = $6
+			category = $3,
+			condition = $4,
+			images = $5
 		WHERE
-			item_id = $7
+			id = $6
 	`
 	_, err := r.tx.Exec(query,
 		item.Name,
 		item.Description,
-		item.StartingPrice,
 		item.Category,
 		item.Condition,
 		pq.Array(item.Images),
-		item.ItemId,
+		item.Id(),
 	)
 
 	return err
@@ -123,7 +117,7 @@ func (r *itemRepo) Remove(id uuid.UUID) error {
 		DELETE FROM 
 			Items
 		WHERE 
-			item_id = $1
+			id = $1
 	`
 	_, err := r.tx.Exec(query, id)
 
@@ -131,29 +125,30 @@ func (r *itemRepo) Remove(id uuid.UUID) error {
 }
 
 // Insert adds a new item to the database
-func (r *itemRepo) Insert(item *m.ItemModel) error {
+func (r *itemRepo) Insert(item *m.ItemModel) (uuid.UUID, error) {
 	query := `
 		INSERT INTO Items (
-			item_id,
 			name,
 			description,
-			starting_price,
 			category,
 			condition,
 			images
 		) VALUES (
-			$1, $2, $3, $4, $5, $6, $7
-		)
+			$1, $2, $3, $4, $5
+		) RETURNING id
 	`
-	_, err := r.tx.Exec(query,
-		item.ItemId,
+	var itemId string
+	err := r.tx.QueryRow(query,
 		item.Name,
 		item.Description,
-		item.StartingPrice,
 		item.Category,
 		item.Condition,
 		pq.Array(item.Images),
-	)
+	).Scan(&itemId)
 
-	return err
+	if err != nil {
+		return uuid.Nil, err
+	}
+
+	return uuid.MustParse(itemId), err
 }

@@ -52,7 +52,7 @@ func (s *Server) Run() {
 	s.Router.Handle("POST /api/users/register", apiFunc(s.Controllers.Register))
 	s.Router.Handle("POST /api/users/login", apiFunc(s.Controllers.Login))
 	s.Router.Handle("GET /api/img/", apiFunc(s.Controllers.ImageHandler))
-	// s.Router.Handle("GET /api/users/{id}", apiFunc(controllers.))
+	s.Router.Handle("POST /api/post_bid", apiFunc(s.Controllers.BidController))
 	// s.Router.Handle("PUT /api/users/{id}", apiFunc(controllers.))
 	// s.Router.Handle("GET /api/items", apiFunc(controllers.))
 	// s.Router.Handle("GET /api/items/{id}", apiFunc(controllers.))
@@ -69,5 +69,21 @@ func (s *Server) Run() {
 	// u.Logger.Info("Registered Routes")
 
 	u.Logger.Info("Started server on", s.ListenAddr)
-	u.Logger.Error(http.ListenAndServe(s.ListenAddr, s.Router))
+	u.Logger.Error(http.ListenAndServe(s.ListenAddr, CORS(s.Router)))
+}
+
+func CORS(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Access-Control-Allow-Origin", "*")
+		w.Header().Add("Access-Control-Allow-Credentials", "true")
+		w.Header().Add("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+		w.Header().Add("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+
+		if r.Method == "OPTIONS" {
+			http.Error(w, "No Content", http.StatusNoContent)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
 }

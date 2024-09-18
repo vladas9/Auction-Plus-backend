@@ -9,6 +9,9 @@ type Category string
 
 const (
 	Electronics Category = "electronics"
+	Furniture            = "furniture"
+	ArtWork              = "artwork"
+	Cars                 = "cars"
 	//TODO: To add category elements
 )
 

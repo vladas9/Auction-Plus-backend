@@ -5,46 +5,79 @@ import (
 
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
+	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 type AuctionParams struct {
-	Offset, Len int
+	Category           m.Category
+	LotState           m.Condition
+	Offset, Len        int
+	MinPrice, MaxPrice m.Decimal
 }
 
 func (a AuctionParams) Validate() Problems {
-	if a.Offset > a.Len {
-		return Problems{
-			"limit":  "limmit smaller than offset",
-			"offset": "offset bigger than limit",
-		}
-	}
 	if a.Len <= 0 {
 		return Problems{"limit": "must be more that 0"}
 	}
 	if a.Offset < 0 {
 		return Problems{"offset": "cannot be negative"}
 	}
+	if !a.MaxPrice.IsZero() &&
+		a.MaxPrice.Compare(a.MinPrice) == -1 {
+		return Problems{"filters": "max price smaller than min price"}
+	}
 	return nil
 }
 
-func (s *Service) GetAuctionData(params AuctionParams) ([]*m.AuctionModel, error) {
-	var err error
-	var list []*m.AuctionModel
+func (s *Service) GetAuctions(params AuctionParams) (auctList []*m.AuctionModel, itemList []*m.ItemModel, err error) {
 	err = s.store.WithTx(func(stx *r.StoreTx) error {
-		list, err = stx.AuctionRepo().GetAll(params.Offset, params.Len)
+
+		if auctList, err = getAuctionsTx(stx, params); err != nil {
+			return fmt.Errorf("getAuctionsTx error: %w", err)
+		}
+		for _, auct := range auctList {
+			item, err := stx.ItemRepo().GetById(auct.ItemId)
+			if err != nil {
+				return err
+			}
+			itemList = append(itemList, item)
+		}
 		return err
 	})
+
 	if err != nil {
-		return nil, fmt.Errorf("GetAuctions controller: %w", err)
+		return nil, nil, fmt.Errorf("GetAuctions controller: %w", err)
 	}
-	return list, err
+
+	utils.Logger.Info("getAuctions:", auctList, itemList)
+	return auctList, itemList, err
 }
 
-func (s *Service) CreateAuctions(auctions []*m.AuctionModel) error {
+func getAuctionsTx(stx *r.StoreTx, params AuctionParams) (auctions []*m.AuctionModel, err error) {
+	auctionRepo := stx.AuctionRepo()
+	if params.MaxPrice.IsZero() {
+		auctions, err = auctionRepo.GetAll(params.Offset, params.Len)
+		utils.Logger.Info("getAuctionsTx in:", auctions)
+	} else {
+		auctions, err = auctionRepo.GetAllFiltered(
+			params.Offset, params.Len,
+			params.MinPrice, params.MaxPrice)
+	}
+	if err != nil {
+		auctions = nil
+	}
+	return auctions, err
+}
+
+func (s *Service) CreateAuctions(auctions []*m.AuctionModel, items []*m.ItemModel) error {
 	err := s.store.WithTx(func(stx *r.StoreTx) error {
-		for _, auct := range auctions {
-			err := stx.AuctionRepo().Insert(auct)
-			if err != nil {
+		for i, auct := range auctions {
+			if itemId, err := stx.ItemRepo().Insert(items[i]); err != nil {
+				return err
+			} else {
+				auct.ItemId = itemId
+			}
+			if err := stx.AuctionRepo().Insert(auct); err != nil {
 				return err
 			}
 		}

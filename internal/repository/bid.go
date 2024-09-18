@@ -10,8 +10,8 @@ type bidRepo struct {
 	tx *sql.Tx
 }
 
-func BidRepo(tx *sql.Tx) *bidRepo {
-	return &bidRepo{tx}
+func (s StoreTx) BidRepo() *bidRepo {
+	return &bidRepo{s.Tx}
 }
 
 func (r *bidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
@@ -78,19 +78,17 @@ func (r *bidRepo) GetAll() ([]*m.BidModel, error) {
 func (r *bidRepo) Insert(item *m.BidModel) error {
 	query := `
 		INSERT INTO bids (
-			id,
-			user_id,
-			amount,
-			timestamp
+			auction_id,
+			bidder_id,
+			amount
 		) VALUES (
-			$1, $2, $3, $4
+			$1, $2, $3
 		)
 	`
 	_, err := r.tx.Exec(query,
-		&item.ID,
+		&item.AuctionId,
 		&item.UserId,
 		&item.Amount,
-		&item.Timestamp,
 	)
 
 	return err

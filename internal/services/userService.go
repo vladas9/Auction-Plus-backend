@@ -16,9 +16,6 @@ func (s *Service) CreateUser(user *m.UserModel) (*m.UserModel, error) {
 		return nil, err
 	}
 
-	if err != nil {
-	}
-
 	imageUUID := uuid.New().String()
 
 	if err = u.DecodeAndSaveImage(user.Image, ImageDir, imageUUID); err != nil {
@@ -33,7 +30,7 @@ func (s *Service) CreateUser(user *m.UserModel) (*m.UserModel, error) {
 	})
 
 	if err != nil {
-		return nil, fmt.Errorf("Faled to find user: %v", err.Error())
+		return nil, fmt.Errorf("Faled to create user: %v", err.Error())
 	}
 
 	return user, nil

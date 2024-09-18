@@ -8,13 +8,14 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"github.com/joho/godotenv"
-	s "github.com/vladas9/backend-practice/internal/services"
-	u "github.com/vladas9/backend-practice/internal/utils"
 	"log"
 	"net/http"
 	"os"
 	"reflect"
+
+	"github.com/joho/godotenv"
+	s "github.com/vladas9/backend-practice/internal/services"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 type Controller struct {
@@ -45,12 +46,12 @@ func WriteJSON(w http.ResponseWriter, status int, v any) error {
 	return nil
 }
 
+type Response map[string]interface{}
+
 type ApiError struct {
 	ErrorMsg any `json:"error"`
 	Status   int `json:"status"`
 }
-
-type Response map[string]interface{}
 
 func (e *ApiError) Error() string {
 	return fmt.Sprint(e.ErrorMsg)

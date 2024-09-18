@@ -2,9 +2,12 @@ package controllers
 
 import (
 	"fmt"
-	s "github.com/vladas9/backend-practice/internal/services"
 	"net/http"
 	"strconv"
+
+	"github.com/vladas9/backend-practice/internal/dtos"
+	s "github.com/vladas9/backend-practice/internal/services"
+	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
@@ -36,6 +39,11 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		return &ApiError{Status: 400, ErrorMsg: problems}
 	}
 
-	auctionList, err := c.service.GetAuctions(params)
-	return WriteJSON(w, http.StatusOK, auctionList)
+	auctionList, itemsList, err := c.service.GetAuctions(params)
+	var cards []dtos.AuctionCard
+	utils.Logger.Info(auctionList)
+	for i, auction := range auctionList {
+		cards = append(cards, dtos.MapAuctionCard(i+1, *auction, *itemsList[i]))
+	}
+	return WriteJSON(w, http.StatusOK, cards)
 }

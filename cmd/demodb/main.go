@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/google/uuid"
+	//"github.com/google/uuid"
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 
@@ -14,16 +14,25 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	user := u.GenerateDummyUser()
 	err = r.NewStore(db).WithTx(func(stx *r.StoreTx) error {
-		//userId, err := stx.UserRepo().Insert(u.GenerateDummyUser())
-		//if err != nil {
-		//	return err
-		//}
-		userId, _ := uuid.Parse("da0db08a-0ab1-483c-a228-f592a8d43b8b")
+		userId, repoErr := stx.UserRepo().Insert(user)
+		u.Logger.Info("demoDB: userId: ", userId)
+		if repoErr != nil {
+			u.Logger.Error("demoDB stx.UserRepo():", repoErr)
+			return repoErr
+		}
+		//userId, _ := uuid.Parse("da0db08a-0ab1-483c-a228-f592a8d43b8b")
 
-		auctions := u.GenerateDummyAuctions(userId)
-		for _, auct := range auctions {
-			err := stx.AuctionRepo().Insert(auct)
+		for i := 0; i <= 20; i++ {
+			item := u.CreateDummyItem()
+			itemId, err := stx.ItemRepo().Insert(item)
+			if err != nil {
+				return err
+			}
+			auct := u.CreateDummyAuction(itemId, userId)
+			u.Logger.Info("\n", auct, "\n")
+			err = stx.AuctionRepo().Insert(auct)
 			if err != nil {
 				return err
 			}
@@ -32,6 +41,6 @@ func main() {
 
 	})
 	if err != nil {
-		println(err.Error())
+		u.Logger.Error("demoDB:", err)
 	}
 }

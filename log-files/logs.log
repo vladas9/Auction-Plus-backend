@@ -1,283 +1,320 @@
-INFO: 2024/09/07 13:19:28 Created handler from  main.apiFunc
-INFO: 2024/09/07 13:19:28 Created handler from  main.apiFunc
-INFO: 2024/09/07 13:19:28 Created handler from  main.apiFunc
-INFO: 2024/09/07 13:19:28 Registered Routes
-INFO: 2024/09/07 13:19:28 Started server on localhost:1169
-INFO: 2024/09/07 13:25:36 Created handler from  server.apiFunc
-INFO: 2024/09/07 13:25:36 Created handler from  server.apiFunc
-INFO: 2024/09/07 13:25:36 Created handler from  server.apiFunc
-INFO: 2024/09/07 13:25:36 Registered Routes
-INFO: 2024/09/07 13:25:36 Started server on localhost:1169
-INFO: 2024/09/07 13:47:50 Created handler from  server.apiFunc
-INFO: 2024/09/07 13:47:50 Created handler from  server.apiFunc
-INFO: 2024/09/07 13:47:50 Created handler from  server.apiFunc
-INFO: 2024/09/07 13:47:50 Created handler from  server.apiFunc
-INFO: 2024/09/07 13:47:50 Registered Routes
-INFO: 2024/09/07 13:47:50 Started server on localhost:1169
-INFO: 2024/09/13 11:03:44 Started server on localhost:1169
-INFO: 2024/09/13 11:12:06 Started server on localhost:1169
-INFO: 2024/09/13 11:17:15 Started server on localhost:1169
-ERROR: 2024/09/13 11:18:31 Registration failed: invalid character '-' in numeric literal
-ERROR: 2024/09/13 11:20:47 Registration failed: invalid character '-' in numeric literal
-ERROR: 2024/09/13 11:25:26 Registration failed: invalid character '-' in numeric literal
-ERROR: 2024/09/13 11:27:46 Registration failed: invalid character '-' in numeric literal
-ERROR: 2024/09/13 11:29:33 Registration failed: invalid character '-' in numeric literal
-ERROR: 2024/09/13 11:29:57 Registration failed: invalid character '-' in numeric literal
-ERROR: 2024/09/13 11:33:08 Registration failed: json: Unmarshal(nil *models.UserModel)
-INFO: 2024/09/13 11:35:05 Started server on localhost:1169
-INFO: 2024/09/13 11:35:11 Creating user:  test
-INFO: 2024/09/13 11:40:21 Started server on localhost:1169
-INFO: 2024/09/13 11:40:24 &{{00000000-0000-0000-0000-000000000000} test test@test test test 0000000 client 0001-01-01 00:00:00 +0000 UTC}
-INFO: 2024/09/13 11:40:24 Creating user:  test
-INFO: 2024/09/13 11:41:53 Started server on localhost:1169
-INFO: 2024/09/13 11:41:57 Creating user:  test
-INFO: 2024/09/13 11:41:57 &{{00000000-0000-0000-0000-000000000000} test test@test test test 0000000 client 0001-01-01 00:00:00 +0000 UTC}
-ERROR: 2024/09/13 11:47:27 connecting db:  sql: unknown driver "posgres" (forgotten import?)
-INFO: 2024/09/13 11:47:27 Started server on localhost:1169
-INFO: 2024/09/13 11:47:30 Creating user:  test
-ERROR: 2024/09/13 11:48:11 connecting db:  sql: unknown driver "pq" (forgotten import?)
-INFO: 2024/09/13 11:48:11 Started server on localhost:1169
-INFO: 2024/09/13 11:48:14 Creating user:  test
-INFO: 2024/09/13 11:51:54 host= user= password= dbname= port= sslmode=
-ERROR: 2024/09/13 11:51:54 connecting db:  dial tcp: lookup tcp/sslmode=: unknown port
-INFO: 2024/09/13 11:51:54 Started server on localhost:1169
-INFO: 2024/09/13 11:51:58 Creating user:  test
-INFO: 2024/09/13 11:53:53 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=
-ERROR: 2024/09/13 11:53:53 connecting db:  pq: SSL is not enabled on the server
-INFO: 2024/09/13 11:53:53 Started server on localhost:1169
-INFO: 2024/09/13 11:53:55 Creating user:  test
-INFO: 2024/09/13 11:54:27 Creating user:  test
-INFO: 2024/09/13 11:54:46 host=localhost user=postgres password= dbname=auctiondb port=5432%!(EXTRA string=)
-ERROR: 2024/09/13 11:54:46 connecting db:  dial tcp: lookup tcp/5432%!(EXTRA: unknown port
-INFO: 2024/09/13 11:54:46 Started server on localhost:1169
-INFO: 2024/09/13 11:54:59 host=localhost user=postgres password= dbname=auctiondb port=5432
-ERROR: 2024/09/13 11:54:59 connecting db:  pq: SSL is not enabled on the server
-INFO: 2024/09/13 11:54:59 Started server on localhost:1169
-INFO: 2024/09/13 11:55:01 Creating user:  test
-INFO: 2024/09/13 11:55:33 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=false
-ERROR: 2024/09/13 11:55:33 connecting db:  pq: unsupported sslmode "false"; only "require" (default), "verify-full", "verify-ca", and "disable" supported
-INFO: 2024/09/13 11:55:33 Started server on localhost:1169
-INFO: 2024/09/13 11:55:35 Creating user:  test
-INFO: 2024/09/13 11:56:07 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disabled
-ERROR: 2024/09/13 11:56:07 connecting db:  pq: unsupported sslmode "disabled"; only "require" (default), "verify-full", "verify-ca", and "disable" supported
-INFO: 2024/09/13 11:56:07 Started server on localhost:1169
-INFO: 2024/09/13 11:56:11 Creating user:  test
-INFO: 2024/09/13 11:56:36 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disabled
-ERROR: 2024/09/13 11:56:36 connecting db:  pq: unsupported sslmode "disabled"; only "require" (default), "verify-full", "verify-ca", and "disable" supported
-INFO: 2024/09/13 11:56:36 Started server on localhost:1169
-INFO: 2024/09/13 11:56:39 Creating user:  test
-INFO: 2024/09/13 11:57:02 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 11:57:02 Started server on localhost:1169
-INFO: 2024/09/13 11:57:04 Creating user:  test
-ERROR: 2024/09/13 11:57:04 Registration failed: Faled to create user: pq: syntax error at or near "phone_number"
-INFO: 2024/09/13 11:58:45 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 11:58:45 Started server on localhost:1169
-INFO: 2024/09/13 11:58:48 Creating user:  test
-ERROR: 2024/09/13 11:58:48 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:04:09 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:04:09 Started server on localhost:1169
-INFO: 2024/09/13 12:04:11 Creating user:  test
-ERROR: 2024/09/13 12:04:11 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:05:16 Creating user:  test
-ERROR: 2024/09/13 12:05:16 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:13:34 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:13:35 Started server on localhost:1169
-INFO: 2024/09/13 12:13:38 Creating user:  test
-ERROR: 2024/09/13 12:13:38 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:16:09 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:16:09 Started server on localhost:1169
-INFO: 2024/09/13 12:16:12 Creating user:  test
-ERROR: 2024/09/13 12:16:12 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:17:09 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:17:09 Started server on localhost:1169
-INFO: 2024/09/13 12:17:12 Creating user:  test
-ERROR: 2024/09/13 12:17:12 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:20:44 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:20:44 Started server on localhost:1169
-INFO: 2024/09/13 12:20:46 Creating user:  test
-INFO: 2024/09/13 12:21:23 host=localhost user=postgres password= dbname=auctiond port=5432 sslmode=disable
-INFO: 2024/09/13 12:21:24 Started server on localhost:1169
-INFO: 2024/09/13 12:21:32 Creating user:  test
-INFO: 2024/09/13 12:23:10 host=localhost user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:23:10 Started server on localhost:1169
-INFO: 2024/09/13 12:23:13 Creating user:  test
-ERROR: 2024/09/13 12:23:13 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:26:10 host=localhost user=postgres password= dbname=test port=5432 sslmode=disable
-INFO: 2024/09/13 12:26:10 Started server on localhost:1169
-INFO: 2024/09/13 12:27:42 host=localhost user=postgr<LeftMouse>es password= dbname=test port=5432 sslmode=disable
-INFO: 2024/09/13 12:27:42 Successfully connected to the database
-INFO: 2024/09/13 12:27:42 Started server on localhost:1169
-INFO: 2024/09/13 12:27:44 Creating user:  test
-ERROR: 2024/09/13 12:27:44 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:37:46 host=/var/run/postgresql user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:37:46 Successfully connected to the database
-INFO: 2024/09/13 12:37:46 Started server on localhost:1169
-INFO: 2024/09/13 12:37:48 Creating user:  test
-ERROR: 2024/09/13 12:37:48 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:38:57 host=/var/run/postgresql user=postgres password= dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:38:57 Successfully connected to the database
-INFO: 2024/09/13 12:38:57 Started server on localhost:1169
-INFO: 2024/09/13 12:38:59 Creating user:  test
-ERROR: 2024/09/13 12:38:59 Registration failed: Faled to create user: pq: relation "users" does not exist
-INFO: 2024/09/13 12:40:01 host=localhost user=postgres password= dbname=test port=5432 sslmode=disable
-INFO: 2024/09/13 12:40:01 Successfully connected to the database
-INFO: 2024/09/13 12:40:01 Started server on localhost:1169
-INFO: 2024/09/13 12:40:24 host=localhost user=postgres dbname=test port=5432 sslmode=disable
-ERROR: 2024/09/13 12:40:24 connecting db:  pq: database "test" does not exist
-INFO: 2024/09/13 12:40:24 Started server on localhost:1169
-INFO: 2024/09/13 12:41:19 host=localhost user=postgres dbname=test port=5432 sslmode=disable
-ERROR: 2024/09/13 12:41:19 connecting db:  pq: database "test" does not exist
-INFO: 2024/09/13 12:41:19 Started server on localhost:1169
-INFO: 2024/09/13 12:43:10 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:43:10 Successfully connected to the database
-INFO: 2024/09/13 12:43:10 Started server on localhost:1169
-INFO: 2024/09/13 12:43:15 Creating user:  test
-ERROR: 2024/09/13 12:43:15 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_pkey"
-INFO: 2024/09/13 12:45:23 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:45:23 Successfully connected to the database
-INFO: 2024/09/13 12:45:23 Started server on localhost:1169
-INFO: 2024/09/13 12:45:26 Creating user:  test
-ERROR: 2024/09/13 12:45:26 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_pkey"
-INFO: 2024/09/13 12:45:29 Creating user:  test
-ERROR: 2024/09/13 12:45:29 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_pkey"
-INFO: 2024/09/13 12:46:51 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:46:51 Successfully connected to the database
-INFO: 2024/09/13 12:46:51 Started server on localhost:1169
-INFO: 2024/09/13 12:46:54 Creating user:  test
-INFO: 2024/09/13 12:51:34 Creating user:  test
-INFO: 2024/09/13 12:52:39 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 12:52:39 Successfully connected to the database
-INFO: 2024/09/13 12:52:39 Started server on localhost:1169
-INFO: 2024/09/13 12:52:42 2024-09-13 12:52:42.638010164 +0300 EEST m=+3.365444031
-INFO: 2024/09/13 12:52:42 Creating user:  test
-ERROR: 2024/09/13 12:52:42 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
-INFO: 2024/09/13 12:52:48 2024-09-13 12:52:48.880734882 +0300 EEST m=+9.608169727
-INFO: 2024/09/13 12:52:48 Creating user:  test
-INFO: 2024/09/13 13:02:20 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 13:02:20 Successfully connected to the database
-INFO: 2024/09/13 13:02:20 Started server on localhost:1169
-INFO: 2024/09/13 13:02:24 2024-09-13 13:02:24.062347136 +0300 EEST m=+3.896992699
-INFO: 2024/09/13 13:02:24 Creating user:  test
-INFO: 2024/09/13 13:05:39 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/13 13:05:39 Successfully connected to the database
-INFO: 2024/09/13 13:05:39 Started server on localhost:1169
-INFO: 2024/09/13 13:05:43 2024-09-13 13:05:43.543222502 +0300 EEST m=+4.193590673
-INFO: 2024/09/13 13:05:43 Creating user:  test
-INFO: 2024/09/13 13:06:23 2024-09-13 13:06:23.449668431 +0300 EEST m=+44.100036951
-INFO: 2024/09/13 13:06:23 Creating user:  test
-ERROR: 2024/09/13 13:06:23 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
-INFO: 2024/09/14 13:26:09 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/14 13:26:09 Successfully connected to the database
-INFO: 2024/09/14 13:26:09 Started server on localhost:1169
-INFO: 2024/09/14 19:40:39 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/14 19:40:39 Successfully connected to the database
-INFO: 2024/09/14 19:40:39 Started server on localhost:1169
-INFO: 2024/09/14 23:59:15 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/14 23:59:15 Successfully connected to the database
-INFO: 2024/09/14 23:59:15 Started server on localhost:1169
-INFO: 2024/09/15 19:37:40 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/15 19:37:40 Successfully connected to the database
-INFO: 2024/09/15 19:37:40 Started server on localhost:1169
-INFO: 2024/09/15 20:03:47 Creating user:  example_username
-ERROR: 2024/09/15 20:03:47 Registration failed: Faled to create user: pq: column "registered_date" of relation "users" does not exist
-INFO: 2024/09/15 20:05:47 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/15 20:05:47 Successfully connected to the database
-INFO: 2024/09/15 20:05:47 Started server on localhost:1169
-INFO: 2024/09/15 20:05:53 Creating user:  example_username
-ERROR: 2024/09/15 20:05:53 Registration failed: Faled to create user: pq: INSERT has more expressions than target columns
-INFO: 2024/09/15 20:07:42 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/15 20:07:42 Successfully connected to the database
-INFO: 2024/09/15 20:07:42 Started server on localhost:1169
-INFO: 2024/09/15 20:07:45 Creating user:  example_username
-INFO: 2024/09/15 20:09:38 Creating user:  example_username
-INFO: 2024/09/15 20:22:32 Creating user:  example_username
-ERROR: 2024/09/15 20:22:32 Registration failed: Faled to create user: pq: duplicate key value violates unique constraint "users_email_key"
-INFO: 2024/09/16 13:39:39 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 13:39:39 Successfully connected to the database
-INFO: 2024/09/16 13:39:39 Started server on localhost:1169
-INFO: 2024/09/16 16:06:40 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:06:41 Successfully connected to the database
-INFO: 2024/09/16 16:06:41 Started server on localhost:1169
-ERROR: 2024/09/16 16:06:43 Registration failed: Faled to find user: pq: column "image" of relation "users" does not exist
-INFO: 2024/09/16 16:10:27 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:10:27 Successfully connected to the database
-INFO: 2024/09/16 16:10:27 Started server on localhost:1169
-ERROR: 2024/09/16 16:10:31 <nil>
-INFO: 2024/09/16 16:12:36 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:12:36 Successfully connected to the database
-INFO: 2024/09/16 16:12:36 Started server on localhost:1169
-ERROR: 2024/09/16 16:12:40 Registration failed: Faled to find user: pq: duplicate key value violates unique constraint "users_email_key"
-ERROR: 2024/09/16 16:13:50 <nil>
-INFO: 2024/09/16 16:16:53 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:16:53 Successfully connected to the database
-INFO: 2024/09/16 16:16:53 Started server on localhost:1169
-ERROR: 2024/09/16 16:16:57 Registration failed: Faled to find user: pq: duplicate key value violates unique constraint "users_email_key"
-ERROR: 2024/09/16 16:17:26 <nil>
-INFO: 2024/09/16 16:20:24 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:20:24 Successfully connected to the database
-INFO: 2024/09/16 16:20:24 Started server on localhost:1169
-INFO: 2024/09/16 16:28:27 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:28:27 Successfully connected to the database
-INFO: 2024/09/16 16:28:27 Started server on localhost:1169
-INFO: 2024/09/16 16:52:05 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:52:05 Successfully connected to the database
-INFO: 2024/09/16 16:52:05 Started server on localhost:1169
-INFO: 2024/09/16 16:53:10 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:53:10 Successfully connected to the database
-INFO: 2024/09/16 16:53:10 Started server on localhost:1169
-ERROR: 2024/09/16 16:53:30 Invalid offset
-INFO: 2024/09/16 16:58:45 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:58:45 Successfully connected to the database
-INFO: 2024/09/16 16:58:45 Started server on localhost:1169
-ERROR: 2024/09/16 16:58:49 Invalid offset
-INFO: 2024/09/16 16:59:18 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 16:59:18 Successfully connected to the database
-INFO: 2024/09/16 16:59:18 Started server on localhost:1169
-ERROR: 2024/09/16 16:59:21 sql: Scan error on column index 7, name "extra_time_duration": converting driver.Value type []uint8 ("50000000:00:00") to a int64: invalid syntax
-INFO: 2024/09/16 17:12:09 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 17:12:09 Successfully connected to the database
-INFO: 2024/09/16 17:12:09 Started server on localhost:1169
-ERROR: 2024/09/16 17:12:12 sql: Scan error on column index 7, name "extra_time_duration": converting driver.Value type []uint8 ("50000000:00:00") to a int64: invalid syntax
-INFO: 2024/09/16 17:12:36 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 17:12:36 Successfully connected to the database
-INFO: 2024/09/16 17:12:36 Started server on localhost:1169
-INFO: 2024/09/16 17:16:04 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 17:16:04 Successfully connected to the database
-INFO: 2024/09/16 17:16:04 Started server on localhost:1169
-INFO: 2024/09/16 17:16:52 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 17:16:52 Successfully connected to the database
-INFO: 2024/09/16 17:16:52 Started server on localhost:1169
-INFO: 2024/09/16 17:17:43 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/16 17:17:43 Successfully connected to the database
-INFO: 2024/09/16 17:17:43 Started server on localhost:1169
-INFO: 2024/09/17 10:58:50 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 10:58:50 Successfully connected to the database
-INFO: 2024/09/17 10:58:50 Started server on localhost:1169
-INFO: 2024/09/17 11:01:55 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:01:55 Successfully connected to the database
-INFO: 2024/09/17 11:01:55 Started server on localhost:1169
-INFO: 2024/09/17 11:09:35 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:09:35 Successfully connected to the database
-INFO: 2024/09/17 11:09:35 Started server on localhost:1169
-INFO: 2024/09/17 11:11:51 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:11:51 Successfully connected to the database
-INFO: 2024/09/17 11:11:51 Started server on localhost:1169
-INFO: 2024/09/17 11:12:36 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:12:36 Successfully connected to the database
-INFO: 2024/09/17 11:12:36 Started server on localhost:1169
-INFO: 2024/09/17 11:17:43 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:17:43 Successfully connected to the database
-INFO: 2024/09/17 11:17:43 Started server on localhost:1169
-INFO: 2024/09/17 11:23:42 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:23:42 Successfully connected to the database
-INFO: 2024/09/17 11:23:42 Started server on localhost:1169
-INFO: 2024/09/17 11:25:49 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:25:49 Successfully connected to the database
-INFO: 2024/09/17 11:25:49 Started server on localhost:1169
-INFO: 2024/09/17 11:27:14 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:27:14 Successfully connected to the database
-INFO: 2024/09/17 11:27:14 Started server on localhost:1169
-ERROR: 2024/09/17 11:27:16 sql: Scan error on column index 7, name "extra_time_duration": converting driver.Value type []uint8 ("50000000:00:00") to a int64: invalid syntax
-INFO: 2024/09/17 11:44:52 host=localhost user=postgres dbname=auctiondb port=5432 sslmode=disable
-INFO: 2024/09/17 11:44:52 Successfully connected to the database
-INFO: 2024/09/17 11:44:52 Started server on localhost:1169
+INFO: 2024/09/18 15:54:43 Successfully connected to the database
+INFO: 2024/09/18 15:54:43 Started server on localhost:1169
+INFO: 2024/09/18 15:55:07 getAuctionsTx: [0xc000134640 0xc0001346e0]
+INFO: 2024/09/18 15:55:07 <nil>
+INFO: 2024/09/18 15:55:07 []
+INFO: 2024/09/18 15:57:42 Successfully connected to the database
+INFO: 2024/09/18 15:57:42 Started server on localhost:1169
+INFO: 2024/09/18 15:57:46 getAuctionsTx: [] []
+INFO: 2024/09/18 15:57:46 []
+INFO: 2024/09/18 15:58:32 Successfully connected to the database
+INFO: 2024/09/18 15:58:32 Started server on localhost:1169
+INFO: 2024/09/18 15:58:35 getAuctions: [] []
+INFO: 2024/09/18 15:58:35 []
+INFO: 2024/09/18 15:59:57 Successfully connected to the database
+INFO: 2024/09/18 15:59:57 Started server on localhost:1169
+INFO: 2024/09/18 16:00:00 getAuctionsTx in: [0xc0000a37c0 0xc0000a3860]
+INFO: 2024/09/18 16:00:00 getAuctions: [] []
+INFO: 2024/09/18 16:00:00 []
+INFO: 2024/09/18 16:00:17 getAuctionsTx in: [0xc0000a3a40 0xc0000a3ae0 0xc0000a3b80 0xc0000a3c20]
+INFO: 2024/09/18 16:00:17 getAuctions: [] []
+INFO: 2024/09/18 16:00:17 []
+INFO: 2024/09/18 16:05:23 getAuctionsTx in: [0xc0000a3e00 0xc0000a3ea0 0xc0001fe000 0xc0001fe0a0]
+INFO: 2024/09/18 16:05:23 getAuctions: [] []
+INFO: 2024/09/18 16:05:23 []
+INFO: 2024/09/18 16:05:28 Successfully connected to the database
+INFO: 2024/09/18 16:05:28 Started server on localhost:1169
+INFO: 2024/09/18 16:05:30 getAuctionsTx in: []
+INFO: 2024/09/18 16:05:30 getAuctions: [] []
+INFO: 2024/09/18 16:05:30 []
+INFO: 2024/09/18 16:06:59 Successfully connected to the database
+INFO: 2024/09/18 16:06:59 Started server on localhost:1169
+INFO: 2024/09/18 16:07:04 getAuctionsTx in: [0xc000224460 0xc000224500 0xc0002245a0 0xc000224640]
+INFO: 2024/09/18 16:07:04 getAuctions: [0xc000224460 0xc000224500 0xc0002245a0 0xc000224640] [0xc000218d90 0xc000136000 0xc000136070 0xc000218e00]
+INFO: 2024/09/18 16:07:04 [0xc000224460 0xc000224500 0xc0002245a0 0xc000224640]
+INFO: 2024/09/18 18:33:48 Successfully connected to the database
+INFO: 2024/09/18 18:33:48 Started server on localhost:1169
+INFO: 2024/09/18 18:34:02 getAuctionsTx in: [0xc00022c5a0 0xc00022c640 0xc00022c6e0 0xc00022c780]
+INFO: 2024/09/18 18:34:02 getAuctions: [0xc00022c5a0 0xc00022c640 0xc00022c6e0 0xc00022c780] [0xc000222d90 0xc000222e00 0xc000090000 0xc00015d570]
+INFO: 2024/09/18 18:34:02 [0xc00022c5a0 0xc00022c640 0xc00022c6e0 0xc00022c780]
+INFO: 2024/09/18 18:34:39 getAuctionsTx in: [0xc000135860 0xc000135900 0xc0001359a0 0xc000135a40]
+INFO: 2024/09/18 18:34:39 getAuctions: [0xc000135860 0xc000135900 0xc0001359a0 0xc000135a40] [0xc00015d730 0xc000090070 0xc00015d7a0 0xc0000900e0]
+INFO: 2024/09/18 18:34:39 [0xc000135860 0xc000135900 0xc0001359a0 0xc000135a40]
+INFO: 2024/09/18 18:35:00 getAuctionsTx in: [0xc0002840a0 0xc000284140 0xc0002841e0 0xc000284280]
+INFO: 2024/09/18 18:35:00 getAuctions: [0xc0002840a0 0xc000284140 0xc0002841e0 0xc000284280] [0xc00015d810 0xc000222e70 0xc00015d880 0xc000222ee0]
+INFO: 2024/09/18 18:35:00 [0xc0002840a0 0xc000284140 0xc0002841e0 0xc000284280]
+INFO: 2024/09/18 18:35:05 getAuctionsTx in: [0xc000284820 0xc0002848c0 0xc000284960 0xc000284a00]
+INFO: 2024/09/18 18:35:05 getAuctions: [0xc000284820 0xc0002848c0 0xc000284960 0xc000284a00] [0xc00015d960 0xc000222f50 0xc00015d9d0 0xc000222fc0]
+INFO: 2024/09/18 18:35:05 [0xc000284820 0xc0002848c0 0xc000284960 0xc000284a00]
+INFO: 2024/09/18 18:35:06 getAuctionsTx in: [0xc00008e820 0xc00008e8c0 0xc00008e960 0xc00008ea00]
+INFO: 2024/09/18 18:35:06 getAuctions: [0xc00008e820 0xc00008e8c0 0xc00008e960 0xc00008ea00] [0xc0000901c0 0xc000090230 0xc0002230a0 0xc0000902a0]
+INFO: 2024/09/18 18:35:06 [0xc00008e820 0xc00008e8c0 0xc00008e960 0xc00008ea00]
+INFO: 2024/09/18 18:35:06 getAuctionsTx in: [0xc00008f040 0xc00008f0e0 0xc00008f180 0xc00008f220]
+INFO: 2024/09/18 18:35:06 getAuctions: [0xc00008f040 0xc00008f0e0 0xc00008f180 0xc00008f220] [0xc000090380 0xc00015da40 0xc0000903f0 0xc00015dab0]
+INFO: 2024/09/18 18:35:06 [0xc00008f040 0xc00008f0e0 0xc00008f180 0xc00008f220]
+INFO: 2024/09/18 18:35:13 getAuctionsTx in: [0xc00008f7c0 0xc00008f860 0xc00008f900 0xc00008f9a0]
+INFO: 2024/09/18 18:35:13 getAuctions: [0xc00008f7c0 0xc00008f860 0xc00008f900 0xc00008f9a0] [0xc000090460 0xc0000904d0 0xc00015db90 0xc000090540]
+INFO: 2024/09/18 18:35:13 [0xc00008f7c0 0xc00008f860 0xc00008f900 0xc00008f9a0]
+INFO: 2024/09/18 18:35:18 getAuctionsTx in: [0xc000285720 0xc0002857c0 0xc000285860 0xc000285900]
+INFO: 2024/09/18 18:35:18 getAuctions: [0xc000285720 0xc0002857c0 0xc000285860 0xc000285900] [0xc00015dc70 0xc0000905b0 0xc00015dce0 0xc00015dd50]
+INFO: 2024/09/18 18:35:18 [0xc000285720 0xc0002857c0 0xc000285860 0xc000285900]
+INFO: 2024/09/18 18:35:20 getAuctionsTx in: [0xc00028c0a0 0xc00028c140 0xc00028c1e0 0xc00028c280]
+INFO: 2024/09/18 18:35:20 getAuctions: [0xc00028c0a0 0xc00028c140 0xc00028c1e0 0xc00028c280] [0xc00015ddc0 0xc000090690 0xc000223110 0xc000090700]
+INFO: 2024/09/18 18:35:20 [0xc00028c0a0 0xc00028c140 0xc00028c1e0 0xc00028c280]
+INFO: 2024/09/18 18:35:21 getAuctionsTx in: [0xc0000b0820 0xc0000b08c0 0xc0000b0960 0xc0000b0a00]
+INFO: 2024/09/18 18:35:21 getAuctions: [0xc0000b0820 0xc0000b08c0 0xc0000b0960 0xc0000b0a00] [0xc0000907e0 0xc000090850 0xc00015de30 0xc0000908c0]
+INFO: 2024/09/18 18:35:21 [0xc0000b0820 0xc0000b08c0 0xc0000b0960 0xc0000b0a00]
+INFO: 2024/09/18 18:35:22 getAuctionsTx in: [0xc00022dd60 0xc00022de00 0xc00022dea0 0xc000302000]
+INFO: 2024/09/18 18:35:22 getAuctions: [0xc00022dd60 0xc00022de00 0xc00022dea0 0xc000302000] [0xc000223180 0xc000090930 0xc0002231f0 0xc0000909a0]
+INFO: 2024/09/18 18:35:22 [0xc00022dd60 0xc00022de00 0xc00022dea0 0xc000302000]
+INFO: 2024/09/18 18:35:26 getAuctionsTx in: [0xc00028c8c0 0xc00028c960 0xc00028ca00 0xc00028caa0]
+INFO: 2024/09/18 18:35:26 getAuctions: [0xc00028c8c0 0xc00028c960 0xc00028ca00 0xc00028caa0] [0xc00015df10 0xc000223260 0xc0002232d0 0xc000223340]
+INFO: 2024/09/18 18:35:26 [0xc00028c8c0 0xc00028c960 0xc00028ca00 0xc00028caa0]
+INFO: 2024/09/18 18:35:29 getAuctionsTx in: [0xc000302c80 0xc000302d20 0xc000302dc0 0xc000302e60]
+INFO: 2024/09/18 18:35:29 getAuctions: [0xc000302c80 0xc000302d20 0xc000302dc0 0xc000302e60] [0xc0002233b0 0xc000223420 0xc000292000 0xc000223490]
+INFO: 2024/09/18 18:35:29 [0xc000302c80 0xc000302d20 0xc000302dc0 0xc000302e60]
+INFO: 2024/09/18 18:35:30 getAuctionsTx in: [0xc0000b1540 0xc0000b15e0 0xc0000b1680 0xc0000b1720]
+INFO: 2024/09/18 18:35:30 getAuctions: [0xc0000b1540 0xc0000b15e0 0xc0000b1680 0xc0000b1720] [0xc000090af0 0xc000223500 0xc000090b60 0xc000223570]
+INFO: 2024/09/18 18:35:30 [0xc0000b1540 0xc0000b15e0 0xc0000b1680 0xc0000b1720]
+INFO: 2024/09/18 18:35:31 getAuctionsTx in: [0xc00028cf00 0xc00028cfa0 0xc00028d040 0xc00028d0e0]
+INFO: 2024/09/18 18:35:31 getAuctions: [0xc00028cf00 0xc00028cfa0 0xc00028d040 0xc00028d0e0] [0xc0002920e0 0xc000292150 0xc0002235e0 0xc0002921c0]
+INFO: 2024/09/18 18:35:31 [0xc00028cf00 0xc00028cfa0 0xc00028d040 0xc00028d0e0]
+INFO: 2024/09/18 18:35:32 getAuctionsTx in: [0xc00028d720 0xc00028d7c0 0xc00028d860 0xc00028d900]
+INFO: 2024/09/18 18:35:32 getAuctions: [0xc00028d720 0xc00028d7c0 0xc00028d860 0xc00028d900] [0xc000292230 0xc0002922a0 0xc000090c40 0xc000292310]
+INFO: 2024/09/18 18:35:32 [0xc00028d720 0xc00028d7c0 0xc00028d860 0xc00028d900]
+INFO: 2024/09/18 18:35:33 getAuctionsTx in: [0xc000298000 0xc0002980a0 0xc000298140 0xc0002981e0]
+INFO: 2024/09/18 18:35:33 getAuctions: [0xc000298000 0xc0002980a0 0xc000298140 0xc0002981e0] [0xc000292380 0xc0002923f0 0xc0002236c0 0xc000223730]
+INFO: 2024/09/18 18:35:33 [0xc000298000 0xc0002980a0 0xc000298140 0xc0002981e0]
+INFO: 2024/09/18 18:35:34 getAuctionsTx in: [0xc000298820 0xc0002988c0 0xc000298960 0xc000298a00]
+INFO: 2024/09/18 18:35:34 getAuctions: [0xc000298820 0xc0002988c0 0xc000298960 0xc000298a00] [0xc000292460 0xc0002924d0 0xc000090d20 0xc000292540]
+INFO: 2024/09/18 18:35:34 [0xc000298820 0xc0002988c0 0xc000298960 0xc000298a00]
+INFO: 2024/09/18 18:35:35 getAuctionsTx in: [0xc000299040 0xc0002990e0 0xc000299180 0xc000299220]
+INFO: 2024/09/18 18:35:35 getAuctions: [0xc000299040 0xc0002990e0 0xc000299180 0xc000299220] [0xc0002925b0 0xc000292620 0xc000223810 0xc000292690]
+INFO: 2024/09/18 18:35:35 [0xc000299040 0xc0002990e0 0xc000299180 0xc000299220]
+INFO: 2024/09/18 18:35:35 getAuctionsTx in: [0xc000308640 0xc0003086e0 0xc000308780 0xc000308820]
+INFO: 2024/09/18 18:35:35 getAuctions: [0xc000308640 0xc0003086e0 0xc000308780 0xc000308820] [0xc000223880 0xc0002238f0 0xc000292770 0xc000223960]
+INFO: 2024/09/18 18:35:35 [0xc000308640 0xc0003086e0 0xc000308780 0xc000308820]
+INFO: 2024/09/18 18:35:35 getAuctionsTx in: [0xc000299ae0 0xc000299b80 0xc000299c20 0xc000299cc0]
+INFO: 2024/09/18 18:35:35 getAuctions: [0xc000299ae0 0xc000299b80 0xc000299c20 0xc000299cc0] [0xc0002927e0 0xc000292850 0xc000090e00 0xc0002928c0]
+INFO: 2024/09/18 18:35:35 [0xc000299ae0 0xc000299b80 0xc000299c20 0xc000299cc0]
+INFO: 2024/09/18 18:35:36 getAuctionsTx in: [0xc000308e60 0xc000308f00 0xc000308fa0 0xc000309040]
+INFO: 2024/09/18 18:35:36 getAuctions: [0xc000308e60 0xc000308f00 0xc000308fa0 0xc000309040] [0xc000223a40 0xc000223ab0 0xc000090e70 0xc000223b20]
+INFO: 2024/09/18 18:35:36 [0xc000308e60 0xc000308f00 0xc000308fa0 0xc000309040]
+INFO: 2024/09/18 18:35:36 getAuctionsTx in: [0xc000309860 0xc000309900 0xc0003099a0 0xc000309a40]
+INFO: 2024/09/18 18:35:36 getAuctions: [0xc000309860 0xc000309900 0xc0003099a0 0xc000309a40] [0xc000223b90 0xc000223c00 0xc000223c70 0xc0002929a0]
+INFO: 2024/09/18 18:35:36 [0xc000309860 0xc000309900 0xc0003099a0 0xc000309a40]
+INFO: 2024/09/18 18:35:36 getAuctionsTx in: [0xc0002a4640 0xc0002a46e0 0xc0002a4780 0xc0002a4820]
+INFO: 2024/09/18 18:35:36 getAuctions: [0xc0002a4640 0xc0002a46e0 0xc0002a4780 0xc0002a4820] [0xc000292a10 0xc000292a80 0xc000223ce0 0xc000292af0]
+INFO: 2024/09/18 18:35:36 [0xc0002a4640 0xc0002a46e0 0xc0002a4780 0xc0002a4820]
+INFO: 2024/09/18 18:35:36 getAuctionsTx in: [0xc0000b8f00 0xc0000b8fa0 0xc0000b9040 0xc0000b90e0]
+INFO: 2024/09/18 18:35:36 getAuctions: [0xc0000b8f00 0xc0000b8fa0 0xc0000b9040 0xc0000b90e0] [0xc000090fc0 0xc000091030 0xc000292b60 0xc0000910a0]
+INFO: 2024/09/18 18:35:36 [0xc0000b8f00 0xc0000b8fa0 0xc0000b9040 0xc0000b90e0]
+INFO: 2024/09/18 18:35:37 getAuctionsTx in: [0xc0003123c0 0xc000312460 0xc000312500 0xc0003125a0]
+INFO: 2024/09/18 18:35:37 getAuctions: [0xc0003123c0 0xc000312460 0xc000312500 0xc0003125a0] [0xc000223dc0 0xc000223e30 0xc000091180 0xc0000911f0]
+INFO: 2024/09/18 18:35:37 [0xc0003123c0 0xc000312460 0xc000312500 0xc0003125a0]
+INFO: 2024/09/18 18:35:37 getAuctionsTx in: [0xc0002a5220 0xc0002a52c0 0xc0002a5360 0xc0002a5400]
+INFO: 2024/09/18 18:35:37 getAuctions: [0xc0002a5220 0xc0002a52c0 0xc0002a5360 0xc0002a5400] [0xc000292c40 0xc000292cb0 0xc000091260 0xc000223ea0]
+INFO: 2024/09/18 18:35:37 [0xc0002a5220 0xc0002a52c0 0xc0002a5360 0xc0002a5400]
+INFO: 2024/09/18 18:35:37 getAuctionsTx in: [0xc0000b9ea0 0xc0000c4000 0xc0000c40a0 0xc0000c4140]
+INFO: 2024/09/18 18:35:37 getAuctions: [0xc0000b9ea0 0xc0000c4000 0xc0000c40a0 0xc0000c4140] [0xc0000912d0 0xc000091340 0xc000223f10 0xc000292d90]
+INFO: 2024/09/18 18:35:37 [0xc0000b9ea0 0xc0000c4000 0xc0000c40a0 0xc0000c4140]
+INFO: 2024/09/18 18:35:37 getAuctionsTx in: [0xc0000c45a0 0xc0000c4640 0xc0000c46e0 0xc0000c4780]
+INFO: 2024/09/18 18:35:37 getAuctions: [0xc0000c45a0 0xc0000c4640 0xc0000c46e0 0xc0000c4780] [0xc0000913b0 0xc000091420 0xc000318070 0xc000292e00]
+INFO: 2024/09/18 18:35:37 [0xc0000c45a0 0xc0000c4640 0xc0000c46e0 0xc0000c4780]
+INFO: 2024/09/18 18:35:38 getAuctionsTx in: [0xc000313040 0xc0003130e0 0xc000313180 0xc000313220]
+INFO: 2024/09/18 18:35:38 getAuctions: [0xc000313040 0xc0003130e0 0xc000313180 0xc000313220] [0xc0003180e0 0xc000318150 0xc000091490 0xc0003181c0]
+INFO: 2024/09/18 18:35:38 [0xc000313040 0xc0003130e0 0xc000313180 0xc000313220]
+INFO: 2024/09/18 18:35:38 getAuctionsTx in: [0xc0002c0280 0xc0002c0320 0xc0002c03c0 0xc0002c0460]
+INFO: 2024/09/18 18:35:38 getAuctions: [0xc0002c0280 0xc0002c0320 0xc0002c03c0 0xc0002c0460] [0xc000292ee0 0xc000292f50 0xc0003182a0 0xc000318310]
+INFO: 2024/09/18 18:35:38 [0xc0002c0280 0xc0002c0320 0xc0002c03c0 0xc0002c0460]
+INFO: 2024/09/18 18:35:38 getAuctionsTx in: [0xc000313cc0 0xc000313d60 0xc000313e00 0xc000313ea0]
+INFO: 2024/09/18 18:35:38 getAuctions: [0xc000313cc0 0xc000313d60 0xc000313e00 0xc000313ea0] [0xc000318380 0xc0003183f0 0xc000292fc0 0xc000318460]
+INFO: 2024/09/18 18:35:38 [0xc000313cc0 0xc000313d60 0xc000313e00 0xc000313ea0]
+INFO: 2024/09/18 18:35:39 getAuctionsTx in: [0xc0003205a0 0xc000320640 0xc0003206e0 0xc000320780]
+INFO: 2024/09/18 18:35:39 getAuctions: [0xc0003205a0 0xc000320640 0xc0003206e0 0xc000320780] [0xc000318540 0xc000091570 0xc0003185b0 0xc0000915e0]
+INFO: 2024/09/18 18:35:39 [0xc0003205a0 0xc000320640 0xc0003206e0 0xc000320780]
+INFO: 2024/09/18 18:35:40 getAuctionsTx in: [0xc0000c5540 0xc0000c55e0 0xc0000c5680 0xc0000c5720]
+INFO: 2024/09/18 18:35:40 getAuctions: [0xc0000c5540 0xc0000c55e0 0xc0000c5680 0xc0000c5720] [0xc0000916c0 0xc000091730 0xc000293030 0xc000318620]
+INFO: 2024/09/18 18:35:40 [0xc0000c5540 0xc0000c55e0 0xc0000c5680 0xc0000c5720]
+INFO: 2024/09/18 18:35:40 getAuctionsTx in: [0xc0002c0dc0 0xc0002c0e60 0xc0002c0f00 0xc0002c0fa0]
+INFO: 2024/09/18 18:35:40 getAuctions: [0xc0002c0dc0 0xc0002c0e60 0xc0002c0f00 0xc0002c0fa0] [0xc0002930a0 0xc000318700 0xc000293110 0xc000318770]
+INFO: 2024/09/18 18:35:40 [0xc0002c0dc0 0xc0002c0e60 0xc0002c0f00 0xc0002c0fa0]
+INFO: 2024/09/18 18:35:40 getAuctionsTx in: [0xc0002c1540 0xc0002c15e0 0xc0002c1680 0xc0002c1720]
+INFO: 2024/09/18 18:35:40 getAuctions: [0xc0002c1540 0xc0002c15e0 0xc0002c1680 0xc0002c1720] [0xc000293180 0xc000318850 0xc0002931f0 0xc0003188c0]
+INFO: 2024/09/18 18:35:40 [0xc0002c1540 0xc0002c15e0 0xc0002c1680 0xc0002c1720]
+INFO: 2024/09/18 18:35:41 getAuctionsTx in: [0xc0000c5e00 0xc0000c5ea0 0xc0000cc000 0xc0000cc0a0]
+INFO: 2024/09/18 18:35:41 getAuctions: [0xc0000c5e00 0xc0000c5ea0 0xc0000cc000 0xc0000cc0a0] [0xc0000917a0 0xc000091810 0xc0003189a0 0xc000091880]
+INFO: 2024/09/18 18:35:41 [0xc0000c5e00 0xc0000c5ea0 0xc0000cc000 0xc0000cc0a0]
+INFO: 2024/09/18 18:35:41 getAuctionsTx in: [0xc0003219a0 0xc000321a40 0xc000321ae0 0xc000321b80]
+INFO: 2024/09/18 18:35:41 getAuctions: [0xc0003219a0 0xc000321a40 0xc000321ae0 0xc000321b80] [0xc000318a10 0xc000318a80 0xc000293260 0xc0002932d0]
+INFO: 2024/09/18 18:35:41 [0xc0003219a0 0xc000321a40 0xc000321ae0 0xc000321b80]
+INFO: 2024/09/18 18:35:41 getAuctionsTx in: [0xc000328280 0xc000328320 0xc0003283c0 0xc000328460]
+INFO: 2024/09/18 18:35:41 getAuctions: [0xc000328280 0xc000328320 0xc0003283c0 0xc000328460] [0xc000318af0 0xc000091960 0xc0000919d0 0xc0002933b0]
+INFO: 2024/09/18 18:35:41 [0xc000328280 0xc000328320 0xc0003283c0 0xc000328460]
+INFO: 2024/09/18 18:35:42 getAuctionsTx in: [0xc0003286e0 0xc000328780 0xc000328820 0xc0003288c0]
+INFO: 2024/09/18 18:35:42 getAuctions: [0xc0003286e0 0xc000328780 0xc000328820 0xc0003288c0] [0xc000318bd0 0xc000091a40 0xc000318c40 0xc000091ab0]
+INFO: 2024/09/18 18:35:42 [0xc0003286e0 0xc000328780 0xc000328820 0xc0003288c0]
+INFO: 2024/09/18 18:35:46 getAuctionsTx in: [0xc0000ccfa0 0xc0000cd040 0xc0000cd0e0 0xc0000cd180]
+INFO: 2024/09/18 18:35:46 getAuctions: [0xc0000ccfa0 0xc0000cd040 0xc0000cd0e0 0xc0000cd180] [0xc000091b90 0xc000091c00 0xc000091c70 0xc000318cb0]
+INFO: 2024/09/18 18:35:46 [0xc0000ccfa0 0xc0000cd040 0xc0000cd0e0 0xc0000cd180]
+INFO: 2024/09/18 18:35:47 getAuctionsTx in: [0xc0002ca5a0 0xc0002ca640 0xc0002ca6e0 0xc0002ca780]
+INFO: 2024/09/18 18:35:47 getAuctions: [0xc0002ca5a0 0xc0002ca640 0xc0002ca6e0 0xc0002ca780] [0xc000293490 0xc000293500 0xc000293570 0xc000318d20]
+INFO: 2024/09/18 18:35:47 [0xc0002ca5a0 0xc0002ca640 0xc0002ca6e0 0xc0002ca780]
+INFO: 2024/09/18 18:35:47 getAuctionsTx in: [0xc000329220 0xc0003292c0 0xc000329360 0xc000329400]
+INFO: 2024/09/18 18:35:47 getAuctions: [0xc000329220 0xc0003292c0 0xc000329360 0xc000329400] [0xc000318e00 0xc000318e70 0xc0002935e0 0xc000293650]
+INFO: 2024/09/18 18:35:47 [0xc000329220 0xc0003292c0 0xc000329360 0xc000329400]
+INFO: 2024/09/18 18:35:47 getAuctionsTx in: [0xc0000cdae0 0xc0000cdb80 0xc0000cdc20 0xc0000cdcc0]
+INFO: 2024/09/18 18:35:47 getAuctions: [0xc0000cdae0 0xc0000cdb80 0xc0000cdc20 0xc0000cdcc0] [0xc000091ce0 0xc000318f50 0xc000091d50 0xc000318fc0]
+INFO: 2024/09/18 18:35:47 [0xc0000cdae0 0xc0000cdb80 0xc0000cdc20 0xc0000cdcc0]
+INFO: 2024/09/18 18:35:48 getAuctionsTx in: [0xc0002cb4a0 0xc0002cb540 0xc0002cb5e0 0xc0002cb680]
+INFO: 2024/09/18 18:35:48 getAuctions: [0xc0002cb4a0 0xc0002cb540 0xc0002cb5e0 0xc0002cb680] [0xc000293730 0xc0002937a0 0xc000319030 0xc000293810]
+INFO: 2024/09/18 18:35:48 [0xc0002cb4a0 0xc0002cb540 0xc0002cb5e0 0xc0002cb680]
+INFO: 2024/09/18 18:35:48 getAuctionsTx in: [0xc0000d83c0 0xc0000d8460 0xc0000d8500 0xc0000d85a0]
+INFO: 2024/09/18 18:35:48 getAuctions: [0xc0000d83c0 0xc0000d8460 0xc0000d8500 0xc0000d85a0] [0xc000091dc0 0xc000091e30 0xc0002938f0 0xc0003190a0]
+INFO: 2024/09/18 18:35:48 [0xc0000d83c0 0xc0000d8460 0xc0000d8500 0xc0000d85a0]
+INFO: 2024/09/18 18:35:49 getAuctionsTx in: [0xc0003341e0 0xc000334280 0xc000334320 0xc0003343c0]
+INFO: 2024/09/18 18:35:49 getAuctions: [0xc0003341e0 0xc000334280 0xc000334320 0xc0003343c0] [0xc000319110 0xc000319180 0xc0003191f0 0xc000091f10]
+INFO: 2024/09/18 18:35:49 [0xc0003341e0 0xc000334280 0xc000334320 0xc0003343c0]
+INFO: 2024/09/18 18:35:49 getAuctionsTx in: [0xc000334b40 0xc000334be0 0xc000334c80 0xc000334d20]
+INFO: 2024/09/18 18:35:49 getAuctions: [0xc000334b40 0xc000334be0 0xc000334c80 0xc000334d20] [0xc000319260 0xc0000dc000 0xc0002939d0 0xc0000dc070]
+INFO: 2024/09/18 18:35:49 [0xc000334b40 0xc000334be0 0xc000334c80 0xc000334d20]
+INFO: 2024/09/18 18:36:15 getAuctionsTx in: [0xc0000d8fa0 0xc0000d9040 0xc0000d90e0 0xc0000d9180 0xc0000d9220 0xc0000d92c0 0xc0000d9360]
+INFO: 2024/09/18 18:36:15 getAuctions: [0xc0000d8fa0 0xc0000d9040 0xc0000d90e0 0xc0000d9180 0xc0000d9220 0xc0000d92c0 0xc0000d9360] [0xc0000dc0e0 0xc0000dc150 0xc0003192d0 0xc0000dc1c0 0xc000319340 0xc0000dc230 0xc0000dc2a0]
+INFO: 2024/09/18 18:36:15 [0xc0000d8fa0 0xc0000d9040 0xc0000d90e0 0xc0000d9180 0xc0000d9220 0xc0000d92c0 0xc0000d9360]
+INFO: 2024/09/18 18:36:16 getAuctionsTx in: [0xc0000d9d60 0xc0000d9e00 0xc0000d9ea0 0xc0000e4000 0xc0000e40a0 0xc0000e4140 0xc0000e41e0]
+INFO: 2024/09/18 18:36:16 getAuctions: [0xc0000d9d60 0xc0000d9e00 0xc0000d9ea0 0xc0000e4000 0xc0000e40a0 0xc0000e4140 0xc0000e41e0] [0xc0000dc380 0xc000293ab0 0xc0000dc3f0 0xc000293b20 0xc0000dc460 0xc000293b90 0xc0000dc4d0]
+INFO: 2024/09/18 18:36:16 [0xc0000d9d60 0xc0000d9e00 0xc0000d9ea0 0xc0000e4000 0xc0000e40a0 0xc0000e4140 0xc0000e41e0]
+INFO: 2024/09/18 18:36:18 getAuctionsTx in: [0xc000335540 0xc0003355e0 0xc000335680 0xc000335720 0xc0003357c0 0xc000335860 0xc000335900]
+INFO: 2024/09/18 18:36:18 getAuctions: [0xc000335540 0xc0003355e0 0xc000335680 0xc000335720 0xc0003357c0 0xc000335860 0xc000335900] [0xc0003193b0 0xc000319420 0xc000293c00 0xc000319490 0xc000293c70 0xc000319500 0xc000293ce0]
+INFO: 2024/09/18 18:36:18 [0xc000335540 0xc0003355e0 0xc000335680 0xc000335720 0xc0003357c0 0xc000335860 0xc000335900]
+INFO: 2024/09/18 18:36:18 getAuctionsTx in: [0xc00033a320 0xc00033a3c0 0xc00033a460 0xc00033a500 0xc00033a5a0 0xc00033a640 0xc00033a6e0]
+INFO: 2024/09/18 18:36:18 getAuctions: [0xc00033a320 0xc00033a3c0 0xc00033a460 0xc00033a500 0xc00033a5a0 0xc00033a640 0xc00033a6e0] [0xc000319570 0xc0003195e0 0xc0000dc5b0 0xc000319650 0xc0000dc620 0xc0003196c0 0xc0000dc690]
+INFO: 2024/09/18 18:36:18 [0xc00033a320 0xc00033a3c0 0xc00033a460 0xc00033a500 0xc00033a5a0 0xc00033a640 0xc00033a6e0]
+INFO: 2024/09/18 18:36:19 getAuctionsTx in: [0xc0000e50e0 0xc0000e5180 0xc0000e5220 0xc0000e52c0 0xc0000e5360 0xc0000e5400 0xc0000e54a0]
+INFO: 2024/09/18 18:36:19 getAuctions: [0xc0000e50e0 0xc0000e5180 0xc0000e5220 0xc0000e52c0 0xc0000e5360 0xc0000e5400 0xc0000e54a0] [0xc0000dc770 0xc0000dc7e0 0xc000293dc0 0xc000319730 0xc000293e30 0xc0003197a0 0xc0000dc850]
+INFO: 2024/09/18 18:36:19 [0xc0000e50e0 0xc0000e5180 0xc0000e5220 0xc0000e52c0 0xc0000e5360 0xc0000e5400 0xc0000e54a0]
+INFO: 2024/09/18 18:36:20 getAuctionsTx in: [0xc00033b4a0 0xc00033b540 0xc00033b5e0 0xc00033b680 0xc00033b720 0xc00033b7c0 0xc00033b860]
+INFO: 2024/09/18 18:36:20 getAuctions: [0xc00033b4a0 0xc00033b540 0xc00033b5e0 0xc00033b680 0xc00033b720 0xc00033b7c0 0xc00033b860] [0xc000319880 0xc0000dc8c0 0xc0003198f0 0xc000293ea0 0xc000319960 0xc0000dc930 0xc0003199d0]
+INFO: 2024/09/18 18:36:20 [0xc00033b4a0 0xc00033b540 0xc00033b5e0 0xc00033b680 0xc00033b720 0xc00033b7c0 0xc00033b860]
+INFO: 2024/09/18 18:36:22 getAuctionsTx in: [0xc0002e7a40 0xc0002e7ae0 0xc0002e7b80 0xc0002e7c20 0xc0002e7cc0 0xc0002e7d60 0xc0002e7e00]
+INFO: 2024/09/18 18:36:22 getAuctions: [0xc0002e7a40 0xc0002e7ae0 0xc0002e7b80 0xc0002e7c20 0xc0002e7cc0 0xc0002e7d60 0xc0002e7e00] [0xc000293f10 0xc000319ab0 0xc0000dc9a0 0xc000319b20 0xc0002f8000 0xc0000dca10 0xc000319b90]
+INFO: 2024/09/18 18:36:22 [0xc0002e7a40 0xc0002e7ae0 0xc0002e7b80 0xc0002e7c20 0xc0002e7cc0 0xc0002e7d60 0xc0002e7e00]
+INFO: 2024/09/18 18:36:23 getAuctionsTx in: [0xc000350780 0xc000350820 0xc0003508c0 0xc000350960 0xc000350a00 0xc000350aa0 0xc000350b40]
+INFO: 2024/09/18 18:36:23 getAuctions: [0xc000350780 0xc000350820 0xc0003508c0 0xc000350960 0xc000350a00 0xc000350aa0 0xc000350b40] [0xc000319c00 0xc0002f8070 0xc000319c70 0xc0002f80e0 0xc000319ce0 0xc0002f8150 0xc000319d50]
+INFO: 2024/09/18 18:36:23 [0xc000350780 0xc000350820 0xc0003508c0 0xc000350960 0xc000350a00 0xc000350aa0 0xc000350b40]
+INFO: 2024/09/18 18:36:24 getAuctionsTx in: [0xc0000ee5a0 0xc0000ee640 0xc0000ee6e0 0xc0000ee780 0xc0000ee820 0xc0000ee8c0 0xc0000ee960]
+INFO: 2024/09/18 18:36:24 getAuctions: [0xc0000ee5a0 0xc0000ee640 0xc0000ee6e0 0xc0000ee780 0xc0000ee820 0xc0000ee8c0 0xc0000ee960] [0xc0000dcaf0 0xc0000dcb60 0xc0002f8230 0xc0000dcbd0 0xc0002f82a0 0xc0000dcc40 0xc000319dc0]
+INFO: 2024/09/18 18:36:24 [0xc0000ee5a0 0xc0000ee640 0xc0000ee6e0 0xc0000ee780 0xc0000ee820 0xc0000ee8c0 0xc0000ee960]
+INFO: 2024/09/18 18:36:24 getAuctionsTx in: [0xc000351680 0xc000351720 0xc0003517c0 0xc000351860 0xc000351900 0xc0003519a0 0xc000351a40]
+INFO: 2024/09/18 18:36:24 getAuctions: [0xc000351680 0xc000351720 0xc0003517c0 0xc000351860 0xc000351900 0xc0003519a0 0xc000351a40] [0xc000319ea0 0xc0000dccb0 0xc0002f8310 0xc0002f8380 0xc0000dcd20 0xc0000dcd90 0xc0000dce00]
+INFO: 2024/09/18 18:36:24 [0xc000351680 0xc000351720 0xc0003517c0 0xc000351860 0xc000351900 0xc0003519a0 0xc000351a40]
+INFO: 2024/09/18 18:36:24 getAuctionsTx in: [0xc000351cc0 0xc000351d60 0xc000351e00 0xc000351ea0 0xc00035c000 0xc00035c0a0 0xc00035c140]
+INFO: 2024/09/18 18:36:24 getAuctions: [0xc000351cc0 0xc000351d60 0xc000351e00 0xc000351ea0 0xc00035c000 0xc00035c0a0 0xc00035c140] [0xc000319f10 0xc000360000 0xc0002f8460 0xc000360070 0xc0002f84d0 0xc0003600e0 0xc0002f8540]
+INFO: 2024/09/18 18:36:24 [0xc000351cc0 0xc000351d60 0xc000351e00 0xc000351ea0 0xc00035c000 0xc00035c0a0 0xc00035c140]
+INFO: 2024/09/18 18:36:25 getAuctionsTx in: [0xc0000efc20 0xc0000efcc0 0xc0000efd60 0xc0000efe00 0xc0000efea0 0xc0000fa000 0xc0000fa0a0]
+INFO: 2024/09/18 18:36:25 getAuctions: [0xc0000efc20 0xc0000efcc0 0xc0000efd60 0xc0000efe00 0xc0000efea0 0xc0000fa000 0xc0000fa0a0] [0xc0000dce70 0xc0000dcee0 0xc0000dcf50 0xc000360150 0xc0002f8620 0xc0003601c0 0xc0002f8690]
+INFO: 2024/09/18 18:36:25 [0xc0000efc20 0xc0000efcc0 0xc0000efd60 0xc0000efe00 0xc0000efea0 0xc0000fa000 0xc0000fa0a0]
+INFO: 2024/09/18 18:36:25 getAuctionsTx in: [0xc0002f7ae0 0xc0002f7b80 0xc0002f7c20 0xc0002f7cc0 0xc0002f7d60 0xc0002f7e00 0xc0002f7ea0]
+INFO: 2024/09/18 18:36:25 getAuctions: [0xc0002f7ae0 0xc0002f7b80 0xc0002f7c20 0xc0002f7cc0 0xc0002f7d60 0xc0002f7e00 0xc0002f7ea0] [0xc0002f8700 0xc0002f8770 0xc0003602a0 0xc0000dcfc0 0xc000360310 0xc000360380 0xc0002f87e0]
+INFO: 2024/09/18 18:36:25 [0xc0002f7ae0 0xc0002f7b80 0xc0002f7c20 0xc0002f7cc0 0xc0002f7d60 0xc0002f7e00 0xc0002f7ea0]
+INFO: 2024/09/18 18:36:25 getAuctionsTx in: [0xc00035d720 0xc00035d7c0 0xc00035d860 0xc00035d900 0xc00035d9a0 0xc00035da40 0xc00035dae0]
+INFO: 2024/09/18 18:36:25 getAuctions: [0xc00035d720 0xc00035d7c0 0xc00035d860 0xc00035d900 0xc00035d9a0 0xc00035da40 0xc00035dae0] [0xc000360460 0xc0003604d0 0xc0002f8850 0xc0000dd030 0xc0002f88c0 0xc000360540 0xc0002f8930]
+INFO: 2024/09/18 18:36:25 [0xc00035d720 0xc00035d7c0 0xc00035d860 0xc00035d900 0xc00035d9a0 0xc00035da40 0xc00035dae0]
+INFO: 2024/09/18 18:36:25 getAuctionsTx in: [0xc000386be0 0xc000386c80 0xc000386d20 0xc000386dc0 0xc000386e60 0xc000386f00 0xc000386fa0]
+INFO: 2024/09/18 18:36:25 getAuctions: [0xc000386be0 0xc000386c80 0xc000386d20 0xc000386dc0 0xc000386e60 0xc000386f00 0xc000386fa0] [0xc0002f8a10 0xc0002f8a80 0xc0002f8af0 0xc0003605b0 0xc0000dd0a0 0xc0000dd110 0xc000360620]
+INFO: 2024/09/18 18:36:25 [0xc000386be0 0xc000386c80 0xc000386d20 0xc000386dc0 0xc000386e60 0xc000386f00 0xc000386fa0]
+INFO: 2024/09/18 18:36:26 getAuctionsTx in: [0xc0000faf00 0xc0000fafa0 0xc0000fb040 0xc0000fb0e0 0xc0000fb180 0xc0000fb220 0xc0000fb2c0]
+INFO: 2024/09/18 18:36:26 getAuctions: [0xc0000faf00 0xc0000fafa0 0xc0000fb040 0xc0000fb0e0 0xc0000fb180 0xc0000fb220 0xc0000fb2c0] [0xc0000dd180 0xc000360700 0xc0002f8b60 0xc000360770 0xc0003607e0 0xc000360850 0xc0003608c0]
+INFO: 2024/09/18 18:36:26 [0xc0000faf00 0xc0000fafa0 0xc0000fb040 0xc0000fb0e0 0xc0000fb180 0xc0000fb220 0xc0000fb2c0]
+INFO: 2024/09/18 18:36:27 getAuctionsTx in: [0xc0000fb5e0 0xc0000fb680 0xc0000fb720 0xc0000fb7c0 0xc0000fb860 0xc0000fb900 0xc0000fb9a0]
+INFO: 2024/09/18 18:36:27 getAuctions: [0xc0000fb5e0 0xc0000fb680 0xc0000fb720 0xc0000fb7c0 0xc0000fb860 0xc0000fb900 0xc0000fb9a0] [0xc0000dd1f0 0xc0000dd260 0xc0002f8bd0 0xc0003609a0 0xc0002f8c40 0xc000360a10 0xc0000dd2d0]
+INFO: 2024/09/18 18:36:27 [0xc0000fb5e0 0xc0000fb680 0xc0000fb720 0xc0000fb7c0 0xc0000fb860 0xc0000fb900 0xc0000fb9a0]
+INFO: 2024/09/18 18:36:27 getAuctionsTx in: [0xc000369720 0xc0003697c0 0xc000369860 0xc000369900 0xc0003699a0 0xc000369a40 0xc000369ae0]
+INFO: 2024/09/18 18:36:27 getAuctions: [0xc000369720 0xc0003697c0 0xc000369860 0xc000369900 0xc0003699a0 0xc000369a40 0xc000369ae0] [0xc000360a80 0xc0002f8d20 0xc0000dd340 0xc0002f8d90 0xc000360af0 0xc0002f8e00 0xc0000dd3b0]
+INFO: 2024/09/18 18:36:27 [0xc000369720 0xc0003697c0 0xc000369860 0xc000369900 0xc0003699a0 0xc000369a40 0xc000369ae0]
+INFO: 2024/09/18 18:36:27 getAuctionsTx in: [0xc0003761e0 0xc000376280 0xc000376320 0xc0003763c0 0xc000376460 0xc000376500 0xc0003765a0]
+INFO: 2024/09/18 18:36:27 getAuctions: [0xc0003761e0 0xc000376280 0xc000376320 0xc0003763c0 0xc000376460 0xc000376500 0xc0003765a0] [0xc000360b60 0xc0002f8ee0 0xc000360bd0 0xc0002f8f50 0xc000360c40 0xc0002f8fc0 0xc000360cb0]
+INFO: 2024/09/18 18:36:27 [0xc0003761e0 0xc000376280 0xc000376320 0xc0003763c0 0xc000376460 0xc000376500 0xc0003765a0]
+INFO: 2024/09/18 18:36:27 getAuctionsTx in: [0xc000390a00 0xc000390aa0 0xc000390b40 0xc000390be0 0xc000390c80 0xc000390d20 0xc000390dc0]
+INFO: 2024/09/18 18:36:27 getAuctions: [0xc000390a00 0xc000390aa0 0xc000390b40 0xc000390be0 0xc000390c80 0xc000390d20 0xc000390dc0] [0xc0002f9030 0xc0000dd420 0xc000360d90 0xc0000dd490 0xc0000dd500 0xc000360e00 0xc0000dd570]
+INFO: 2024/09/18 18:36:27 [0xc000390a00 0xc000390aa0 0xc000390b40 0xc000390be0 0xc000390c80 0xc000390d20 0xc000390dc0]
+INFO: 2024/09/18 18:36:28 getAuctionsTx in: [0xc000391040 0xc0003910e0 0xc000391180 0xc000391220 0xc0003912c0 0xc000391360 0xc000391400]
+INFO: 2024/09/18 18:36:28 getAuctions: [0xc000391040 0xc0003910e0 0xc000391180 0xc000391220 0xc0003912c0 0xc000391360 0xc000391400] [0xc0002f9110 0xc0000dd5e0 0xc000360e70 0xc0000dd650 0xc0000dd6c0 0xc0002f9180 0xc000360ee0]
+INFO: 2024/09/18 18:36:28 [0xc000391040 0xc0003910e0 0xc000391180 0xc000391220 0xc0003912c0 0xc000391360 0xc000391400]
+INFO: 2024/09/18 18:36:28 getAuctionsTx in: [0xc0004074a0 0xc000407540 0xc0004075e0 0xc000407680 0xc000407720 0xc0004077c0 0xc000407860]
+INFO: 2024/09/18 18:36:28 getAuctions: [0xc0004074a0 0xc000407540 0xc0004075e0 0xc000407680 0xc000407720 0xc0004077c0 0xc000407860] [0xc0000dd7a0 0xc0000dd810 0xc0002f91f0 0xc0000dd880 0xc0002f9260 0xc0000dd8f0 0xc0002f92d0]
+INFO: 2024/09/18 18:36:28 [0xc0004074a0 0xc000407540 0xc0004075e0 0xc000407680 0xc000407720 0xc0004077c0 0xc000407860]
+INFO: 2024/09/18 18:36:28 getAuctionsTx in: [0xc0004121e0 0xc000412280 0xc000412320 0xc0004123c0 0xc000412460 0xc000412500 0xc0004125a0]
+INFO: 2024/09/18 18:36:28 getAuctions: [0xc0004121e0 0xc000412280 0xc000412320 0xc0004123c0 0xc000412460 0xc000412500 0xc0004125a0] [0xc0000dd9d0 0xc0000dda40 0xc0002f9340 0xc0000ddab0 0xc0002f93b0 0xc0000ddb20 0xc0002f9420]
+INFO: 2024/09/18 18:36:28 [0xc0004121e0 0xc000412280 0xc000412320 0xc0004123c0 0xc000412460 0xc000412500 0xc0004125a0]
+INFO: 2024/09/18 18:36:29 getAuctionsTx in: [0xc00039a500 0xc00039a5a0 0xc00039a640 0xc00039a6e0 0xc00039a780 0xc00039a820 0xc00039a8c0]
+INFO: 2024/09/18 18:36:29 getAuctions: [0xc00039a500 0xc00039a5a0 0xc00039a640 0xc00039a6e0 0xc00039a780 0xc00039a820 0xc00039a8c0] [0xc0002f9490 0xc0000ddc00 0xc000360f50 0xc0000ddc70 0xc000360fc0 0xc0002f9500 0xc0000ddce0]
+INFO: 2024/09/18 18:36:29 [0xc00039a500 0xc00039a5a0 0xc00039a640 0xc00039a6e0 0xc00039a780 0xc00039a820 0xc00039a8c0]
+INFO: 2024/09/18 18:36:41 getAuctionsTx in: [0xc0004134a0 0xc000413540 0xc0004135e0 0xc000413680 0xc000413720 0xc0004137c0 0xc000413860 0xc000413900 0xc0004139a0 0xc000413a40 0xc000413ae0 0xc000413b80 0xc000413c20 0xc000413cc0 0xc000413d60]
+INFO: 2024/09/18 18:36:41 getAuctions: [0xc0004134a0 0xc000413540 0xc0004135e0 0xc000413680 0xc000413720 0xc0004137c0 0xc000413860 0xc000413900 0xc0004139a0 0xc000413a40 0xc000413ae0 0xc000413b80 0xc000413c20 0xc000413cc0 0xc000413d60] [0xc0000ddd50 0xc0000dddc0 0xc000361030 0xc0000dde30 0xc0003610a0 0xc0000ddea0 0xc000361110 0xc0000ddf10 0xc000361180 0xc00041c000 0xc0003611f0 0xc00041c070 0xc000361260 0xc00041c0e0 0xc0003612d0]
+INFO: 2024/09/18 18:36:41 [0xc0004134a0 0xc000413540 0xc0004135e0 0xc000413680 0xc000413720 0xc0004137c0 0xc000413860 0xc000413900 0xc0004139a0 0xc000413a40 0xc000413ae0 0xc000413b80 0xc000413c20 0xc000413cc0 0xc000413d60]
+INFO: 2024/09/18 18:36:43 getAuctionsTx in: [0xc00039af00 0xc00039afa0 0xc00039b040 0xc00039b0e0 0xc00039b180 0xc00039b220 0xc00039b2c0 0xc00039b360 0xc00039b400 0xc00039b4a0 0xc00039b540 0xc00039b5e0 0xc00039b680 0xc00039b720 0xc00039b7c0]
+INFO: 2024/09/18 18:36:43 getAuctions: [0xc00039af00 0xc00039afa0 0xc00039b040 0xc00039b0e0 0xc00039b180 0xc00039b220 0xc00039b2c0 0xc00039b360 0xc00039b400 0xc00039b4a0 0xc00039b540 0xc00039b5e0 0xc00039b680 0xc00039b720 0xc00039b7c0] [0xc0002f95e0 0xc0003613b0 0xc00041c150 0xc00041c1c0 0xc000361420 0xc000361490 0xc000361500 0xc000361570 0xc0003615e0 0xc000361650 0xc0003616c0 0xc00041c230 0xc00041c2a0 0xc000361730 0xc00041c310]
+INFO: 2024/09/18 18:36:43 [0xc00039af00 0xc00039afa0 0xc00039b040 0xc00039b0e0 0xc00039b180 0xc00039b220 0xc00039b2c0 0xc00039b360 0xc00039b400 0xc00039b4a0 0xc00039b540 0xc00039b5e0 0xc00039b680 0xc00039b720 0xc00039b7c0]
+INFO: 2024/09/18 18:36:44 getAuctionsTx in: [0xc000487d60 0xc000487e00 0xc000487ea0 0xc000498000 0xc0004980a0 0xc000498140 0xc0004981e0 0xc000498280 0xc000498320 0xc0004983c0 0xc000498460 0xc000498500 0xc0004985a0 0xc000498640 0xc0004986e0]
+INFO: 2024/09/18 18:36:44 getAuctions: [0xc000487d60 0xc000487e00 0xc000487ea0 0xc000498000 0xc0004980a0 0xc000498140 0xc0004981e0 0xc000498280 0xc000498320 0xc0004983c0 0xc000498460 0xc000498500 0xc0004985a0 0xc000498640 0xc0004986e0] [0xc000361810 0xc00041c380 0xc000361880 0xc00041c3f0 0xc0003618f0 0xc00041c460 0xc000361960 0xc00041c4d0 0xc0003619d0 0xc00041c540 0xc000361a40 0xc00041c5b0 0xc000361ab0 0xc00041c620 0xc000361b20]
+INFO: 2024/09/18 18:36:44 [0xc000487d60 0xc000487e00 0xc000487ea0 0xc000498000 0xc0004980a0 0xc000498140 0xc0004981e0 0xc000498280 0xc000498320 0xc0004983c0 0xc000498460 0xc000498500 0xc0004985a0 0xc000498640 0xc0004986e0]
+INFO: 2024/09/18 18:36:46 getAuctionsTx in: [0xc000499720 0xc0004997c0 0xc000499860 0xc000499900 0xc0004999a0 0xc000499a40 0xc000499ae0 0xc000499b80 0xc000499c20 0xc000499cc0 0xc000499d60 0xc000499e00 0xc000499ea0 0xc0004a4000 0xc0004a40a0]
+INFO: 2024/09/18 18:36:46 getAuctions: [0xc000499720 0xc0004997c0 0xc000499860 0xc000499900 0xc0004999a0 0xc000499a40 0xc000499ae0 0xc000499b80 0xc000499c20 0xc000499cc0 0xc000499d60 0xc000499e00 0xc000499ea0 0xc0004a4000 0xc0004a40a0] [0xc000361b90 0xc000361c00 0xc0002f9650 0xc000361c70 0xc00041c700 0xc0002f96c0 0xc000361ce0 0xc00041c770 0xc0002f9730 0xc0002f97a0 0xc00041c7e0 0xc000361d50 0xc0002f9810 0xc00041c850 0xc00041c8c0]
+INFO: 2024/09/18 18:36:46 [0xc000499720 0xc0004997c0 0xc000499860 0xc000499900 0xc0004999a0 0xc000499a40 0xc000499ae0 0xc000499b80 0xc000499c20 0xc000499cc0 0xc000499d60 0xc000499e00 0xc000499ea0 0xc0004a4000 0xc0004a40a0]
+INFO: 2024/09/18 18:36:46 getAuctionsTx in: [0xc0004a4be0 0xc0004a4c80 0xc0004a4d20 0xc0004a4dc0 0xc0004a4e60 0xc0004a4f00 0xc0004a4fa0 0xc0004a5040 0xc0004a50e0 0xc0004a5180 0xc0004a5220 0xc0004a52c0 0xc0004a5360 0xc0004a5400 0xc0004a54a0]
+INFO: 2024/09/18 18:36:46 getAuctions: [0xc0004a4be0 0xc0004a4c80 0xc0004a4d20 0xc0004a4dc0 0xc0004a4e60 0xc0004a4f00 0xc0004a4fa0 0xc0004a5040 0xc0004a50e0 0xc0004a5180 0xc0004a5220 0xc0004a52c0 0xc0004a5360 0xc0004a5400 0xc0004a54a0] [0xc000361dc0 0xc000361e30 0xc0002f98f0 0xc000361ea0 0xc0002f9960 0xc000361f10 0xc00041c930 0xc0004ae000 0xc00041c9a0 0xc0004ae070 0xc00041ca10 0xc0004ae0e0 0xc00041ca80 0xc0004ae150 0xc00041caf0]
+INFO: 2024/09/18 18:36:46 [0xc0004a4be0 0xc0004a4c80 0xc0004a4d20 0xc0004a4dc0 0xc0004a4e60 0xc0004a4f00 0xc0004a4fa0 0xc0004a5040 0xc0004a50e0 0xc0004a5180 0xc0004a5220 0xc0004a52c0 0xc0004a5360 0xc0004a5400 0xc0004a54a0]
+INFO: 2024/09/18 18:36:46 getAuctionsTx in: [0xc0003ac820 0xc0003ac8c0 0xc0003ac960 0xc0003aca00 0xc0003acaa0 0xc0003acb40 0xc0003acbe0 0xc0003acc80 0xc0003acd20 0xc0003acdc0 0xc0003ace60 0xc0003acf00 0xc0003acfa0 0xc0003ad040 0xc0003ad0e0]
+INFO: 2024/09/18 18:36:46 getAuctions: [0xc0003ac820 0xc0003ac8c0 0xc0003ac960 0xc0003aca00 0xc0003acaa0 0xc0003acb40 0xc0003acbe0 0xc0003acc80 0xc0003acd20 0xc0003acdc0 0xc0003ace60 0xc0003acf00 0xc0003acfa0 0xc0003ad040 0xc0003ad0e0] [0xc0002f99d0 0xc0002f9a40 0xc00041cbd0 0xc0002f9ab0 0xc00041cc40 0xc0002f9b20 0xc00041ccb0 0xc0004ae1c0 0xc0004ae230 0xc0002f9b90 0xc0004ae2a0 0xc0002f9c00 0xc0004ae310 0xc0002f9c70 0xc0002f9ce0]
+INFO: 2024/09/18 18:36:46 [0xc0003ac820 0xc0003ac8c0 0xc0003ac960 0xc0003aca00 0xc0003acaa0 0xc0003acb40 0xc0003acbe0 0xc0003acc80 0xc0003acd20 0xc0003acdc0 0xc0003ace60 0xc0003acf00 0xc0003acfa0 0xc0003ad040 0xc0003ad0e0]
+INFO: 2024/09/18 18:36:47 getAuctionsTx in: [0xc0004b2e60 0xc0004b2f00 0xc0004b2fa0 0xc0004b3040 0xc0004b30e0 0xc0004b3180 0xc0004b3220 0xc0004b32c0 0xc0004b3360 0xc0004b3400 0xc0004b34a0 0xc0004b3540 0xc0004b35e0 0xc0004b3680 0xc0004b3720]
+INFO: 2024/09/18 18:36:47 getAuctions: [0xc0004b2e60 0xc0004b2f00 0xc0004b2fa0 0xc0004b3040 0xc0004b30e0 0xc0004b3180 0xc0004b3220 0xc0004b32c0 0xc0004b3360 0xc0004b3400 0xc0004b34a0 0xc0004b3540 0xc0004b35e0 0xc0004b3680 0xc0004b3720] [0xc0004ae380 0xc00041cd20 0xc00041cd90 0xc0004ae3f0 0xc00041ce00 0xc0004ae460 0xc00041ce70 0xc0004ae4d0 0xc00041cee0 0xc0002f9dc0 0xc00041cf50 0xc0002f9e30 0xc00041cfc0 0xc0002f9ea0 0xc00041d030]
+INFO: 2024/09/18 18:36:47 [0xc0004b2e60 0xc0004b2f00 0xc0004b2fa0 0xc0004b3040 0xc0004b30e0 0xc0004b3180 0xc0004b3220 0xc0004b32c0 0xc0004b3360 0xc0004b3400 0xc0004b34a0 0xc0004b3540 0xc0004b35e0 0xc0004b3680 0xc0004b3720]
+INFO: 2024/09/18 18:36:47 getAuctionsTx in: [0xc0003b2a00 0xc0003b2aa0 0xc0003b2b40 0xc0003b2be0 0xc0003b2c80 0xc0003b2d20 0xc0003b2dc0 0xc0003b2e60 0xc0003b2f00 0xc0003b2fa0 0xc0003b3040 0xc0003b30e0 0xc0003b3180 0xc0003b3220 0xc0003b32c0]
+INFO: 2024/09/18 18:36:47 getAuctions: [0xc0003b2a00 0xc0003b2aa0 0xc0003b2b40 0xc0003b2be0 0xc0003b2c80 0xc0003b2d20 0xc0003b2dc0 0xc0003b2e60 0xc0003b2f00 0xc0003b2fa0 0xc0003b3040 0xc0003b30e0 0xc0003b3180 0xc0003b3220 0xc0003b32c0] [0xc0002f9f10 0xc0004ae540 0xc0003ba000 0xc0004ae5b0 0xc0003ba070 0xc0004ae620 0xc0003ba0e0 0xc0003ba150 0xc0004ae690 0xc0003ba1c0 0xc0004ae700 0xc0003ba230 0xc0004ae770 0xc0003ba2a0 0xc0004ae7e0]
+INFO: 2024/09/18 18:36:47 [0xc0003b2a00 0xc0003b2aa0 0xc0003b2b40 0xc0003b2be0 0xc0003b2c80 0xc0003b2d20 0xc0003b2dc0 0xc0003b2e60 0xc0003b2f00 0xc0003b2fa0 0xc0003b3040 0xc0003b30e0 0xc0003b3180 0xc0003b3220 0xc0003b32c0]
+INFO: 2024/09/18 18:36:48 getAuctionsTx in: [0xc0004bed20 0xc0004bedc0 0xc0004bee60 0xc0004bef00 0xc0004befa0 0xc0004bf040 0xc0004bf0e0 0xc0004bf180 0xc0004bf220 0xc0004bf2c0 0xc0004bf360 0xc0004bf400 0xc0004bf4a0 0xc0004bf540 0xc0004bf5e0]
+INFO: 2024/09/18 18:36:48 getAuctions: [0xc0004bed20 0xc0004bedc0 0xc0004bee60 0xc0004bef00 0xc0004befa0 0xc0004bf040 0xc0004bf0e0 0xc0004bf180 0xc0004bf220 0xc0004bf2c0 0xc0004bf360 0xc0004bf400 0xc0004bf4a0 0xc0004bf540 0xc0004bf5e0] [0xc0004ae8c0 0xc0003ba310 0xc0004ae930 0xc0003ba380 0xc0004ae9a0 0xc0003ba3f0 0xc0004aea10 0xc0003ba460 0xc0004aea80 0xc0003ba4d0 0xc00041d110 0xc0003ba540 0xc0004aeaf0 0xc0003ba000 0xc00041c000]
+INFO: 2024/09/18 18:36:48 [0xc0004bed20 0xc0004bedc0 0xc0004bee60 0xc0004bef00 0xc0004befa0 0xc0004bf040 0xc0004bf0e0 0xc0004bf180 0xc0004bf220 0xc0004bf2c0 0xc0004bf360 0xc0004bf400 0xc0004bf4a0 0xc0004bf540 0xc0004bf5e0]
+INFO: 2024/09/18 18:36:48 getAuctionsTx in: [0xc0004c6460 0xc0004c6500 0xc0004c65a0 0xc0004c6640 0xc0004c66e0 0xc0004c6780 0xc0004c6820 0xc0004c68c0 0xc0004c6960 0xc0004c6a00 0xc0004c6aa0 0xc0004c6b40 0xc0004c6be0 0xc0004c6c80 0xc0004c6d20]
+INFO: 2024/09/18 18:36:48 getAuctions: [0xc0004c6460 0xc0004c6500 0xc0004c65a0 0xc0004c6640 0xc0004c66e0 0xc0004c6780 0xc0004c6820 0xc0004c68c0 0xc0004c6960 0xc0004c6a00 0xc0004c6aa0 0xc0004c6b40 0xc0004c6be0 0xc0004c6c80 0xc0004c6d20] [0xc0003ba070 0xc0004ae070 0xc0003ba0e0 0xc0004ae0e0 0xc0003ba150 0xc00041c070 0xc0004ae150 0xc0004ae1c0 0xc00041c0e0 0xc0004ae230 0xc00041c150 0xc0004ae2a0 0xc00041c1c0 0xc0004ae310 0xc00041c230]
+INFO: 2024/09/18 18:36:48 [0xc0004c6460 0xc0004c6500 0xc0004c65a0 0xc0004c6640 0xc0004c66e0 0xc0004c6780 0xc0004c6820 0xc0004c68c0 0xc0004c6960 0xc0004c6a00 0xc0004c6aa0 0xc0004c6b40 0xc0004c6be0 0xc0004c6c80 0xc0004c6d20]
+INFO: 2024/09/18 18:36:49 getAuctionsTx in: [0xc0004c7540 0xc0004c75e0 0xc0004c7680 0xc0004c7720 0xc0004c77c0 0xc0004c7860 0xc0004c7900 0xc0004c79a0 0xc0004c7a40 0xc0004c7ae0 0xc0004c7b80 0xc0004c7c20 0xc0004c7cc0 0xc0004c7d60 0xc0004c7e00]
+INFO: 2024/09/18 18:36:49 getAuctions: [0xc0004c7540 0xc0004c75e0 0xc0004c7680 0xc0004c7720 0xc0004c77c0 0xc0004c7860 0xc0004c7900 0xc0004c79a0 0xc0004c7a40 0xc0004c7ae0 0xc0004c7b80 0xc0004c7c20 0xc0004c7cc0 0xc0004c7d60 0xc0004c7e00] [0xc0003ba230 0xc0004ae380 0xc0003ba2a0 0xc0004ae3f0 0xc0003ba5b0 0xc0004ae460 0xc0003ba620 0xc0004ae4d0 0xc0003ba690 0xc0004ae540 0xc0003ba700 0xc0004ae5b0 0xc00041c2a0 0xc0004ae620 0xc00041c310]
+INFO: 2024/09/18 18:36:49 [0xc0004c7540 0xc0004c75e0 0xc0004c7680 0xc0004c7720 0xc0004c77c0 0xc0004c7860 0xc0004c7900 0xc0004c79a0 0xc0004c7a40 0xc0004c7ae0 0xc0004c7b80 0xc0004c7c20 0xc0004c7cc0 0xc0004c7d60 0xc0004c7e00]
+INFO: 2024/09/18 18:36:49 getAuctionsTx in: [0xc0004beb40 0xc0004bebe0 0xc0004bec80 0xc0004bf680 0xc0004bf720 0xc0004bf7c0 0xc0004bf860 0xc0004bf900 0xc0004bf9a0 0xc0004bfa40 0xc0004bfae0 0xc0004bfb80 0xc0004bfc20 0xc0004bfcc0 0xc0004bfd60]
+INFO: 2024/09/18 18:36:49 getAuctions: [0xc0004beb40 0xc0004bebe0 0xc0004bec80 0xc0004bf680 0xc0004bf720 0xc0004bf7c0 0xc0004bf860 0xc0004bf900 0xc0004bf9a0 0xc0004bfa40 0xc0004bfae0 0xc0004bfb80 0xc0004bfc20 0xc0004bfcc0 0xc0004bfd60] [0xc0003ba770 0xc0004ae700 0xc00041c380 0xc0004ae770 0xc00041c3f0 0xc0004ae7e0 0xc0003ba7e0 0xc0004ae850 0xc0003ba850 0xc0004aeb60 0xc0003ba8c0 0xc0004aebd0 0xc0003ba930 0xc0004aec40 0xc0003ba9a0]
+INFO: 2024/09/18 18:36:49 [0xc0004beb40 0xc0004bebe0 0xc0004bec80 0xc0004bf680 0xc0004bf720 0xc0004bf7c0 0xc0004bf860 0xc0004bf900 0xc0004bf9a0 0xc0004bfa40 0xc0004bfae0 0xc0004bfb80 0xc0004bfc20 0xc0004bfcc0 0xc0004bfd60]
+INFO: 2024/09/18 18:36:49 getAuctionsTx in: [0xc0003c8e60 0xc0003c8f00 0xc0003c8fa0 0xc0003c9040 0xc0003c90e0 0xc0003c9180 0xc0003c9220 0xc0003c92c0 0xc0003c9360 0xc0003c9400 0xc0003c94a0 0xc0003c9540 0xc0003c95e0 0xc0003c9680 0xc0003c9720]
+INFO: 2024/09/18 18:36:49 getAuctions: [0xc0003c8e60 0xc0003c8f00 0xc0003c8fa0 0xc0003c9040 0xc0003c90e0 0xc0003c9180 0xc0003c9220 0xc0003c92c0 0xc0003c9360 0xc0003c9400 0xc0003c94a0 0xc0003c9540 0xc0003c95e0 0xc0003c9680 0xc0003c9720] [0xc0004aecb0 0xc0004aed20 0xc0003baa80 0xc0004aed90 0xc0003baaf0 0xc0004aee00 0xc0003bab60 0xc0004aee70 0xc0003babd0 0xc0004aeee0 0xc0003bac40 0xc0004aef50 0xc0003bacb0 0xc0004aefc0 0xc0003bad20]
+INFO: 2024/09/18 18:36:49 [0xc0003c8e60 0xc0003c8f00 0xc0003c8fa0 0xc0003c9040 0xc0003c90e0 0xc0003c9180 0xc0003c9220 0xc0003c92c0 0xc0003c9360 0xc0003c9400 0xc0003c94a0 0xc0003c9540 0xc0003c95e0 0xc0003c9680 0xc0003c9720]
+INFO: 2024/09/18 18:36:50 getAuctionsTx in: [0xc00008f7c0 0xc00008f860 0xc00008f900 0xc00008f9a0 0xc00008fa40 0xc00008fae0 0xc00008fb80 0xc00008fc20 0xc00008fcc0 0xc00008fd60 0xc00008fe00 0xc00008fea0 0xc000090000 0xc0000900a0 0xc000090140]
+INFO: 2024/09/18 18:36:50 getAuctions: [0xc00008f7c0 0xc00008f860 0xc00008f900 0xc00008f9a0 0xc00008fa40 0xc00008fae0 0xc00008fb80 0xc00008fc20 0xc00008fcc0 0xc00008fd60 0xc00008fe00 0xc00008fea0 0xc000090000 0xc0000900a0 0xc000090140] [0xc0003bae00 0xc0003bae70 0xc00041c460 0xc0003baee0 0xc0004af030 0xc00041c4d0 0xc0004af0a0 0xc00041c540 0xc0004af110 0xc00041c5b0 0xc0003baf50 0xc0004af180 0xc0003bafc0 0xc0004af1f0 0xc0003bb030]
+INFO: 2024/09/18 18:36:50 [0xc00008f7c0 0xc00008f860 0xc00008f900 0xc00008f9a0 0xc00008fa40 0xc00008fae0 0xc00008fb80 0xc00008fc20 0xc00008fcc0 0xc00008fd60 0xc00008fe00 0xc00008fea0 0xc000090000 0xc0000900a0 0xc000090140]
+INFO: 2024/09/18 18:36:50 getAuctionsTx in: [0xc0003cf400 0xc0003cf4a0 0xc0003cf540 0xc0003cf5e0 0xc0003cf680 0xc0003cf720 0xc0003cf7c0 0xc0003cf860 0xc0003cf900 0xc0003cf9a0 0xc0003cfa40 0xc0003cfae0 0xc0003cfb80 0xc0003cfc20 0xc0003cfcc0]
+INFO: 2024/09/18 18:36:50 getAuctions: [0xc0003cf400 0xc0003cf4a0 0xc0003cf540 0xc0003cf5e0 0xc0003cf680 0xc0003cf720 0xc0003cf7c0 0xc0003cf860 0xc0003cf900 0xc0003cf9a0 0xc0003cfa40 0xc0003cfae0 0xc0003cfb80 0xc0003cfc20 0xc0003cfcc0] [0xc0004af2d0 0xc0003bb0a0 0xc0004af340 0xc00041c620 0xc0004af3b0 0xc0004af420 0xc00041c690 0xc0004af490 0xc00041c700 0xc0004af500 0xc00041c770 0xc0004af570 0xc00041c7e0 0xc0004af5e0 0xc00041c850]
+INFO: 2024/09/18 18:36:50 [0xc0003cf400 0xc0003cf4a0 0xc0003cf540 0xc0003cf5e0 0xc0003cf680 0xc0003cf720 0xc0003cf7c0 0xc0003cf860 0xc0003cf900 0xc0003cf9a0 0xc0003cfa40 0xc0003cfae0 0xc0003cfb80 0xc0003cfc20 0xc0003cfcc0]
+INFO: 2024/09/18 18:36:50 getAuctionsTx in: [0xc0000910e0 0xc000091180 0xc000091220 0xc0000912c0 0xc000091360 0xc000091400 0xc0000914a0 0xc000091540 0xc0000915e0 0xc000091680 0xc000091720 0xc0000917c0 0xc000091860 0xc000091900 0xc0000919a0]
+INFO: 2024/09/18 18:36:50 getAuctions: [0xc0000910e0 0xc000091180 0xc000091220 0xc0000912c0 0xc000091360 0xc000091400 0xc0000914a0 0xc000091540 0xc0000915e0 0xc000091680 0xc000091720 0xc0000917c0 0xc000091860 0xc000091900 0xc0000919a0] [0xc0003bb110 0xc0003bb180 0xc00041c930 0xc0003bb1f0 0xc0004af650 0xc0003bb260 0xc0003bb2d0 0xc0004af6c0 0xc0004af730 0xc00041c9a0 0xc0003bb340 0xc0004af7a0 0xc00041ca10 0xc00041ca80 0xc0004af810]
+INFO: 2024/09/18 18:36:50 [0xc0000910e0 0xc000091180 0xc000091220 0xc0000912c0 0xc000091360 0xc000091400 0xc0000914a0 0xc000091540 0xc0000915e0 0xc000091680 0xc000091720 0xc0000917c0 0xc000091860 0xc000091900 0xc0000919a0]
+INFO: 2024/09/18 18:36:51 getAuctionsTx in: [0xc0000a4780 0xc0000a4820 0xc0000a48c0 0xc0000a4960 0xc0000a4a00 0xc0000a4aa0 0xc0000a4b40 0xc0000a4be0 0xc0000a4c80 0xc0000a4d20 0xc0000a4dc0 0xc0000a4e60 0xc0000a4f00 0xc0000a4fa0 0xc0000a5040]
+INFO: 2024/09/18 18:36:51 getAuctions: [0xc0000a4780 0xc0000a4820 0xc0000a48c0 0xc0000a4960 0xc0000a4a00 0xc0000a4aa0 0xc0000a4b40 0xc0000a4be0 0xc0000a4c80 0xc0000a4d20 0xc0000a4dc0 0xc0000a4e60 0xc0000a4f00 0xc0000a4fa0 0xc0000a5040] [0xc0003bb3b0 0xc0003bb420 0xc0004af8f0 0xc0003bb490 0xc0003bb500 0xc00041caf0 0xc0003bb570 0xc0003bb5e0 0xc00041cb60 0xc0003bb650 0xc00041cbd0 0xc0003bb6c0 0xc0003bb730 0xc0003bb7a0 0xc00041cc40]
+INFO: 2024/09/18 18:36:51 [0xc0000a4780 0xc0000a4820 0xc0000a48c0 0xc0000a4960 0xc0000a4a00 0xc0000a4aa0 0xc0000a4b40 0xc0000a4be0 0xc0000a4c80 0xc0000a4d20 0xc0000a4dc0 0xc0000a4e60 0xc0000a4f00 0xc0000a4fa0 0xc0000a5040]
+INFO: 2024/09/18 18:36:51 getAuctionsTx in: [0xc0000ae5a0 0xc0000ae640 0xc0000ae6e0 0xc0000ae780 0xc0000ae820 0xc0000ae8c0 0xc0000ae960 0xc0000aea00 0xc0000aeaa0 0xc0000aeb40 0xc0000aebe0 0xc0000aec80 0xc0000aed20 0xc0000aedc0 0xc0000aee60]
+INFO: 2024/09/18 18:36:51 getAuctions: [0xc0000ae5a0 0xc0000ae640 0xc0000ae6e0 0xc0000ae780 0xc0000ae820 0xc0000ae8c0 0xc0000ae960 0xc0000aea00 0xc0000aeaa0 0xc0000aeb40 0xc0000aebe0 0xc0000aec80 0xc0000aed20 0xc0000aedc0 0xc0000aee60] [0xc0003bb880 0xc0004af960 0xc0003bb8f0 0xc0004af9d0 0xc0004afa40 0xc0003bb960 0xc0004afab0 0xc0003bb9d0 0xc0004afb20 0xc0003bba40 0xc0004afb90 0xc0003bbab0 0xc0004afc00 0xc0003bbb20 0xc0004afc70]
+INFO: 2024/09/18 18:36:51 [0xc0000ae5a0 0xc0000ae640 0xc0000ae6e0 0xc0000ae780 0xc0000ae820 0xc0000ae8c0 0xc0000ae960 0xc0000aea00 0xc0000aeaa0 0xc0000aeb40 0xc0000aebe0 0xc0000aec80 0xc0000aed20 0xc0000aedc0 0xc0000aee60]
+INFO: 2024/09/18 18:36:52 getAuctionsTx in: [0xc0000afd60 0xc0000afe00 0xc0000afea0 0xc0000b6000 0xc0000b60a0 0xc0000b6140 0xc0000b61e0 0xc0000b6280 0xc0000b6320 0xc0000b63c0 0xc0000b6460 0xc0000b6500 0xc0000b65a0 0xc0000b6640 0xc0000b66e0]
+INFO: 2024/09/18 18:36:52 getAuctions: [0xc0000afd60 0xc0000afe00 0xc0000afea0 0xc0000b6000 0xc0000b60a0 0xc0000b6140 0xc0000b61e0 0xc0000b6280 0xc0000b6320 0xc0000b63c0 0xc0000b6460 0xc0000b6500 0xc0000b65a0 0xc0000b6640 0xc0000b66e0] [0xc0003bbb90 0xc0004afd50 0xc00041ccb0 0xc0004afdc0 0xc0003bbc00 0xc00041cd20 0xc0003bbc70 0xc0003bbce0 0xc00041cd90 0xc0003bbd50 0xc00041ce00 0xc0003bbdc0 0xc0004afe30 0xc0004afea0 0xc0004aff10]
+INFO: 2024/09/18 18:36:52 [0xc0000afd60 0xc0000afe00 0xc0000afea0 0xc0000b6000 0xc0000b60a0 0xc0000b6140 0xc0000b61e0 0xc0000b6280 0xc0000b6320 0xc0000b63c0 0xc0000b6460 0xc0000b6500 0xc0000b65a0 0xc0000b6640 0xc0000b66e0]
+INFO: 2024/09/18 18:36:52 getAuctionsTx in: [0xc00044b180 0xc00044b220 0xc00044b2c0 0xc00044b360 0xc00044b400 0xc00044b4a0 0xc00044b540 0xc00044b5e0 0xc00044b680 0xc00044b720 0xc00044b7c0 0xc00044b860 0xc00044b900 0xc00044b9a0 0xc00044ba40]
+INFO: 2024/09/18 18:36:52 getAuctions: [0xc00044b180 0xc00044b220 0xc00044b2c0 0xc00044b360 0xc00044b400 0xc00044b4a0 0xc00044b540 0xc00044b5e0 0xc00044b680 0xc00044b720 0xc00044b7c0 0xc00044b860 0xc00044b900 0xc00044b9a0 0xc00044ba40] [0xc00041ce70 0xc00041cee0 0xc00015c070 0xc00041cf50 0xc00041cfc0 0xc00015c0e0 0xc00041d030 0xc00015c150 0xc0003bbea0 0xc00015c230 0xc0003bbf10 0xc00041d0a0 0xc000222070 0xc00015c2a0 0xc00041d180]
+INFO: 2024/09/18 18:36:52 [0xc00044b180 0xc00044b220 0xc00044b2c0 0xc00044b360 0xc00044b400 0xc00044b4a0 0xc00044b540 0xc00044b5e0 0xc00044b680 0xc00044b720 0xc00044b7c0 0xc00044b860 0xc00044b900 0xc00044b9a0 0xc00044ba40]
+INFO: 2024/09/18 18:36:52 getAuctionsTx in: [0xc00045a960 0xc00045aa00 0xc00045aaa0 0xc00045ab40 0xc00045abe0 0xc00045ac80 0xc00045ad20 0xc00045adc0 0xc00045ae60 0xc00045af00 0xc00045afa0 0xc00045b040 0xc00045b0e0 0xc00045b180 0xc00045b220]
+INFO: 2024/09/18 18:36:52 getAuctions: [0xc00045a960 0xc00045aa00 0xc00045aaa0 0xc00045ab40 0xc00045abe0 0xc00045ac80 0xc00045ad20 0xc00045adc0 0xc00045ae60 0xc00045af00 0xc00045afa0 0xc00045b040 0xc00045b0e0 0xc00045b180 0xc00045b220] [0xc00041d260 0xc0002220e0 0xc00041d2d0 0xc000222150 0xc00041d340 0xc000222d90 0xc00041d3b0 0xc000222e00 0xc00041d420 0xc000222e70 0xc00041d490 0xc000222ee0 0xc00041d500 0xc000222f50 0xc00041d570]
+INFO: 2024/09/18 18:36:52 [0xc00045a960 0xc00045aa00 0xc00045aaa0 0xc00045ab40 0xc00045abe0 0xc00045ac80 0xc00045ad20 0xc00045adc0 0xc00045ae60 0xc00045af00 0xc00045afa0 0xc00045b040 0xc00045b0e0 0xc00045b180 0xc00045b220]
+INFO: 2024/09/18 19:00:20 Successfully connected to the database
+INFO: 2024/09/18 19:00:20 Started server on localhost:1169
+INFO: 2024/09/18 19:00:22 getAuctionsTx in: [0xc0000a3900 0xc0000a39a0 0xc0000a3a40 0xc0000a3ae0 0xc0000a3b80 0xc0000a3c20 0xc0000a3cc0 0xc0000a3d60 0xc0000a3e00 0xc0000a3ea0 0xc0001f6000 0xc0001f60a0 0xc0001f6140 0xc0001f61e0 0xc0001f6280]
+INFO: 2024/09/18 19:00:22 getAuctions: [0xc0000a3900 0xc0000a39a0 0xc0000a3a40 0xc0000a3ae0 0xc0000a3b80 0xc0000a3c20 0xc0000a3cc0 0xc0000a3d60 0xc0000a3e00 0xc0000a3ea0 0xc0001f6000 0xc0001f60a0 0xc0001f6140 0xc0001f61e0 0xc0001f6280] [0xc0001f4380 0xc0001f43f0 0xc000128000 0xc000218000 0xc0001f4460 0xc0001f44d0 0xc000218070 0xc0001f4540 0xc000128070 0xc0001280e0 0xc0001f45b0 0xc0002180e0 0xc0001f4620 0xc000128150 0xc000218150]
+INFO: 2024/09/18 19:00:22 [0xc0000a3900 0xc0000a39a0 0xc0000a3a40 0xc0000a3ae0 0xc0000a3b80 0xc0000a3c20 0xc0000a3cc0 0xc0000a3d60 0xc0000a3e00 0xc0000a3ea0 0xc0001f6000 0xc0001f60a0 0xc0001f6140 0xc0001f61e0 0xc0001f6280]
