@@ -30,19 +30,20 @@ type BidsTable struct {
 func BidsTableMapper(
 	image uuid.UUID,
 	maxBid, userBid decimal.Decimal,
-	host, port, title, category string,
+	host, port, title, category, username string,
 	opened bool,
 	endTime time.Time) *BidsTable {
 
 	return &BidsTable{
-		ID:       uuid.New(),
-		ImgSrc:   fmt.Sprintf("http://%s:%s/api/img/%s", host, port, image.String()),
-		LotTitle: title,
-		MaxBid:   maxBid,
-		EndDate:  endTime,
-		Category: category,
-		Opened:   opened,
-		UsersBid: userBid,
+		ID:        uuid.New(),
+		ImgSrc:    fmt.Sprintf("http://%s:%s/api/img/%s", host, port, image.String()),
+		LotTitle:  title,
+		MaxBid:    maxBid,
+		EndDate:   endTime,
+		Category:  category,
+		Opened:    opened,
+		TopBidder: username,
+		UsersBid:  userBid,
 	}
 
 }

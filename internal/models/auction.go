@@ -13,6 +13,7 @@ type AuctionModel struct {
 	ItemId             uuid.UUID       `json:"item_id"`
 	StartingBid        decimal.Decimal `json:"starting_bid"`
 	CurrentBid         decimal.Decimal `json:"current_bid"`
+	MaxBidderId        uuid.UUID       `json:"max_bidder_id"`
 	BidCount           int16           `json:"bid_count"`
 	StartTime          time.Time       `json:"start_time"`
 	EndTime            time.Time       `json:"end_time"`

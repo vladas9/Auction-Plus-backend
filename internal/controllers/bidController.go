@@ -3,11 +3,9 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
-
-	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 	u "github.com/vladas9/backend-practice/internal/utils"
+	"net/http"
 )
 
 func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {

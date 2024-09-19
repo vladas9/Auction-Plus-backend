@@ -12,17 +12,15 @@ import (
 type Claims struct {
 	UserID   string `json:"user_id"`
 	UserType string `json:"user_type"`
-	ImgSrc   string `json:"img_src"`
 	jwt.RegisteredClaims
 }
 
-func GenerateJWT(userID, userType, imgSrc string, jwtSecret []byte) (string, error) {
+func GenerateJWT(userID, userType string, jwtSecret []byte) (string, error) {
 	expirationTime := time.Now().Add(24 * time.Hour)
 
 	claims := &Claims{
 		UserID:   userID,
 		UserType: userType,
-		ImgSrc:   imgSrc,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(expirationTime),
 		},

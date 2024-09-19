@@ -6,6 +6,7 @@ import (
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 func (s *Service) NewBid(bid *m.BidModel) (err error) {
@@ -34,37 +35,22 @@ func (s *Service) NewBid(bid *m.BidModel) (err error) {
 	return nil
 }
 
-func (s *Service) ShowBidTable(userId uuid.UUID, limit, offset int) (responce []*m.BidsTable, err error) {
+func (s *Service) ShowBidTable(userId uuid.UUID, limit, offset int) ([]*m.BidsTable, error) {
 	var bidList []*m.BidModel
 	var auctionList []*m.AuctionModel
 	var itemList []*m.ItemModel
+	var userList []*m.UserModel
 
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err := s.store.WithTx(func(stx *r.StoreTx) error {
+		var err error
 		bidList, err = stx.BidRepo().GetAllByUserId(userId, limit, offset)
 		if err != nil {
-			return fmt.Errorf("Failed geting bids: %s", err)
+			return fmt.Errorf("Failed getting bids: %s", err)
 		}
 
-		for _, bid := range bidList {
-			auctionId := bid.AuctionId
-			auction, err := stx.AuctionRepo().GetById(auctionId)
-
-			if err != nil {
-				return fmt.Errorf("Failed geting auction: %s", err)
-			}
-
-			auctionList = append(auctionList, auction)
-		}
-
-		for _, auction := range auctionList {
-			itemId := auction.ItemId
-			item, err := stx.ItemRepo().GetById(itemId)
-
-			if err != nil {
-				return fmt.Errorf("Failed geting item: %s", err)
-			}
-
-			itemList = append(itemList, item)
+		auctionList, itemList, userList, err = getRelatedData(stx, bidList)
+		if err != nil {
+			return err
 		}
 
 		return nil
@@ -74,26 +60,63 @@ func (s *Service) ShowBidTable(userId uuid.UUID, limit, offset int) (responce []
 		return nil, err
 	}
 
-	var bidsTable []*m.BidsTable
+	bidsTable, err := buildBidsTable(bidList, auctionList, itemList, userList)
+	if err != nil {
+		return nil, err
+	}
+
+	return bidsTable, nil
+}
+
+func getRelatedData(stx *r.StoreTx, bidList []*m.BidModel) (
+	[]*m.AuctionModel, []*m.ItemModel, []*m.UserModel, error,
+) {
+	auctionList := make([]*m.AuctionModel, 0)
+	itemList := make([]*m.ItemModel, 0)
+	userList := make([]*m.UserModel, 0)
 
 	auctionMap := make(map[uuid.UUID]*m.AuctionModel)
-	for _, auction := range auctionList {
-		auctionMap[auction.ID] = auction
-	}
-
-	itemMap := make(map[uuid.UUID]*m.ItemModel)
-	for _, item := range itemList {
-		itemMap[item.ID] = item
-	}
-
-	highestBids := make(map[uuid.UUID]*m.BidModel)
-
 	for _, bid := range bidList {
-		if existingBid, exists := highestBids[bid.AuctionId]; !exists || bid.Amount.Compare(existingBid.Amount) == 1 {
-			highestBids[bid.AuctionId] = bid
+		auctionId := bid.AuctionId
+		auction, err := stx.AuctionRepo().GetById(auctionId)
+		if err != nil {
+			return nil, nil, nil, fmt.Errorf("Failed getting auction: %s", err)
 		}
+		auctionList = append(auctionList, auction)
+		auctionMap[auctionId] = auction
 	}
 
+	for _, auction := range auctionList {
+		itemId := auction.ItemId
+		item, err := stx.ItemRepo().GetById(itemId)
+		if err != nil {
+			return nil, nil, nil, fmt.Errorf("Failed getting item: %s", err)
+		}
+		itemList = append(itemList, item)
+
+		userId := auction.MaxBidderId
+		user, err := stx.UserRepo().GetById(userId)
+		if err != nil {
+			return nil, nil, nil, fmt.Errorf("Failed getting user: %s", err)
+		}
+		userList = append(userList, user)
+	}
+
+	return auctionList, itemList, userList, nil
+}
+
+func buildBidsTable(
+	bidList []*m.BidModel,
+	auctionList []*m.AuctionModel,
+	itemList []*m.ItemModel,
+	userList []*m.UserModel,
+) ([]*m.BidsTable, error) {
+	userMap := u.CreateUserMap(userList)
+	auctionMap := u.CreateAuctionMap(auctionList)
+	itemMap := u.CreateItemMap(itemList)
+	highestBids := u.FindHighestBids(bidList)
+
+	bidsTable := make([]*m.BidsTable, 0)
 	for _, bid := range highestBids {
 		relatedAuction, auctionExists := auctionMap[bid.AuctionId]
 		if !auctionExists {
@@ -105,12 +128,12 @@ func (s *Service) ShowBidTable(userId uuid.UUID, limit, offset int) (responce []
 			continue
 		}
 
-		var image uuid.UUID
-		if len(relatedItem.Images) > 0 {
-			image = relatedItem.Images[0]
-		} else {
-			image = uuid.Nil
+		relatedUser, userExists := userMap[relatedAuction.MaxBidderId]
+		if !userExists {
+			continue
 		}
+
+		image := u.GetFirstImageOrNil(relatedItem)
 
 		bidTableEntry := m.BidsTableMapper(
 			image,
@@ -120,6 +143,7 @@ func (s *Service) ShowBidTable(userId uuid.UUID, limit, offset int) (responce []
 			Port,
 			relatedItem.Name,
 			string(relatedItem.Category),
+			relatedUser.Username,
 			relatedAuction.IsActive,
 			relatedAuction.EndTime,
 		)

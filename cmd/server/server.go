@@ -50,7 +50,7 @@ func (s *Server) Run() {
 	//TODO: Add controllers links
 
 	s.Router.Handle("POST /api/register-user", apiFunc(s.Controllers.Register))
-	s.Router.Handle("POST /api/users/login-user", apiFunc(s.Controllers.Login))
+	s.Router.Handle("POST /api/login-user", apiFunc(s.Controllers.Login))
 	s.Router.Handle("GET /api/img/", apiFunc(s.Controllers.ImageHandler))
 	s.Router.Handle("POST /api/post_bid", apiFunc(s.Controllers.AddBid))
 	s.Router.Handle("GET /api/get-bids-table", apiFunc(s.Controllers.BidTable))

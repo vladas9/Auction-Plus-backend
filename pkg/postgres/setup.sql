@@ -28,6 +28,7 @@ CREATE TABLE auctions(
   item_id UUID REFERENCES items(id),
   starting_bid DECIMAL(10,2) NOT NULL,
   current_bid DECIMAL(10,2),
+  max_bidder_id UUID REFERENCES users(id),
   bid_count INT DEFAULT 0,
   start_time TIMESTAMPTZ NOT NULL,
   end_time TIMESTAMPTZ NOT NULL,
@@ -78,7 +79,8 @@ RETURNS TRIGGER AS $$
 BEGIN
     UPDATE auctions
     SET bid_count = bid_count + 1,
-      current_bid = NEW.amount
+      current_bid = NEW.amount,
+      max_bidder_id = NEW.bidder_id
     WHERE id = NEW.auction_id;
     
     RETURN NEW;
