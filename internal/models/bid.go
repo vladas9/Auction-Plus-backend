@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
 	"time"
@@ -24,4 +25,24 @@ type BidsTable struct {
 	Opened    bool            `json:"opened"`
 	TopBidder string          `json:"top_bidder"`
 	UsersBid  decimal.Decimal `json:"users_bid"`
+}
+
+func BidsTableMapper(
+	image uuid.UUID,
+	maxBid, userBid decimal.Decimal,
+	host, port, title, category string,
+	opened bool,
+	endTime time.Time) *BidsTable {
+
+	return &BidsTable{
+		ID:       uuid.New(),
+		ImgSrc:   fmt.Sprintf("http://%s:%s/api/img/%s", host, port, image.String()),
+		LotTitle: title,
+		MaxBid:   maxBid,
+		EndDate:  endTime,
+		Category: category,
+		Opened:   opened,
+		UsersBid: userBid,
+	}
+
 }

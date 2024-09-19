@@ -6,7 +6,6 @@ import (
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
-	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 func (s *Service) NewBid(bid *m.BidModel) (err error) {
@@ -59,7 +58,6 @@ func (s *Service) ShowBidTable(userId uuid.UUID, limit, offset int) (responce []
 
 		for _, auction := range auctionList {
 			itemId := auction.ItemId
-			utils.Logger.Info(auction)
 			item, err := stx.ItemRepo().GetById(itemId)
 
 			if err != nil {
@@ -107,30 +105,27 @@ func (s *Service) ShowBidTable(userId uuid.UUID, limit, offset int) (responce []
 			continue
 		}
 
-		var image string
+		var image uuid.UUID
 		if len(relatedItem.Images) > 0 {
-			image = SetImgUrl(relatedItem.Images[0])
+			image = relatedItem.Images[0]
 		} else {
-			image = ""
+			image = uuid.Nil
 		}
 
-		bidTableEntry := &m.BidsTable{
-			ID:       uuid.New(),
-			ImgSrc:   image,
-			LotTitle: relatedItem.Name,
-			MaxBid:   relatedAuction.CurrentBid,
-			EndDate:  relatedAuction.EndTime,
-			Category: string(relatedItem.Category),
-			Opened:   relatedAuction.IsActive,
-			UsersBid: bid.Amount,
-		}
+		bidTableEntry := m.BidsTableMapper(
+			image,
+			relatedAuction.CurrentBid,
+			bid.Amount,
+			Host,
+			Port,
+			relatedItem.Name,
+			string(relatedItem.Category),
+			relatedAuction.IsActive,
+			relatedAuction.EndTime,
+		)
 
 		bidsTable = append(bidsTable, bidTableEntry)
 	}
 
 	return bidsTable, nil
-}
-
-func SetImgUrl(id uuid.UUID) string {
-	return fmt.Sprintf("http://$v:$v/api/img/$v", Host, Port, id)
 }

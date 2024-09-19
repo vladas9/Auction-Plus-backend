@@ -12,6 +12,8 @@ type Service struct {
 var Host, Port string
 
 func NewService(db *sql.DB, host, port string) *Service {
+	Host = host
+	Port = port
 	return &Service{r.NewStore(db)}
 }
 
