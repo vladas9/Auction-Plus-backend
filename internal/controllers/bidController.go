@@ -39,7 +39,7 @@ func (c *Controller) BidTable(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
-	responce, err := c.service.ShowBidTable(userId, limit, offset)
+	responce, err := c.service.GetBidTable(userId, limit, offset)
 	if err != nil {
 		return err
 	}

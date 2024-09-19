@@ -6,6 +6,7 @@ import (
 
 	m "github.com/vladas9/backend-practice/internal/models"
 	s "github.com/vladas9/backend-practice/internal/services"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
@@ -44,4 +45,29 @@ func atoi(str string) (int, error) {
 		return 0, nil
 	}
 	return strconv.Atoi(str)
+}
+
+func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error {
+	var err error
+	var limit, offset int
+	if limit, err = atoi(r.URL.Query().Get("limit")); err != nil {
+		limit = 0
+	}
+	if offset, err = atoi(r.URL.Query().Get("offset")); err != nil {
+		offset = 0
+	}
+	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	if err != nil {
+		return err
+	}
+
+	responce, err := c.service.GetAuctionTable(userId, limit, offset)
+	if err != nil {
+		return err
+	}
+
+	return WriteJSON(w, http.StatusOK, Response{
+		"lots_table": responce,
+	})
+
 }

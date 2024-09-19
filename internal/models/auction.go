@@ -1,10 +1,10 @@
 package models
 
 import (
-	"time"
-
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
+	"time"
 )
 
 type AuctionModel struct {
@@ -21,4 +21,35 @@ type AuctionModel struct {
 	ExtraTimeThreshold time.Duration   `json:"extra_time_threshold"`
 	ExtraTimeEnabled   bool            `json:"extra_time_enabled"`
 	IsActive           bool            `json:"is_active"`
+}
+
+type AuctionTable struct {
+	ID        uuid.UUID       `json:"id"`
+	ImgSrc    string          `json:"img_src"`
+	LotTitle  string          `json:"lot_title"`
+	MaxBid    decimal.Decimal `json:"max_bid"`
+	EndDate   time.Time       `json:"end_date"`
+	Category  string          `json:"category"`
+	Opened    bool            `json:"opened"`
+	TopBidder string          `json:"top_bidder"`
+}
+
+func AuctionTableMapper(
+	image uuid.UUID,
+	maxBid decimal.Decimal,
+	host, port, title, category, username string,
+	opened bool,
+	endTime time.Time) *AuctionTable {
+
+	return &AuctionTable{
+		ID:        uuid.New(),
+		ImgSrc:    fmt.Sprintf("http://%s:%s/api/img/%s", host, port, image.String()),
+		LotTitle:  title,
+		MaxBid:    maxBid,
+		EndDate:   endTime,
+		Category:  category,
+		Opened:    opened,
+		TopBidder: username,
+	}
+
 }

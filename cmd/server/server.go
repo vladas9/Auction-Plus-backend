@@ -54,6 +54,7 @@ func (s *Server) Run() {
 	s.Router.Handle("GET /api/img/", apiFunc(s.Controllers.ImageHandler))
 	s.Router.Handle("POST /api/post_bid", apiFunc(s.Controllers.AddBid))
 	s.Router.Handle("GET /api/get-bids-table", apiFunc(s.Controllers.BidTable))
+	s.Router.Handle("GET /api/get-lots-table", apiFunc(s.Controllers.AuctionTable))
 	// s.Router.Handle("PUT /api/users/{id}", apiFunc(controllers.))
 	// s.Router.Handle("GET /api/items", apiFunc(controllers.))
 	// s.Router.Handle("GET /api/items/{id}", apiFunc(controllers.))

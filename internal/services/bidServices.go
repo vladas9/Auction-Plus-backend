@@ -35,7 +35,7 @@ func (s *Service) NewBid(bid *m.BidModel) (err error) {
 	return nil
 }
 
-func (s *Service) ShowBidTable(userId uuid.UUID, limit, offset int) ([]*m.BidsTable, error) {
+func (s *Service) GetBidTable(userId uuid.UUID, limit, offset int) ([]*m.BidsTable, error) {
 	var bidList []*m.BidModel
 	var auctionList []*m.AuctionModel
 	var itemList []*m.ItemModel
