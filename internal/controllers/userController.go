@@ -24,10 +24,13 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) error {
 
 	u.Logger.Info(fmt.Sprintf("User %s loged in", storedUser.Username))
 
+	token, err := createResponse(storedUser.ID.String(), storedUser.UserType, storedUser.Image)
+	if err != nil {
+		return err
+	}
+
 	return WriteJSON(w, http.StatusOK, Response{
-		"auth_token": storedUser.ID,
-		"img_src":    fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, storedUser.Image),
-		"user_type":  storedUser.UserType,
+		"auth_token": token,
 	})
 }
 
@@ -39,7 +42,6 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("Decoding failed(Register): %w", err)
 	}
 
-	// TODO: validate fields
 	storedUser, err := c.service.CreateUser(user)
 	if err != nil {
 		return fmt.Errorf("Registration failed: %w", err)
@@ -47,10 +49,13 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
 
 	u.Logger.Info(fmt.Sprintf("User %s created", storedUser.Username))
 
+	token, err := createResponse(storedUser.ID.String(), storedUser.UserType, storedUser.Image)
+	if err != nil {
+		return err
+	}
+
 	return WriteJSON(w, http.StatusOK, Response{
-		"auth_token": storedUser.ID,
-		"img_src":    fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, storedUser.Image),
-		"user_type":  storedUser.UserType,
+		"auth_token": token,
 	})
 }
 
@@ -64,4 +69,17 @@ func (c *Controller) ImageHandler(w http.ResponseWriter, r *http.Request) error 
 
 	http.ServeFile(w, r, imagePath)
 	return nil
+}
+
+func createResponse(id, userType, image string) (Response, error) {
+	imgSrc := fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, image)
+
+	token, err := u.GenerateJWT(id, userType, imgSrc, JwtSecret)
+	if err != nil {
+		return Response{}, fmt.Errorf("Token generation failed: %w", err)
+	}
+
+	return Response{
+		"auth_token": token,
+	}, nil
 }

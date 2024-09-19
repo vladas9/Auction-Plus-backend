@@ -7,6 +7,7 @@ import (
 
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
@@ -15,8 +16,9 @@ func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
 	if err = json.NewDecoder(r.Body).Decode(bid); err != nil {
 		return fmt.Errorf("Decoding failed(BidHandler): %s", err)
 	}
-	if bid.UserId, err = uuid.Parse(r.Header.Get("Authorization")); err != nil {
-		return fmt.Errorf("Header parsing failed: %s", err)
+	bid.UserId, err = u.ExtractUserIDFromToken(r, JwtSecret)
+	if err != nil {
+		return err
 	}
 
 	if err := c.service.NewBid(bid); err != nil {
@@ -34,9 +36,9 @@ func (c *Controller) BidTable(w http.ResponseWriter, r *http.Request) error {
 	if offset, err = atoi(r.URL.Query().Get("offset")); err != nil {
 		offset = 0
 	}
-	var userId uuid.UUID
-	if userId, err = uuid.Parse(r.Header.Get("Authorization")); err != nil {
-		return fmt.Errorf("Header parsing failed: %s", err)
+	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	if err != nil {
+		return err
 	}
 
 	responce, err := c.service.ShowBidTable(userId, limit, offset)
