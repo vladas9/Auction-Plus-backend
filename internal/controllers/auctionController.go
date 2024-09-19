@@ -23,6 +23,8 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	leangthStr := r.FormValue("limit")
 	minPriceStr := r.FormValue("min_price")
 	maxPriceStr := r.FormValue("max_price")
+	categoryStr := r.FormValue("category")
+	conditionStr := r.FormValue("lotcondition")
 
 	offset, err := strconv.Atoi(offsetStr)
 	if err != nil {
@@ -44,21 +46,26 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	params := s.AuctionParams{
-		Offset:   offset,
-		Len:      leangth,
-		MaxPrice: maxPrice,
-		MinPrice: minPrice,
+		Offset:    offset,
+		Len:       leangth,
+		MaxPrice:  maxPrice,
+		MinPrice:  minPrice,
+		Category:  categoryStr,
+		Condition: conditionStr,
 	}
 	problems := params.Validate()
 	if problems != nil {
 		return &ApiError{Status: 400, ErrorMsg: problems}
 	}
 
-	auctionList, itemsList, err := c.service.GetAuctions(params)
+	resp, err := c.service.GetAuctions(params)
+	if err != nil {
+		return fmt.Errorf("AuctionController: %w", err)
+	}
 	var cards []dtos.AuctionCard
-	utils.Logger.Info(auctionList)
-	for i, auction := range auctionList {
-		cards = append(cards, dtos.MapAuctionCard(i+1, *auction, *itemsList[i]))
+	utils.Logger.Info("AuctionController: getAuctions:", resp)
+	for i, respItem := range resp {
+		cards = append(cards, dtos.MapAuctionRespToCard(i+1, respItem))
 	}
 	return WriteJSON(w, http.StatusOK, cards)
 }

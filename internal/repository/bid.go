@@ -19,7 +19,8 @@ func (r *bidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	query := `
 		SELECT 
 			id,
-			user_id,
+			auction_id,
+			bidder_id,
 			amount,
 			timestamp
 		FROM
@@ -30,6 +31,7 @@ func (r *bidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	row := r.tx.QueryRow(query, id)
 	if err := row.Scan(
 		&item.ID,
+		&item.AuctionId,
 		&item.UserId,
 		&item.Amount,
 		&item.Timestamp,
@@ -39,18 +41,48 @@ func (r *bidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	return item, nil
 }
 
-func (r *bidRepo) GetAll() ([]*m.BidModel, error) {
-	var bids []*m.BidModel
+func (r *bidRepo) GetForAuction(auct *m.AuctionModel) (*m.BidModel, error) {
+	item := &m.BidModel{}
 	query := `
 		SELECT 
 			id,
-			user_id,
+			auction_id,
+			bidder_id,
 			amount,
 			timestamp
 		FROM
 			bids
+		WHERE
+			auction_id = $1
 	`
-	rows, err := r.tx.Query(query)
+	row := r.tx.QueryRow(query, auct.Id())
+	if err := row.Scan(
+		&item.ID,
+		&item.AuctionId,
+		&item.UserId,
+		&item.Amount,
+		&item.Timestamp,
+	); err != nil {
+		return nil, err
+	}
+	return item, nil
+}
+
+func (r *bidRepo) GetAllFor(auct *m.AuctionModel) ([]*m.BidModel, error) {
+	var bids []*m.BidModel
+	query := `
+		SELECT 
+			id,
+			auction_id,
+			bidder_id,
+			amount,
+			timestamp
+		FROM
+			bids
+		WHERE auction_id = $1
+			
+	`
+	rows, err := r.tx.Query(query, auct.Id())
 	if err != nil {
 		return nil, err
 	}
@@ -60,6 +92,7 @@ func (r *bidRepo) GetAll() ([]*m.BidModel, error) {
 		item := &m.BidModel{}
 		if err := rows.Scan(
 			&item.ID,
+			&item.AuctionId,
 			&item.UserId,
 			&item.Amount,
 			&item.Timestamp,
@@ -99,7 +132,7 @@ func (r *bidRepo) Update(item *m.BidModel) error {
 		UPDATE 
 			bids
 		SET
-			user_id = $1,
+			bidder_id = $1,
 			amount = $2,
 			timestamp = $3
 		WHERE
