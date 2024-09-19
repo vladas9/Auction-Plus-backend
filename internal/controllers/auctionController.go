@@ -69,3 +69,9 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	}
 	return WriteJSON(w, http.StatusOK, cards)
 }
+
+func (c *Controller) GetAuction(w http.ResponseWriter, r *Response) error {
+
+	//auctions, err := c.service.GetAuctionById() // use internal/dtos/auctionFull.go and the auction service
+	return nil
+}

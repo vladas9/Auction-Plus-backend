@@ -7,7 +7,7 @@ register_user() {
 }
 
 get_auctions() {
-  curl -X GET 'http://localhost:1169/api/auctions?limit=17&offset=0&min_price=700&max_price=2000'
+  curl -X GET 'http://localhost:1169/api/auctions?limit=17&offset=0&min_price=700&max_price=2000&category=electronics&lotcondition=new'
 }
 
 #register_user
