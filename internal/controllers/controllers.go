@@ -22,8 +22,8 @@ type Controller struct {
 	service *s.Service
 }
 
-var Host string
-var Port string
+var Host, Port string
+var JwtSecret []byte
 
 func NewController(db *sql.DB) *Controller {
 	err := godotenv.Load()
@@ -32,7 +32,9 @@ func NewController(db *sql.DB) *Controller {
 	}
 	Host = os.Getenv("HOST")
 	Port = os.Getenv("PORT")
-	return &Controller{s.NewService(db)}
+	JwtSecret = []byte(os.Getenv("JWTKEY"))
+
+	return &Controller{s.NewService(db, Host, Port)}
 }
 
 func WriteJSON(w http.ResponseWriter, status int, v any) error {

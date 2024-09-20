@@ -1797,3 +1797,32 @@ INFO: 2024/09/19 13:11:50 unpack:  &{0xc00011a820 0xc00013c3f0 []}
 INFO: 2024/09/19 13:11:50 condition: false new
 INFO: 2024/09/19 13:11:50 category: true electronics
 INFO: 2024/09/19 13:11:50 AuctionController: getAuctions: [0xc0001321b0 0xc0001322d0]
+INFO: 2024/09/20 12:45:54 Successfully connected to the database
+INFO: 2024/09/20 12:45:54 Started server on localhost:1169
+INFO: 2024/09/20 12:46:08 rows next
+INFO: 2024/09/20 12:46:08 rows next
+INFO: 2024/09/20 12:46:08 rows next
+INFO: 2024/09/20 12:46:08 rows next
+INFO: 2024/09/20 12:46:08 rows next
+INFO: 2024/09/20 12:46:08 rows next
+INFO: 2024/09/20 12:46:08 AuctionRepo GetAllFiltered: [0xc0001460b0 0xc000146160 0xc000146210 0xc0001462c0 0xc000146370 0xc000146420]
+INFO: 2024/09/20 12:46:08 getAuctionsWith in: [0xc0001460b0 0xc000146160 0xc000146210 0xc0001462c0 0xc000146370 0xc000146420]
+INFO: 2024/09/20 12:46:08 unpack:  &{0xc0001460b0 0xc000130d90 []}
+INFO: 2024/09/20 12:46:08 condition: false new
+INFO: 2024/09/20 12:46:08 category: true electronics
+INFO: 2024/09/20 12:46:08 unpack:  &{0xc000146160 0xc00022e000 []}
+INFO: 2024/09/20 12:46:08 condition: false new
+INFO: 2024/09/20 12:46:08 category: true electronics
+INFO: 2024/09/20 12:46:08 unpack:  &{0xc000146210 0xc00022e070 []}
+INFO: 2024/09/20 12:46:08 condition: false new
+INFO: 2024/09/20 12:46:08 category: true electronics
+INFO: 2024/09/20 12:46:08 unpack:  &{0xc0001462c0 0xc0000c1570 []}
+INFO: 2024/09/20 12:46:08 condition: false new
+INFO: 2024/09/20 12:46:08 category: true electronics
+INFO: 2024/09/20 12:46:08 unpack:  &{0xc000146370 0xc00022e0e0 []}
+INFO: 2024/09/20 12:46:08 condition: true new
+INFO: 2024/09/20 12:46:08 category: true electronics
+INFO: 2024/09/20 12:46:08 unpack:  &{0xc000146420 0xc0000c15e0 []}
+INFO: 2024/09/20 12:46:08 condition: true new
+INFO: 2024/09/20 12:46:08 category: true electronics
+INFO: 2024/09/20 12:46:08 AuctionController: getAuctions: [0xc000224180 0xc0000979e0]

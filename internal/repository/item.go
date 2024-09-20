@@ -37,14 +37,13 @@ func (r *itemRepo) GetById(id uuid.UUID) (*m.ItemModel, error) {
 		&item.Description,
 		&item.Category,
 		&item.Condition,
-		pq.Array(&item.Images), // pq.Array for handling array in PostgreSQL
+		pq.Array(&item.Images),
 	); err != nil {
 		return nil, err
 	}
 	return item, nil
 }
 
-// GetAll retrieves all items
 func (r *itemRepo) GetAll() ([]*m.ItemModel, error) {
 	var items []*m.ItemModel
 	query := `

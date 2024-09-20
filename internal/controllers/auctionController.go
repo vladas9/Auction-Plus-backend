@@ -8,7 +8,7 @@ import (
 	"github.com/shopspring/decimal"
 	"github.com/vladas9/backend-practice/internal/dtos"
 	s "github.com/vladas9/backend-practice/internal/services"
-	"github.com/vladas9/backend-practice/internal/utils"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
@@ -63,7 +63,7 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("AuctionController: %w", err)
 	}
 	var cards []dtos.AuctionCard
-	utils.Logger.Info("AuctionController: getAuctions:", resp)
+	u.Logger.Info("AuctionController: getAuctions:", resp)
 	for i, respItem := range resp {
 		cards = append(cards, dtos.MapAuctionRespToCard(i+1, respItem))
 	}
@@ -74,4 +74,29 @@ func (c *Controller) GetAuction(w http.ResponseWriter, r *Response) error {
 
 	//auctions, err := c.service.GetAuctionById() // use internal/dtos/auctionFull.go and the auction service
 	return nil
+}
+
+func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error {
+	var err error
+	var limit, offset int
+	if limit, err = strconv.Atoi(r.URL.Query().Get("limit")); err != nil {
+		return err
+	}
+	if offset, err = strconv.Atoi(r.URL.Query().Get("offset")); err != nil {
+		return err
+	}
+	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	if err != nil {
+		return err
+	}
+
+	response, err := c.service.GetAuctionTable(userId, limit, offset)
+	if err != nil {
+		return err
+	}
+
+	return WriteJSON(w, http.StatusOK, Response{
+		"lots_table": response,
+	})
+
 }

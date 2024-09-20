@@ -25,6 +25,7 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 			item_id,
 			start_price,
 			current_bid,
+			max_bidder_id,
 			bid_count,
 			start_time,
 			end_time,
@@ -43,6 +44,7 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 		&item.ItemId,
 		&item.StartPrice,
 		&item.CurrentBid,
+		&item.MaxBidderId,
 		&item.BidCount,
 		&item.StartTime,
 		&item.EndTime,
@@ -55,6 +57,69 @@ func (r *auctionRepo) GetById(id uuid.UUID) (*m.AuctionModel, error) {
 	}
 	return item, nil
 }
+
+func (r *auctionRepo) GetAllByUserId(id uuid.UUID, limit, offset int) ([]*m.AuctionModel, error) {
+	var auctions []*m.AuctionModel
+	query := `
+		SELECT 
+			id,
+			seller_id,
+			item_id,
+			start_price,
+			current_bid,
+			max_bidder_id,
+			bid_count,
+			start_time,
+			end_time,
+			extra_time_enabled,
+			extra_time_duration,
+			extra_time_threshold,
+			status
+		FROM
+			auctions
+		WHERE
+			seller_id = $1
+		LIMIT
+			$2
+		OFFSET
+			$3
+	`
+
+	rows, err := r.tx.Query(query, id, limit, offset)
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+	for rows.Next() {
+		item := &m.AuctionModel{}
+		if err := rows.Scan(
+			&item.ID,
+			&item.SellerId,
+			&item.ItemId,
+			&item.StartPrice,
+			&item.CurrentBid,
+			&item.MaxBidderId,
+			&item.BidCount,
+			&item.StartTime,
+			&item.EndTime,
+			&item.ExtraTimeEnabled,
+			&item.ExtraTimeDuration,
+			&item.ExtraTimeThreshold,
+			&item.Status,
+		); err != nil {
+			return nil, err
+		}
+		auctions = append(auctions, item)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return auctions, nil
+
+}
+
 func (r *auctionRepo) GetAllFiltered(offset, limit int, minPrice, maxPrice m.Decimal) ([]*m.AuctionModel, error) {
 	var auctions []*m.AuctionModel
 	query := `
@@ -181,7 +246,6 @@ func (r *auctionRepo) Update(item *m.AuctionModel) error {
 			auctions
 		SET
 			seller_id = $1,
-			item_id = 
 			start_price = $2,
 			current_bid = $3,
 			bid_count = $4,
@@ -191,8 +255,10 @@ func (r *auctionRepo) Update(item *m.AuctionModel) error {
 			extra_time_duration = $8,
 			extra_time_threshold = $9,
 			status = $10
+			item_id = $11
+			max_bidder_id = $12
 		WHERE
-			id = $11
+			id = $13
 	`
 	_, err := r.tx.Exec(query,
 		item.SellerId,
@@ -205,6 +271,8 @@ func (r *auctionRepo) Update(item *m.AuctionModel) error {
 		item.ExtraTimeDuration,
 		item.ExtraTimeThreshold,
 		item.Status,
+		item.ItemId,
+		item.MaxBidderId,
 		item.ID,
 	)
 
