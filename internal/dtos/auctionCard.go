@@ -1,8 +1,8 @@
 package dtos
 
 import (
+	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
-	s "github.com/vladas9/backend-practice/internal/services"
 
 	"fmt"
 	"os"
@@ -10,7 +10,7 @@ import (
 )
 
 type AuctionCard struct {
-	Id        int         `json:"id"`
+	Id        uuid.UUID   `json:"id"`
 	ImgSrc    string      `json:"img_src"`
 	Title     string      `json:"title"`
 	NumOfBids int         `json:"num_of_bids"`
@@ -20,13 +20,12 @@ type AuctionCard struct {
 	Condition m.Condition `json:"condition"`
 }
 
-func MapAuctionRespToCard(
-	id int, respData *s.AuctionResp) AuctionCard {
+func MapAuctionCard(respData *m.AuctionDetails) *AuctionCard {
 	item := respData.Item
 	auction := respData.Auction
 
-	card := AuctionCard{
-		Id:        id,
+	card := &AuctionCard{
+		Id:        auction.Id(),
 		ImgSrc:    fmt.Sprintf("http://%s:%s/api/img/%s", os.Getenv("HOST"), os.Getenv("PORT"), item.Images[0]),
 		Title:     item.Name,
 		NumOfBids: int(auction.BidCount),

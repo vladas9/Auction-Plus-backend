@@ -6,7 +6,6 @@ import (
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
-	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 func (s *Service) NewBid(bid *m.BidModel) (err error) {
@@ -111,10 +110,10 @@ func buildBidsTable(
 	itemList []*m.ItemModel,
 	userList []*m.UserModel,
 ) ([]*m.BidsTable, error) {
-	userMap := u.CreateUserMap(userList)
-	auctionMap := u.CreateAuctionMap(auctionList)
-	itemMap := u.CreateItemMap(itemList)
-	highestBids := u.FindHighestBids(bidList)
+	userMap := CreateUserMap(userList)
+	auctionMap := CreateAuctionMap(auctionList)
+	itemMap := CreateItemMap(itemList)
+	highestBids := FindHighestBids(bidList)
 
 	bidsTable := make([]*m.BidsTable, 0)
 	for _, bid := range highestBids {
@@ -133,7 +132,7 @@ func buildBidsTable(
 			continue
 		}
 
-		image := u.GetFirstImageOrNil(relatedItem)
+		image := m.GetFirstImageOrNil(relatedItem)
 
 		bidTableEntry := m.BidsTableMapper(
 			image,

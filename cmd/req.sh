@@ -6,9 +6,13 @@ register_user() {
   --data-binary "@cmd/user_req.json"
 }
 
-get_auctions() {
-  curl -X GET 'http://localhost:1169/api/auctions?limit=17&offset=0&min_price=700&max_price=2000&category=electronics&lotcondition=new'
+get_auction_cards() {
+  curl -X GET 'http://localhost:1169/api/auctions?limit=17&offset=0&min_price=0&max_price=2000&category=electronics&lotcondition=used'
+}
+
+get_auction_table() {
+  curl -X GET 'http://localhost:1169/api/get-lots-table?limit=17&offset=0' # ADD Auth header and test
 }
 
 #register_user
-time get_auctions | jq '.'
+time get_auction_cards | jq '.'

@@ -4,285 +4,226 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/google/uuid"
+	dto "github.com/vladas9/backend-practice/internal/dtos"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
-func (s *Service) GetAuctions(params AuctionParams) (respList []*AuctionResp, err error) {
-	var auctList []*m.AuctionModel
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
-		if auctList, err = getAuctionsWith(stx, params); err != nil {
-			return err
-		}
-		for _, auct := range auctList {
-			if auctResp, err := s.newAuctionResp(stx, auct).withItem().unpack(); err != nil {
-				return err
-			} else if auctResp.ItemHas(params.Condition, params.Category) {
-				respList = append(respList, auctResp)
-			}
-		}
-		return nil
-	})
-
-	if err != nil {
-		return nil, fmt.Errorf(" Auction Service: GetAuctions: %w", err)
-	}
-
-	return respList, nil
+type AuctionService interface {
+	NewAuction(dto *dto.AuctionFull) error
+	GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, error)
+	GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error)
+	GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error)
 }
 
-func (s *Service) GetAuctionById(id uuid.UUID) (resp *AuctionResp, err error) {
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
-		auction, err := stx.AuctionRepo().GetById(id)
-		if err != nil {
-			return err
-		}
-		resp, err = s.newAuctionResp(stx, auction).withItem().withBids().unpack()
-		return err
-	})
-	if err != nil {
-		return nil, fmt.Errorf("Auction Service: GetAuctionById: %w", err)
-	}
-	return resp, nil
-}
+// type auctionService struct{ *Service }
+//
+//	func NewAuctionService(s *Service) AuctionService {
+//		return &auctionService{s}
+//	}
 
-func getAuctionsWith(stx *r.StoreTx, params AuctionParams) (auctions []*m.AuctionModel, err error) {
-	auctionRepo := stx.AuctionRepo()
-	if params.MaxPrice.IsZero() {
-		auctions, err = auctionRepo.GetAll(params.Offset, params.Len)
-	} else {
-		auctions, err = auctionRepo.GetAllFiltered(
-			params.Offset, params.Len,
-			params.MinPrice, params.MaxPrice)
-		u.Logger.Info("getAuctionsWith in:", auctions)
-	}
-	if err != nil {
-		return nil, fmt.Errorf("getAuctionsWith: %w", err)
-	}
-	return auctions, nil
-}
-
-func (s *Service) CreateAuction(auct *m.AuctionModel, item *m.ItemModel) error {
-	err := s.store.WithTx(func(stx *r.StoreTx) error {
-		if itemId, err := stx.ItemRepo().Insert(item); err != nil {
-			return err
-		} else {
-			auct.ItemId = itemId
-		}
-		if err := stx.AuctionRepo().Insert(auct); err != nil {
-			return err
-		}
-		return nil
-	})
-	if err != nil {
-		return fmt.Errorf("GetAuctions controller: %w", err)
-	}
-	return nil
-}
-
-//// Definitions
-
-type AuctionParams struct {
+type AuctionCardParams struct {
 	Category           string
 	Condition          string
 	Offset, Len        int
 	MinPrice, MaxPrice m.Decimal
 }
 
-func (a AuctionParams) Validate() Problems {
+func (a AuctionCardParams) Validate() Problems {
+	problems := Problems{}
+
 	if a.Len <= 0 {
-		return Problems{"limit": "must be more that 0"}
+		problems["len"] = "must be greater than 0"
 	}
 	if a.Offset < 0 {
-		return Problems{"offset": "cannot be negative"}
+		problems["offset"] = "cannot be negative"
 	}
-	if !a.MaxPrice.IsZero() &&
-		a.MaxPrice.Compare(a.MinPrice) == -1 {
-		return Problems{"max_price": "max price smaller than min price"}
+	if !a.MaxPrice.IsZero() && a.MaxPrice.Compare(a.MinPrice) == -1 {
+		problems["max_price"] = "max price cannot be less than min price"
 	}
 	if ok := m.IsCategory(a.Category); !ok {
-		return Problems{"category:": fmt.Sprint(a.Category, "does not exist")}
+		problems["category"] = fmt.Sprintf("%s does not exist", a.Category)
 	}
 	if ok := m.IsCondition(a.Condition); !ok {
-		return Problems{"condition:": fmt.Sprint(a.Condition, "does not exist")}
+		problems["condition"] = fmt.Sprintf("%s does not exist", a.Condition)
+	}
+
+	if len(problems) > 0 {
+		return problems
 	}
 	return nil
 }
 
-type AuctionResp struct {
-	Auction *m.AuctionModel
-	Item    *m.ItemModel
-	BidList []*m.BidModel
+type AuctionTableParams struct {
+	UserId        uuid.UUID
+	Limit, Offset int
 }
 
-func (rsp *AuctionResp) ItemHas(condition, category string) bool {
-	hasCateg := (category == "" ||
-		rsp.Item.Category == m.Category(category))
-	hasCond := (condition == "" ||
-		rsp.Item.Condition == m.Condition(condition))
+func (p AuctionTableParams) Validate() Problems {
+	problems := Problems{}
 
-	u.Logger.Info("condition:", hasCond, condition)
-	u.Logger.Info("category:", hasCateg, category)
-
-	if hasCond && hasCateg {
-		return true
+	if p.Limit <= 0 {
+		problems["limit"] = "must be greater than 0"
+	}
+	if p.Offset < 0 {
+		problems["offset"] = "cannot be negative"
 	}
 
-	return false
+	return problems
 }
 
-type auctRespChain struct {
-	err  error
-	stx  *r.StoreTx
-	Resp *AuctionResp
-}
+func (s *Service) NewAuction(dto *dto.AuctionFull) error { return nil }
 
-func (s *Service) newAuctionResp(stx *r.StoreTx, auct *m.AuctionModel) (next *auctRespChain) {
-	next = &auctRespChain{
-		err: nil,
-		stx: stx,
-		Resp: &AuctionResp{
-			Auction: auct, Item: nil, BidList: nil,
-		}}
-	return
-}
+//func (s *auctionService) NewAuction(dto *dto.AuctionFull) error {
+//	err := s.store.WithTx(func(stx *r.StoreTx) error {
+//		if itemId, err := stx.ItemRepo().Insert(item); err != nil {
+//			return err
+//		} else {
+//			auct.ItemId = itemId
+//		}
+//		if err := stx.AuctionRepo().Insert(auct); err != nil {
+//			return err
+//		}
+//		return nil
+//	})
+//	return fail(err)
+//}
 
-func (prev *auctRespChain) unpack() (*AuctionResp, error) {
-	if prev.err != nil {
-		return nil, fmt.Errorf("unpack: %w", prev.err)
+func (s *Service) GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error) {
+	var auctions []*m.AuctionDetails
+	var err error
+	err = s.store.WithTx(func(stx *r.StoreTx) error {
+		auctions, err = getUserAuctions(stx, params, withItem, withMaxBidder)
+		return err
+	})
+	if err != nil {
+		return nil, fail(err)
 	}
-	u.Logger.Info("unpack: ", prev.Resp)
-	return prev.Resp, nil
+	var table []dto.AuctionTable
+	for _, a := range auctions {
+		table = append(table, *dto.MapAuctionTable(a))
+	}
+	return table, nil
 }
 
-func (prev *auctRespChain) withBids() (next *auctRespChain) {
-	next = &auctRespChain{}
-	if prev.err != nil {
-		next.err = fmt.Errorf("withBids prev: %w", prev.err)
-		return
-	}
-	next = prev
-	next.Resp.BidList, next.err = prev.stx.BidRepo().GetAllFor(prev.Resp.Auction)
-	if next.err != nil {
-		next.err = fmt.Errorf("withBids: %w", next.err)
-	}
-	return
-}
-
-func (prev *auctRespChain) withItem() (next *auctRespChain) {
-	next = &auctRespChain{}
-	if prev.err != nil {
-		next.err = fmt.Errorf("withItem prev: %w", prev.err)
-		return
-	}
-	next = prev
-	next.Resp.Item, next.err = prev.stx.ItemRepo().GetById(prev.Resp.Auction.ItemId)
-	if next.err != nil {
-		next.err = fmt.Errorf("withItem: %w", next.err)
-	}
-	return
-}
-
-func (s *Service) GetAuctionTable(userId uuid.UUID, limit, offset int) ([]*m.AuctionTable, error) {
-	var auctionList []*m.AuctionModel
-	var itemList []*m.ItemModel
-	var userList []*m.UserModel
-
-	err := s.store.WithTx(func(stx *r.StoreTx) error {
-		var err error
-		auctionList, err = stx.AuctionRepo().GetAllByUserId(userId, limit, offset)
+func getUserAuctions(stx *r.StoreTx, params AuctionTableParams, opts ...auctOpt) (auctions []*m.AuctionDetails, err error) {
+	var auctModels []*m.AuctionModel
+	auctModels, err = stx.AuctionRepo().GetAllByUserId(params.UserId, params.Limit, params.Offset)
+	var auct *m.AuctionDetails
+	for _, auctModel := range auctModels {
+		auct, err = getAuctionDetails(auctModel, stx, opts...)
 		if err != nil {
-			return fmt.Errorf("Failed getting acution list: %s", err)
+			return nil, fail(err)
 		}
+		auctions = append(auctions, auct)
+	}
+	return auctions, nil
+}
 
-		itemList, userList, err = getRelatedAuctionTableData(stx, auctionList)
-		if err != nil {
+func (s *Service) GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, error) {
+	var err error
+	var auctDetails []*m.AuctionDetails
+	err = s.store.WithTx(func(stx *r.StoreTx) error {
+		if auctDetails, err = getAuctions(stx, params, withItem); err != nil {
 			return err
 		}
-
 		return nil
 	})
 
 	if err != nil {
-		return nil, err
+		return nil, fail(err)
 	}
 
-	auctionTable, err := buildAuctionTable(auctionList, itemList, userList)
+	var cards []dto.AuctionCard
+	for _, a := range auctDetails {
+		cards = append(cards, *dto.MapAuctionCard(a))
+	}
+	return cards, nil
+}
+
+func getAuctions(stx *r.StoreTx, params AuctionCardParams, opts ...auctOpt) (auctions []*m.AuctionDetails, err error) {
+	auctionRepo := stx.AuctionRepo()
+	var auctModels []*m.AuctionModel
+	if params.MaxPrice.IsZero() {
+		auctModels, err = auctionRepo.GetAll(params.Offset, params.Len)
+	} else {
+		auctModels, err = auctionRepo.GetAllFiltered(
+			params.Offset, params.Len,
+			params.MinPrice, params.MaxPrice)
+		u.Logger.Info("getAuctionsWith in:", auctions)
+	}
 	if err != nil {
-		return nil, err
+		return nil, fail(err)
 	}
-
-	return auctionTable, nil
-
+	for _, auctModel := range auctModels {
+		auct, err := getAuctionDetails(auctModel, stx, opts...)
+		if err != nil {
+			return nil, fail(err)
+		} else if auct.ItemHas(params.Condition, params.Category) {
+			auctions = append(auctions, auct)
+		}
+	}
+	return auctions, nil
 }
 
-func getRelatedAuctionTableData(stx *r.StoreTx, auctionList []*m.AuctionModel) (
-	[]*m.ItemModel, []*m.UserModel, error,
-) {
-	itemList := make([]*m.ItemModel, 0)
-	userList := make([]*m.UserModel, 0)
-
-	for _, auction := range auctionList {
-		itemId := auction.ItemId
-		item, err := stx.ItemRepo().GetById(itemId)
+func (s *Service) GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error) {
+	var err error
+	var auct *m.AuctionDetails
+	err = s.store.WithTx(func(stx *r.StoreTx) error {
+		auctModel, err := stx.AuctionRepo().GetById(id)
 		if err != nil {
-			return nil, nil, fmt.Errorf("Failed getting item: %s", err)
+			return err
 		}
-		itemList = append(itemList, item)
-
-		userId := auction.MaxBidderId
-		user, err := stx.UserRepo().GetById(userId)
-		if err != nil {
-			if err != sql.ErrNoRows {
-				return nil, nil, fmt.Errorf("Failed getting user: %s", err)
-			}
-			user = &m.UserModel{}
-		}
-		userList = append(userList, user)
-		userList = append(userList, user)
+		auct, err = getAuctionDetails(auctModel, stx, withItem, withBids)
+		return err
+	})
+	if err != nil {
+		return nil, fail(err)
 	}
-
-	return itemList, userList, nil
+	return dto.MapAuctionRespToFull(auct), nil
 }
 
-func buildAuctionTable(
-	auctionList []*m.AuctionModel,
-	itemList []*m.ItemModel,
-	userList []*m.UserModel,
-) ([]*m.AuctionTable, error) {
-	userMap := u.CreateUserMap(userList)
-	auctionMap := u.CreateAuctionMap(auctionList)
-	itemMap := u.CreateItemMap(itemList)
+type auctOpt func(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
 
-	auctionTable := make([]*m.AuctionTable, 0)
-	for _, auction := range auctionMap {
-		relatedItem, itemExists := itemMap[auction.ItemId]
-		if !itemExists {
-			continue
+func getAuctionDetails(auct *m.AuctionModel, stx *r.StoreTx, opts ...auctOpt) (*m.AuctionDetails, error) {
+	var err error
+	details := m.NewAuctionDetails(auct)
+	for _, opt := range opts {
+		details, err = opt(stx, details)
+		if err != nil {
+			return nil, err
 		}
-
-		relatedUser, userExists := userMap[auction.MaxBidderId]
-		if !userExists {
-			continue
-		}
-
-		image := u.GetFirstImageOrNil(relatedItem)
-
-		auctionTableEntry := m.AuctionTableMapper(
-			image,
-			auction.CurrentBid,
-			Host,
-			Port,
-			relatedItem.Name,
-			string(relatedItem.Category),
-			relatedUser.Username,
-			auction.Status,
-			auction.EndTime,
-		)
-
-		auctionTable = append(auctionTable, auctionTableEntry)
 	}
+	return details, nil
+}
 
-	return auctionTable, nil
+func withBids(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
+	var err error
+	auct.BidList, err = stx.BidRepo().GetAllFor(auct.Auction)
+	if err != nil {
+		return nil, fail(err)
+	}
+	return auct, nil
+}
+
+func withItem(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
+	var err error
+	auct.Item, err = stx.ItemRepo().GetById(auct.Auction.ItemId)
+	if err != nil {
+		return nil, fail(err)
+	}
+	return auct, nil
+}
+
+func withMaxBidder(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
+	var err error
+	auct.MaxBidder, err = stx.UserRepo().GetById(auct.MaxBidder.Id())
+	if err != nil {
+		if err != sql.ErrNoRows {
+			return nil, fail(err)
+		}
+		auct.MaxBidder = &m.UserModel{}
+	}
+	return auct, nil
 }

@@ -14,7 +14,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	user := u.GenerateDummyUser()
+	user := GenerateDummyUser()
 	err = r.NewStore(db).WithTx(func(stx *r.StoreTx) error {
 		userId, repoErr := stx.UserRepo().Insert(user)
 		u.Logger.Info("demoDB: userId: ", userId)
@@ -25,12 +25,12 @@ func main() {
 		//userId, _ := uuid.Parse("da0db08a-0ab1-483c-a228-f592a8d43b8b")
 
 		for i := 0; i <= 20; i++ {
-			item := u.CreateDummyItem()
+			item := CreateDummyItem()
 			itemId, err := stx.ItemRepo().Insert(item)
 			if err != nil {
 				return err
 			}
-			auct := u.CreateDummyAuction(itemId, userId)
+			auct := CreateDummyAuction(itemId, userId)
 			u.Logger.Info("\n", auct, "\n")
 			err = stx.AuctionRepo().Insert(auct)
 			if err != nil {

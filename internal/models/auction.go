@@ -1,10 +1,11 @@
 package models
 
 import (
-	"fmt"
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
 	"time"
+
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 type AuctionModel struct {
@@ -23,33 +24,31 @@ type AuctionModel struct {
 	Status             bool            `json:"status"`
 }
 
-type AuctionTable struct {
-	ID        uuid.UUID       `json:"id"`
-	ImgSrc    string          `json:"img_src"`
-	LotTitle  string          `json:"lot_title"`
-	MaxBid    decimal.Decimal `json:"max_bid"`
-	EndDate   time.Time       `json:"end_date"`
-	Category  string          `json:"category"`
-	Opened    bool            `json:"opened"`
-	TopBidder string          `json:"top_bidder"`
+type AuctionDetails struct {
+	Auction   *AuctionModel
+	Item      *ItemModel
+	BidList   []*BidModel
+	MaxBidder *UserModel
 }
 
-func AuctionTableMapper(
-	image uuid.UUID,
-	maxBid decimal.Decimal,
-	host, port, title, category, username string,
-	opened bool,
-	endTime time.Time) *AuctionTable {
-
-	return &AuctionTable{
-		ID:        uuid.New(),
-		ImgSrc:    fmt.Sprintf("http://%s:%s/api/img/%s", host, port, image.String()),
-		LotTitle:  title,
-		MaxBid:    maxBid,
-		EndDate:   endTime,
-		Category:  category,
-		Opened:    opened,
-		TopBidder: username,
+func NewAuctionDetails(auct *AuctionModel) *AuctionDetails {
+	return &AuctionDetails{
+		Auction:   auct,
+		Item:      nil,
+		BidList:   nil,
+		MaxBidder: nil,
 	}
+}
 
+func (rsp *AuctionDetails) ItemHas(condition, category string) bool {
+	hasCateg := (category == "" || rsp.Item.Category == Category(category))
+	hasCond := (condition == "" || rsp.Item.Condition == Condition(condition))
+
+	u.Logger.Info("Checking item against filters:",
+		"conditionMet:", hasCond,
+		"condition:", condition,
+		"categoryMet:", hasCateg,
+		"category:", category)
+
+	return hasCateg && hasCond
 }

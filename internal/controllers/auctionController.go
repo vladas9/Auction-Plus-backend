@@ -6,7 +6,6 @@ import (
 	"strconv"
 
 	"github.com/shopspring/decimal"
-	"github.com/vladas9/backend-practice/internal/dtos"
 	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
@@ -45,7 +44,7 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		return fail(err)
 	}
 
-	params := s.AuctionParams{
+	params := s.AuctionCardParams{
 		Offset:    offset,
 		Len:       leangth,
 		MaxPrice:  maxPrice,
@@ -58,16 +57,13 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		return &ApiError{Status: 400, ErrorMsg: problems}
 	}
 
-	resp, err := c.service.GetAuctions(params)
+	cards, err := c.service.GetAuctionCards(params)
 	if err != nil {
 		return fmt.Errorf("AuctionController: %w", err)
 	}
-	var cards []dtos.AuctionCard
-	u.Logger.Info("AuctionController: getAuctions:", resp)
-	for i, respItem := range resp {
-		cards = append(cards, dtos.MapAuctionRespToCard(i+1, respItem))
-	}
-	return WriteJSON(w, http.StatusOK, cards)
+	return WriteJSON(w, http.StatusOK, Response{
+		"lots": cards,
+	})
 }
 
 func (c *Controller) GetAuction(w http.ResponseWriter, r *Response) error {
@@ -78,19 +74,22 @@ func (c *Controller) GetAuction(w http.ResponseWriter, r *Response) error {
 
 func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error {
 	var err error
-	var limit, offset int
-	if limit, err = strconv.Atoi(r.URL.Query().Get("limit")); err != nil {
+	params := s.AuctionTableParams{}
+	if params.Limit, err = strconv.Atoi(r.URL.Query().Get("limit")); err != nil {
 		return err
 	}
-	if offset, err = strconv.Atoi(r.URL.Query().Get("offset")); err != nil {
+	if params.Offset, err = strconv.Atoi(r.URL.Query().Get("offset")); err != nil {
 		return err
 	}
-	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	params.UserId, err = u.ExtractUserIDFromToken(r, JwtSecret)
 	if err != nil {
 		return err
 	}
+	if problems := params.Validate(); problems != nil {
+		return &ApiError{Status: 400, ErrorMsg: problems}
+	}
 
-	response, err := c.service.GetAuctionTable(userId, limit, offset)
+	response, err := c.service.GetAuctionTable(params)
 	if err != nil {
 		return err
 	}

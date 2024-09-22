@@ -12,3 +12,10 @@ type ItemModel struct {
 	Condition   Condition   `json:"condition"`
 	Images      []uuid.UUID `json:"images"`
 }
+
+func GetFirstImageOrNil(item *ItemModel) uuid.UUID {
+	if len(item.Images) > 0 {
+		return item.Images[0]
+	}
+	return uuid.Nil
+}

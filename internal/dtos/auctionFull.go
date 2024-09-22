@@ -3,7 +3,6 @@ package dtos
 import (
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
-	s "github.com/vladas9/backend-practice/internal/services"
 
 	"fmt"
 	"os"
@@ -31,11 +30,11 @@ import (
 //}
 
 type AuctionFull struct {
-	Id         int      `json:"id"`
-	ImgSrc     []string `json:"img_src"`
-	Title      string   `json:"title"`
-	Descripton string   `json:"description"`
-	Opened     bool     `json:"opened"`
+	Id          uuid.UUID `json:"id"`
+	ImgSrc      []string  `json:"img_src"`
+	Title       string    `json:"title"`
+	Description string    `json:"description"`
+	Opened      bool      `json:"opened"`
 
 	Category  m.Category  `json:"category_name"`
 	Condition m.Condition `json:"condition"`
@@ -46,23 +45,22 @@ type AuctionFull struct {
 	Bids      []*m.BidModel `json:"bids"` // TODO bids per day, max bids per day
 }
 
-func MapAuctionRespToFull(
-	id int, respData *s.AuctionResp) AuctionFull {
+func MapAuctionRespToFull(respData *m.AuctionDetails) *AuctionFull {
 	item := respData.Item
 	auction := respData.Auction
 
-	data := AuctionFull{
-		Id:         id,
-		ImgSrc:     MakeImgSrcs(item.Images),
-		Title:      item.Name,
-		Descripton: item.Description,
-		Opened:     respData.Auction.Status,
-		Category:   item.Category,
-		Condition:  item.Condition,
-		EndDate:    auction.EndTime,
-		MaxBid:     auction.CurrentBid,
-		NumOfBids:  int(auction.BidCount),
-		Bids:       respData.BidList,
+	data := &AuctionFull{
+		Id:          auction.Id(),
+		ImgSrc:      MakeImgSrcs(item.Images),
+		Title:       item.Name,
+		Description: item.Description,
+		Opened:      respData.Auction.Status,
+		Category:    item.Category,
+		Condition:   item.Condition,
+		EndDate:     auction.EndTime,
+		MaxBid:      auction.CurrentBid,
+		NumOfBids:   int(auction.BidCount),
+		Bids:        respData.BidList,
 	}
 	return data
 }
