@@ -39,28 +39,35 @@ type AuctionFull struct {
 	Category  m.Category  `json:"category_name"`
 	Condition m.Condition `json:"condition"`
 
-	EndDate   time.Time     `json:"end_date"`
-	NumOfBids int           `json:"n_bids"`
-	MaxBid    m.Decimal     `json:"max_bid"`
-	Bids      []*m.BidModel `json:"bids"` // TODO bids per day, max bids per day
+	EndDate   time.Time `json:"end_date"`
+	NumOfBids int       `json:"n_bids"`
+	MaxBid    m.Decimal `json:"max_bid"`
+
+	Labels     []string    `json:"labels"`
+	BidsPerDay []int       `json:"bids_perday"`
+	MaxBids    []m.Decimal `json:"max_bid_perday"`
 }
 
-func MapAuctionRespToFull(respData *m.AuctionDetails) *AuctionFull {
-	item := respData.Item
-	auction := respData.Auction
+func MapAuctionRespToFull(auctDets *m.AuctionDetails) *AuctionFull {
+	item := auctDets.Item
+	auction := auctDets.Auction
+
+	bidStats := m.GetBidStats(auctDets.BidList)
 
 	data := &AuctionFull{
 		Id:          auction.Id(),
 		ImgSrc:      MakeImgSrcs(item.Images),
 		Title:       item.Name,
 		Description: item.Description,
-		Opened:      respData.Auction.Status,
+		Opened:      auction.Status,
 		Category:    item.Category,
 		Condition:   item.Condition,
 		EndDate:     auction.EndTime,
 		MaxBid:      auction.CurrentBid,
 		NumOfBids:   int(auction.BidCount),
-		Bids:        respData.BidList,
+		Labels:      bidStats.Labels,
+		BidsPerDay:  bidStats.BidsCount,
+		MaxBids:     bidStats.MaxBids,
 	}
 	return data
 }

@@ -1969,3 +1969,1159 @@ INFO: 2024/09/22 07:54:17 Checking item against filters: conditionMet: true cond
 INFO: 2024/09/22 07:54:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
 INFO: 2024/09/22 07:54:17 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
 INFO: 2024/09/22 07:54:17 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:15:53 Successfully connected to the database
+INFO: 2024/09/22 18:15:53 Started server on localhost:1169
+INFO: 2024/09/22 18:17:14 rows next
+INFO: 2024/09/22 18:17:14 rows next
+INFO: 2024/09/22 18:17:14 rows next
+INFO: 2024/09/22 18:17:14 rows next
+INFO: 2024/09/22 18:17:14 rows next
+INFO: 2024/09/22 18:17:14 rows next
+INFO: 2024/09/22 18:17:14 rows next
+INFO: 2024/09/22 18:17:14 rows next
+INFO: 2024/09/22 18:17:14 AuctionRepo GetAllFiltered: [0xc0002320b0 0xc000232160 0xc000232210 0xc0002322c0 0xc000232370 0xc000232420 0xc0002324d0 0xc000232580]
+INFO: 2024/09/22 18:17:14 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:14 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:14 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:14 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:14 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:14 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:14 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:14 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:14 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 AuctionRepo GetAllFiltered: [0xc00009e420 0xc00009e4d0 0xc00009e580 0xc00009e630 0xc00009e6e0 0xc00009e790 0xc00009e840 0xc00009e8f0]
+INFO: 2024/09/22 18:17:17 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 rows next
+INFO: 2024/09/22 18:17:17 AuctionRepo GetAllFiltered: [0xc00016c000 0xc00016c0b0 0xc00016c160 0xc00016c210 0xc00016c2c0 0xc00016c370 0xc00016c420 0xc00016c4d0]
+INFO: 2024/09/22 18:17:17 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:17 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 AuctionRepo GetAllFiltered: [0xc00009e9a0 0xc00009ea50 0xc00009eb00 0xc00009ebb0 0xc00009ec60 0xc00009ed10 0xc00009edc0 0xc00009ee70]
+INFO: 2024/09/22 18:17:18 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 AuctionRepo GetAllFiltered: [0xc00009ef20 0xc00009efd0 0xc00009f080 0xc00009f130 0xc00009f1e0 0xc00009f290 0xc00009f340 0xc00009f3f0]
+INFO: 2024/09/22 18:17:18 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 rows next
+INFO: 2024/09/22 18:17:18 AuctionRepo GetAllFiltered: [0xc00016c580 0xc00016c630 0xc00016c6e0 0xc00016c790 0xc00016c840 0xc00016c8f0 0xc00016c9a0 0xc00016ca50]
+INFO: 2024/09/22 18:17:18 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:18 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 AuctionRepo GetAllFiltered: [0xc000232630 0xc0002326e0 0xc000232790 0xc000232840 0xc0002328f0 0xc0002329a0 0xc000232a50 0xc000232b00]
+INFO: 2024/09/22 18:17:19 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 rows next
+INFO: 2024/09/22 18:17:19 AuctionRepo GetAllFiltered: [0xc000232bb0 0xc000232c60 0xc000232d10 0xc000232dc0 0xc000232e70 0xc000232f20 0xc000232fd0 0xc000233080]
+INFO: 2024/09/22 18:17:19 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:19 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 AuctionRepo GetAllFiltered: [0xc000233130 0xc0002331e0 0xc000233290 0xc000233340 0xc0002333f0 0xc0002334a0 0xc000233550 0xc000233600]
+INFO: 2024/09/22 18:17:20 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 rows next
+INFO: 2024/09/22 18:17:20 AuctionRepo GetAllFiltered: [0xc0002336b0 0xc000233760 0xc000233810 0xc0002338c0 0xc000233970 0xc000233a20 0xc000233ad0 0xc000233b80]
+INFO: 2024/09/22 18:17:20 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:20 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 AuctionRepo GetAllFiltered: [0xc000233c30 0xc000233ce0 0xc000233d90 0xc000233e40 0xc000292000 0xc0002920b0 0xc000292160 0xc000292210]
+INFO: 2024/09/22 18:17:21 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 rows next
+INFO: 2024/09/22 18:17:21 AuctionRepo GetAllFiltered: [0xc00016cb00 0xc00016cbb0 0xc00016cc60 0xc00016cd10 0xc00016cdc0 0xc00016ce70 0xc00016cf20 0xc00016cfd0]
+INFO: 2024/09/22 18:17:21 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:21 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 AuctionRepo GetAllFiltered: [0xc00016d080 0xc00016d130 0xc00016d1e0 0xc00016d290 0xc00016d340 0xc00016d3f0 0xc00016d4a0 0xc00016d550]
+INFO: 2024/09/22 18:17:22 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 AuctionRepo GetAllFiltered: [0xc00009f4a0 0xc00009f550 0xc00009f600 0xc00009f6b0 0xc00009f760 0xc00009f810 0xc00009f8c0 0xc00009f970]
+INFO: 2024/09/22 18:17:22 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 rows next
+INFO: 2024/09/22 18:17:22 AuctionRepo GetAllFiltered: [0xc0002922c0 0xc000292370 0xc000292420 0xc0002924d0 0xc000292580 0xc000292630 0xc0002926e0 0xc000292790]
+INFO: 2024/09/22 18:17:22 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:22 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 AuctionRepo GetAllFiltered: [0xc000292840 0xc0002928f0 0xc0002929a0 0xc000292a50 0xc000292b00 0xc000292bb0 0xc000292c60 0xc000292d10]
+INFO: 2024/09/22 18:17:23 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 rows next
+INFO: 2024/09/22 18:17:23 AuctionRepo GetAllFiltered: [0xc000292dc0 0xc000292e70 0xc000292f20 0xc000292fd0 0xc000293080 0xc000293130 0xc0002931e0 0xc000293290]
+INFO: 2024/09/22 18:17:23 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:23 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:24 rows next
+INFO: 2024/09/22 18:17:24 rows next
+INFO: 2024/09/22 18:17:24 rows next
+INFO: 2024/09/22 18:17:24 rows next
+INFO: 2024/09/22 18:17:24 rows next
+INFO: 2024/09/22 18:17:24 rows next
+INFO: 2024/09/22 18:17:24 rows next
+INFO: 2024/09/22 18:17:24 rows next
+INFO: 2024/09/22 18:17:24 AuctionRepo GetAllFiltered: [0xc000293340 0xc0002933f0 0xc0002934a0 0xc000293550 0xc000293600 0xc0002936b0 0xc000293760 0xc000293810]
+INFO: 2024/09/22 18:17:24 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:24 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:24 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:24 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:24 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:24 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:24 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:24 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:24 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 AuctionRepo GetAllFiltered: [0xc00016d600 0xc00016d6b0 0xc00016d760 0xc00016d810 0xc00016d8c0 0xc00016d970 0xc00016da20 0xc00016dad0]
+INFO: 2024/09/22 18:17:25 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 rows next
+INFO: 2024/09/22 18:17:25 AuctionRepo GetAllFiltered: [0xc00016db80 0xc00016dc30 0xc00016dce0 0xc00016dd90 0xc00016de40 0xc000314000 0xc0003140b0 0xc000314160]
+INFO: 2024/09/22 18:17:25 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:25 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 AuctionRepo GetAllFiltered: [0xc0002938c0 0xc000293970 0xc000293a20 0xc000293ad0 0xc000293b80 0xc000293c30 0xc000293ce0 0xc000293d90]
+INFO: 2024/09/22 18:17:26 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 AuctionRepo GetAllFiltered: [0xc000314210 0xc0003142c0 0xc000314370 0xc000314420 0xc0003144d0 0xc000314580 0xc000314630 0xc0003146e0]
+INFO: 2024/09/22 18:17:26 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 AuctionRepo GetAllFiltered: [0xc000314790 0xc000314840 0xc0003148f0 0xc0003149a0 0xc000314a50 0xc000314b00 0xc000314bb0 0xc000314c60]
+INFO: 2024/09/22 18:17:26 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 rows next
+INFO: 2024/09/22 18:17:26 AuctionRepo GetAllFiltered: [0xc000314d10 0xc000314dc0 0xc000314e70 0xc000314f20 0xc000314fd0 0xc000315080 0xc000315130 0xc0003151e0]
+INFO: 2024/09/22 18:17:26 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:26 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 AuctionRepo GetAllFiltered: [0xc000293e40 0xc0002c6000 0xc0002c60b0 0xc0002c6160 0xc0002c6210 0xc0002c62c0 0xc0002c6370 0xc0002c6420]
+INFO: 2024/09/22 18:17:27 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 AuctionRepo GetAllFiltered: [0xc0002c64d0 0xc0002c6580 0xc0002c6630 0xc0002c66e0 0xc0002c6790 0xc0002c6840 0xc0002c68f0 0xc0002c69a0]
+INFO: 2024/09/22 18:17:27 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 rows next
+INFO: 2024/09/22 18:17:27 AuctionRepo GetAllFiltered: [0xc00009fa20 0xc00009fad0 0xc00009fb80 0xc00009fc30 0xc00009fce0 0xc00009fd90 0xc00009fe40 0xc00039a000]
+INFO: 2024/09/22 18:17:27 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:27 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 AuctionRepo GetAllFiltered: [0xc00039a0b0 0xc00039a160 0xc00039a210 0xc00039a2c0 0xc00039a370 0xc00039a420 0xc00039a4d0 0xc00039a580]
+INFO: 2024/09/22 18:17:28 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 AuctionRepo GetAllFiltered: [0xc0002c6a50 0xc0002c6b00 0xc0002c6bb0 0xc0002c6c60 0xc0002c6d10 0xc0002c6dc0 0xc0002c6e70 0xc0002c6f20]
+INFO: 2024/09/22 18:17:28 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 rows next
+INFO: 2024/09/22 18:17:28 AuctionRepo GetAllFiltered: [0xc0002c6fd0 0xc0002c7080 0xc0002c7130 0xc0002c71e0 0xc0002c7290 0xc0002c7340 0xc0002c73f0 0xc0002c74a0]
+INFO: 2024/09/22 18:17:28 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:28 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 AuctionRepo GetAllFiltered: [0xc00039a630 0xc00039a6e0 0xc00039a790 0xc00039a840 0xc00039a8f0 0xc00039a9a0 0xc00039aa50 0xc00039ab00]
+INFO: 2024/09/22 18:17:29 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 rows next
+INFO: 2024/09/22 18:17:29 AuctionRepo GetAllFiltered: [0xc000315290 0xc000315340 0xc0003153f0 0xc0003154a0 0xc000315550 0xc000315600 0xc0003156b0 0xc000315760]
+INFO: 2024/09/22 18:17:29 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:29 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 AuctionRepo GetAllFiltered: [0xc000315810 0xc0003158c0 0xc000315970 0xc000315a20 0xc000315ad0 0xc000315b80 0xc000315c30 0xc000315ce0]
+INFO: 2024/09/22 18:17:30 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 rows next
+INFO: 2024/09/22 18:17:30 AuctionRepo GetAllFiltered: [0xc0002c7550 0xc0002c7600 0xc0002c76b0 0xc0002c7760 0xc0002c7810 0xc0002c78c0 0xc0002c7970 0xc0002c7a20]
+INFO: 2024/09/22 18:17:30 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:30 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:31 rows next
+INFO: 2024/09/22 18:17:31 rows next
+INFO: 2024/09/22 18:17:31 rows next
+INFO: 2024/09/22 18:17:31 rows next
+INFO: 2024/09/22 18:17:31 rows next
+INFO: 2024/09/22 18:17:31 rows next
+INFO: 2024/09/22 18:17:31 rows next
+INFO: 2024/09/22 18:17:31 rows next
+INFO: 2024/09/22 18:17:31 AuctionRepo GetAllFiltered: [0xc0002c7ad0 0xc0002c7b80 0xc0002c7c30 0xc0002c7ce0 0xc0002c7d90 0xc0002c7e40 0xc0002ec000 0xc0002ec0b0]
+INFO: 2024/09/22 18:17:31 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:31 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:31 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:31 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:31 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:31 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:31 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:31 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:31 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:32 rows next
+INFO: 2024/09/22 18:17:32 rows next
+INFO: 2024/09/22 18:17:32 rows next
+INFO: 2024/09/22 18:17:32 rows next
+INFO: 2024/09/22 18:17:32 rows next
+INFO: 2024/09/22 18:17:32 rows next
+INFO: 2024/09/22 18:17:32 rows next
+INFO: 2024/09/22 18:17:32 rows next
+INFO: 2024/09/22 18:17:32 AuctionRepo GetAllFiltered: [0xc000315d90 0xc000315e40 0xc000340000 0xc0003400b0 0xc000340160 0xc000340210 0xc0003402c0 0xc000340370]
+INFO: 2024/09/22 18:17:32 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:32 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:32 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:32 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:32 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:32 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:32 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:32 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:32 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:33 rows next
+INFO: 2024/09/22 18:17:33 rows next
+INFO: 2024/09/22 18:17:33 rows next
+INFO: 2024/09/22 18:17:33 rows next
+INFO: 2024/09/22 18:17:33 rows next
+INFO: 2024/09/22 18:17:33 rows next
+INFO: 2024/09/22 18:17:33 rows next
+INFO: 2024/09/22 18:17:33 rows next
+INFO: 2024/09/22 18:17:33 AuctionRepo GetAllFiltered: [0xc0002ec160 0xc0002ec210 0xc0002ec2c0 0xc0002ec370 0xc0002ec420 0xc0002ec4d0 0xc0002ec580 0xc0002ec630]
+INFO: 2024/09/22 18:17:33 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:33 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:33 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:33 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:33 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:33 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:33 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:33 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:33 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:35 rows next
+INFO: 2024/09/22 18:17:35 rows next
+INFO: 2024/09/22 18:17:35 rows next
+INFO: 2024/09/22 18:17:35 rows next
+INFO: 2024/09/22 18:17:35 rows next
+INFO: 2024/09/22 18:17:35 rows next
+INFO: 2024/09/22 18:17:35 rows next
+INFO: 2024/09/22 18:17:35 rows next
+INFO: 2024/09/22 18:17:35 AuctionRepo GetAllFiltered: [0xc0002ec6e0 0xc0002ec790 0xc0002ec840 0xc0002ec8f0 0xc0002ec9a0 0xc0002eca50 0xc0002ecb00 0xc0002ecbb0]
+INFO: 2024/09/22 18:17:35 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:35 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:35 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:35 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:35 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:35 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:35 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:35 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:35 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 AuctionRepo GetAllFiltered: [0xc0002ecc60 0xc0002ecd10 0xc0002ecdc0 0xc0002ece70 0xc0002ecf20 0xc0002ecfd0 0xc0002ed080 0xc0002ed130]
+INFO: 2024/09/22 18:17:37 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 rows next
+INFO: 2024/09/22 18:17:37 AuctionRepo GetAllFiltered: [0xc000340420 0xc0003404d0 0xc000340580 0xc000340630 0xc0003406e0 0xc000340790 0xc000340840 0xc0003408f0]
+INFO: 2024/09/22 18:17:37 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:37 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:38 rows next
+INFO: 2024/09/22 18:17:38 rows next
+INFO: 2024/09/22 18:17:38 rows next
+INFO: 2024/09/22 18:17:38 rows next
+INFO: 2024/09/22 18:17:38 rows next
+INFO: 2024/09/22 18:17:38 rows next
+INFO: 2024/09/22 18:17:38 rows next
+INFO: 2024/09/22 18:17:38 rows next
+INFO: 2024/09/22 18:17:38 AuctionRepo GetAllFiltered: [0xc0002ed1e0 0xc0002ed290 0xc0002ed340 0xc0002ed3f0 0xc0002ed4a0 0xc0002ed550 0xc0002ed600 0xc0002ed6b0]
+INFO: 2024/09/22 18:17:38 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:38 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:38 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:38 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:38 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:38 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:38 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:38 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:38 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 AuctionRepo GetAllFiltered: [0xc0003409a0 0xc000340a50 0xc000340b00 0xc000340bb0 0xc000340c60 0xc000340d10 0xc000340dc0 0xc000340e70]
+INFO: 2024/09/22 18:17:39 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 AuctionRepo GetAllFiltered: [0xc00039abb0 0xc00039ac60 0xc00039ad10 0xc00039adc0 0xc00039ae70 0xc00039af20 0xc00039afd0 0xc00039b080]
+INFO: 2024/09/22 18:17:39 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 rows next
+INFO: 2024/09/22 18:17:39 AuctionRepo GetAllFiltered: [0xc000340f20 0xc000340fd0 0xc000341080 0xc000341130 0xc0003411e0 0xc000341290 0xc000341340 0xc0003413f0]
+INFO: 2024/09/22 18:17:39 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:39 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 AuctionRepo GetAllFiltered: [0xc0002ed760 0xc0002ed810 0xc0002ed8c0 0xc0002ed970 0xc0002eda20 0xc0002edad0 0xc0002edb80 0xc0002edc30]
+INFO: 2024/09/22 18:17:40 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 AuctionRepo GetAllFiltered: [0xc0003414a0 0xc000341550 0xc000341600 0xc0003416b0 0xc000341760 0xc000341810 0xc0003418c0 0xc000341970]
+INFO: 2024/09/22 18:17:40 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 rows next
+INFO: 2024/09/22 18:17:40 AuctionRepo GetAllFiltered: [0xc0002edce0 0xc0002edd90 0xc0002ede40 0xc000416000 0xc0004160b0 0xc000416160 0xc000416210 0xc0004162c0]
+INFO: 2024/09/22 18:17:40 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:40 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 AuctionRepo GetAllFiltered: [0xc00039b130 0xc00039b1e0 0xc00039b290 0xc00039b340 0xc00039b3f0 0xc00039b4a0 0xc00039b550 0xc00039b600]
+INFO: 2024/09/22 18:17:41 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 rows next
+INFO: 2024/09/22 18:17:41 AuctionRepo GetAllFiltered: [0xc000341a20 0xc000341ad0 0xc000341b80 0xc000341c30 0xc000341ce0 0xc000341d90 0xc000341e40 0xc00036c000]
+INFO: 2024/09/22 18:17:41 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:41 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:43 rows next
+INFO: 2024/09/22 18:17:43 rows next
+INFO: 2024/09/22 18:17:43 rows next
+INFO: 2024/09/22 18:17:43 rows next
+INFO: 2024/09/22 18:17:43 rows next
+INFO: 2024/09/22 18:17:43 rows next
+INFO: 2024/09/22 18:17:43 rows next
+INFO: 2024/09/22 18:17:43 rows next
+INFO: 2024/09/22 18:17:43 AuctionRepo GetAllFiltered: [0xc000416370 0xc000416420 0xc0004164d0 0xc000416580 0xc000416630 0xc0004166e0 0xc000416790 0xc000416840]
+INFO: 2024/09/22 18:17:43 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:43 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:43 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:43 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:43 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:43 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:43 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:43 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:43 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 AuctionRepo GetAllFiltered: [0xc00039b6b0 0xc00039b760 0xc00039b810 0xc00039b8c0 0xc00039b970 0xc00039ba20 0xc00039bad0 0xc00039bb80]
+INFO: 2024/09/22 18:17:44 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 AuctionRepo GetAllFiltered: [0xc0004168f0 0xc0004169a0 0xc000416a50 0xc000416b00 0xc000416bb0 0xc000416c60 0xc000416d10 0xc000416dc0]
+INFO: 2024/09/22 18:17:44 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 rows next
+INFO: 2024/09/22 18:17:44 AuctionRepo GetAllFiltered: [0xc00036c0b0 0xc00036c160 0xc00036c210 0xc00036c2c0 0xc00036c370 0xc00036c420 0xc00036c4d0 0xc00036c580]
+INFO: 2024/09/22 18:17:44 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:44 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 AuctionRepo GetAllFiltered: [0xc00036c630 0xc00036c6e0 0xc00036c790 0xc00036c840 0xc00036c8f0 0xc00036c9a0 0xc00036ca50 0xc00036cb00]
+INFO: 2024/09/22 18:17:45 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 rows next
+INFO: 2024/09/22 18:17:45 AuctionRepo GetAllFiltered: [0xc00036cbb0 0xc00036cc60 0xc00036cd10 0xc00036cdc0 0xc00036ce70 0xc00036cf20 0xc00036cfd0 0xc00036d080]
+INFO: 2024/09/22 18:17:45 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:45 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 AuctionRepo GetAllFiltered: [0xc00036d130 0xc00036d1e0 0xc00036d290 0xc00036d340 0xc00036d3f0 0xc00036d4a0 0xc00036d550 0xc00036d600]
+INFO: 2024/09/22 18:17:46 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 rows next
+INFO: 2024/09/22 18:17:46 AuctionRepo GetAllFiltered: [0xc00039bc30 0xc00039bce0 0xc00039bd90 0xc00039be40 0xc0003e6000 0xc0003e60b0 0xc0003e6160 0xc0003e6210]
+INFO: 2024/09/22 18:17:46 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:46 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 AuctionRepo GetAllFiltered: [0xc00036d6b0 0xc00036d760 0xc00036d810 0xc00036d8c0 0xc00036d970 0xc00036da20 0xc00036dad0 0xc00036db80]
+INFO: 2024/09/22 18:17:47 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 AuctionRepo GetAllFiltered: [0xc0003e62c0 0xc0003e6370 0xc0003e6420 0xc0003e64d0 0xc0003e6580 0xc0003e6630 0xc0003e66e0 0xc0003e6790]
+INFO: 2024/09/22 18:17:47 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 rows next
+INFO: 2024/09/22 18:17:47 AuctionRepo GetAllFiltered: [0xc000416e70 0xc000416f20 0xc000416fd0 0xc000417080 0xc000417130 0xc0004171e0 0xc000417290 0xc000417340]
+INFO: 2024/09/22 18:17:47 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:47 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 AuctionRepo GetAllFiltered: [0xc0004173f0 0xc0004174a0 0xc000417550 0xc000417600 0xc0004176b0 0xc000417760 0xc000417810 0xc0004178c0]
+INFO: 2024/09/22 18:17:48 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 rows next
+INFO: 2024/09/22 18:17:48 AuctionRepo GetAllFiltered: [0xc0003e6840 0xc0003e68f0 0xc0003e69a0 0xc0003e6a50 0xc0003e6b00 0xc0003e6bb0 0xc0003e6c60 0xc0003e6d10]
+INFO: 2024/09/22 18:17:48 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:48 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:49 rows next
+INFO: 2024/09/22 18:17:49 rows next
+INFO: 2024/09/22 18:17:49 rows next
+INFO: 2024/09/22 18:17:49 rows next
+INFO: 2024/09/22 18:17:49 rows next
+INFO: 2024/09/22 18:17:49 rows next
+INFO: 2024/09/22 18:17:49 rows next
+INFO: 2024/09/22 18:17:49 rows next
+INFO: 2024/09/22 18:17:49 AuctionRepo GetAllFiltered: [0xc0002320b0 0xc000232160 0xc000232210 0xc0002322c0 0xc000232370 0xc000232420 0xc0002324d0 0xc000232580]
+INFO: 2024/09/22 18:17:49 getAuctionsWith in: []
+INFO: 2024/09/22 18:17:49 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:49 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:49 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:49 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:49 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:49 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:49 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/22 18:17:49 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:28:58 Successfully connected to the database
+INFO: 2024/09/23 10:28:58 Started server on localhost:1169
+INFO: 2024/09/23 10:29:20 rows next
+INFO: 2024/09/23 10:29:20 rows next
+INFO: 2024/09/23 10:29:20 rows next
+INFO: 2024/09/23 10:29:20 rows next
+INFO: 2024/09/23 10:29:20 rows next
+INFO: 2024/09/23 10:29:20 rows next
+INFO: 2024/09/23 10:29:20 rows next
+INFO: 2024/09/23 10:29:20 rows next
+INFO: 2024/09/23 10:29:20 AuctionRepo GetAllFiltered: [0xc0000aa370 0xc0000aa420 0xc0000aa4d0 0xc0000aa580 0xc0000aa630 0xc0000aa6e0 0xc0000aa790 0xc0000aa840]
+INFO: 2024/09/23 10:29:20 getAuctionsWith in: []
+INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics

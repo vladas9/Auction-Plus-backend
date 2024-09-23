@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
 	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
@@ -66,10 +67,19 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	})
 }
 
-func (c *Controller) GetAuction(w http.ResponseWriter, r *Response) error {
-
-	//auctions, err := c.service.GetAuctionById() // use internal/dtos/auctionFull.go and the auction service
-	return nil
+// todo handle not found, etc properly
+func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Response) error {
+	auctId, err := uuid.Parse(r.Request.PathValue("id"))
+	if err != nil {
+		return &ApiError{Status: 400, ErrorMsg: "uuid not valid"}
+	}
+	auct, err := c.service.GetFullAuctionById(auctId)
+	if err != nil {
+		return &ApiError{Status: 400, ErrorMsg: "not found"}
+	}
+	return WriteJSON(w, http.StatusOK, Response{
+		"auction": auct,
+	})
 }
 
 func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error {

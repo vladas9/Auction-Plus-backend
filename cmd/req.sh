@@ -1,9 +1,18 @@
 #!/usr/bin/sh
 
 register_user() {
-  curl -X POST http://localhost:1169/api/users/register \
+  curl -X POST http://localhost:1169/api/register-user \
   -H "Content-Type: application/json" \
   --data-binary "@cmd/user_req.json"
+}
+
+login_user() {
+  curl -X POST http://localhost:8080/api/login-user \
+       -H "Content-Type: application/json" \
+       -d '{
+             "email": "test@test",
+             "password": "test"
+           }'
 }
 
 get_auction_cards() {
