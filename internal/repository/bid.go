@@ -6,20 +6,21 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
-type BidRepo struct {
+type bidRepo struct {
 	tx *sql.Tx
 }
 
-func NewBidRepo(tx *sql.Tx) *BidRepo {
-	return &BidRepo{tx}
+func (s StoreTx) BidRepo() *bidRepo {
+	return &bidRepo{s.Tx}
 }
 
-func (r *BidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
+func (r *bidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	item := &m.BidModel{}
 	query := `
 		SELECT 
 			id,
-			user_id,
+			auction_id,
+			bidder_id,
 			amount,
 			timestamp
 		FROM
@@ -30,6 +31,7 @@ func (r *BidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	row := r.tx.QueryRow(query, id)
 	if err := row.Scan(
 		&item.ID,
+		&item.AuctionId,
 		&item.UserId,
 		&item.Amount,
 		&item.Timestamp,
@@ -39,18 +41,24 @@ func (r *BidRepo) GetById(id uuid.UUID) (*m.BidModel, error) {
 	return item, nil
 }
 
-func (r *BidRepo) GetAll() ([]*m.BidModel, error) {
+func (r *bidRepo) GetAllByUserId(id uuid.UUID, limit, offset int) ([]*m.BidModel, error) {
 	var bids []*m.BidModel
 	query := `
 		SELECT 
 			id,
-			user_id,
+			auction_id,
 			amount,
 			timestamp
 		FROM
 			bids
+		WHERE
+			bidder_id = $1
+		LIMIT
+			$2
+		OFFSET
+			$3
 	`
-	rows, err := r.tx.Query(query)
+	rows, err := r.tx.Query(query, id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -60,6 +68,46 @@ func (r *BidRepo) GetAll() ([]*m.BidModel, error) {
 		item := &m.BidModel{}
 		if err := rows.Scan(
 			&item.ID,
+			&item.AuctionId,
+			&item.Amount,
+			&item.Timestamp,
+		); err != nil {
+			return nil, err
+		}
+		bids = append(bids, item)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return bids, nil
+}
+
+func (r *bidRepo) GetAllFor(auct *m.AuctionModel) ([]*m.BidModel, error) {
+	var bids []*m.BidModel
+	query := `
+		SELECT 
+			id,
+			auction_id,
+			bidder_id,
+			amount,
+			timestamp
+		FROM
+			bids
+		WHERE auction_id = $1
+			
+	`
+	rows, err := r.tx.Query(query, auct.Id())
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+	for rows.Next() {
+		item := &m.BidModel{}
+		if err := rows.Scan(
+			&item.ID,
+			&item.AuctionId,
 			&item.UserId,
 			&item.Amount,
 			&item.Timestamp,
@@ -75,12 +123,31 @@ func (r *BidRepo) GetAll() ([]*m.BidModel, error) {
 	return bids, nil
 }
 
-func (r *BidRepo) Update(item *m.BidModel) error {
+func (r *bidRepo) Insert(item *m.BidModel) error {
+	query := `
+		INSERT INTO bids (
+			auction_id,
+			bidder_id,
+			amount
+		) VALUES (
+			$1, $2, $3
+		)
+	`
+	_, err := r.tx.Exec(query,
+		&item.AuctionId,
+		&item.UserId,
+		&item.Amount,
+	)
+
+	return err
+}
+
+func (r *bidRepo) Update(item *m.BidModel) error {
 	query := `
 		UPDATE 
 			bids
 		SET
-			user_id = $1,
+			bidder_id = $1,
 			amount = $2,
 			timestamp = $3
 		WHERE
@@ -96,7 +163,7 @@ func (r *BidRepo) Update(item *m.BidModel) error {
 	return err
 }
 
-func (r *BidRepo) Remove(id uuid.UUID) error {
+func (r *bidRepo) Remove(id uuid.UUID) error {
 	query := `
 		DELETE FROM 
 			bids
@@ -104,27 +171,6 @@ func (r *BidRepo) Remove(id uuid.UUID) error {
 			id = $1
 	`
 	_, err := r.tx.Exec(query, id)
-
-	return err
-}
-
-func (r *BidRepo) Insert(item *m.BidModel) error {
-	query := `
-		INSERT INTO bids (
-			id,
-			user_id,
-			amount,
-			timestamp
-		) VALUES (
-			$1, $2, $3, $4
-		)
-	`
-	_, err := r.tx.Exec(query,
-		&item.ID,
-		&item.UserId,
-		&item.Amount,
-		&item.Timestamp,
-	)
 
 	return err
 }

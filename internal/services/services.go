@@ -10,8 +10,20 @@ type Service struct {
 	store *r.Store
 }
 
-func NewService(db *sql.DB) *Service {
+var Host, Port string
+
+func NewService(db *sql.DB, host, port string) *Service {
+	Host = host
+	Port = port
 	return &Service{r.NewStore(db)}
+}
+
+type Response map[string]interface{}
+
+type Problems map[string]string
+
+type Validator interface {
+	Validate() Problems
 }
 
 var ImageDir = "./public/img/"

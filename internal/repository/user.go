@@ -2,8 +2,10 @@ package repository
 
 import (
 	"database/sql"
+
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
+	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 type userRepo struct {
@@ -182,9 +184,9 @@ func (r *userRepo) Insert(item *m.UserModel) (uuid.UUID, error) {
             user_type
         ) VALUES (
             $1, $2, $3, $4, $5, $6, $7
-        ) RETURNING id
+				) RETURNING id
     `
-	var userId uuid.UUID
+	var userId string
 
 	err := r.tx.QueryRow(query,
 		item.Username,
@@ -195,9 +197,9 @@ func (r *userRepo) Insert(item *m.UserModel) (uuid.UUID, error) {
 		item.PhoneNumber,
 		item.UserType,
 	).Scan(&userId)
+	utils.Logger.Info("userRepo: returning id after insert::", userId)
 	if err != nil {
 		return uuid.Nil, err
 	}
-
-	return userId, nil
+	return uuid.MustParse(userId), nil
 }

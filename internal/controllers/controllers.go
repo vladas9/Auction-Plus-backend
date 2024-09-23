@@ -8,21 +8,22 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"github.com/joho/godotenv"
-	s "github.com/vladas9/backend-practice/internal/services"
-	u "github.com/vladas9/backend-practice/internal/utils"
 	"log"
 	"net/http"
 	"os"
 	"reflect"
+
+	"github.com/joho/godotenv"
+	s "github.com/vladas9/backend-practice/internal/services"
+	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 type Controller struct {
 	service *s.Service
 }
 
-var Host string
-var Port string
+var Host, Port string
+var JwtSecret []byte
 
 func NewController(db *sql.DB) *Controller {
 	err := godotenv.Load()
@@ -31,28 +32,29 @@ func NewController(db *sql.DB) *Controller {
 	}
 	Host = os.Getenv("HOST")
 	Port = os.Getenv("PORT")
-	return &Controller{s.NewService(db)}
+	JwtSecret = []byte(os.Getenv("JWTKEY"))
+
+	return &Controller{s.NewService(db, Host, Port)}
 }
 
-func writeJSON(w http.ResponseWriter, status int, v any) *ApiError {
+func WriteJSON(w http.ResponseWriter, status int, v any) error {
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
 	if err := json.NewEncoder(w).Encode(v); err != nil {
-		aErr := &ApiError{fmt.Sprintf("Encoding of object of type %v failed", reflect.TypeOf(v)), 500}
+		aErr := fmt.Errorf("Encoding of object of type %v failed", reflect.TypeOf(v))
 		u.Logger.Error(aErr)
 		return aErr
 	}
 	return nil
 }
 
-type ApiError struct {
-	ErrorMsg string `json:"error"`
-	Status   int
-}
-
 type Response map[string]interface{}
 
-// WARN: To remove this function
-func (e ApiError) Error() string {
-	return e.ErrorMsg
+type ApiError struct {
+	ErrorMsg any `json:"error"`
+	Status   int `json:"status"`
+}
+
+func (e *ApiError) Error() string {
+	return fmt.Sprint(e.ErrorMsg)
 }
