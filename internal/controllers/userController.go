@@ -55,6 +55,22 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
 	return WriteJSON(w, http.StatusOK, response)
 }
 
+func (c *Controller) UserData(w http.ResponseWriter, r *http.Request) error {
+	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	if err != nil {
+		return err
+	}
+	user, err := c.service.GetUserData(userId)
+	if err != nil {
+		return fmt.Errorf("Failed getting user data: %s", err)
+	}
+
+	return WriteJSON(w, http.StatusOK, &Response{
+		"img_src":   fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, user.Image),
+		"user_type": user.UserType,
+	})
+}
+
 func (c *Controller) ImageHandler(w http.ResponseWriter, r *http.Request) error {
 	id := strings.TrimPrefix(r.URL.Path, "/api/img/")
 	imagePath := fmt.Sprintf("%s%s.png", "./public/img/", id)
