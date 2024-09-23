@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
+	"github.com/vladas9/backend-practice/internal/dtos"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
 )
@@ -34,7 +35,7 @@ func (s *Service) NewBid(bid *m.BidModel) (err error) {
 	return nil
 }
 
-func (s *Service) GetBidTable(userId uuid.UUID, limit, offset int) ([]*m.BidsTable, error) {
+func (s *Service) GetBidTable(userId uuid.UUID, limit, offset int) ([]*dtos.BidsTable, error) {
 	var bidList []*m.BidModel
 	var auctionList []*m.AuctionModel
 	var itemList []*m.ItemModel
@@ -109,13 +110,13 @@ func buildBidsTable(
 	auctionList []*m.AuctionModel,
 	itemList []*m.ItemModel,
 	userList []*m.UserModel,
-) ([]*m.BidsTable, error) {
+) ([]*dtos.BidsTable, error) {
 	userMap := CreateUserMap(userList)
 	auctionMap := CreateAuctionMap(auctionList)
 	itemMap := CreateItemMap(itemList)
 	highestBids := FindHighestBids(bidList)
 
-	bidsTable := make([]*m.BidsTable, 0)
+	bidsTable := make([]*dtos.BidsTable, 0)
 	for _, bid := range highestBids {
 		relatedAuction, auctionExists := auctionMap[bid.AuctionId]
 		if !auctionExists {
@@ -134,7 +135,7 @@ func buildBidsTable(
 
 		image := m.GetFirstImageOrNil(relatedItem)
 
-		bidTableEntry := m.BidsTableMapper(
+		bidTableEntry := dtos.BidsTableMapper(
 			image,
 			relatedAuction.CurrentBid,
 			bid.Amount,

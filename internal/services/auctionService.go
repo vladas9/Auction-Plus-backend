@@ -62,7 +62,7 @@ type AuctionTableParams struct {
 
 func (p AuctionTableParams) Validate() Problems {
 	problems := Problems{}
-
+	u.Logger.Info(p.Limit)
 	if p.Limit <= 0 {
 		problems["limit"] = "must be greater than 0"
 	}

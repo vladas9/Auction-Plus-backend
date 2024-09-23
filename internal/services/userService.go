@@ -52,3 +52,15 @@ func (s *Service) CheckUser(user *m.UserModel) (storedUser *m.UserModel, err err
 
 	return storedUser, nil
 }
+
+func (s *Service) GetUserData(id uuid.UUID) (storedUser *m.UserModel, err error) {
+	err = s.store.WithTx(func(stx *r.StoreTx) error {
+		storedUser, err = stx.UserRepo().GetById(id)
+		return err
+	})
+	if err != nil {
+		return nil, fmt.Errorf("Failed to get user: %s", err)
+	}
+
+	return storedUser, nil
+}
