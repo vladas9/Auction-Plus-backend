@@ -3125,3 +3125,177 @@ INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: true cond
 INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: true condition: used categoryMet: true category: electronics
 INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
 INFO: 2024/09/23 10:29:20 Checking item against filters: conditionMet: false condition: used categoryMet: true category: electronics
+INFO: 2024/09/23 10:58:45 Successfully connected to the database
+INFO: 2024/09/23 10:58:45 Started server on localhost:1169
+INFO: 2024/09/23 10:59:17 userRepo: returning id after insert:: 4d3b4f40-a35d-44ff-867e-487fc29911ca
+INFO: 2024/09/23 10:59:17 User test created
+INFO: 2024/09/23 11:24:41 User test loged in
+INFO: 2024/09/23 11:25:24 User test loged in
+INFO: 2024/09/23 11:25:46 User test loged in
+INFO: 2024/09/23 11:25:58 User test loged in
+INFO: 2024/09/23 11:26:16 User test loged in
+INFO: 2024/09/23 11:30:54 User test loged in
+ERROR: 2024/09/23 11:30:54 Authorization header is missing
+INFO: 2024/09/23 11:31:12 User test loged in
+ERROR: 2024/09/23 11:31:12 Invalid Authorization header format. Expected 'Bearer <token>'
+INFO: 2024/09/23 11:31:34 User test loged in
+ERROR: 2024/09/23 11:31:34 Invalid token: token is malformed: could not base64 decode header: illegal base64 data at input byte 0
+INFO: 2024/09/23 11:40:55 User test loged in
+ERROR: 2024/09/23 11:40:55 Invalid token: token is malformed: could not base64 decode header: illegal base64 data at input byte 0
+INFO: 2024/09/23 12:18:50 User test loged in
+ERROR: 2024/09/23 12:18:50 map[]
+INFO: 2024/09/23 12:18:59 Successfully connected to the database
+INFO: 2024/09/23 12:18:59 Started server on localhost:1169
+INFO: 2024/09/23 12:19:08 User test loged in
+ERROR: 2024/09/23 12:19:08 map[]
+INFO: 2024/09/23 12:19:24 User test loged in
+ERROR: 2024/09/23 12:19:24 map[]
+INFO: 2024/09/23 12:19:42 User test loged in
+ERROR: 2024/09/23 12:19:42 map[]
+INFO: 2024/09/23 12:22:20 Successfully connected to the database
+INFO: 2024/09/23 12:22:20 Started server on localhost:1169
+INFO: 2024/09/23 12:22:30 User test loged in
+INFO: 2024/09/23 12:22:40 User test loged in
+INFO: 2024/09/23 12:25:04 User test loged in
+INFO: 2024/09/23 12:25:19 User test loged in
+ERROR: 2024/09/23 12:25:31 Invalid Authorization header format. Expected 'Bearer <token>'
+ERROR: 2024/09/23 12:25:33 Invalid Authorization header format. Expected 'Bearer <token>'
+INFO: 2024/09/23 12:25:45 User test loged in
+INFO: 2024/09/23 13:31:22 User test loged in
+INFO: 2024/09/23 13:31:38 User test loged in
+INFO: 2024/09/23 13:31:40 User test loged in
+INFO: 2024/09/23 13:31:40 User test loged in
+INFO: 2024/09/23 13:31:41 User test loged in
+INFO: 2024/09/23 13:31:41 User test loged in
+INFO: 2024/09/23 13:31:43 User test loged in
+INFO: 2024/09/23 13:31:43 User test loged in
+INFO: 2024/09/23 13:31:44 User test loged in
+INFO: 2024/09/23 13:31:45 User test loged in
+INFO: 2024/09/23 13:31:45 User test loged in
+INFO: 2024/09/23 13:31:45 User test loged in
+INFO: 2024/09/23 13:31:46 User test loged in
+INFO: 2024/09/23 13:31:46 User test loged in
+INFO: 2024/09/23 13:31:47 User test loged in
+INFO: 2024/09/23 13:31:47 User test loged in
+INFO: 2024/09/23 13:31:47 User test loged in
+INFO: 2024/09/23 13:31:48 User test loged in
+INFO: 2024/09/23 13:31:48 User test loged in
+INFO: 2024/09/23 13:31:49 User test loged in
+INFO: 2024/09/23 13:31:49 User test loged in
+INFO: 2024/09/23 13:31:50 User test loged in
+INFO: 2024/09/23 13:31:50 User test loged in
+INFO: 2024/09/23 13:31:51 User test loged in
+INFO: 2024/09/23 13:31:52 User test loged in
+INFO: 2024/09/23 13:31:52 User test loged in
+INFO: 2024/09/23 13:31:53 User test loged in
+INFO: 2024/09/23 13:31:53 User test loged in
+INFO: 2024/09/23 13:31:54 User test loged in
+INFO: 2024/09/23 13:31:54 User test loged in
+INFO: 2024/09/23 13:31:55 User test loged in
+INFO: 2024/09/23 13:31:55 User test loged in
+INFO: 2024/09/23 13:31:56 User test loged in
+INFO: 2024/09/23 13:31:56 User test loged in
+INFO: 2024/09/23 13:31:57 User test loged in
+INFO: 2024/09/23 13:31:57 User test loged in
+INFO: 2024/09/23 13:31:58 User test loged in
+INFO: 2024/09/23 13:31:58 User test loged in
+INFO: 2024/09/23 13:31:59 User test loged in
+INFO: 2024/09/23 13:31:59 User test loged in
+INFO: 2024/09/23 13:32:00 User test loged in
+INFO: 2024/09/23 13:32:02 User test loged in
+INFO: 2024/09/23 13:32:04 User test loged in
+INFO: 2024/09/23 13:32:05 User test loged in
+INFO: 2024/09/23 13:32:06 User test loged in
+INFO: 2024/09/23 13:32:06 User test loged in
+INFO: 2024/09/23 13:32:07 User test loged in
+INFO: 2024/09/23 13:32:08 User test loged in
+INFO: 2024/09/23 13:32:09 User test loged in
+INFO: 2024/09/23 13:32:10 User test loged in
+INFO: 2024/09/23 13:32:11 User test loged in
+INFO: 2024/09/23 13:32:11 User test loged in
+INFO: 2024/09/23 13:32:15 User test loged in
+INFO: 2024/09/23 13:32:16 User test loged in
+INFO: 2024/09/23 13:32:17 User test loged in
+INFO: 2024/09/23 13:32:17 User test loged in
+INFO: 2024/09/23 13:32:18 User test loged in
+INFO: 2024/09/23 13:32:19 User test loged in
+INFO: 2024/09/23 13:32:19 User test loged in
+INFO: 2024/09/23 13:32:20 User test loged in
+INFO: 2024/09/23 13:32:21 User test loged in
+INFO: 2024/09/23 13:32:21 User test loged in
+INFO: 2024/09/23 13:32:22 User test loged in
+INFO: 2024/09/23 13:32:22 User test loged in
+INFO: 2024/09/23 13:32:23 User test loged in
+INFO: 2024/09/23 13:32:23 User test loged in
+INFO: 2024/09/23 13:32:23 User test loged in
+INFO: 2024/09/23 13:32:26 User test loged in
+INFO: 2024/09/23 13:32:27 User test loged in
+INFO: 2024/09/23 13:32:29 User test loged in
+INFO: 2024/09/23 13:32:29 User test loged in
+INFO: 2024/09/23 13:32:30 User test loged in
+INFO: 2024/09/23 13:32:31 User test loged in
+INFO: 2024/09/23 13:32:35 User test loged in
+INFO: 2024/09/23 13:32:35 User test loged in
+INFO: 2024/09/23 13:32:36 User test loged in
+INFO: 2024/09/23 13:32:37 User test loged in
+INFO: 2024/09/23 13:32:37 User test loged in
+INFO: 2024/09/23 13:32:38 User test loged in
+INFO: 2024/09/23 13:32:38 User test loged in
+INFO: 2024/09/23 13:32:38 User test loged in
+INFO: 2024/09/23 13:32:39 User test loged in
+INFO: 2024/09/23 13:32:39 User test loged in
+INFO: 2024/09/23 13:32:40 User test loged in
+INFO: 2024/09/23 13:32:40 User test loged in
+INFO: 2024/09/23 13:32:41 User test loged in
+INFO: 2024/09/23 13:32:41 User test loged in
+INFO: 2024/09/23 13:32:42 User test loged in
+INFO: 2024/09/23 13:32:42 User test loged in
+INFO: 2024/09/23 13:32:46 User test loged in
+INFO: 2024/09/23 13:32:47 User test loged in
+INFO: 2024/09/23 13:32:48 User test loged in
+INFO: 2024/09/23 13:32:49 User test loged in
+INFO: 2024/09/23 13:32:50 User test loged in
+INFO: 2024/09/23 13:32:51 User test loged in
+INFO: 2024/09/23 13:32:51 User test loged in
+INFO: 2024/09/23 13:32:52 User test loged in
+INFO: 2024/09/23 13:32:53 User test loged in
+INFO: 2024/09/23 13:32:53 User test loged in
+INFO: 2024/09/23 13:32:54 User test loged in
+INFO: 2024/09/23 13:32:54 User test loged in
+INFO: 2024/09/23 13:32:55 User test loged in
+INFO: 2024/09/23 13:32:56 User test loged in
+INFO: 2024/09/23 13:32:58 User test loged in
+INFO: 2024/09/23 13:33:00 User test loged in
+INFO: 2024/09/23 13:33:00 User test loged in
+INFO: 2024/09/23 13:33:01 User test loged in
+INFO: 2024/09/23 13:33:02 User test loged in
+INFO: 2024/09/23 13:33:02 User test loged in
+INFO: 2024/09/23 13:33:03 User test loged in
+INFO: 2024/09/23 13:33:03 User test loged in
+INFO: 2024/09/23 13:33:04 User test loged in
+INFO: 2024/09/23 13:33:05 User test loged in
+INFO: 2024/09/23 13:33:05 User test loged in
+INFO: 2024/09/23 13:33:39 User test loged in
+INFO: 2024/09/23 13:33:57 User test loged in
+INFO: 2024/09/23 13:35:22 Successfully connected to the database
+INFO: 2024/09/23 13:35:22 Started server on localhost:1169
+ERROR: 2024/09/23 13:35:27 GetAuctions controller: strconv.Atoi: parsing "": invalid syntax
+INFO: 2024/09/23 13:38:56 Successfully connected to the database
+INFO: 2024/09/23 13:38:56 Started server on localhost:1169
+ERROR: 2024/09/23 13:38:59 not found
+INFO: 2024/09/23 13:39:34 Successfully connected to the database
+INFO: 2024/09/23 13:39:34 Started server on localhost:1169
+ERROR: 2024/09/23 13:39:37 github.com/vladas9/backend-practice/internal/services.(*Service).GetFullAuctionById: sql: no rows in result set
+INFO: 2024/09/23 14:02:24 User test loged in
+INFO: 2024/09/23 14:02:43 User test loged in
+ERROR: 2024/09/23 14:02:43 Decoding failed(BidHandler): invalid character 'a' looking for beginning of object key string
+INFO: 2024/09/23 14:02:57 User test loged in
+ERROR: 2024/09/23 14:02:57 Decoding failed(BidHandler): invalid character 'a' looking for beginning of object key string
+INFO: 2024/09/23 14:03:28 User test loged in
+ERROR: 2024/09/23 14:03:28 Decoding failed(BidHandler): invalid character '=' after object key
+INFO: 2024/09/23 14:03:45 User test loged in
+ERROR: 2024/09/23 14:03:45 Decoding failed(BidHandler): invalid character '"' after object key:value pair
+INFO: 2024/09/23 14:04:04 User test loged in
+INFO: 2024/09/23 14:05:19 User test loged in
+INFO: 2024/09/23 14:08:32 User test loged in
+ERROR: 2024/09/23 14:08:32 Palacing bid failed: Bid is smaller than CurrentBid: 4500

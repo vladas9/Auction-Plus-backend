@@ -2,6 +2,7 @@ package main
 
 import (
 	//"github.com/google/uuid"
+	"github.com/google/uuid"
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 
@@ -14,15 +15,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	user := GenerateDummyUser()
+	//user := GenerateDummyUser()
 	err = r.NewStore(db).WithTx(func(stx *r.StoreTx) error {
-		userId, repoErr := stx.UserRepo().Insert(user)
-		u.Logger.Info("demoDB: userId: ", userId)
-		if repoErr != nil {
-			u.Logger.Error("demoDB stx.UserRepo():", repoErr)
-			return repoErr
-		}
-		//userId, _ := uuid.Parse("da0db08a-0ab1-483c-a228-f592a8d43b8b")
+		//userId, repoErr := stx.UserRepo().Insert(user)
+		//u.Logger.Info("demoDB: userId: ", userId)
+		//if repoErr != nil {
+		//	u.Logger.Error("demoDB stx.UserRepo():", repoErr)
+		//	return repoErr
+		//}
+		userId, _ := uuid.Parse("4d3b4f40-a35d-44ff-867e-487fc29911ca")
 
 		for i := 0; i <= 20; i++ {
 			item := CreateDummyItem()

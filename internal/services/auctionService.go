@@ -70,7 +70,10 @@ func (p AuctionTableParams) Validate() Problems {
 		problems["offset"] = "cannot be negative"
 	}
 
-	return problems
+	if len(problems) > 0 {
+		return problems
+	}
+	return nil
 }
 
 func (s *Service) NewAuction(dto *dto.AuctionFull) error { return nil }
@@ -218,7 +221,7 @@ func withItem(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
 
 func withMaxBidder(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
 	var err error
-	auct.MaxBidder, err = stx.UserRepo().GetById(auct.MaxBidder.Id())
+	auct.MaxBidder, err = stx.UserRepo().GetById(auct.Auction.MaxBidderId)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			return nil, fail(err)
