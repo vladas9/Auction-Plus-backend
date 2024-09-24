@@ -49,13 +49,16 @@ func NewServer(addr string) *Server {
 func (s *Server) Run() {
 	//TODO: Add controllers links
 
-	s.Router.Handle("POST /api/register-user", apiFunc(s.Controllers.Register))
-	s.Router.Handle("POST /api/login-user", apiFunc(s.Controllers.Login))
+	s.Router.Handle("POST /api/user/register", apiFunc(s.Controllers.Register))
+	s.Router.Handle("POST /api/user/login", apiFunc(s.Controllers.Login))
+	s.Router.Handle("GET /api/user/data", apiFunc(s.Controllers.UserData))
+	s.Router.Handle("GET /api/user/profile-data", apiFunc(s.Controllers.ProfileData))
 	s.Router.Handle("GET /api/img/", apiFunc(s.Controllers.ImageHandler))
-	s.Router.Handle("POST /api/post-bid", apiFunc(s.Controllers.AddBid))
-	s.Router.Handle("GET /api/get-bids-table", apiFunc(s.Controllers.BidTable))
-	s.Router.Handle("GET /api/get-lots-table", apiFunc(s.Controllers.AuctionTable))
+	s.Router.Handle("POST /api/bid/post", apiFunc(s.Controllers.AddBid))
+	s.Router.Handle("GET /api/bids/table", apiFunc(s.Controllers.BidTable))
+	s.Router.Handle("GET /api/lots/table", apiFunc(s.Controllers.AuctionTable))
 	s.Router.Handle("GET /api/auctions", apiFunc(s.Controllers.GetAuctions))
+
 	// s.Router.Handle("POST /api/auctions", apiFunc(controllers.))
 	// s.Router.Handle("GET /api/auctions/{id}", apiFunc(controllers.))
 	// s.Router.Handle("PUT /api/auction/{id}/bid", apiFunc(controllers.))

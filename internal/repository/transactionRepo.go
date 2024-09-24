@@ -2,6 +2,8 @@ package repository
 
 import (
 	"database/sql"
+	"fmt"
+	"strings"
 
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
@@ -9,6 +11,16 @@ import (
 
 type transactionRepo struct {
 	tx *sql.Tx
+}
+
+// Struct to hold property-value pairs for filtering
+type FilterCondition struct {
+	Property string
+	Value    interface{}
+}
+
+func (s *StoreTx) TransactionRepo() *transactionRepo {
+	return &transactionRepo{s.Tx}
 }
 
 func TransactionRepo(tx *sql.Tx) *transactionRepo {
@@ -23,7 +35,7 @@ func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 			auction_id,
 			buyer_id,
 			seller_id,
-			amount,
+			transaction_amount,
 			transaction_date
 		FROM
 			transactions
@@ -44,38 +56,34 @@ func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 	return item, nil
 }
 
-// GetAll retrieves all transactions, optionally filtering by seller or buyer ID.
-func (r *transactionRepo) GetAll(sellerId, buyerId *uuid.UUID) ([]*m.TransactionModel, error) {
+// GetAll retrieves transactions based on a set of filter conditions (field and value pairs).
+func (r *transactionRepo) GetAll(filters []FilterCondition) ([]*m.TransactionModel, error) {
 	var transactions []*m.TransactionModel
 	query := `
-        SELECT 
-            id,
-            auction_id,
-            buyer_id,
-            seller_id,
-            amount,
-            transaction_date
-        FROM
-            transactions
-        WHERE 1=1
-    `
+		SELECT 
+			id,
+			auction_id,
+			buyer_id,
+			seller_id,
+			transaction_amount,
+			transaction_date
+		FROM
+			transactions
+		WHERE 1=1
+	`
 
 	var args []interface{}
+	var conditions []string
 
-	// Optionally filter by seller_id
-	if sellerId != nil {
-		query += " AND seller_id = $1"
-		args = append(args, *sellerId)
+	// Dynamically build the WHERE clause based on the provided filters
+	for i, filter := range filters {
+		conditions = append(conditions, fmt.Sprintf("%s = $%d", filter.Property, i+1))
+		args = append(args, filter.Value)
 	}
 
-	// Optionally filter by buyer_id
-	if buyerId != nil {
-		if sellerId != nil {
-			query += " AND buyer_id = $2"
-		} else {
-			query += " AND buyer_id = $1"
-		}
-		args = append(args, *buyerId)
+	// Append the conditions to the query if any are provided
+	if len(conditions) > 0 {
+		query += " AND " + strings.Join(conditions, " AND ")
 	}
 
 	rows, err := r.tx.Query(query, args...)
@@ -113,7 +121,7 @@ func (r *transactionRepo) Update(item *m.TransactionModel) error {
 			auction_id = $1,
 			buyer_id = $2,
 			seller_id = $3,
-			amount = $4,
+			transaction_amount = $4,
 			transaction_date = $5
 		WHERE
 			id = $6
@@ -149,7 +157,7 @@ func (r *transactionRepo) Insert(item *m.TransactionModel) error {
 			auction_id,
 			buyer_id,
 			seller_id,
-			amount,
+			transaction_amount,
 			transaction_date
 		) VALUES (
 			$1, $2, $3, $4, $5, $6
