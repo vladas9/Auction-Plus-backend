@@ -52,6 +52,7 @@ func (s *Server) Run() {
 	s.Router.Handle("POST /api/register-user", apiFunc(s.Controllers.Register))
 	s.Router.Handle("POST /api/login-user", apiFunc(s.Controllers.Login))
 	s.Router.Handle("GET /api/user-data", apiFunc(s.Controllers.UserData))
+	s.Router.Handle("GET /api/profile-data", apiFunc(s.Controllers.ProfileData))
 	s.Router.Handle("GET /api/img/", apiFunc(s.Controllers.ImageHandler))
 	s.Router.Handle("POST /api/post-bid", apiFunc(s.Controllers.AddBid))
 	s.Router.Handle("GET /api/get-bids-table", apiFunc(s.Controllers.BidTable))
