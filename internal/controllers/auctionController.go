@@ -68,14 +68,14 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 }
 
 // todo handle not found, etc properly
-func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Response) error {
-	auctId, err := uuid.Parse(r.Request.PathValue("id"))
+func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Request) error {
+	auctId, err := uuid.Parse(r.PathValue("id"))
 	if err != nil {
 		return &ApiError{Status: 400, ErrorMsg: "uuid not valid"}
 	}
 	auct, err := c.service.GetFullAuctionById(auctId)
 	if err != nil {
-		return &ApiError{Status: 400, ErrorMsg: "not found"}
+		return err
 	}
 	return WriteJSON(w, http.StatusOK, Response{
 		"auction": auct,
