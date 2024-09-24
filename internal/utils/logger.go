@@ -20,8 +20,8 @@ var Logger *LoggerType
 func NewLogger(file *os.File) *LoggerType {
 	return &LoggerType{
 		info:  log.New(file, "INFO: ", log.LstdFlags),
-		warn:  log.New(file, "WARN: ", log.LstdFlags),
-		error: log.New(file, "ERROR: ", log.LstdFlags),
+		warn:  log.New(file, "\033[33mWARN: \033[0m", log.LstdFlags),
+		error: log.New(file, "\033[31mERROR: \033[0m", log.LstdFlags),
 	}
 }
 
