@@ -95,7 +95,7 @@ func getRelatedData(stx *r.StoreTx, bidList []*m.BidModel) (
 		itemList = append(itemList, item)
 
 		userId := auction.MaxBidderId
-		user, err := stx.UserRepo().GetById(userId)
+		user, err := stx.UserRepo().GetByProperty("id", userId)
 		if err != nil {
 			return nil, nil, nil, fmt.Errorf("Failed getting user: %s", err)
 		}

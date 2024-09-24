@@ -38,7 +38,7 @@ func (s *Service) CreateUser(user *m.UserModel) (*m.UserModel, error) {
 
 func (s *Service) CheckUser(user *m.UserModel) (storedUser *m.UserModel, err error) {
 	err = s.store.WithTx(func(stx *r.StoreTx) error {
-		storedUser, err = stx.UserRepo().GetByEmail(user.Email)
+		storedUser, err = stx.UserRepo().GetByProperty("email", user.Email)
 		return err
 	})
 

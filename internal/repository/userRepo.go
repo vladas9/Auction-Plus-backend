@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+	"fmt"
 
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
@@ -16,31 +17,51 @@ func (s *StoreTx) UserRepo() *userRepo {
 	return &userRepo{s.Tx}
 }
 
-func (r *userRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
+func (r *userRepo) GetByProperty(field string, value interface{}) (*m.UserModel, error) {
+	// Map to validate allowable fields and their expected data types
+	validFields := map[string]string{
+		"id":           "id",
+		"email":        "email",
+		"username":     "username",
+		"phone_number": "phone_number",
+		// Add any other fields that you want to allow filtering by
+	}
+
+	// Check if the field provided is valid
+	fieldQuery, valid := validFields[field]
+	if !valid {
+		return nil, fmt.Errorf("invalid field: %s", field)
+	}
+
+	// Base query with a placeholder for dynamic field
+	query := fmt.Sprintf(`
+        SELECT 
+            id,
+            username,
+            email,
+            image,
+            password,
+            address,
+            phone_number,
+            user_type,
+            registered_date
+        FROM
+            users
+        WHERE
+            %s = $1
+    `, fieldQuery)
+
+	// Struct to hold the result
 	item := &m.UserModel{}
-	query := `
-		SELECT 
-			id,
-			username,
-			email,
-			image,
-			password,
-			address,
-			phone_number,
-			user_type,
-			registered_date
-		FROM
-			users
-		WHERE
-			id = $1
-	`
-	row := r.tx.QueryRow(query, id)
+
+	// Execute the query with the value parameter
+	row := r.tx.QueryRow(query, value)
 	if err := row.Scan(
 		&item.ID,
 		&item.Username,
 		&item.Email,
-		&item.Password,
 		&item.Image,
+		&item.Password,
 		&item.Address,
 		&item.PhoneNumber,
 		&item.UserType,
@@ -48,40 +69,7 @@ func (r *userRepo) GetById(id uuid.UUID) (*m.UserModel, error) {
 	); err != nil {
 		return nil, err
 	}
-	return item, nil
-}
 
-func (r *userRepo) GetByEmail(email string) (*m.UserModel, error) {
-	item := &m.UserModel{}
-	query := `
-		SELECT 
-			id,
-			username,
-			password,
-			image,
-			address,
-			phone_number,
-			user_type,
-			registered_date
-		FROM
-			users
-		WHERE
-			email = $1
-	`
-
-	row := r.tx.QueryRow(query, email)
-	if err := row.Scan(
-		&item.ID,
-		&item.Username,
-		&item.Password,
-		&item.Image,
-		&item.Address,
-		&item.PhoneNumber,
-		&item.UserType,
-		&item.RegisteredDate,
-	); err != nil {
-		return nil, err
-	}
 	return item, nil
 }
 

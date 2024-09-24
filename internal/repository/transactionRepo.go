@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 )
@@ -43,20 +44,41 @@ func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 	return item, nil
 }
 
-func (r *transactionRepo) GetAll() ([]*m.TransactionModel, error) {
+// GetAll retrieves all transactions, optionally filtering by seller or buyer ID.
+func (r *transactionRepo) GetAll(sellerId, buyerId *uuid.UUID) ([]*m.TransactionModel, error) {
 	var transactions []*m.TransactionModel
 	query := `
-		SELECT 
-			id,
-			auction_id,
-			buyer_id,
-			seller_id,
-			amount,
-			transaction_date
-		FROM
-			transactions
-	`
-	rows, err := r.tx.Query(query)
+        SELECT 
+            id,
+            auction_id,
+            buyer_id,
+            seller_id,
+            amount,
+            transaction_date
+        FROM
+            transactions
+        WHERE 1=1
+    `
+
+	var args []interface{}
+
+	// Optionally filter by seller_id
+	if sellerId != nil {
+		query += " AND seller_id = $1"
+		args = append(args, *sellerId)
+	}
+
+	// Optionally filter by buyer_id
+	if buyerId != nil {
+		if sellerId != nil {
+			query += " AND buyer_id = $2"
+		} else {
+			query += " AND buyer_id = $1"
+		}
+		args = append(args, *buyerId)
+	}
+
+	rows, err := r.tx.Query(query, args...)
 	if err != nil {
 		return nil, err
 	}
