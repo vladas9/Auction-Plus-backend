@@ -33,13 +33,18 @@ type AuctionCardParams struct {
 func (a AuctionCardParams) Validate() Problems {
 	problems := Problems{}
 
-	if a.Len <= 0 {
-		problems["len"] = "must be greater than 0"
+	if a.Len < 0 {
+		problems["len"] = "cannot be negative"
 	}
 	if a.Offset < 0 {
 		problems["offset"] = "cannot be negative"
 	}
-	if !a.MaxPrice.IsZero() && a.MaxPrice.Compare(a.MinPrice) == -1 {
+	if a.MinPrice.IsNegative() {
+		problems["min_price"] = "cannot be nebative"
+	}
+	if a.MaxPrice.IsNegative() {
+		problems["max_price"] = "cannot be nebative"
+	} else if !a.MaxPrice.IsZero() && a.MaxPrice.Compare(a.MinPrice) == -1 {
 		problems["max_price"] = "max price cannot be less than min price"
 	}
 	if ok := m.IsCategory(a.Category); !ok {
@@ -148,14 +153,10 @@ func (s *Service) GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, 
 func getAuctions(stx *r.StoreTx, params AuctionCardParams, opts ...auctOpt) (auctions []*m.AuctionDetails, err error) {
 	auctionRepo := stx.AuctionRepo()
 	var auctModels []*m.AuctionModel
-	if params.MaxPrice.IsZero() {
-		auctModels, err = auctionRepo.GetAll(params.Offset, params.Len)
-	} else {
-		auctModels, err = auctionRepo.GetAllFiltered(
-			params.Offset, params.Len,
-			params.MinPrice, params.MaxPrice)
-		u.Logger.Info("getAuctionsWith in:", auctions)
-	}
+	auctModels, err = auctionRepo.GetAllFiltered(
+		params.Offset, params.Len,
+		params.MinPrice, params.MaxPrice)
+	u.Logger.Info("getAuctionsWith in:", auctions)
 	if err != nil {
 		return nil, fail(err)
 	}

@@ -16,7 +16,7 @@ login_user() {
 }
 
 get_auction_cards() {
-  curl -X GET 'http://localhost:1169/api/auctions?limit=17&offset=0&min_price=0&max_price=2000&category=electronics&lotcondition=used'
+  curl -X GET 'http://localhost:1169/api/auctions?limit=17&offset=0&min_price=1000&max_price=2000&category=electronics&lotcondition=used'
 }
 
 get_full_auction() {
@@ -26,7 +26,7 @@ get_full_auction() {
 get_auction_table() {
   token="$(login_user | jq -r '."auth_token"')"
   curl -H "Authorization: Bearer $token" \
-       -X GET 'http://localhost:1169/api/get-lots-table?limit=17&offset=0'
+       -X GET 'http://localhost:1169/api/get-lots-table?limit=17&offset=0&max_price=3000&min_price=2000'
 }
 
 place_bid() {
@@ -41,9 +41,9 @@ place_bid() {
 
 #register_user | jq '.'
 #login_user | jq '."auth_token"'
-#time get_auction_cards | jq '.'
+time get_auction_cards | jq '.'
 
 #time get_auction_table | jq '.'
 
-place_bid 4500
-get_full_auction | jq '.'
+#place_bid 4500
+#get_full_auction | jq '.'

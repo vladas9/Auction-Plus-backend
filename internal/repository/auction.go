@@ -139,12 +139,13 @@ func (r *auctionRepo) GetAllFiltered(offset, limit int, minPrice, maxPrice m.Dec
 		FROM
 			auctions
 		WHERE
-			(current_bid >= $1) AND (current_bid <= $2)
+			($1 <= current_bid) AND ($2 = 0 OR $2 >= current_bid)
 		LIMIT
-			$3
-		OFFSET
+			CASE WHEN $3 = 0 THEN 100 ELSE $3 END
+		OFFSET 
 			$4
 	`
+	utils.Logger.Info(minPrice, maxPrice)
 	rows, err := r.tx.Query(query, minPrice, maxPrice, limit, offset)
 	if err != nil {
 		return nil, err

@@ -15,9 +15,9 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	fail := func(err error) error {
 		return fmt.Errorf("GetAuctions controller: %w", err)
 	}
-	if err := r.ParseForm(); err != nil {
-		return fail(err)
-	}
+	//if err := r.ParseForm(); err != nil {
+	//	return fail(err)
+	//}
 
 	offsetStr := r.FormValue("offset")
 	leangthStr := r.FormValue("limit")
@@ -26,21 +26,21 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	categoryStr := r.FormValue("category")
 	conditionStr := r.FormValue("lotcondition")
 
-	offset, err := strconv.Atoi(offsetStr)
+	offset, err := atoi(offsetStr)
 	if err != nil {
 		return fail(err)
 	}
 
-	leangth, err := strconv.Atoi(leangthStr)
+	leangth, err := atoi(leangthStr)
 	if err != nil {
 		return fail(err)
 	}
 
-	maxPrice, err := decimal.NewFromString(maxPriceStr)
+	maxPrice, err := atodec(maxPriceStr)
 	if err != nil {
 		return fail(err)
 	}
-	minPrice, err := decimal.NewFromString(minPriceStr)
+	minPrice, err := atodec(minPriceStr)
 	if err != nil {
 		return fail(err)
 	}
@@ -108,4 +108,18 @@ func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error 
 		"lots_table": response,
 	})
 
+}
+
+func atoi(str string) (int, error) {
+	if str == "" {
+		return 0, nil
+	}
+	return strconv.Atoi(str)
+}
+
+func atodec(str string) (decimal.Decimal, error) {
+	if str == "" {
+		return decimal.Zero, nil
+	}
+	return decimal.NewFromString(str)
 }
