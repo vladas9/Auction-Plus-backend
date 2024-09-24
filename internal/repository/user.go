@@ -5,7 +5,6 @@ import (
 
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
-	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 type userRepo struct {
@@ -197,7 +196,6 @@ func (r *userRepo) Insert(item *m.UserModel) (uuid.UUID, error) {
 		item.PhoneNumber,
 		item.UserType,
 	).Scan(&userId)
-	utils.Logger.Info("userRepo: returning id after insert::", userId)
 	if err != nil {
 		return uuid.Nil, err
 	}

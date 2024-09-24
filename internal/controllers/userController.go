@@ -22,7 +22,7 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("Login failed: %w", err)
 	}
 
-	u.Logger.Info(fmt.Sprintf("User %s loged in", storedUser.Username))
+	u.Logger.Info(fmt.Sprintf("User '%s' loged in", storedUser.Username))
 
 	response, err := createResponse(storedUser.ID.String(), storedUser.UserType, storedUser.Image)
 	if err != nil {
@@ -45,7 +45,7 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("Registration failed: %w", err)
 	}
 
-	u.Logger.Info(fmt.Sprintf("User %s created", storedUser.Username))
+	u.Logger.Info(fmt.Sprintf("User '%s' created", storedUser.Username))
 
 	response, err := createResponse(storedUser.ID.String(), storedUser.UserType, storedUser.Image)
 	if err != nil {
@@ -65,6 +65,7 @@ func (c *Controller) UserData(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("Failed getting user data: %s", err)
 	}
 
+	u.Logger.Info(fmt.Sprintf("Send user '%s' entity", user.Username))
 	return WriteJSON(w, http.StatusOK, &Response{
 		"img_src":   fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, user.Image),
 		"user_type": user.UserType,
@@ -81,6 +82,7 @@ func (c *Controller) ProfileData(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("failed getting user data: %s", err)
 	}
 
+	u.Logger.Info(fmt.Sprintf("Loaded user '%s' profile page data", user.Username))
 	return WriteJSON(w, http.StatusOK, &Response{
 		"img_src":       fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, user.Image),
 		"username":      user.Username,
