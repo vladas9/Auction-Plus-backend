@@ -1,2 +1,7 @@
 INFO: 2024/09/25 20:30:22 Successfully connected to the database
 INFO: 2024/09/25 20:30:22 Started server on localhost:1169
+INFO: 2024/09/26 13:41:19 Successfully connected to the database
+INFO: 2024/09/26 13:41:19 Started server on localhost:1169
+ERROR: 2024/09/26 13:42:05 failed getting user data: Failed to get user: sql: no rows in result set
+INFO: 2024/09/26 13:43:37 Successfully connected to the database
+INFO: 2024/09/26 13:43:37 Started server on localhost:1169

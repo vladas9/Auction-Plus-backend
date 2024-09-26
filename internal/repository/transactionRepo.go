@@ -146,27 +146,30 @@ func (r *transactionRepo) Remove(id uuid.UUID) error {
 	return err
 }
 
-func (r *transactionRepo) Insert(item *m.TransactionModel) error {
+func (r *transactionRepo) Insert(item *m.TransactionModel) (uuid.UUID, error) {
 	query := `
 		INSERT INTO transactions (
-			id,
 			auction_id,
 			buyer_id,
 			seller_id,
 			amount,
 			date
 		) VALUES (
-			$1, $2, $3, $4, $5, $6
-		)
+			$1, $2, $3, $4, $5
+		) RETURNING id
 	`
-	_, err := r.tx.Exec(query,
-		item.ID,
+	var itemId string
+	err := r.tx.QueryRow(query,
 		item.AuctionId,
 		item.BuyerId,
 		item.SellerId,
 		item.Amount,
 		item.Date,
-	)
+	).Scan(&itemId)
 
-	return err
+	if err != nil {
+		return uuid.Nil, err
+	}
+
+	return uuid.MustParse(itemId), nil
 }

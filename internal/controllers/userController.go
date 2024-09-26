@@ -7,7 +7,6 @@ import (
 	"os"
 	"strings"
 
-	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
@@ -74,12 +73,12 @@ func (c *Controller) UserData(w http.ResponseWriter, r *http.Request) error {
 }
 
 func (c *Controller) ProfileData(w http.ResponseWriter, r *http.Request) error {
-	// userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
-	// if err != nil {
-	// 	return err
-	// }
+	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	if err != nil {
+		return err
+	}
 
-	userId, err := uuid.Parse("44b23f51-b8b4-4d73-aec8-aa1b3930d923")
+	// userId, err := uuid.Parse("22365175-d6f8-4616-a198-db0314daf5fe")
 	if err != nil {
 		return fmt.Errorf("Failed to parse UUID: %v", err)
 	}

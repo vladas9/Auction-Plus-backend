@@ -291,7 +291,7 @@ func (r *auctionRepo) Remove(id uuid.UUID) error {
 	return err
 }
 
-func (r *auctionRepo) Insert(item *m.AuctionModel) error {
+func (r *auctionRepo) Insert(item *m.AuctionModel) (uuid.UUID, error) {
 	query := `
 		INSERT INTO auctions (
 			seller_id,
@@ -308,9 +308,10 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 			status
 		) VALUES (
 			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12
-		)
+		) RETURNING id
 	`
-	_, err := r.tx.Exec(query,
+	var itemId string
+	err := r.tx.QueryRow(query,
 		item.SellerId,
 		item.ItemId,
 		item.StartPrice,
@@ -323,7 +324,11 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 		item.ExtraTimeDuration,
 		item.ExtraTimeThreshold,
 		item.Status,
-	)
+	).Scan(&itemId)
 
-	return err
+	if err != nil {
+		return uuid.Nil, err
+	}
+
+	return uuid.MustParse(itemId), nil
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	//"github.com/google/uuid"
+
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 
@@ -40,16 +41,14 @@ func main() {
 			}
 			auct := CreateDummyAuction(itemId, userId, userId2)
 			u.Logger.Info("\n", auct, "\n")
-			err = stx.AuctionRepo().Insert(auct)
+			auctionId, err := stx.AuctionRepo().Insert(auct)
 			if err != nil {
 				return err
 			}
 
-			auctionId := auct.ID
-
 			// Create a transaction
 			transaction := CreateDummyTransaction(auctionId, userId, userId2)
-			err = stx.TransactionRepo().Insert(transaction)
+			_, err = stx.TransactionRepo().Insert(transaction)
 			if err != nil {
 				return err
 			}
