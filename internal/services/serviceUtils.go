@@ -2,26 +2,9 @@ package services
 
 import (
 	"github.com/google/uuid"
+
 	m "github.com/vladas9/backend-practice/internal/models"
-
-	"fmt"
-	"runtime"
 )
-
-func fail(err error) error {
-	if err == nil {
-		return nil
-	}
-
-	pc, _, _, ok := runtime.Caller(1)
-	if !ok {
-		return fmt.Errorf("unknown function: %w", err)
-	}
-	fn := runtime.FuncForPC(pc)
-	functionName := fn.Name()
-
-	return fmt.Errorf("%s: %w", functionName, err)
-}
 
 func CreateUserMap(userList []*m.UserModel) map[uuid.UUID]*m.UserModel {
 	userMap := make(map[uuid.UUID]*m.UserModel)

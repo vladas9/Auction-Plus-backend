@@ -5,6 +5,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/vladas9/backend-practice/internal/dtos"
+	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
 )
@@ -14,25 +15,20 @@ func (s *Service) NewBid(bid *m.BidModel) (err error) {
 	err = s.store.WithTx(func(stx *r.StoreTx) error {
 		auction, err = stx.AuctionRepo().GetById(bid.AuctionId)
 		if err != nil {
-			return err
+			return errors.NotValid("auction id not valid", err)
 		}
 
 		if auction.CurrentBid.Compare(bid.Amount) == -1 {
 			err = stx.BidRepo().Insert(bid)
 			if err != nil {
-				return fmt.Errorf("failed to insert bid: %w", err)
+				return errors.Internal(err)
 			}
 		} else {
-			return fmt.Errorf("Bid is smaller than CurrentBid: %s", bid.Amount)
+			return errors.Conflict("Attempt to place bid smaller than current bid", err)
 		}
-
 		return nil
 	})
-	if err != nil {
-		return fmt.Errorf("Palacing bid failed: %s", err)
-	}
-
-	return nil
+	return err
 }
 
 func (s *Service) GetBidTable(userId uuid.UUID, limit, offset int) ([]*dtos.BidsTable, error) {
@@ -57,15 +53,10 @@ func (s *Service) GetBidTable(userId uuid.UUID, limit, offset int) ([]*dtos.Bids
 	})
 
 	if err != nil {
-		return nil, err
+		return nil, errors.Internal(err)
 	}
 
-	bidsTable, err := buildBidsTable(bidList, auctionList, itemList, userList)
-	if err != nil {
-		return nil, err
-	}
-
-	return bidsTable, nil
+	return buildBidsTable(bidList, auctionList, itemList, userList), nil
 }
 
 func getRelatedData(stx *r.StoreTx, bidList []*m.BidModel) (
@@ -80,7 +71,7 @@ func getRelatedData(stx *r.StoreTx, bidList []*m.BidModel) (
 		auctionId := bid.AuctionId
 		auction, err := stx.AuctionRepo().GetById(auctionId)
 		if err != nil {
-			return nil, nil, nil, fmt.Errorf("Failed getting auction: %s", err)
+			return nil, nil, nil, errors.Next(err)
 		}
 		auctionList = append(auctionList, auction)
 		auctionMap[auctionId] = auction
@@ -90,14 +81,14 @@ func getRelatedData(stx *r.StoreTx, bidList []*m.BidModel) (
 		itemId := auction.ItemId
 		item, err := stx.ItemRepo().GetById(itemId)
 		if err != nil {
-			return nil, nil, nil, fmt.Errorf("Failed getting item: %s", err)
+			return nil, nil, nil, errors.Next(err)
 		}
 		itemList = append(itemList, item)
 
 		userId := auction.MaxBidderId
 		user, err := stx.UserRepo().GetById(userId)
 		if err != nil {
-			return nil, nil, nil, fmt.Errorf("Failed getting user: %s", err)
+			return nil, nil, nil, errors.Next(err)
 		}
 		userList = append(userList, user)
 	}
@@ -110,7 +101,7 @@ func buildBidsTable(
 	auctionList []*m.AuctionModel,
 	itemList []*m.ItemModel,
 	userList []*m.UserModel,
-) ([]*dtos.BidsTable, error) {
+) []*dtos.BidsTable {
 	userMap := CreateUserMap(userList)
 	auctionMap := CreateAuctionMap(auctionList)
 	itemMap := CreateItemMap(itemList)
@@ -151,5 +142,5 @@ func buildBidsTable(
 		bidsTable = append(bidsTable, bidTableEntry)
 	}
 
-	return bidsTable, nil
+	return bidsTable
 }

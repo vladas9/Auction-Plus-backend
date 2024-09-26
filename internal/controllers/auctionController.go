@@ -1,20 +1,15 @@
 package controllers
 
 import (
-	"fmt"
-	"net/http"
-	"strconv"
-
 	"github.com/google/uuid"
-	"github.com/shopspring/decimal"
+	"github.com/vladas9/backend-practice/internal/errors"
+	"net/http"
+
 	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
-	fail := func(err error) error {
-		return fmt.Errorf("GetAuctions controller: %w", err)
-	}
 	//if err := r.ParseForm(); err != nil {
 	//	return fail(err)
 	//}
@@ -28,21 +23,21 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 
 	offset, err := atoi(offsetStr)
 	if err != nil {
-		return fail(err)
+		return errors.NotValid("offset not parsable", err)
 	}
 
 	leangth, err := atoi(leangthStr)
 	if err != nil {
-		return fail(err)
+		return errors.NotValid("limit not parsable", err)
 	}
 
 	maxPrice, err := atodec(maxPriceStr)
 	if err != nil {
-		return fail(err)
+		return errors.NotValid("max_price not parsable", err)
 	}
 	minPrice, err := atodec(minPriceStr)
 	if err != nil {
-		return fail(err)
+		return errors.NotValid("min_price not parsable", err)
 	}
 
 	params := s.AuctionCardParams{
@@ -53,25 +48,20 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		Category:  categoryStr,
 		Condition: conditionStr,
 	}
-	problems := params.Validate()
-	if problems != nil {
-		return &ApiError{Status: 400, ErrorMsg: problems}
-	}
 
 	cards, err := c.service.GetAuctionCards(params)
 	if err != nil {
-		return fmt.Errorf("AuctionController: %w", err)
+		return err
 	}
 	return WriteJSON(w, http.StatusOK, Response{
 		"lots": cards,
 	})
 }
 
-// todo handle not found, etc properly
 func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Request) error {
 	auctId, err := uuid.Parse(r.PathValue("id"))
 	if err != nil {
-		return &ApiError{Status: 400, ErrorMsg: "uuid not valid"}
+		return errors.NotValid("uuid not parsable", err)
 	}
 	auct, err := c.service.GetFullAuctionById(auctId)
 	if err != nil {
@@ -85,20 +75,16 @@ func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Request) error {
 func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	params := s.AuctionTableParams{}
-	if params.Limit, err = strconv.Atoi(r.URL.Query().Get("limit")); err != nil {
-		return err
+	if params.Limit, err = atoi(r.URL.Query().Get("limit")); err != nil {
+		return errors.NotValid("limit not parsable", err)
 	}
-	if params.Offset, err = strconv.Atoi(r.URL.Query().Get("offset")); err != nil {
-		return err
+	if params.Offset, err = atoi(r.URL.Query().Get("offset")); err != nil {
+		return errors.NotValid("offset not parsable", err)
 	}
 	params.UserId, err = u.ExtractUserIDFromToken(r, JwtSecret)
 	if err != nil {
 		return err
 	}
-	if problems := params.Validate(); problems != nil {
-		return &ApiError{Status: 400, ErrorMsg: problems}
-	}
-
 	response, err := c.service.GetAuctionTable(params)
 	if err != nil {
 		return err
@@ -108,18 +94,4 @@ func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error 
 		"lots_table": response,
 	})
 
-}
-
-func atoi(str string) (int, error) {
-	if str == "" {
-		return 0, nil
-	}
-	return strconv.Atoi(str)
-}
-
-func atodec(str string) (decimal.Decimal, error) {
-	if str == "" {
-		return decimal.Zero, nil
-	}
-	return decimal.NewFromString(str)
 }

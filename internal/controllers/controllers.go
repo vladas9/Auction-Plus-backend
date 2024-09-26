@@ -12,8 +12,10 @@ import (
 	"net/http"
 	"os"
 	"reflect"
+	"strconv"
 
 	"github.com/joho/godotenv"
+	"github.com/shopspring/decimal"
 	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
@@ -50,11 +52,16 @@ func WriteJSON(w http.ResponseWriter, status int, v any) error {
 
 type Response map[string]interface{}
 
-type ApiError struct {
-	ErrorMsg any `json:"error"`
-	Status   int `json:"status"`
+func atoi(str string) (int, error) {
+	if str == "" {
+		return 0, nil
+	}
+	return strconv.Atoi(str)
 }
 
-func (e *ApiError) Error() string {
-	return fmt.Sprint(e.ErrorMsg)
+func atodec(str string) (decimal.Decimal, error) {
+	if str == "" {
+		return decimal.Zero, nil
+	}
+	return decimal.NewFromString(str)
 }

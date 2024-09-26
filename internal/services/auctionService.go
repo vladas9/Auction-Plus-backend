@@ -3,8 +3,10 @@ package services
 import (
 	"database/sql"
 	"fmt"
+
 	"github.com/google/uuid"
 	dto "github.com/vladas9/backend-practice/internal/dtos"
+	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
@@ -16,6 +18,8 @@ type AuctionService interface {
 	GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error)
 	GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error)
 }
+
+// TODO: add fail back, or something similar, to format the internal error
 
 // type auctionService struct{ *Service }
 //
@@ -99,6 +103,9 @@ func (s *Service) NewAuction(dto *dto.AuctionFull) error { return nil }
 //}
 
 func (s *Service) GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error) {
+	if problems := params.Validate(); problems != nil {
+		return nil, problems.toErr()
+	}
 	var auctions []*m.AuctionDetails
 	var err error
 	err = s.store.WithTx(func(stx *r.StoreTx) error {
@@ -106,7 +113,7 @@ func (s *Service) GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable
 		return err
 	})
 	if err != nil {
-		return nil, fail(err)
+		return nil, errors.Internal(err)
 	}
 	var table []dto.AuctionTable
 	for _, a := range auctions {
@@ -122,7 +129,7 @@ func getUserAuctions(stx *r.StoreTx, params AuctionTableParams, opts ...auctOpt)
 	for _, auctModel := range auctModels {
 		auct, err = getAuctionDetails(auctModel, stx, opts...)
 		if err != nil {
-			return nil, fail(err)
+			return nil, errors.Next(err)
 		}
 		auctions = append(auctions, auct)
 	}
@@ -130,6 +137,9 @@ func getUserAuctions(stx *r.StoreTx, params AuctionTableParams, opts ...auctOpt)
 }
 
 func (s *Service) GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, error) {
+	if problems := params.Validate(); problems != nil {
+		return nil, problems.toErr()
+	}
 	var err error
 	var auctDetails []*m.AuctionDetails
 	err = s.store.WithTx(func(stx *r.StoreTx) error {
@@ -140,7 +150,7 @@ func (s *Service) GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, 
 	})
 
 	if err != nil {
-		return nil, fail(err)
+		return nil, errors.Internal(err)
 	}
 
 	var cards []dto.AuctionCard
@@ -158,12 +168,12 @@ func getAuctions(stx *r.StoreTx, params AuctionCardParams, opts ...auctOpt) (auc
 		params.MinPrice, params.MaxPrice)
 	u.Logger.Info("getAuctionsWith in:", auctions)
 	if err != nil {
-		return nil, fail(err)
+		return nil, errors.Next(err)
 	}
 	for _, auctModel := range auctModels {
 		auct, err := getAuctionDetails(auctModel, stx, opts...)
 		if err != nil {
-			return nil, fail(err)
+			return nil, errors.Next(err)
 		} else if auct.ItemHas(params.Condition, params.Category) {
 			auctions = append(auctions, auct)
 		}
@@ -177,13 +187,13 @@ func (s *Service) GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error) {
 	err = s.store.WithTx(func(stx *r.StoreTx) error {
 		auctModel, err := stx.AuctionRepo().GetById(id)
 		if err != nil {
-			return err
+			return errors.NotFound("auction not found", err)
 		}
 		auct, err = getAuctionDetails(auctModel, stx, withItem, withBids)
-		return err
+		return errors.Next(err)
 	})
 	if err != nil {
-		return nil, fail(err)
+		return nil, err
 	}
 	return dto.MapAuctionRespToFull(auct), nil
 }
@@ -196,7 +206,7 @@ func getAuctionDetails(auct *m.AuctionModel, stx *r.StoreTx, opts ...auctOpt) (*
 	for _, opt := range opts {
 		details, err = opt(stx, details)
 		if err != nil {
-			return nil, err
+			return nil, errors.Next(err)
 		}
 	}
 	return details, nil
@@ -206,7 +216,7 @@ func withBids(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
 	var err error
 	auct.BidList, err = stx.BidRepo().GetAllFor(auct.Auction)
 	if err != nil {
-		return nil, fail(err)
+		return nil, errors.Next(err)
 	}
 	return auct, nil
 }
@@ -215,7 +225,7 @@ func withItem(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
 	var err error
 	auct.Item, err = stx.ItemRepo().GetById(auct.Auction.ItemId)
 	if err != nil {
-		return nil, fail(err)
+		return nil, errors.Next(err)
 	}
 	return auct, nil
 }
@@ -225,7 +235,7 @@ func withMaxBidder(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, e
 	auct.MaxBidder, err = stx.UserRepo().GetById(auct.Auction.MaxBidderId)
 	if err != nil {
 		if err != sql.ErrNoRows {
-			return nil, fail(err)
+			return nil, errors.Next(err)
 		}
 		auct.MaxBidder = &m.UserModel{}
 	}
