@@ -9,9 +9,9 @@ import (
 
 type TransactionModel struct {
 	BaseModel
-	AuctionId       uuid.UUID       `json:"auction_id"`
-	BuyerId         uuid.UUID       `json:"buyer_id"`
-	SellerId        uuid.UUID       `json:"seller_id"`
-	Amount          decimal.Decimal `json:"amount"`
-	TransactionDate time.Time       `json:"transaction_date"`
+	AuctionId uuid.UUID       `json:"auction_id"`
+	BuyerId   uuid.UUID       `json:"buyer_id"`
+	SellerId  uuid.UUID       `json:"seller_id"`
+	Amount    decimal.Decimal `json:"amount"`
+	Date      time.Time       `json:"date"`
 }

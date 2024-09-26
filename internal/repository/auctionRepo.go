@@ -298,6 +298,7 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 			item_id,
 			start_price,
 			current_bid,
+			max_bidder_id,
 			bid_count,
 			start_time,
 			end_time,
@@ -306,7 +307,7 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 			extra_time_threshold,
 			status
 		) VALUES (
-			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11
+			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12
 		)
 	`
 	_, err := r.tx.Exec(query,
@@ -314,6 +315,7 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) error {
 		item.ItemId,
 		item.StartPrice,
 		item.CurrentBid,
+		item.MaxBidderId,
 		item.BidCount,
 		item.StartTime,
 		item.EndTime,

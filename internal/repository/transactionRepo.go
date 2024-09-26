@@ -20,11 +20,7 @@ type FilterCondition struct {
 }
 
 func (s *StoreTx) TransactionRepo() *transactionRepo {
-	return &transactionRepo{s.Tx}
-}
-
-func TransactionRepo(tx *sql.Tx) *transactionRepo {
-	return &transactionRepo{tx}
+	return &transactionRepo{tx: s.Tx}
 }
 
 func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
@@ -35,8 +31,8 @@ func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 			auction_id,
 			buyer_id,
 			seller_id,
-			transaction_amount,
-			transaction_date
+			amount,
+			date
 		FROM
 			transactions
 		WHERE
@@ -49,7 +45,7 @@ func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 		&item.BuyerId,
 		&item.SellerId,
 		&item.Amount,
-		&item.TransactionDate,
+		&item.Date,
 	); err != nil {
 		return nil, err
 	}
@@ -65,8 +61,8 @@ func (r *transactionRepo) GetAll(filters []FilterCondition) ([]*m.TransactionMod
 			auction_id,
 			buyer_id,
 			seller_id,
-			transaction_amount,
-			transaction_date
+			amount,
+			date
 		FROM
 			transactions
 		WHERE 1=1
@@ -100,7 +96,7 @@ func (r *transactionRepo) GetAll(filters []FilterCondition) ([]*m.TransactionMod
 			&item.BuyerId,
 			&item.SellerId,
 			&item.Amount,
-			&item.TransactionDate,
+			&item.Date,
 		); err != nil {
 			return nil, err
 		}
@@ -121,18 +117,18 @@ func (r *transactionRepo) Update(item *m.TransactionModel) error {
 			auction_id = $1,
 			buyer_id = $2,
 			seller_id = $3,
-			transaction_amount = $4,
-			transaction_date = $5
+			amount = $4,
+			date = $5
 		WHERE
 			id = $6
 	`
 	_, err := r.tx.Exec(query,
-		&item.AuctionId,
-		&item.BuyerId,
-		&item.SellerId,
-		&item.Amount,
-		&item.TransactionDate,
-		&item.ID,
+		item.AuctionId,
+		item.BuyerId,
+		item.SellerId,
+		item.Amount,
+		item.Date,
+		item.ID,
 	)
 
 	return err
@@ -157,19 +153,19 @@ func (r *transactionRepo) Insert(item *m.TransactionModel) error {
 			auction_id,
 			buyer_id,
 			seller_id,
-			transaction_amount,
-			transaction_date
+			amount,
+			date
 		) VALUES (
 			$1, $2, $3, $4, $5, $6
 		)
 	`
 	_, err := r.tx.Exec(query,
-		&item.ID,
-		&item.AuctionId,
-		&item.BuyerId,
-		&item.SellerId,
-		&item.Amount,
-		&item.TransactionDate,
+		item.ID,
+		item.AuctionId,
+		item.BuyerId,
+		item.SellerId,
+		item.Amount,
+		item.Date,
 	)
 
 	return err

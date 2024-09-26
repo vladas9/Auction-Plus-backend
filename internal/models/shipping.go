@@ -12,5 +12,5 @@ type ShippingModel struct {
 	ShippingAddress   string    `json:"shipping_address"`
 	TrackingNumber    string    `json:"tracking_number"`
 	Status            Status    `json:"status"`
-	EstimatedDelivary time.Time `json:"estimated_delivary"`
+	EstimatedDelivery time.Time `json:"estimated_delivery"`
 }

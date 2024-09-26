@@ -14,10 +14,18 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	user := GenerateDummyUser()
+	user := GenerateDummyUser("john.doe@example.com")
+	user2 := GenerateDummyUser("john.doe2@example.com")
 	err = r.NewStore(db).WithTx(func(stx *r.StoreTx) error {
 		userId, repoErr := stx.UserRepo().Insert(user)
 		u.Logger.Info("demoDB: userId: ", userId)
+		if repoErr != nil {
+			u.Logger.Error("demoDB stx.UserRepo():", repoErr)
+			return repoErr
+		}
+
+		// Insert user2
+		userId2, repoErr := stx.UserRepo().Insert(user2)
 		if repoErr != nil {
 			u.Logger.Error("demoDB stx.UserRepo():", repoErr)
 			return repoErr
@@ -30,9 +38,18 @@ func main() {
 			if err != nil {
 				return err
 			}
-			auct := CreateDummyAuction(itemId, userId)
+			auct := CreateDummyAuction(itemId, userId, userId2)
 			u.Logger.Info("\n", auct, "\n")
 			err = stx.AuctionRepo().Insert(auct)
+			if err != nil {
+				return err
+			}
+
+			auctionId := auct.ID
+
+			// Create a transaction
+			transaction := CreateDummyTransaction(auctionId, userId, userId2)
+			err = stx.TransactionRepo().Insert(transaction)
 			if err != nil {
 				return err
 			}
