@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strconv"
 
+	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
@@ -14,7 +14,7 @@ func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	bid := &m.BidModel{}
 	if err = json.NewDecoder(r.Body).Decode(bid); err != nil {
-		return fmt.Errorf("Decoding failed(BidHandler): %s", err)
+		return errors.NotValid(err.Error(), err)
 	}
 	bid.UserId, err = u.ExtractUserIDFromToken(r, JwtSecret)
 	if err != nil {
@@ -30,11 +30,11 @@ func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
 func (c *Controller) BidTable(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	var limit, offset int
-	if limit, err = strconv.Atoi(r.URL.Query().Get("limit")); err != nil {
-		limit = 0
+	if limit, err = atoi(r.URL.Query().Get("limit")); err != nil {
+		return errors.NotValid("limit not parsable", err)
 	}
 	if offset, err = strconv.Atoi(r.URL.Query().Get("offset")); err != nil {
-		offset = 0
+		return errors.NotValid("limit not parsable", err)
 	}
 	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
 	if err != nil {

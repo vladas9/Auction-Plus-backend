@@ -5,7 +5,13 @@ build:
 	@go build -o ${BINARY_NAME} ./cmd/main.go
  
 run: build
-	${BINARY_NAME}
+	@rm -f ./log-files/logs.log
+	@echo "Starting server, run \`make log\` to see logs"
+	@${BINARY_NAME}
+
+log:
+	@echo "Server Logs:"
+	@tail -f ./log-files/logs.log
 
 setup:
 	@psql -U postgres -c "CREATE DATABASE auctiondb"

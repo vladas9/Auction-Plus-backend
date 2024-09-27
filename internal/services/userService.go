@@ -1,9 +1,8 @@
 package services
 
 import (
-	"fmt"
-
 	"github.com/google/uuid"
+	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
@@ -13,13 +12,13 @@ func (s *Service) CreateUser(user *m.UserModel) (*m.UserModel, error) {
 	var err error
 
 	if user.Password, err = u.HashPassword(user.Password); err != nil {
-		return nil, err
+		return nil, errors.Internal(err)
 	}
 
 	imageUUID := uuid.New().String()
 
 	if err = u.DecodeAndSaveImage(user.Image, ImageDir, imageUUID); err != nil {
-		return nil, err
+		return nil, errors.Internal(err)
 	}
 
 	user.Image = imageUUID
@@ -30,7 +29,7 @@ func (s *Service) CreateUser(user *m.UserModel) (*m.UserModel, error) {
 	})
 
 	if err != nil {
-		return nil, fmt.Errorf("Faled to create user: %v", err.Error())
+		return nil, errors.Conflict("Account already exists", err) // TODO: Move error to repo
 	}
 
 	return user, nil
@@ -43,11 +42,11 @@ func (s *Service) CheckUser(user *m.UserModel) (storedUser *m.UserModel, err err
 	})
 
 	if err != nil {
-		return nil, fmt.Errorf("Failed to find user: %v", err.Error())
+		return nil, errors.NotFound("Account with given email does not exist", err)
 	}
 
 	if err = u.CompareHashPassword(user.Password, storedUser.Password); err != nil {
-		return nil, err
+		return nil, errors.Unauthorized("Email or password is wrong", err)
 	}
 
 	return storedUser, nil
@@ -59,7 +58,7 @@ func (s *Service) GetUserData(id uuid.UUID) (storedUser *m.UserModel, err error)
 		return err
 	})
 	if err != nil {
-		return nil, fmt.Errorf("Failed to get user: %s", err)
+		return nil, errors.Internal(err)
 	}
 
 	return storedUser, nil

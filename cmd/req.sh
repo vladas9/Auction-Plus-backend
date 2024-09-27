@@ -7,7 +7,7 @@ register_user() {
 }
 
 login_user() {
-  curl -X POST http://localhost:1169/api/login-user \
+  curl -s  -X POST http://localhost:1169/api/login-user \
        -H "Content-Type: application/json" \
        -d '{
              "email": "test@test",
@@ -41,9 +41,9 @@ place_bid() {
 
 #register_user | jq '.'
 #login_user | jq '."auth_token"'
-time get_auction_cards | jq '.'
 
+#time get_auction_cards | jq '.'
 #time get_auction_table | jq '.'
 
-#place_bid 4500
+place_bid 5000 | jq '.'
 #get_full_auction | jq '.'

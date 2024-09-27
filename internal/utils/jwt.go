@@ -1,12 +1,13 @@
 package utils
 
 import (
-	"fmt"
-	"github.com/golang-jwt/jwt/v5"
-	"github.com/google/uuid"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/golang-jwt/jwt/v5"
+	"github.com/google/uuid"
+	"github.com/vladas9/backend-practice/internal/errors"
 )
 
 type Claims struct {
@@ -29,7 +30,7 @@ func GenerateJWT(userID, userType string, jwtSecret []byte) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenString, err := token.SignedString(jwtSecret)
 	if err != nil {
-		return "", err
+		return "", errors.Internal(err)
 	}
 
 	return tokenString, nil
@@ -38,12 +39,12 @@ func GenerateJWT(userID, userType string, jwtSecret []byte) (string, error) {
 func ExtractUserIDFromToken(r *http.Request, jwtSecret []byte) (uuid.UUID, error) {
 	authHeader := r.Header.Get("Authorization")
 	if authHeader == "" {
-		return uuid.UUID{}, fmt.Errorf("Authorization header is missing")
+		return uuid.UUID{}, errors.Unauthorized("Authorisation header missing", nil)
 	}
 
 	parts := strings.Split(authHeader, " ")
 	if len(parts) != 2 || parts[0] != "Bearer" {
-		return uuid.UUID{}, fmt.Errorf("Invalid Authorization header format. Expected 'Bearer <token>'")
+		return uuid.UUID{}, errors.Unauthorized("Invalid Authorization header format. Expected 'Bearer <token>'", nil)
 	}
 
 	tokenString := parts[1]
@@ -54,12 +55,12 @@ func ExtractUserIDFromToken(r *http.Request, jwtSecret []byte) (uuid.UUID, error
 	})
 
 	if err != nil || !token.Valid {
-		return uuid.UUID{}, fmt.Errorf("Invalid token: %v", err)
+		return uuid.UUID{}, errors.Unauthorized("Your session has expired", err)
 	}
 
 	userID, err := uuid.Parse(claims.UserID)
 	if err != nil {
-		return uuid.UUID{}, fmt.Errorf("Failed to parse user ID from token: %v", err)
+		return uuid.UUID{}, errors.Unauthorized("Failed to parse user ID from token", err)
 	}
 
 	return userID, nil
