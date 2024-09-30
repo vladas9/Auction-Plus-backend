@@ -1,13 +1,38 @@
 package controllers
 
 import (
-	"github.com/google/uuid"
-	"github.com/vladas9/backend-practice/internal/errors"
+	"encoding/json"
 	"net/http"
+
+	"github.com/google/uuid"
+	"github.com/vladas9/backend-practice/internal/dtos"
+	"github.com/vladas9/backend-practice/internal/errors"
 
 	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
+
+func (c *Controller) AddAuction(w http.ResponseWriter, r *http.Request) error {
+	var err error
+	auctionDTO := &dtos.AuctionFull{}
+
+	sellerId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	if err != nil {
+		return err
+	}
+
+	if err = json.NewDecoder(r.Body).Decode(auctionDTO); err != nil {
+		return errors.NotValid(err.Error(), err)
+	}
+
+	u.Logger.Info("dto", auctionDTO)
+	if auctId, err := c.service.NewAuction(auctionDTO, sellerId); err != nil {
+		return errors.Internal(err)
+	} else {
+		return WriteJSON(w, http.StatusOK, Response{
+			"auctionId": auctId})
+	}
+}
 
 func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	//if err := r.ParseForm(); err != nil {

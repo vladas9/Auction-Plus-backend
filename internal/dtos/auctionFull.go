@@ -39,9 +39,12 @@ type AuctionFull struct {
 	Category  m.Category  `json:"category_name"`
 	Condition m.Condition `json:"condition"`
 
+	StartDate time.Time `json:"start_date"`
 	EndDate   time.Time `json:"end_date"`
-	NumOfBids int       `json:"n_bids"`
-	MaxBid    m.Decimal `json:"max_bid"`
+
+	StartPrice m.Decimal `json:"start_price"`
+	NumOfBids  int       `json:"n_bids"`
+	MaxBid     m.Decimal `json:"max_bid"`
 
 	Labels     []string    `json:"labels"`
 	BidsPerDay []int       `json:"bids_perday"`
@@ -62,6 +65,8 @@ func MapAuctionRespToFull(auctDets *m.AuctionDetails) *AuctionFull {
 		Opened:      auction.Status,
 		Category:    item.Category,
 		Condition:   item.Condition,
+		StartPrice:  auction.StartPrice,
+		StartDate:   auction.StartTime,
 		EndDate:     auction.EndTime,
 		MaxBid:      auction.CurrentBid,
 		NumOfBids:   int(auction.BidCount),

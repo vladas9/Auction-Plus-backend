@@ -1,9 +1,11 @@
 package models
 
 import (
+	"time"
+
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
-	"time"
+	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 type BidModel struct {
@@ -22,16 +24,18 @@ type BidStats struct {
 
 func GetBidStats(bids []*BidModel) BidStats {
 	stats := BidStats{}
-
 	bidsPerDay := make(map[string][]Decimal)
 
 	for _, bid := range bids {
 		date := bid.Timestamp.Format("2 January")
+		if _, exists := bidsPerDay[date]; !exists {
+			stats.Labels = append(stats.Labels, date)
+		}
 		bidsPerDay[date] = append(bidsPerDay[date], bid.Amount)
 	}
 
-	for date, amounts := range bidsPerDay {
-		stats.Labels = append(stats.Labels, date)
+	for _, date := range stats.Labels {
+		amounts := bidsPerDay[date]
 		stats.BidsCount = append(stats.BidsCount, len(amounts))
 
 		maxAmount := decimal.Zero
@@ -42,6 +46,7 @@ func GetBidStats(bids []*BidModel) BidStats {
 		}
 		stats.MaxBids = append(stats.MaxBids, maxAmount)
 	}
+	utils.Logger.Info("stats", stats)
 
 	return stats
 }

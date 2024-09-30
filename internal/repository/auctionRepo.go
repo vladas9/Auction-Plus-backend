@@ -299,8 +299,6 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) (uuid.UUID, error) {
 			item_id,
 			start_price,
 			current_bid,
-			max_bidder_id,
-			bid_count,
 			start_time,
 			end_time,
 			extra_time_enabled,
@@ -308,7 +306,7 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) (uuid.UUID, error) {
 			extra_time_threshold,
 			status
 		) VALUES (
-			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12
+			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10
 		) RETURNING id
 	`
 	var itemId string
@@ -317,8 +315,6 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) (uuid.UUID, error) {
 		item.ItemId,
 		item.StartPrice,
 		item.CurrentBid,
-		item.MaxBidderId,
-		item.BidCount,
 		item.StartTime,
 		item.EndTime,
 		item.ExtraTimeEnabled,

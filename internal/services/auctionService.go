@@ -3,6 +3,7 @@ package services
 import (
 	"database/sql"
 	"fmt"
+	"time"
 
 	"github.com/google/uuid"
 	dto "github.com/vladas9/backend-practice/internal/dtos"
@@ -18,8 +19,6 @@ type AuctionService interface {
 	GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error)
 	GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error)
 }
-
-// TODO: add fail back, or something similar, to format the internal error
 
 // type auctionService struct{ *Service }
 //
@@ -85,22 +84,45 @@ func (p AuctionTableParams) Validate() Problems {
 	return nil
 }
 
-func (s *Service) NewAuction(dto *dto.AuctionFull) error { return nil }
+func (s *Service) NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID, error) {
+	images := []uuid.UUID{}
+	var auctId uuid.UUID
+	var err error
 
-//func (s *auctionService) NewAuction(dto *dto.AuctionFull) error {
-//	err := s.store.WithTx(func(stx *r.StoreTx) error {
-//		if itemId, err := stx.ItemRepo().Insert(item); err != nil {
-//			return err
-//		} else {
-//			auct.ItemId = itemId
-//		}
-//		if err := stx.AuctionRepo().Insert(auct); err != nil {
-//			return err
-//		}
-//		return nil
-//	})
-//	return fail(err)
-//}
+	for _, img := range dto.ImgSrc {
+		id := uuid.New()
+		if err := u.DecodeAndSaveImage(img, ImageDir, id.String()); err != nil {
+			return uuid.UUID{}, errors.Internal(err)
+		}
+		images = append(images, id)
+	}
+
+	item := &m.ItemModel{
+		Name:        dto.Title,
+		Description: dto.Description,
+		Category:    dto.Category,
+		Condition:   dto.Condition,
+		Images:      images,
+	}
+	auct := &m.AuctionModel{
+		StartPrice: dto.StartPrice,
+		StartTime:  time.Now(),
+		EndTime:    dto.EndDate,
+		SellerId:   seller,
+	}
+	err = s.store.WithTx(func(stx *r.StoreTx) error {
+		if itemId, err := stx.ItemRepo().Insert(item); err != nil {
+			return err
+		} else {
+			auct.ItemId = itemId
+		}
+		if auctId, err = stx.AuctionRepo().Insert(auct); err != nil {
+			return err
+		}
+		return nil
+	})
+	return auctId, errors.Internal(err)
+}
 
 func (s *Service) GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error) {
 	if problems := params.Validate(); problems != nil {

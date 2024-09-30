@@ -35,7 +35,7 @@ CREATE TABLE auctions(
   extra_time_enabled BOOLEAN DEFAULT TRUE,
   extra_time_duration BIGINT DEFAULT 0,
   extra_time_threshold BIGINT DEFAULT 0,
-  status BOOLEAN NOT NULL
+  status BOOLEAN NOT NULL DEFAULT TRUE
 );
 
 CREATE TABLE bids(
