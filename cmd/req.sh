@@ -45,5 +45,5 @@ place_bid() {
 #time get_auction_cards | jq '.'
 #time get_auction_table | jq '.'
 
-place_bid 5000 | jq '.'
-#get_full_auction | jq '.'
+#place_bid 5000 | jq '.'
+get_full_auction | jq '.'

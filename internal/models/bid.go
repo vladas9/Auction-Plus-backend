@@ -23,12 +23,16 @@ type BidStats struct {
 func GetBidStats(bids []*BidModel) BidStats {
 	stats := BidStats{}
 
-	bidsPerDay := make(map[string][]Decimal)
+	labels := map[string]int{}
+	bidArr := []decimal.Decimal{}
+	bidsCount := []int{}
 
-	for _, bid := range bids {
+	var maxBid decimal.Decimal
+	for i, bid := range bids {
 		date := bid.Timestamp.Format("2 January")
-		bidsPerDay[date] = append(bidsPerDay[date], bid.Amount)
-	}
+		labels[date] = i
+		bidArr[i] = bid.Amount
+	} // TODOOOOOOO
 
 	for date, amounts := range bidsPerDay {
 		stats.Labels = append(stats.Labels, date)

@@ -95,7 +95,7 @@ func (r *bidRepo) GetAllFor(auct *m.AuctionModel) ([]*m.BidModel, error) {
 		FROM
 			bids
 		WHERE auction_id = $1
-			
+		ORDER BY timestamp ASC
 	`
 	rows, err := r.tx.Query(query, auct.Id())
 	if err != nil {

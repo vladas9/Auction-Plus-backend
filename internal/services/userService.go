@@ -29,7 +29,7 @@ func (s *Service) CreateUser(user *m.UserModel) (*m.UserModel, error) {
 	})
 
 	if err != nil {
-		return nil, errors.Conflict("Account already exists", err) // TODO: Move error to repo
+		return nil, errors.Conflict("Account already exists", err)
 	}
 
 	return user, nil
