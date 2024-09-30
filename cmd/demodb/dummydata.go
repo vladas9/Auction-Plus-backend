@@ -42,7 +42,7 @@ func CreateDummyItem() *m.ItemModel {
 	return dummyItem
 }
 
-func CreateDummyAuction(itemId, userId uuid.UUID) *m.AuctionModel {
+func CreateDummyAuction(itemId, userId, maxBidderId uuid.UUID) *m.AuctionModel {
 	startPrice := 10 + int64(rand.Intn(1000))
 	return &m.AuctionModel{
 		BaseModel:          m.BaseModel{uuid.New()},
@@ -50,6 +50,7 @@ func CreateDummyAuction(itemId, userId uuid.UUID) *m.AuctionModel {
 		ItemId:             itemId,
 		StartPrice:         decimal.NewFromInt(startPrice),
 		CurrentBid:         decimal.NewFromInt(startPrice + int64(rand.Intn(3000))),
+		MaxBidderId:        maxBidderId,
 		BidCount:           0,
 		StartTime:          time.Now().Add(-72 * time.Hour),
 		EndTime:            time.Now().Add(72 * time.Hour),
@@ -60,11 +61,22 @@ func CreateDummyAuction(itemId, userId uuid.UUID) *m.AuctionModel {
 	}
 }
 
-func GenerateDummyUser() *m.UserModel {
+func CreateDummyTransaction(auctionId, buyerId, sellerId uuid.UUID) *m.TransactionModel {
+	return &m.TransactionModel{
+		BaseModel: m.BaseModel{uuid.New()},
+		AuctionId: auctionId,
+		BuyerId:   buyerId,
+		SellerId:  sellerId,
+		Amount:    decimal.NewFromInt(400),
+		Date:      time.Now(),
+	}
+}
+
+func GenerateDummyUser(email string) *m.UserModel {
 	return &m.UserModel{
 		BaseModel:      m.BaseModel{},
 		Username:       "john_doe",
-		Email:          "john.doe@example.com",
+		Email:          email,
 		Image:          uuid.NewString(),
 		Password:       "hashed_password", // In real case, this would be hashed.
 		Address:        "1234 Elm St, Springfield, USA",

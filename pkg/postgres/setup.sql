@@ -51,8 +51,8 @@ CREATE TABLE transactions(
   auction_id UUID REFERENCES auctions(id),
   buyer_id UUID REFERENCES users(id),
   seller_id UUID REFERENCES users(id),
-  transaction_amount DECIMAL(10, 2) NOT NULL,
-  transaction_date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+  amount DECIMAL(10, 2) NOT NULL,
+  date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE shipping(

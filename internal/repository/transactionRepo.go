@@ -2,6 +2,9 @@ package repository
 
 import (
 	"database/sql"
+	"fmt"
+	"strings"
+
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 )
@@ -10,8 +13,14 @@ type transactionRepo struct {
 	tx *sql.Tx
 }
 
-func TransactionRepo(tx *sql.Tx) *transactionRepo {
-	return &transactionRepo{tx}
+// Struct to hold property-value pairs for filtering
+type FilterCondition struct {
+	Property string
+	Value    interface{}
+}
+
+func (s *StoreTx) TransactionRepo() *transactionRepo {
+	return &transactionRepo{tx: s.Tx}
 }
 
 func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
@@ -23,7 +32,7 @@ func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 			buyer_id,
 			seller_id,
 			amount,
-			transaction_date
+			date
 		FROM
 			transactions
 		WHERE
@@ -36,14 +45,15 @@ func (r *transactionRepo) GetById(id uuid.UUID) (*m.TransactionModel, error) {
 		&item.BuyerId,
 		&item.SellerId,
 		&item.Amount,
-		&item.TransactionDate,
+		&item.Date,
 	); err != nil {
 		return nil, err
 	}
 	return item, nil
 }
 
-func (r *transactionRepo) GetAll() ([]*m.TransactionModel, error) {
+// GetAll retrieves transactions based on a set of filter conditions (field and value pairs).
+func (r *transactionRepo) GetAll(filters []FilterCondition) ([]*m.TransactionModel, error) {
 	var transactions []*m.TransactionModel
 	query := `
 		SELECT 
@@ -52,11 +62,27 @@ func (r *transactionRepo) GetAll() ([]*m.TransactionModel, error) {
 			buyer_id,
 			seller_id,
 			amount,
-			transaction_date
+			date
 		FROM
 			transactions
+		WHERE 1=1
 	`
-	rows, err := r.tx.Query(query)
+
+	var args []interface{}
+	var conditions []string
+
+	// Dynamically build the WHERE clause based on the provided filters
+	for i, filter := range filters {
+		conditions = append(conditions, fmt.Sprintf("%s = $%d", filter.Property, i+1))
+		args = append(args, filter.Value)
+	}
+
+	// Append the conditions to the query if any are provided
+	if len(conditions) > 0 {
+		query += " AND " + strings.Join(conditions, " AND ")
+	}
+
+	rows, err := r.tx.Query(query, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +96,7 @@ func (r *transactionRepo) GetAll() ([]*m.TransactionModel, error) {
 			&item.BuyerId,
 			&item.SellerId,
 			&item.Amount,
-			&item.TransactionDate,
+			&item.Date,
 		); err != nil {
 			return nil, err
 		}
@@ -92,17 +118,17 @@ func (r *transactionRepo) Update(item *m.TransactionModel) error {
 			buyer_id = $2,
 			seller_id = $3,
 			amount = $4,
-			transaction_date = $5
+			date = $5
 		WHERE
 			id = $6
 	`
 	_, err := r.tx.Exec(query,
-		&item.AuctionId,
-		&item.BuyerId,
-		&item.SellerId,
-		&item.Amount,
-		&item.TransactionDate,
-		&item.ID,
+		item.AuctionId,
+		item.BuyerId,
+		item.SellerId,
+		item.Amount,
+		item.Date,
+		item.ID,
 	)
 
 	return err
@@ -120,27 +146,30 @@ func (r *transactionRepo) Remove(id uuid.UUID) error {
 	return err
 }
 
-func (r *transactionRepo) Insert(item *m.TransactionModel) error {
+func (r *transactionRepo) Insert(item *m.TransactionModel) (uuid.UUID, error) {
 	query := `
 		INSERT INTO transactions (
-			id,
 			auction_id,
 			buyer_id,
 			seller_id,
 			amount,
-			transaction_date
+			date
 		) VALUES (
-			$1, $2, $3, $4, $5, $6
-		)
+			$1, $2, $3, $4, $5
+		) RETURNING id
 	`
-	_, err := r.tx.Exec(query,
-		&item.ID,
-		&item.AuctionId,
-		&item.BuyerId,
-		&item.SellerId,
-		&item.Amount,
-		&item.TransactionDate,
-	)
+	var itemId string
+	err := r.tx.QueryRow(query,
+		item.AuctionId,
+		item.BuyerId,
+		item.SellerId,
+		item.Amount,
+		item.Date,
+	).Scan(&itemId)
 
-	return err
+	if err != nil {
+		return uuid.Nil, err
+	}
+
+	return uuid.MustParse(itemId), nil
 }

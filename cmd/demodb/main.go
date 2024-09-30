@@ -1,8 +1,6 @@
 package main
 
 import (
-	//"github.com/google/uuid"
-	"github.com/google/uuid"
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 
@@ -16,14 +14,29 @@ func main() {
 		panic(err)
 	}
 	//user := GenerateDummyUser()
+	//userId, repoErr := stx.UserRepo().Insert(user)
+	//u.Logger.Info("demoDB: userId: ", userId)
+	//if repoErr != nil {
+	//	u.Logger.Error("demoDB stx.UserRepo():", repoErr)
+	//	return repoErr
+	//}
+	user := GenerateDummyUser("john.doe@example.com")
+	user2 := GenerateDummyUser("john.doe2@example.com")
 	err = r.NewStore(db).WithTx(func(stx *r.StoreTx) error {
-		//userId, repoErr := stx.UserRepo().Insert(user)
-		//u.Logger.Info("demoDB: userId: ", userId)
-		//if repoErr != nil {
-		//	u.Logger.Error("demoDB stx.UserRepo():", repoErr)
-		//	return repoErr
-		//}
-		userId, _ := uuid.Parse("4d3b4f40-a35d-44ff-867e-487fc29911ca")
+		userId, repoErr := stx.UserRepo().Insert(user)
+		u.Logger.Info("demoDB: userId: ", userId)
+		if repoErr != nil {
+			u.Logger.Error("demoDB stx.UserRepo():", repoErr)
+			return repoErr
+		}
+
+		// Insert user2
+		userId2, repoErr := stx.UserRepo().Insert(user2)
+		if repoErr != nil {
+			u.Logger.Error("demoDB stx.UserRepo():", repoErr)
+			return repoErr
+		}
+		//userId, _ := uuid.Parse("da0db08a-0ab1-483c-a228-f592a8d43b8b")
 
 		for i := 0; i <= 20; i++ {
 			item := CreateDummyItem()
@@ -31,9 +44,16 @@ func main() {
 			if err != nil {
 				return err
 			}
-			auct := CreateDummyAuction(itemId, userId)
+			auct := CreateDummyAuction(itemId, userId, userId2)
 			u.Logger.Info("\n", auct, "\n")
-			err = stx.AuctionRepo().Insert(auct)
+			auctionId, err := stx.AuctionRepo().Insert(auct)
+			if err != nil {
+				return err
+			}
+
+			// Create a transaction
+			transaction := CreateDummyTransaction(auctionId, userId, userId2)
+			_, err = stx.TransactionRepo().Insert(transaction)
 			if err != nil {
 				return err
 			}

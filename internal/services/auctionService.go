@@ -232,7 +232,7 @@ func withItem(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
 
 func withMaxBidder(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
 	var err error
-	auct.MaxBidder, err = stx.UserRepo().GetById(auct.Auction.MaxBidderId)
+	auct.MaxBidder, err = stx.UserRepo().GetByProperty("id", auct.Auction.MaxBidderId)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			return nil, errors.Next(err)
