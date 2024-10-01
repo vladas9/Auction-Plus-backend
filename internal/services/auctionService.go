@@ -188,7 +188,7 @@ func getAuctions(stx *r.StoreTx, params AuctionCardParams, opts ...auctOpt) (auc
 	auctModels, err = auctionRepo.GetAllFiltered(
 		params.Offset, params.Len,
 		params.MinPrice, params.MaxPrice)
-	u.Logger.Info("getAuctionsWith in:", auctions)
+	u.Logger.Info("getAuctionsWith in xd:", auctions)
 	if err != nil {
 		return nil, errors.Next(err)
 	}

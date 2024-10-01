@@ -24,7 +24,7 @@ func randCond() m.Condition {
 }
 
 func randCateg() m.Category {
-	categories := []m.Category{m.Electronics, m.Furniture, m.ArtWork, m.Cars}
+	categories := []m.Category{m.Electronics, m.Furniture, m.Arts, m.RealEstate, m.Other}
 	return categories[rand.Intn(4)]
 }
 

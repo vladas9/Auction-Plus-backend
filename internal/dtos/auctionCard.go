@@ -23,10 +23,16 @@ type AuctionCard struct {
 func MapAuctionCard(respData *m.AuctionDetails) *AuctionCard {
 	item := respData.Item
 	auction := respData.Auction
+	var imgSrc string
+	if len(item.Images) == 0 {
+		imgSrc = ""
+	} else {
+		imgSrc = fmt.Sprintf("http://%s:%s/api/img/%s", os.Getenv("HOST"), os.Getenv("PORT"), item.Images[0])
+	}
 
 	card := &AuctionCard{
 		Id:        auction.Id(),
-		ImgSrc:    fmt.Sprintf("http://%s:%s/api/img/%s", os.Getenv("HOST"), os.Getenv("PORT"), item.Images[0]),
+		ImgSrc:    imgSrc,
 		Title:     item.Name,
 		NumOfBids: int(auction.BidCount),
 		MaxBid:    auction.CurrentBid,

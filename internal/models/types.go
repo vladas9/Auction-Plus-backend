@@ -10,14 +10,15 @@ type Category string
 const (
 	Electronics Category = "electronics"
 	Furniture            = "furniture"
-	Cars                 = "cars"
-	ArtWork              = "artwork"
+	Arts                 = "arts"
+	RealEstate           = "real estate"
+	Other                = "others"
 	//TODO: To add category elements
 )
 
 func IsCategory(str string) bool {
 	switch Category(str) {
-	case "", Electronics, Furniture, Cars, ArtWork:
+	case "", Electronics, Furniture, RealEstate, Arts, Other:
 		return true
 	default:
 		return false
