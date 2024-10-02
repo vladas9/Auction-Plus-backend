@@ -139,7 +139,7 @@ func (r *auctionRepo) GetAllFiltered(offset, limit int, minPrice, maxPrice m.Dec
 		FROM
 			auctions
 		WHERE
-			($1 <= current_bid) AND ($2 = 0 OR $2 >= current_bid)
+			($1 <= current_bid) AND ($2 = 0 OR $2 >= current_bid) AND status=true
 		LIMIT
 			CASE WHEN $3 = 0 THEN 100 ELSE $3 END
 		OFFSET 
@@ -303,10 +303,9 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) (uuid.UUID, error) {
 			end_time,
 			extra_time_enabled,
 			extra_time_duration,
-			extra_time_threshold,
-			status
+			extra_time_threshold
 		) VALUES (
-			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10
+			$1, $2, $3, $4, $5, $6, $7, $8, $9
 		) RETURNING id
 	`
 	var itemId string
@@ -320,7 +319,6 @@ func (r *auctionRepo) Insert(item *m.AuctionModel) (uuid.UUID, error) {
 		item.ExtraTimeEnabled,
 		item.ExtraTimeDuration,
 		item.ExtraTimeThreshold,
-		item.Status,
 	).Scan(&itemId)
 
 	if err != nil {

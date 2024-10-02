@@ -16,7 +16,7 @@ login_user() {
 }
 
 get_auction_cards() {
-  curl -X GET 'http://localhost:1169/api/auction/cards?limit=17&offset=0&min_price=1000&max_price=2000&category=electronics&lotcondition=used'
+  curl -X GET 'http://localhost:1169/api/auctions/cards?limit=17&offset=0'
 }
 
 get_full_auction() {
@@ -34,7 +34,7 @@ place_bid() {
   curl -H "Authorization: Bearer $token" \
        -X POST 'http://localhost:1169/api/bid/post' \
         -d "{
-          \"auction_id\": \"e7a1d0b2-eef7-49aa-b1a2-38b001b874d6\",
+          \"auction_id\": \"0f6b0132-1332-413e-9cfb-226fc768ccd5\",
           \"amount\": $1
         }"
 }
@@ -45,25 +45,24 @@ post_auct() {
        -H "Content-Type: application/json" \
        -X POST 'http://localhost:1169/api/auction/post' \
        -d '{
-                "img_src": null,
+                "img_src": ["test"],
                 "title": "Test item",
                 "description": "This is a test item.",
                 "category_name": "electronics",
                 "condition": "new",
-                "start_date": "2024-09-17T12:42:51.788144+03:00",
-                "end_date": "2024-09-23T12:42:51.788144+03:00",
-                "start_price": "165"
+                "end_date": "2024-10-30T13:34",
+                "start_price": 165
            }'
 }
 
 #register_user | jq '.'
 #login_user | jq '."auth_token"'
 
-#time get_auction_cards | jq '.'
+time get_auction_cards | jq '.'
 #time get_auction_table | jq '.'
 
-#place_bid 6650 | jq '.'
+#place_bid 6750 | jq '.'
 
-post_auct
-get_full_auction $id | jq '.'
+#post_auct
+#get_full_auction 37c1442d-cd9f-47f7-925e-206b78ff9c0c | jq '.'
 

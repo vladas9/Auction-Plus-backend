@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/vladas9/backend-practice/internal/errors"
-	"golang.org/x/net/websocket"
+	//"golang.org/x/net/websocket"
 
 	c "github.com/vladas9/backend-practice/internal/controllers"
 	u "github.com/vladas9/backend-practice/internal/utils"
@@ -28,10 +28,9 @@ func (fn apiFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 type Server struct {
-	ListenAddr      string
-	Router          *http.ServeMux
-	Controllers     *c.Controller
-	EventController c.EventController
+	ListenAddr  string
+	Router      *http.ServeMux
+	Controllers *c.Controller
 }
 
 func NewServer(addr string) *Server {
@@ -41,11 +40,12 @@ func NewServer(addr string) *Server {
 	}
 	mux := http.NewServeMux()
 
+	controller := c.NewController(db)
+
 	return &Server{
-		ListenAddr:      addr,
-		Router:          mux,
-		Controllers:     c.NewController(db),
-		EventController: c.NewEventController(),
+		ListenAddr:  addr,
+		Router:      mux,
+		Controllers: controller,
 	}
 }
 
@@ -63,7 +63,7 @@ func (s *Server) Run() {
 	s.Router.Handle("GET /api/auctions/cards", apiFunc(s.Controllers.GetAuctions))
 	s.Router.Handle("GET /api/auction/{id}", apiFunc(s.Controllers.GetAuction))
 	s.Router.Handle("POST /api/auction/post", apiFunc(s.Controllers.AddAuction))
-	s.Router.Handle("/api/auction/ws/{id}", websocket.Handler(s.EventController.AuctionEvents))
+	s.Router.Handle("/api/auction/ws/{id}", websocket.Handler(s.Controllers.Aucti)) //TODO: WebSocket end point
 	// s.Router.Handle("POST /api/payments", apiFunc(controllers.))
 	// s.Router.Handle("GET /api/notifications", apiFunc(controllers.))
 	// s.Router.Handle("PUT /api/notifications/{id}/read", apiFunc(controllers.))
