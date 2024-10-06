@@ -9,8 +9,8 @@ import (
 type EventType int
 
 type Event struct {
-	Type  EventType `json:"type"`
-	Msg   any       `json:"msg"`
+	Type  EventType   `json:"type"`
+	Msg   interface{} `json:"msg"`
 	ObjId uuid.UUID
 }
 
@@ -35,9 +35,8 @@ type eventService struct {
 
 func (s *eventService) Broadcast(ev *Event) {
 	s.mu.Lock()
-	chans, ok := s.Chans[ev.ObjId]
-	s.mu.Unlock()
-	if ok {
+	defer s.mu.Unlock()
+	if chans, ok := s.Chans[ev.ObjId]; ok {
 		for _, ch := range chans {
 			ch <- ev
 		}

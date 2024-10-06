@@ -44,12 +44,15 @@ func main() {
 			if err != nil {
 				return err
 			}
-			auct := CreateDummyAuction(itemId, userId, userId2)
+
+			auct := CreateDummyAuction(itemId, userId)
 			u.Logger.Info("\n", auct, "\n")
 			auctionId, err := stx.AuctionRepo().Insert(auct)
 			if err != nil {
 				return err
 			}
+
+			GenerateDummyBids(userId2, auct.StartPrice)
 
 			// Create a transaction
 			transaction := CreateDummyTransaction(auctionId, userId, userId2)

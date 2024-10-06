@@ -53,7 +53,7 @@ func (c *eventController) AuctionEvents(ws *websocket.Conn) {
 
 	conn := c.newConn(ws)
 	c.EventService.Subscribe(conn.ch, auctId)
-	u.Logger.Info("ws remote uuid: ", auctId)
+	u.Logger.Info("ws subscribed to uuid: ", auctId)
 	conn.handle()
 }
 

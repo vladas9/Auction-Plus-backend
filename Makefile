@@ -17,7 +17,7 @@ setup:
 	@psql -U postgres -c "CREATE DATABASE auctiondb"
 	@psql -U postgres -d auctiondb -f ./pkg/postgres/setup.sql
 	@# populating database
-	@#go run ./cmd/demodb
+	@go run ./cmd/demodb
 
 drop:
 	psql -U postgres -d auctiondb -c "DROP DATABASE IF EXISTS auctiondb"

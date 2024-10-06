@@ -9,6 +9,10 @@ import (
 	m "github.com/vladas9/backend-practice/internal/models"
 )
 
+var (
+	Images = []uuid.UUID{uuid.New(), uuid.New(), uuid.New(), uuid.New()}
+)
+
 func rantBool() bool {
 	if rand.Float32() < 0.5 {
 		return false
@@ -35,22 +39,21 @@ func CreateDummyItem() *m.ItemModel {
 		BaseModel:   m.BaseModel{ID: itemUUID},
 		Name:        "Dummy Item",
 		Description: "This is a dummy item.",
-		Category:    m.Electronics,
+		Category:    m.Other,
 		Condition:   randCond(),
-		Images:      []uuid.UUID{uuid.New()},
+		Images:      Images,
 	}
 	return dummyItem
 }
 
-func CreateDummyAuction(itemId, userId, maxBidderId uuid.UUID) *m.AuctionModel {
+func CreateDummyAuction(itemId, userId uuid.UUID) *m.AuctionModel {
 	startPrice := 10 + int64(rand.Intn(1000))
 	return &m.AuctionModel{
-		BaseModel:          m.BaseModel{uuid.New()},
+		BaseModel:          m.BaseModel{},
 		SellerId:           userId,
 		ItemId:             itemId,
 		StartPrice:         decimal.NewFromInt(startPrice),
-		CurrentBid:         decimal.NewFromInt(startPrice + int64(rand.Intn(3000))),
-		MaxBidderId:        maxBidderId,
+		CurrentBid:         decimal.Zero,
 		BidCount:           0,
 		StartTime:          time.Now().Add(-72 * time.Hour),
 		EndTime:            time.Now().Add(72 * time.Hour),
@@ -61,9 +64,9 @@ func CreateDummyAuction(itemId, userId, maxBidderId uuid.UUID) *m.AuctionModel {
 	}
 }
 
-func CreateDummyTransaction(auctionId, buyerId, sellerId uuid.UUID) *m.TransactionModel {
+func CreateDummyTransaction(auctionId, sellerId, buyerId uuid.UUID) *m.TransactionModel {
 	return &m.TransactionModel{
-		BaseModel: m.BaseModel{uuid.New()},
+		BaseModel: m.BaseModel{},
 		AuctionId: auctionId,
 		BuyerId:   buyerId,
 		SellerId:  sellerId,
@@ -86,30 +89,30 @@ func GenerateDummyUser(email string) *m.UserModel {
 	}
 }
 
-func GenerateDummyBids() []m.BidModel {
+func GenerateDummyBids(bidder uuid.UUID, price decimal.Decimal) []m.BidModel {
 	return []m.BidModel{
 		{
-			BaseModel: m.BaseModel{uuid.New()},
-			UserId:    uuid.New(),
-			Amount:    decimal.NewFromInt(150),
+			BaseModel: m.BaseModel{},
+			UserId:    bidder,
+			Amount:    price.Add(decimal.NewFromInt(150)),
 			Timestamp: time.Now(),
 		},
 		{
-			BaseModel: m.BaseModel{uuid.New()},
-			UserId:    uuid.New(),
-			Amount:    decimal.NewFromInt(250),
+			BaseModel: m.BaseModel{},
+			UserId:    bidder,
+			Amount:    price.Add(decimal.NewFromInt(250)),
 			Timestamp: time.Now(),
 		},
 		{
-			BaseModel: m.BaseModel{uuid.New()},
-			UserId:    uuid.New(),
-			Amount:    decimal.NewFromInt(300),
+			BaseModel: m.BaseModel{},
+			UserId:    bidder,
+			Amount:    price.Add(decimal.NewFromInt(300)),
 			Timestamp: time.Now(),
 		},
 		{
-			BaseModel: m.BaseModel{uuid.New()},
-			UserId:    uuid.New(),
-			Amount:    decimal.NewFromInt(400),
+			BaseModel: m.BaseModel{},
+			UserId:    bidder,
+			Amount:    price.Add(decimal.NewFromInt(400)),
 			Timestamp: time.Now(),
 		},
 	}
