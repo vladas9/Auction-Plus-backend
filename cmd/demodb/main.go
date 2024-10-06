@@ -52,7 +52,11 @@ func main() {
 				return err
 			}
 
-			GenerateDummyBids(userId2, auct.StartPrice)
+			bids := GenerateDummyBids(userId2, auctionId, auct.StartPrice)
+
+			for _, bid := range bids {
+				stx.BidRepo().Insert(bid)
+			}
 
 			// Create a transaction
 			transaction := CreateDummyTransaction(auctionId, userId, userId2)

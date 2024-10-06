@@ -92,28 +92,32 @@ func GenerateDummyUser(email string) *m.UserModel {
 	return user
 }
 
-func GenerateDummyBids(bidder uuid.UUID, price decimal.Decimal) []m.BidModel {
-	return []m.BidModel{
-		{
+func GenerateDummyBids(bidder, auct uuid.UUID, price decimal.Decimal) []*m.BidModel {
+	return []*m.BidModel{
+		&m.BidModel{
 			BaseModel: m.BaseModel{},
+			AuctionId: auct,
 			UserId:    bidder,
 			Amount:    price.Add(decimal.NewFromInt(150)),
 			Timestamp: time.Now(),
 		},
-		{
+		&m.BidModel{
 			BaseModel: m.BaseModel{},
+			AuctionId: auct,
 			UserId:    bidder,
 			Amount:    price.Add(decimal.NewFromInt(250)),
 			Timestamp: time.Now(),
 		},
-		{
+		&m.BidModel{
 			BaseModel: m.BaseModel{},
+			AuctionId: auct,
 			UserId:    bidder,
 			Amount:    price.Add(decimal.NewFromInt(300)),
 			Timestamp: time.Now(),
 		},
-		{
+		&m.BidModel{
 			BaseModel: m.BaseModel{},
+			AuctionId: auct,
 			UserId:    bidder,
 			Amount:    price.Add(decimal.NewFromInt(400)),
 			Timestamp: time.Now(),
