@@ -7,6 +7,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
 	m "github.com/vladas9/backend-practice/internal/models"
+	"github.com/vladas9/backend-practice/internal/utils"
 )
 
 var (
@@ -76,17 +77,19 @@ func CreateDummyTransaction(auctionId, sellerId, buyerId uuid.UUID) *m.Transacti
 }
 
 func GenerateDummyUser(email string) *m.UserModel {
-	return &m.UserModel{
+	user := &m.UserModel{
 		BaseModel:      m.BaseModel{},
 		Username:       "john_doe",
 		Email:          email,
 		Image:          uuid.NewString(),
-		Password:       "hashed_password", // In real case, this would be hashed.
+		Password:       "password",
 		Address:        "1234 Elm St, Springfield, USA",
 		PhoneNumber:    "+1-555-1234",
 		UserType:       "admin",                      // admin or client
 		RegisteredDate: time.Now().AddDate(0, -6, 0), // registered 6 months ago
 	}
+	user.Password, _ = utils.HashPassword(user.Password)
+	return user
 }
 
 func GenerateDummyBids(bidder uuid.UUID, price decimal.Decimal) []m.BidModel {

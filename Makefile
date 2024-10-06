@@ -20,7 +20,7 @@ setup:
 	@go run ./cmd/demodb
 
 drop:
-	psql -U postgres -d auctiondb -c "DROP DATABASE IF EXISTS auctiondb"
+	psql -U postgres -c "DROP DATABASE IF EXISTS auctiondb"
 
 deps:
 	@go mod tidy
