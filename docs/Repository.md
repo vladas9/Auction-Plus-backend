@@ -5,7 +5,7 @@ tags:
   - golang
   - backend
 ---
-# Files Overview
+# Repository Overview
 
 The project is structured around various files, each responsible for handling database queries and logic specific to different models. Below is a detailed overview:
 
