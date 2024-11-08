@@ -26,12 +26,12 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) error {
 
 	u.Logger.Info(fmt.Sprintf("User %s logged in", storedUser.Username))
 
-	response, err := createResponse(storedUser.ID.String(), storedUser.UserType, storedUser.Image)
+	response, err := c.createResponse(storedUser.ID.String(), storedUser.UserType, storedUser.Image)
 	if err != nil {
 		return err
 	}
 
-	return WriteJSON(w, http.StatusOK, response)
+	return u.WriteJSON(w, http.StatusOK, response)
 }
 
 func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
@@ -49,16 +49,16 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
 
 	u.Logger.Info(fmt.Sprintf("User %s created", storedUser.Username))
 
-	response, err := createResponse(storedUser.ID.String(), storedUser.UserType, storedUser.Image)
+	response, err := c.createResponse(storedUser.ID.String(), storedUser.UserType, storedUser.Image)
 	if err != nil {
 		return err
 	}
 
-	return WriteJSON(w, http.StatusOK, response)
+	return u.WriteJSON(w, http.StatusOK, response)
 }
 
 func (c *Controller) UserData(w http.ResponseWriter, r *http.Request) error {
-	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	userId, err := u.ExtractUserIDFromToken(r, c.jwtSecret)
 	if err != nil {
 		return err
 	}
@@ -67,22 +67,22 @@ func (c *Controller) UserData(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("Failed getting user data: %s", err)
 	}
 
-	return WriteJSON(w, http.StatusOK, &Response{
-		"img_src":   fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, user.Image),
+	return u.WriteJSON(w, http.StatusOK, &Response{
+		"img_src":   fmt.Sprintf("http://%s:%s/api/img/%s", c.host, c.port, user.Image),
 		"user_type": user.UserType,
 	})
 }
 
 func (c *Controller) ProfileData(w http.ResponseWriter, r *http.Request) error {
-	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	userId, err := u.ExtractUserIDFromToken(r, c.jwtSecret)
 	if err != nil {
 		return err
 	}
 
 	// userId, err := uuid.Parse("22365175-d6f8-4616-a198-db0314daf5fe")
-	if err != nil {
-		return fmt.Errorf("Failed to parse UUID: %v", err)
-	}
+	// if err != nil {
+	// 	return fmt.Errorf("Failed to parse UUID: %v", err)
+	// }
 
 	// Get user data
 	user, err := c.service.GetUserData(userId)
@@ -96,14 +96,28 @@ func (c *Controller) ProfileData(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("failed to get user stats: %v", err)
 	}
 
-	return WriteJSON(w, http.StatusOK, &Response{
-		"img_src":       fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, user.Image),
+	return u.WriteJSON(w, http.StatusOK, &Response{
+		"img_src":       fmt.Sprintf("http://%s:%s/api/img/%s", c.host, c.port, user.Image),
 		"username":      user.Username,
 		"email":         user.Email,
 		"phone_number":  user.PhoneNumber,
 		"creation_date": user.RegisteredDate,
 		"stats":         stats,
 	})
+}
+
+func (c *Controller) createResponse(id, userType, image string) (Response, error) {
+	imgSrc := fmt.Sprintf("http://%s:%s/api/img/%s", c.host, c.port, image)
+
+	token, err := u.GenerateJWT(id, userType, c.jwtSecret)
+	if err != nil {
+		return Response{}, err
+	}
+
+	return Response{
+		"auth_token": token,
+		"img_src":    imgSrc,
+	}, nil
 }
 
 func (c *Controller) ImageHandler(w http.ResponseWriter, r *http.Request) error {
@@ -116,18 +130,4 @@ func (c *Controller) ImageHandler(w http.ResponseWriter, r *http.Request) error 
 
 	http.ServeFile(w, r, imagePath)
 	return nil
-}
-
-func createResponse(id, userType, image string) (Response, error) {
-	imgSrc := fmt.Sprintf("http://%s:%s/api/img/%s", Host, Port, image)
-
-	token, err := u.GenerateJWT(id, userType, JwtSecret)
-	if err != nil {
-		return Response{}, err
-	}
-
-	return Response{
-		"auth_token": token,
-		"img_src":    imgSrc,
-	}, nil
 }

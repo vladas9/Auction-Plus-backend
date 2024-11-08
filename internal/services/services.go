@@ -8,16 +8,12 @@ import (
 	r "github.com/vladas9/backend-practice/internal/repository"
 )
 
+var ImageDir = "./public/img/"
+
 type Service struct {
 	store *r.Store
-}
-
-var Host, Port string
-
-func NewService(db *sql.DB, host, port string) *Service {
-	Host = host
-	Port = port
-	return &Service{r.NewStore(db)}
+	host  string
+	port  string
 }
 
 type Response map[string]interface{}
@@ -28,8 +24,10 @@ type Validator interface {
 	Validate() Problems
 }
 
+func NewService(db *sql.DB, host, port string) *Service {
+	return &Service{r.NewStore(db), host, port}
+}
+
 func (p Problems) toErr() error {
 	return errors.NotValid(p, fmt.Errorf("params not valid"))
 }
-
-var ImageDir = "./public/img/"

@@ -56,7 +56,7 @@ func (s *Service) GetBidTable(userId uuid.UUID, limit, offset int) ([]*dtos.Bids
 		return nil, errors.Internal(err)
 	}
 
-	return buildBidsTable(bidList, auctionList, itemList, userList), nil
+	return s.buildBidsTable(bidList, auctionList, itemList, userList), nil
 }
 
 func getRelatedData(stx *r.StoreTx, bidList []*m.BidModel) (
@@ -96,7 +96,7 @@ func getRelatedData(stx *r.StoreTx, bidList []*m.BidModel) (
 	return auctionList, itemList, userList, nil
 }
 
-func buildBidsTable(
+func (s *Service) buildBidsTable(
 	bidList []*m.BidModel,
 	auctionList []*m.AuctionModel,
 	itemList []*m.ItemModel,
@@ -130,8 +130,8 @@ func buildBidsTable(
 			image,
 			relatedAuction.CurrentBid,
 			bid.Amount,
-			Host,
-			Port,
+			s.host,
+			s.port,
 			relatedItem.Name,
 			string(relatedItem.Category),
 			relatedUser.Username,

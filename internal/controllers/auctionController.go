@@ -16,7 +16,7 @@ func (c *Controller) AddAuction(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	auctionDTO := &dtos.AuctionFull{}
 
-	sellerId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	sellerId, err := u.ExtractUserIDFromToken(r, c.jwtSecret)
 	if err != nil {
 		return err
 	}
@@ -29,7 +29,7 @@ func (c *Controller) AddAuction(w http.ResponseWriter, r *http.Request) error {
 	if auctId, err := c.service.NewAuction(auctionDTO, sellerId); err != nil {
 		return errors.Internal(err)
 	} else {
-		return WriteJSON(w, http.StatusOK, Response{
+		return u.WriteJSON(w, http.StatusOK, Response{
 			"auctionId": auctId})
 	}
 }
@@ -46,21 +46,21 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	categoryStr := r.FormValue("category")
 	conditionStr := r.FormValue("lotcondition")
 
-	offset, err := atoi(offsetStr)
+	offset, err := u.Atoi(offsetStr)
 	if err != nil {
 		return errors.NotValid("offset not parsable", err)
 	}
 
-	leangth, err := atoi(leangthStr)
+	leangth, err := u.Atoi(leangthStr)
 	if err != nil {
 		return errors.NotValid("limit not parsable", err)
 	}
 
-	maxPrice, err := atodec(maxPriceStr)
+	maxPrice, err := u.Atodec(maxPriceStr)
 	if err != nil {
 		return errors.NotValid("max_price not parsable", err)
 	}
-	minPrice, err := atodec(minPriceStr)
+	minPrice, err := u.Atodec(minPriceStr)
 	if err != nil {
 		return errors.NotValid("min_price not parsable", err)
 	}
@@ -78,7 +78,7 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		return err
 	}
-	return WriteJSON(w, http.StatusOK, Response{
+	return u.WriteJSON(w, http.StatusOK, Response{
 		"lots": cards,
 	})
 }
@@ -92,7 +92,7 @@ func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		return err
 	}
-	return WriteJSON(w, http.StatusOK, Response{
+	return u.WriteJSON(w, http.StatusOK, Response{
 		"auction": auct,
 	})
 }
@@ -100,13 +100,13 @@ func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Request) error {
 func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	params := s.AuctionTableParams{}
-	if params.Limit, err = atoi(r.URL.Query().Get("limit")); err != nil {
+	if params.Limit, err = u.Atoi(r.URL.Query().Get("limit")); err != nil {
 		return errors.NotValid("limit not parsable", err)
 	}
-	if params.Offset, err = atoi(r.URL.Query().Get("offset")); err != nil {
+	if params.Offset, err = u.Atoi(r.URL.Query().Get("offset")); err != nil {
 		return errors.NotValid("offset not parsable", err)
 	}
-	params.UserId, err = u.ExtractUserIDFromToken(r, JwtSecret)
+	params.UserId, err = u.ExtractUserIDFromToken(r, c.jwtSecret)
 	if err != nil {
 		return err
 	}
@@ -115,7 +115,7 @@ func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error 
 		return err
 	}
 
-	return WriteJSON(w, http.StatusOK, Response{
+	return u.WriteJSON(w, http.StatusOK, Response{
 		"lots_table": response,
 	})
 

@@ -17,9 +17,9 @@ func (fn apiFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err := fn(w, r); err != nil {
 		u.Logger.Error(err)
 		if apiErr, ok := err.(*errors.ApiError); ok {
-			c.WriteJSON(w, apiErr.Status, *apiErr)
+			u.WriteJSON(w, apiErr.Status, *apiErr)
 		} else {
-			c.WriteJSON(w, http.StatusInternalServerError, errors.ApiError{
+			u.WriteJSON(w, http.StatusInternalServerError, errors.ApiError{
 				Status:   http.StatusInternalServerError,
 				ErrorMsg: "Internal server error",
 			})

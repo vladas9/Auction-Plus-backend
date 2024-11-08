@@ -16,7 +16,7 @@ func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
 	if err = json.NewDecoder(r.Body).Decode(bid); err != nil {
 		return errors.NotValid(err.Error(), err)
 	}
-	bid.UserId, err = u.ExtractUserIDFromToken(r, JwtSecret)
+	bid.UserId, err = u.ExtractUserIDFromToken(r, c.jwtSecret)
 	if err != nil {
 		return err
 	}
@@ -30,13 +30,13 @@ func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
 func (c *Controller) BidTable(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	var limit, offset int
-	if limit, err = atoi(r.URL.Query().Get("limit")); err != nil {
+	if limit, err = u.Atoi(r.URL.Query().Get("limit")); err != nil {
 		return errors.NotValid("limit not parsable", err)
 	}
 	if offset, err = strconv.Atoi(r.URL.Query().Get("offset")); err != nil {
 		return errors.NotValid("limit not parsable", err)
 	}
-	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
+	userId, err := u.ExtractUserIDFromToken(r, c.jwtSecret)
 	if err != nil {
 		return err
 	}
@@ -46,7 +46,7 @@ func (c *Controller) BidTable(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
-	return WriteJSON(w, http.StatusOK, Response{
+	return u.WriteJSON(w, http.StatusOK, Response{
 		"bids_table": response,
 	})
 }

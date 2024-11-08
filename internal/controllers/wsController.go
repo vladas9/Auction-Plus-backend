@@ -20,6 +20,11 @@ type eventController struct {
 	EventService s.EventService
 }
 
+type conn struct {
+	ws *websocket.Conn
+	ch chan *s.Event
+}
+
 func (c *eventController) newConn(ws *websocket.Conn) conn {
 	return conn{
 		ws: ws,
@@ -29,11 +34,6 @@ func (c *eventController) newConn(ws *websocket.Conn) conn {
 
 func NewEventController() EventController {
 	return &eventController{EventService: s.NewEventService()}
-}
-
-type conn struct {
-	ws *websocket.Conn
-	ch chan *s.Event
 }
 
 func (c conn) handle() {
@@ -58,5 +58,6 @@ func (c *eventController) AuctionEvents(ws *websocket.Conn) {
 }
 
 func (*eventController) PrivateAuctEvents(ws *websocket.Conn) {
+	// privateSessionId := ws.Request().PathValue("sessionID")
 
 }

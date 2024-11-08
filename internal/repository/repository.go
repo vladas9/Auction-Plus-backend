@@ -8,14 +8,14 @@ type Store struct {
 	db *sql.DB
 }
 
+type StoreTx struct {
+	*sql.Tx
+}
+
 func NewStore(db *sql.DB) *Store {
 	return &Store{
 		db: db,
 	}
-}
-
-type StoreTx struct {
-	*sql.Tx
 }
 
 func (s *Store) BeginTx() (*StoreTx, error) {
