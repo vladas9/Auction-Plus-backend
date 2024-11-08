@@ -6,62 +6,35 @@ package controllers
 
 import (
 	"database/sql"
-	"encoding/json"
-	"fmt"
 	"log"
-	"net/http"
 	"os"
-	"reflect"
-	"strconv"
 
 	"github.com/joho/godotenv"
-	"github.com/shopspring/decimal"
 	s "github.com/vladas9/backend-practice/internal/services"
-	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
 type Controller struct {
-	service *s.Service
-}
-
-var Host, Port string
-var JwtSecret []byte
-
-func NewController(db *sql.DB) *Controller {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Can load env variables")
-	}
-	Host = os.Getenv("HOST")
-	Port = os.Getenv("PORT")
-	JwtSecret = []byte(os.Getenv("JWTKEY"))
-
-	return &Controller{s.NewService(db, Host, Port)}
-}
-
-func WriteJSON(w http.ResponseWriter, status int, v any) error {
-	w.Header().Add("Content-Type", "application/json")
-	w.WriteHeader(status)
-	if err := json.NewEncoder(w).Encode(v); err != nil {
-		aErr := fmt.Errorf("Encoding of object of type %v failed", reflect.TypeOf(v))
-		u.Logger.Error(aErr)
-		return aErr
-	}
-	return nil
+	service   *s.Service
+	host      string
+	port      string
+	jwtSecret []byte
 }
 
 type Response map[string]interface{}
 
-func atoi(str string) (int, error) {
-	if str == "" {
-		return 0, nil
+func NewController(db *sql.DB) *Controller {
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Cannot load env variables")
 	}
-	return strconv.Atoi(str)
-}
 
-func atodec(str string) (decimal.Decimal, error) {
-	if str == "" {
-		return decimal.Zero, nil
+	host := os.Getenv("HOST")
+	port := os.Getenv("PORT")
+	jwtSecret := []byte(os.Getenv("JWTKEY"))
+
+	return &Controller{
+		service:   s.NewService(db, host, port),
+		host:      host,
+		port:      port,
+		jwtSecret: jwtSecret,
 	}
-	return decimal.NewFromString(str)
 }

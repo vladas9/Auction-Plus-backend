@@ -14,23 +14,23 @@ type Event struct {
 	ObjId uuid.UUID
 }
 
-const (
-	RaisedBidEvent EventType = iota
-	AuctionClosedEvent
-)
-
 type EventService interface {
 	Broadcast(ev *Event)
 	Subscribe(ch chan *Event, objId uuid.UUID)
 }
 
-func NewEventService() EventService {
-	return &eventService{}
-}
-
 type eventService struct {
 	Chans map[uuid.UUID]([]chan *Event)
 	mu    sync.Mutex
+}
+
+const (
+	RaisedBidEvent EventType = iota
+	AuctionClosedEvent
+)
+
+func NewEventService() EventService {
+	return &eventService{}
 }
 
 func (s *eventService) Broadcast(ev *Event) {
