@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/vladas9/backend-practice/internal/errors"
+	"github.com/vladas9/backend-practice/internal/services"
 	"golang.org/x/net/websocket"
 
 	c "github.com/vladas9/backend-practice/internal/controllers"
@@ -39,14 +40,18 @@ func NewServer(addr string) *Server {
 	if err != nil {
 		u.Logger.Error("connecting db: ", err.Error())
 	}
+
 	mux := http.NewServeMux()
 
-	return &Server{
+	hub := services.NewEventHub()
+
+	server := &Server{
 		ListenAddr:      addr,
 		Router:          mux,
-		Controllers:     c.NewController(db),
-		EventController: c.NewEventController(),
+		Controllers:     c.NewController(db, hub),
+		EventController: c.NewEventController(hub),
 	}
+	return server
 }
 
 func (s *Server) Run() {

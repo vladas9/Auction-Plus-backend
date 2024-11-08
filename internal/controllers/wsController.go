@@ -27,8 +27,8 @@ func (c *eventController) newConn(ws *websocket.Conn) conn {
 	}
 }
 
-func NewEventController() EventController {
-	return &eventController{EventService: s.NewEventService()}
+func NewEventController(service s.EventService) EventController {
+	return &eventController{EventService: service}
 }
 
 type conn struct {
@@ -46,7 +46,10 @@ func (c *eventController) AuctionEvents(ws *websocket.Conn) {
 	auctIdstr := ws.Request().PathValue("id")
 	auctId, err := uuid.Parse(auctIdstr)
 	if err != nil {
-		websocket.JSON.Send(ws, Response{"error": "auctId not valid: " + err.Error()})
+		websocket.JSON.Send(
+			ws,
+			Response{"error": "auctId not valid: " + err.Error()},
+		)
 		ws.Close()
 		return
 	}

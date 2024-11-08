@@ -19,21 +19,21 @@ const (
 	AuctionClosedEvent
 )
 
-type EventService interface {
+type EventHub interface {
 	Broadcast(ev *Event)
 	Subscribe(ch chan *Event, objId uuid.UUID)
 }
 
-func NewEventService() EventService {
-	return &eventService{}
+func NewEventHub() EventHub {
+	return &eventHub{}
 }
 
-type eventService struct {
+type eventHub struct {
 	Chans map[uuid.UUID]([]chan *Event)
 	mu    sync.Mutex
 }
 
-func (s *eventService) Broadcast(ev *Event) {
+func (s *eventHub) Broadcast(ev *Event) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	if chans, ok := s.Chans[ev.ObjId]; ok {
@@ -43,7 +43,7 @@ func (s *eventService) Broadcast(ev *Event) {
 	}
 }
 
-func (s *eventService) Subscribe(ch chan *Event, objId uuid.UUID) {
+func (s *eventHub) Subscribe(ch chan *Event, objId uuid.UUID) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	if _, exists := s.Chans[objId]; !exists {

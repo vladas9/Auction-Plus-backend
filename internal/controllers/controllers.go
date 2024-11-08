@@ -22,12 +22,13 @@ import (
 
 type Controller struct {
 	service *s.Service
+	hub     s.EventHub
 }
 
 var Host, Port string
 var JwtSecret []byte
 
-func NewController(db *sql.DB) *Controller {
+func NewController(db *sql.DB, hub s.EventHub) *Controller {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Can load env variables")
@@ -36,7 +37,7 @@ func NewController(db *sql.DB) *Controller {
 	Port = os.Getenv("PORT")
 	JwtSecret = []byte(os.Getenv("JWTKEY"))
 
-	return &Controller{s.NewService(db, Host, Port)}
+	return &Controller{s.NewService(db, Host, Port), hub}
 }
 
 func WriteJSON(w http.ResponseWriter, status int, v any) error {
