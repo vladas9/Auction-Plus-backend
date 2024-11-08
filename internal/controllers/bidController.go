@@ -7,6 +7,7 @@ import (
 
 	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
+	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
@@ -24,6 +25,13 @@ func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
 	if err := c.service.NewBid(bid); err != nil {
 		return err
 	}
+
+	c.hub.Broadcast(&s.Event{
+		s.RaisedBidEvent,
+		Response{"event": "raisedBid"},
+		bid.Id(),
+	})
+
 	return nil
 }
 
