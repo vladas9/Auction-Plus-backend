@@ -2,7 +2,7 @@ BINARY_NAME=./bin/main
 all: run
  
 build:
-	@go build -o ${BINARY_NAME} ./cmd/main.go
+	@go build -o ${BINARY_NAME} ./cmd/server/
  
 run: build
 	@#rm -f ./log-files/logs.log

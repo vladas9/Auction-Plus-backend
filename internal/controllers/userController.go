@@ -9,17 +9,18 @@ import (
 
 	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
+	"github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
-func (c *Controller) Login(w http.ResponseWriter, r *http.Request) error {
+func Login(w http.ResponseWriter, r *http.Request) error {
 	user := &m.UserModel{}
 
 	if err := json.NewDecoder(r.Body).Decode(user); err != nil {
 		return errors.NotValid(err.Error(), err)
 	}
 
-	storedUser, err := c.service.CheckUser(user)
+	storedUser, err := services.CheckUser(user)
 	if err != nil {
 		return err
 	}
@@ -34,7 +35,7 @@ func (c *Controller) Login(w http.ResponseWriter, r *http.Request) error {
 	return WriteJSON(w, http.StatusOK, response)
 }
 
-func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
+func Register(w http.ResponseWriter, r *http.Request) error {
 
 	user := &m.UserModel{}
 
@@ -42,7 +43,7 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("Decoding failed(Register): %w", err)
 	}
 
-	storedUser, err := c.service.CreateUser(user)
+	storedUser, err := services.CreateUser(user)
 	if err != nil {
 		return err
 	}
@@ -57,12 +58,12 @@ func (c *Controller) Register(w http.ResponseWriter, r *http.Request) error {
 	return WriteJSON(w, http.StatusOK, response)
 }
 
-func (c *Controller) UserData(w http.ResponseWriter, r *http.Request) error {
+func UserData(w http.ResponseWriter, r *http.Request) error {
 	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
 	if err != nil {
 		return err
 	}
-	user, err := c.service.GetUserData(userId)
+	user, err := services.GetUserData(userId)
 	if err != nil {
 		return fmt.Errorf("Failed getting user data: %s", err)
 	}
@@ -73,7 +74,7 @@ func (c *Controller) UserData(w http.ResponseWriter, r *http.Request) error {
 	})
 }
 
-func (c *Controller) ProfileData(w http.ResponseWriter, r *http.Request) error {
+func ProfileData(w http.ResponseWriter, r *http.Request) error {
 	userId, err := u.ExtractUserIDFromToken(r, JwtSecret)
 	if err != nil {
 		return err
@@ -85,13 +86,13 @@ func (c *Controller) ProfileData(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	// Get user data
-	user, err := c.service.GetUserData(userId)
+	user, err := services.GetUserData(userId)
 	if err != nil {
 		return fmt.Errorf("failed getting user data: %s", err)
 	}
 
 	// Get user statistics
-	stats, err := c.service.GetUserStats(userId)
+	stats, err := services.GetUserStats(userId)
 	if err != nil {
 		return fmt.Errorf("failed to get user stats: %v", err)
 	}
@@ -106,7 +107,7 @@ func (c *Controller) ProfileData(w http.ResponseWriter, r *http.Request) error {
 	})
 }
 
-func (c *Controller) ImageHandler(w http.ResponseWriter, r *http.Request) error {
+func ImageHandler(w http.ResponseWriter, r *http.Request) error {
 	id := strings.TrimPrefix(r.URL.Path, "/api/img/")
 	imagePath := fmt.Sprintf("%s%s.png", "./public/img/", id)
 

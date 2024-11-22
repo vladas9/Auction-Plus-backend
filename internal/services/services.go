@@ -4,20 +4,13 @@ import (
 	"fmt"
 
 	"github.com/vladas9/backend-practice/internal/errors"
-	r "github.com/vladas9/backend-practice/internal/repository"
-	p "github.com/vladas9/backend-practice/pkg/postgres"
 )
-
-type Service struct {
-	store *r.Store
-}
 
 var Host, Port string
 
-func NewService(host, port string) *Service {
+func InitService(host, port string) {
 	Host = host
 	Port = port
-	return &Service{r.NewStore(p.DB)}
 }
 
 type Response map[string]interface{}

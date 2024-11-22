@@ -7,10 +7,11 @@ import (
 
 	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
+	"github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
-func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
+func AddBid(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	bid := &m.BidModel{}
 	if err = json.NewDecoder(r.Body).Decode(bid); err != nil {
@@ -21,13 +22,13 @@ func (c *Controller) AddBid(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
-	if err := c.service.NewBid(bid); err != nil {
+	if err := services.NewBid(bid); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *Controller) BidTable(w http.ResponseWriter, r *http.Request) error {
+func BidTable(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	var limit, offset int
 	if limit, err = atoi(r.URL.Query().Get("limit")); err != nil {
@@ -41,7 +42,7 @@ func (c *Controller) BidTable(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
-	response, err := c.service.GetBidTable(userId, limit, offset)
+	response, err := services.GetBidTable(userId, limit, offset)
 	if err != nil {
 		return err
 	}

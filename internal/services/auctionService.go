@@ -9,6 +9,7 @@ import (
 	dto "github.com/vladas9/backend-practice/internal/dtos"
 	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
+	"github.com/vladas9/backend-practice/internal/repository"
 	r "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
@@ -19,12 +20,6 @@ type AuctionService interface {
 	GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error)
 	GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error)
 }
-
-// type auctionService struct{ *Service }
-//
-//	func NewAuctionService(s *Service) AuctionService {
-//		return &auctionService{s}
-//	}
 
 type AuctionCardParams struct {
 	Category           string
@@ -84,7 +79,7 @@ func (p AuctionTableParams) Validate() Problems {
 	return nil
 }
 
-func (s *Service) NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID, error) {
+func NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID, error) {
 	images := []uuid.UUID{}
 	var auctId uuid.UUID
 	var err error
@@ -110,7 +105,7 @@ func (s *Service) NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID,
 		EndTime:    dto.EndDate,
 		SellerId:   seller,
 	}
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repository.WithTx(func(stx *r.StoreTx) error {
 		if itemId, err := stx.ItemRepo().Insert(item); err != nil {
 			return err
 		} else {
@@ -124,13 +119,13 @@ func (s *Service) NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID,
 	return auctId, errors.Internal(err)
 }
 
-func (s *Service) GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error) {
+func GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error) {
 	if problems := params.Validate(); problems != nil {
 		return nil, problems.toErr()
 	}
 	var auctions []*m.AuctionDetails
 	var err error
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repository.WithTx(func(stx *r.StoreTx) error {
 		auctions, err = getUserAuctions(stx, params, withItem, withMaxBidder)
 		return err
 	})
@@ -158,13 +153,13 @@ func getUserAuctions(stx *r.StoreTx, params AuctionTableParams, opts ...auctOpt)
 	return auctions, nil
 }
 
-func (s *Service) GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, error) {
+func GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, error) {
 	if problems := params.Validate(); problems != nil {
 		return nil, problems.toErr()
 	}
 	var err error
 	var auctDetails []*m.AuctionDetails
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repository.WithTx(func(stx *r.StoreTx) error {
 		if auctDetails, err = getAuctions(stx, params, withItem); err != nil {
 			return err
 		}
@@ -203,10 +198,10 @@ func getAuctions(stx *r.StoreTx, params AuctionCardParams, opts ...auctOpt) (auc
 	return auctions, nil
 }
 
-func (s *Service) GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error) {
+func GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error) {
 	var err error
 	var auct *m.AuctionDetails
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repository.WithTx(func(stx *r.StoreTx) error {
 		auctModel, err := stx.AuctionRepo().GetById(id)
 		if err != nil {
 			return errors.NotFound("auction not found", err)

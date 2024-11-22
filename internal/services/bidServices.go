@@ -7,12 +7,13 @@ import (
 	"github.com/vladas9/backend-practice/internal/dtos"
 	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
+	"github.com/vladas9/backend-practice/internal/repository"
 	r "github.com/vladas9/backend-practice/internal/repository"
 )
 
-func (s *Service) NewBid(bid *m.BidModel) (err error) {
+func NewBid(bid *m.BidModel) (err error) {
 	auction := &m.AuctionModel{}
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repository.WithTx(func(stx *r.StoreTx) error {
 		auction, err = stx.AuctionRepo().GetById(bid.AuctionId)
 		if err != nil {
 			return errors.NotValid("auction id not valid", err)
@@ -31,13 +32,13 @@ func (s *Service) NewBid(bid *m.BidModel) (err error) {
 	return err
 }
 
-func (s *Service) GetBidTable(userId uuid.UUID, limit, offset int) ([]*dtos.BidsTable, error) {
+func GetBidTable(userId uuid.UUID, limit, offset int) ([]*dtos.BidsTable, error) {
 	var bidList []*m.BidModel
 	var auctionList []*m.AuctionModel
 	var itemList []*m.ItemModel
 	var userList []*m.UserModel
 
-	err := s.store.WithTx(func(stx *r.StoreTx) error {
+	err := repository.WithTx(func(stx *r.StoreTx) error {
 		var err error
 		bidList, err = stx.BidRepo().GetAllByUserId(userId, limit, offset)
 		if err != nil {
