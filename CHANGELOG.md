@@ -1,5 +1,26 @@
 # Auction+ Changelog
 
+## v0.6.0 - Database Optimization and Global Improvements (Date: 2024-11-22)
+
+### Added
+- **Global Database Variable**:
+  - Implemented a global database variable for streamlined access across services.
+  - Removed redundant database parameter passing, simplifying service initialization and improving code readability.
+
+### Improved
+- **Database Optimization**:
+  - Researches on PostgreSQL triggers, views and data handling optimizations.
+  - Shared findings with the team, leading to improvements in database structure and query efficiency.
+
+- **Codebase Consistency**:
+  - Improved code consistency and adherence to the MVC architecture across services and controllers.
+
+### Fixed
+- **Service Initialization**:
+  - Addressed issues with redundant code in service setups by centralizing database access.
+
+---
+
 ## v0.5.0 - Final Release and Documentation (Date: 2024-11-08)
 
 ### Added
