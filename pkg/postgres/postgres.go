@@ -1,4 +1,4 @@
-package db
+package postgres
 
 import (
 	"database/sql"
@@ -28,12 +28,12 @@ func ConnectDB() error {
 	connectStr := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
 		host, user, password, dbname, port, sslmode)
 
-	db, err := sql.Open("postgres", connectStr)
+	DB, err = sql.Open("postgres", connectStr)
 	if err != nil {
 		return err
 	}
 
-	err = db.Ping()
+	err = DB.Ping()
 
 	if err != nil {
 		return err

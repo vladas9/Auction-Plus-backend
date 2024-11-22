@@ -9,7 +9,7 @@ import (
 
 func main() {
 	u.SetupLogger("./log-files/demodb.log")
-	db, err := db.ConnectDB()
+	err := db.ConnectDB()
 	if err != nil {
 		panic(err)
 	}
@@ -22,7 +22,7 @@ func main() {
 	//}
 	user := GenerateDummyUser("john.doe@example.com")
 	user2 := GenerateDummyUser("john.doe2@example.com")
-	err = r.NewStore(db).WithTx(func(stx *r.StoreTx) error {
+	err = r.NewStore(db.DB).WithTx(func(stx *r.StoreTx) error {
 		userId, repoErr := stx.UserRepo().Insert(user)
 		u.Logger.Info("demoDB: userId: ", userId)
 		if repoErr != nil {
