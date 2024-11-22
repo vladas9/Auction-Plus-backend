@@ -43,6 +43,8 @@ func (c conn) handle() {
 }
 
 func (c *eventController) AuctionEvents(ws *websocket.Conn) {
+
+	u.Logger.Info("ws works")
 	auctIdstr := ws.Request().PathValue("id")
 	auctId, err := uuid.Parse(auctIdstr)
 	if err != nil {

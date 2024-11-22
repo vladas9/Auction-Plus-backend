@@ -1,11 +1,11 @@
 package services
 
 import (
-	"database/sql"
 	"fmt"
 
 	"github.com/vladas9/backend-practice/internal/errors"
 	r "github.com/vladas9/backend-practice/internal/repository"
+	p "github.com/vladas9/backend-practice/pkg/postgres"
 )
 
 type Service struct {
@@ -14,10 +14,10 @@ type Service struct {
 
 var Host, Port string
 
-func NewService(db *sql.DB, host, port string) *Service {
+func NewService(host, port string) *Service {
 	Host = host
 	Port = port
-	return &Service{r.NewStore(db)}
+	return &Service{r.NewStore(p.DB)}
 }
 
 type Response map[string]interface{}

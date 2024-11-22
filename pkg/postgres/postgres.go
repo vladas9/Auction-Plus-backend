@@ -10,11 +10,13 @@ import (
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
-func ConnectDB() (*sql.DB, error) {
+var DB *sql.DB
+
+func ConnectDB() error {
 
 	err := godotenv.Load()
 	if err != nil {
-		return nil, err
+		return err
 	}
 	host := os.Getenv("DB_HOST")
 	user := os.Getenv("DB_USER")
@@ -28,15 +30,15 @@ func ConnectDB() (*sql.DB, error) {
 
 	db, err := sql.Open("postgres", connectStr)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	err = db.Ping()
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	u.Logger.Info("Successfully connected to the database")
-	return db, nil
+	return nil
 }

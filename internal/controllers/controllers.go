@@ -5,7 +5,6 @@
 package controllers
 
 import (
-	"database/sql"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -27,7 +26,7 @@ type Controller struct {
 var Host, Port string
 var JwtSecret []byte
 
-func NewController(db *sql.DB) *Controller {
+func NewController() *Controller {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Can load env variables")
@@ -36,7 +35,7 @@ func NewController(db *sql.DB) *Controller {
 	Port = os.Getenv("PORT")
 	JwtSecret = []byte(os.Getenv("JWTKEY"))
 
-	return &Controller{s.NewService(db, Host, Port)}
+	return &Controller{s.NewService(Host, Port)}
 }
 
 func WriteJSON(w http.ResponseWriter, status int, v any) error {

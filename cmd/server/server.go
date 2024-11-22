@@ -35,7 +35,7 @@ type Server struct {
 }
 
 func NewServer(addr string) *Server {
-	db, err := p.ConnectDB()
+	err := p.ConnectDB()
 	if err != nil {
 		u.Logger.Error("connecting db: ", err.Error())
 	}
@@ -44,7 +44,7 @@ func NewServer(addr string) *Server {
 	return &Server{
 		ListenAddr:      addr,
 		Router:          mux,
-		Controllers:     c.NewController(db),
+		Controllers:     c.NewController(),
 		EventController: c.NewEventController(),
 	}
 }
