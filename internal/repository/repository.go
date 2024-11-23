@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+
 	p "github.com/vladas9/backend-practice/pkg/postgres"
 )
 

@@ -23,4 +23,9 @@ drop:
 	psql -U postgres -c "DROP DATABASE IF EXISTS auctiondb"
 
 deps:
-	@go mod tidy
+	go mod tidy
+vet:
+	go vet ./...
+fmt:
+	go fmt ./...
+

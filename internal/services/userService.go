@@ -7,8 +7,7 @@ import (
 	"github.com/shopspring/decimal"
 	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
-	"github.com/vladas9/backend-practice/internal/repository"
-	r "github.com/vladas9/backend-practice/internal/repository"
+	repo "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
@@ -27,7 +26,7 @@ func CreateUser(user *m.UserModel) (*m.UserModel, error) {
 
 	user.Image = imageUUID
 
-	err = repository.WithTx(func(stx *r.StoreTx) error {
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
 		user.ID, err = stx.UserRepo().Insert(user)
 		return err
 	})
@@ -40,7 +39,7 @@ func CreateUser(user *m.UserModel) (*m.UserModel, error) {
 }
 
 func CheckUser(user *m.UserModel) (storedUser *m.UserModel, err error) {
-	err = repository.WithTx(func(stx *r.StoreTx) error {
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
 		storedUser, err = stx.UserRepo().GetByProperty("email", user.Email)
 		return err
 	})
@@ -57,7 +56,7 @@ func CheckUser(user *m.UserModel) (storedUser *m.UserModel, err error) {
 }
 
 func GetUserData(id uuid.UUID) (storedUser *m.UserModel, err error) {
-	err = repository.WithTx(func(stx *r.StoreTx) error {
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
 		storedUser, err = stx.UserRepo().GetByProperty("id", id)
 		return err
 	})
@@ -77,8 +76,8 @@ func GetUserStats(userID uuid.UUID) (map[string]interface{}, error) {
 
 	var boughtTransactions []*m.TransactionModel
 	var err error
-	err = repository.WithTx(func(stx *r.StoreTx) error {
-		boughtTransactions, err = stx.TransactionRepo().GetAll([]r.FilterCondition{
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
+		boughtTransactions, err = stx.TransactionRepo().GetAll([]repo.FilterCondition{
 			{Property: "buyer_id", Value: userID},
 		})
 		return err
@@ -88,8 +87,8 @@ func GetUserStats(userID uuid.UUID) (map[string]interface{}, error) {
 	}
 
 	var soldTransactions []*m.TransactionModel
-	err = repository.WithTx(func(stx *r.StoreTx) error {
-		soldTransactions, err = stx.TransactionRepo().GetAll([]r.FilterCondition{
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
+		soldTransactions, err = stx.TransactionRepo().GetAll([]repo.FilterCondition{
 			{Property: "seller_id", Value: userID},
 		})
 		return err
@@ -112,7 +111,7 @@ func GetUserStats(userID uuid.UUID) (map[string]interface{}, error) {
 
 	for _, transaction := range boughtTransactions {
 		var auction *m.AuctionModel
-		err = repository.WithTx(func(stx *r.StoreTx) error {
+		err = repo.WithTx(func(stx *repo.StoreTx) error {
 			auction, err = stx.AuctionRepo().GetById(transaction.AuctionId)
 			return err
 		})
@@ -121,7 +120,7 @@ func GetUserStats(userID uuid.UUID) (map[string]interface{}, error) {
 		}
 
 		var item *m.ItemModel
-		err = repository.WithTx(func(stx *r.StoreTx) error {
+		err = repo.WithTx(func(stx *repo.StoreTx) error {
 			item, err = stx.ItemRepo().GetById(auction.ItemId)
 			return err
 		})
@@ -144,7 +143,7 @@ func GetUserStats(userID uuid.UUID) (map[string]interface{}, error) {
 
 	for _, transaction := range soldTransactions {
 		var auction *m.AuctionModel
-		err = repository.WithTx(func(stx *r.StoreTx) error {
+		err = repo.WithTx(func(stx *repo.StoreTx) error {
 			auction, err = stx.AuctionRepo().GetById(transaction.AuctionId)
 			return err
 		})
@@ -153,7 +152,7 @@ func GetUserStats(userID uuid.UUID) (map[string]interface{}, error) {
 		}
 
 		var item *m.ItemModel
-		err = repository.WithTx(func(stx *r.StoreTx) error {
+		err = repo.WithTx(func(stx *repo.StoreTx) error {
 			item, err = stx.ItemRepo().GetById(auction.ItemId)
 			return err
 		})

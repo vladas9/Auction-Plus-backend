@@ -1,9 +1,10 @@
 package models
 
 import (
+	"time"
+
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
-	"time"
 
 	u "github.com/vladas9/backend-practice/internal/utils"
 )

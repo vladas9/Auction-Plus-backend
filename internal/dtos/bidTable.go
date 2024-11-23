@@ -2,9 +2,10 @@ package dtos
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
-	"time"
 )
 
 type BidsTable struct {

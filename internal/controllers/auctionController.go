@@ -9,7 +9,6 @@ import (
 	"github.com/vladas9/backend-practice/internal/errors"
 	"github.com/vladas9/backend-practice/internal/services"
 
-	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
@@ -66,7 +65,7 @@ func GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		return errors.NotValid("min_price not parsable", err)
 	}
 
-	params := s.AuctionCardParams{
+	params := services.AuctionCardParams{
 		Offset:    offset,
 		Len:       leangth,
 		MaxPrice:  maxPrice,
@@ -100,7 +99,7 @@ func GetAuction(w http.ResponseWriter, r *http.Request) error {
 
 func AuctionTable(w http.ResponseWriter, r *http.Request) error {
 	var err error
-	params := s.AuctionTableParams{}
+	params := services.AuctionTableParams{}
 	if params.Limit, err = atoi(r.URL.Query().Get("limit")); err != nil {
 		return errors.NotValid("limit not parsable", err)
 	}
