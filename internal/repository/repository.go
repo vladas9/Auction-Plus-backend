@@ -2,32 +2,24 @@ package repository
 
 import (
 	"database/sql"
+
+	p "github.com/vladas9/backend-practice/pkg/postgres"
 )
-
-type Store struct {
-	db *sql.DB
-}
-
-func NewStore(db *sql.DB) *Store {
-	return &Store{
-		db: db,
-	}
-}
 
 type StoreTx struct {
 	*sql.Tx
 }
 
-func (s *Store) BeginTx() (*StoreTx, error) {
-	tx, err := s.db.Begin()
+func beginTx() (*StoreTx, error) {
+	tx, err := p.DB.Begin()
 	if err != nil {
 		return nil, err
 	}
 	return &StoreTx{tx}, nil
 }
 
-func (s *Store) WithTx(fn func(stx *StoreTx) error) error {
-	storeTx, err := s.BeginTx()
+func WithTx(fn func(stx *StoreTx) error) error {
+	storeTx, err := beginTx()
 	defer storeTx.Rollback()
 	if err != nil {
 		return err

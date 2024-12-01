@@ -9,7 +9,7 @@ import (
 	dto "github.com/vladas9/backend-practice/internal/dtos"
 	"github.com/vladas9/backend-practice/internal/errors"
 	m "github.com/vladas9/backend-practice/internal/models"
-	r "github.com/vladas9/backend-practice/internal/repository"
+	repo "github.com/vladas9/backend-practice/internal/repository"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
@@ -19,12 +19,6 @@ type AuctionService interface {
 	GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error)
 	GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error)
 }
-
-// type auctionService struct{ *Service }
-//
-//	func NewAuctionService(s *Service) AuctionService {
-//		return &auctionService{s}
-//	}
 
 type AuctionCardParams struct {
 	Category           string
@@ -84,7 +78,7 @@ func (p AuctionTableParams) Validate() Problems {
 	return nil
 }
 
-func (s *Service) NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID, error) {
+func NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID, error) {
 	images := []uuid.UUID{}
 	var auctId uuid.UUID
 	var err error
@@ -110,7 +104,7 @@ func (s *Service) NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID,
 		EndTime:    dto.EndDate,
 		SellerId:   seller,
 	}
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
 		if itemId, err := stx.ItemRepo().Insert(item); err != nil {
 			return err
 		} else {
@@ -124,13 +118,13 @@ func (s *Service) NewAuction(dto *dto.AuctionFull, seller uuid.UUID) (uuid.UUID,
 	return auctId, errors.Internal(err)
 }
 
-func (s *Service) GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error) {
+func GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable, error) {
 	if problems := params.Validate(); problems != nil {
 		return nil, problems.toErr()
 	}
 	var auctions []*m.AuctionDetails
 	var err error
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
 		auctions, err = getUserAuctions(stx, params, withItem, withMaxBidder)
 		return err
 	})
@@ -144,7 +138,7 @@ func (s *Service) GetAuctionTable(params AuctionTableParams) ([]dto.AuctionTable
 	return table, nil
 }
 
-func getUserAuctions(stx *r.StoreTx, params AuctionTableParams, opts ...auctOpt) (auctions []*m.AuctionDetails, err error) {
+func getUserAuctions(stx *repo.StoreTx, params AuctionTableParams, opts ...auctOpt) (auctions []*m.AuctionDetails, err error) {
 	var auctModels []*m.AuctionModel
 	auctModels, err = stx.AuctionRepo().GetAllByUserId(params.UserId, params.Limit, params.Offset)
 	var auct *m.AuctionDetails
@@ -158,13 +152,13 @@ func getUserAuctions(stx *r.StoreTx, params AuctionTableParams, opts ...auctOpt)
 	return auctions, nil
 }
 
-func (s *Service) GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, error) {
+func GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, error) {
 	if problems := params.Validate(); problems != nil {
 		return nil, problems.toErr()
 	}
 	var err error
 	var auctDetails []*m.AuctionDetails
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
 		if auctDetails, err = getAuctions(stx, params, withItem); err != nil {
 			return err
 		}
@@ -182,7 +176,7 @@ func (s *Service) GetAuctionCards(params AuctionCardParams) ([]dto.AuctionCard, 
 	return cards, nil
 }
 
-func getAuctions(stx *r.StoreTx, params AuctionCardParams, opts ...auctOpt) (auctions []*m.AuctionDetails, err error) {
+func getAuctions(stx *repo.StoreTx, params AuctionCardParams, opts ...auctOpt) (auctions []*m.AuctionDetails, err error) {
 	auctionRepo := stx.AuctionRepo()
 	var auctModels []*m.AuctionModel
 	auctModels, err = auctionRepo.GetAllFiltered(
@@ -203,10 +197,10 @@ func getAuctions(stx *r.StoreTx, params AuctionCardParams, opts ...auctOpt) (auc
 	return auctions, nil
 }
 
-func (s *Service) GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error) {
+func GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error) {
 	var err error
 	var auct *m.AuctionDetails
-	err = s.store.WithTx(func(stx *r.StoreTx) error {
+	err = repo.WithTx(func(stx *repo.StoreTx) error {
 		auctModel, err := stx.AuctionRepo().GetById(id)
 		if err != nil {
 			return errors.NotFound("auction not found", err)
@@ -220,9 +214,9 @@ func (s *Service) GetFullAuctionById(id uuid.UUID) (*dto.AuctionFull, error) {
 	return dto.MapAuctionRespToFull(auct), nil
 }
 
-type auctOpt func(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
+type auctOpt func(stx *repo.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
 
-func getAuctionDetails(auct *m.AuctionModel, stx *r.StoreTx, opts ...auctOpt) (*m.AuctionDetails, error) {
+func getAuctionDetails(auct *m.AuctionModel, stx *repo.StoreTx, opts ...auctOpt) (*m.AuctionDetails, error) {
 	var err error
 	details := m.NewAuctionDetails(auct)
 	for _, opt := range opts {
@@ -234,7 +228,7 @@ func getAuctionDetails(auct *m.AuctionModel, stx *r.StoreTx, opts ...auctOpt) (*
 	return details, nil
 }
 
-func withBids(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
+func withBids(stx *repo.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
 	var err error
 	auct.BidList, err = stx.BidRepo().GetAllFor(auct.Auction)
 	if err != nil {
@@ -243,7 +237,7 @@ func withBids(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
 	return auct, nil
 }
 
-func withItem(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
+func withItem(stx *repo.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
 	var err error
 	auct.Item, err = stx.ItemRepo().GetById(auct.Auction.ItemId)
 	if err != nil {
@@ -252,7 +246,7 @@ func withItem(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error)
 	return auct, nil
 }
 
-func withMaxBidder(stx *r.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
+func withMaxBidder(stx *repo.StoreTx, auct *m.AuctionDetails) (*m.AuctionDetails, error) {
 	var err error
 	auct.MaxBidder, err = stx.UserRepo().GetByProperty("id", auct.Auction.MaxBidderId)
 	if err != nil {

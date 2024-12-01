@@ -1,4 +1,4 @@
-package server
+package main
 
 import (
 	"net/http"
@@ -30,21 +30,20 @@ func (fn apiFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 type Server struct {
 	ListenAddr      string
 	Router          *http.ServeMux
-	Controllers     *c.Controller
 	EventController c.EventController
 }
 
 func NewServer(addr string) *Server {
-	db, err := p.ConnectDB()
+	err := p.ConnectDB()
 	if err != nil {
 		u.Logger.Error("connecting db: ", err.Error())
+		panic(err)
 	}
 	mux := http.NewServeMux()
 
 	return &Server{
 		ListenAddr:      addr,
 		Router:          mux,
-		Controllers:     c.NewController(db),
 		EventController: c.NewEventController(),
 	}
 }
@@ -52,17 +51,17 @@ func NewServer(addr string) *Server {
 func (s *Server) Run() {
 	//TODO: Add controllers links
 
-	s.Router.Handle("POST /api/user/register", apiFunc(s.Controllers.Register))
-	s.Router.Handle("POST /api/user/login", apiFunc(s.Controllers.Login))
-	s.Router.Handle("GET /api/user/data", apiFunc(s.Controllers.UserData))
-	s.Router.Handle("GET /api/user/profile-data", apiFunc(s.Controllers.ProfileData))
-	s.Router.Handle("GET /api/img/", apiFunc(s.Controllers.ImageHandler))
-	s.Router.Handle("POST /api/bid/post", apiFunc(s.Controllers.AddBid))
-	s.Router.Handle("GET /api/bids/table", apiFunc(s.Controllers.BidTable))
-	s.Router.Handle("GET /api/auctions/table", apiFunc(s.Controllers.AuctionTable))
-	s.Router.Handle("GET /api/auctions/cards", apiFunc(s.Controllers.GetAuctions))
-	s.Router.Handle("GET /api/auction/{id}", apiFunc(s.Controllers.GetAuction))
-	s.Router.Handle("POST /api/auction/post", apiFunc(s.Controllers.AddAuction))
+	s.Router.Handle("POST /api/user/register", apiFunc(c.Register))
+	s.Router.Handle("POST /api/user/login", apiFunc(c.Login))
+	s.Router.Handle("GET /api/user/data", apiFunc(c.UserData))
+	s.Router.Handle("GET /api/user/profile-data", apiFunc(c.ProfileData))
+	s.Router.Handle("GET /api/img/", apiFunc(c.ImageHandler))
+	s.Router.Handle("POST /api/bid/post", apiFunc(c.AddBid))
+	s.Router.Handle("GET /api/bids/table", apiFunc(c.BidTable))
+	s.Router.Handle("GET /api/auctions/table", apiFunc(c.AuctionTable))
+	s.Router.Handle("GET /api/auctions/cards", apiFunc(c.GetAuctions))
+	s.Router.Handle("GET /api/auction/{id}", apiFunc(c.GetAuction))
+	s.Router.Handle("POST /api/auction/post", apiFunc(c.AddAuction))
 	s.Router.Handle("/api/auction/ws/{id}", websocket.Handler(s.EventController.AuctionEvents))
 	// s.Router.Handle("POST /api/payments", apiFunc(controllers.))
 	// s.Router.Handle("GET /api/notifications", apiFunc(controllers.))

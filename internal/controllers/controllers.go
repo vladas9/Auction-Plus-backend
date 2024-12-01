@@ -5,7 +5,6 @@
 package controllers
 
 import (
-	"database/sql"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -16,18 +15,13 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/shopspring/decimal"
-	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
-
-type Controller struct {
-	service *s.Service
-}
 
 var Host, Port string
 var JwtSecret []byte
 
-func NewController(db *sql.DB) *Controller {
+func InitController() {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Can load env variables")
@@ -35,8 +29,6 @@ func NewController(db *sql.DB) *Controller {
 	Host = os.Getenv("HOST")
 	Port = os.Getenv("PORT")
 	JwtSecret = []byte(os.Getenv("JWTKEY"))
-
-	return &Controller{s.NewService(db, Host, Port)}
 }
 
 func WriteJSON(w http.ResponseWriter, status int, v any) error {

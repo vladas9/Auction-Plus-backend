@@ -1,23 +1,16 @@
 package services
 
 import (
-	"database/sql"
 	"fmt"
 
 	"github.com/vladas9/backend-practice/internal/errors"
-	r "github.com/vladas9/backend-practice/internal/repository"
 )
-
-type Service struct {
-	store *r.Store
-}
 
 var Host, Port string
 
-func NewService(db *sql.DB, host, port string) *Service {
+func InitService(host, port string) {
 	Host = host
 	Port = port
-	return &Service{r.NewStore(db)}
 }
 
 type Response map[string]interface{}

@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+
 	"github.com/google/uuid"
 	m "github.com/vladas9/backend-practice/internal/models"
 )

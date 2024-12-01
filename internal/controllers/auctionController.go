@@ -7,12 +7,12 @@ import (
 	"github.com/google/uuid"
 	"github.com/vladas9/backend-practice/internal/dtos"
 	"github.com/vladas9/backend-practice/internal/errors"
+	"github.com/vladas9/backend-practice/internal/services"
 
-	s "github.com/vladas9/backend-practice/internal/services"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
-func (c *Controller) AddAuction(w http.ResponseWriter, r *http.Request) error {
+func AddAuction(w http.ResponseWriter, r *http.Request) error {
 	var err error
 	auctionDTO := &dtos.AuctionFull{}
 
@@ -26,7 +26,7 @@ func (c *Controller) AddAuction(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	u.Logger.Info("dto", auctionDTO)
-	if auctId, err := c.service.NewAuction(auctionDTO, sellerId); err != nil {
+	if auctId, err := services.NewAuction(auctionDTO, sellerId); err != nil {
 		return errors.Internal(err)
 	} else {
 		return WriteJSON(w, http.StatusOK, Response{
@@ -34,7 +34,7 @@ func (c *Controller) AddAuction(w http.ResponseWriter, r *http.Request) error {
 	}
 }
 
-func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
+func GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	//if err := r.ParseForm(); err != nil {
 	//	return fail(err)
 	//}
@@ -65,7 +65,7 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		return errors.NotValid("min_price not parsable", err)
 	}
 
-	params := s.AuctionCardParams{
+	params := services.AuctionCardParams{
 		Offset:    offset,
 		Len:       leangth,
 		MaxPrice:  maxPrice,
@@ -74,7 +74,7 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 		Condition: conditionStr,
 	}
 
-	cards, err := c.service.GetAuctionCards(params)
+	cards, err := services.GetAuctionCards(params)
 	if err != nil {
 		return err
 	}
@@ -83,12 +83,12 @@ func (c *Controller) GetAuctions(w http.ResponseWriter, r *http.Request) error {
 	})
 }
 
-func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Request) error {
+func GetAuction(w http.ResponseWriter, r *http.Request) error {
 	auctId, err := uuid.Parse(r.PathValue("id"))
 	if err != nil {
 		return errors.NotValid("uuid not parsable", err)
 	}
-	auct, err := c.service.GetFullAuctionById(auctId)
+	auct, err := services.GetFullAuctionById(auctId)
 	if err != nil {
 		return err
 	}
@@ -97,9 +97,9 @@ func (c *Controller) GetAuction(w http.ResponseWriter, r *http.Request) error {
 	})
 }
 
-func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error {
+func AuctionTable(w http.ResponseWriter, r *http.Request) error {
 	var err error
-	params := s.AuctionTableParams{}
+	params := services.AuctionTableParams{}
 	if params.Limit, err = atoi(r.URL.Query().Get("limit")); err != nil {
 		return errors.NotValid("limit not parsable", err)
 	}
@@ -110,7 +110,7 @@ func (c *Controller) AuctionTable(w http.ResponseWriter, r *http.Request) error 
 	if err != nil {
 		return err
 	}
-	response, err := c.service.GetAuctionTable(params)
+	response, err := services.GetAuctionTable(params)
 	if err != nil {
 		return err
 	}

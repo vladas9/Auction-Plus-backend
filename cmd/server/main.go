@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	s "github.com/vladas9/backend-practice/cmd/server"
 	u "github.com/vladas9/backend-practice/internal/utils"
 )
 
@@ -19,6 +18,6 @@ func main() {
 	port := os.Getenv("PORT")
 
 	u.SetupLogger("log-files/logs.log")
-	server := s.NewServer(fmt.Sprintf("%s:%s", host, port))
+	server := NewServer(fmt.Sprintf("%s:%s", host, port))
 	server.Run()
 }
